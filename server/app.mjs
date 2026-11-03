@@ -10,8 +10,8 @@
 // core runs on its own.
 //
 // Media: a file under /media/ that is not on this machine is redirected to
-// STUDIO_MEDIA_BASE_URL when it is set (a CDN, a bucket, a Drive proxy), so the
-// heavy files never have to ship with the tool.
+// STUDIO_MEDIA_BASE_URL (a CDN, a bucket, a Drive proxy), so the heavy files
+// never have to ship with the tool.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -64,11 +64,17 @@ function serveFile(res, file, { cache = 'no-cache' } = {}) {
   fs.createReadStream(file).pipe(res);
 }
 
+// The media library left the repo on 3 November 2026; until it moves to Google
+// Drive it is served from the last commit that held it (V1), through jsDelivr.
+// STUDIO_MEDIA_BASE_URL overrides this; an empty value turns the redirect off.
+export const DEFAULT_MEDIA_BASE = 'https://cdn.jsdelivr.net/gh/craftedbypalak/VD-Marketing-Studio@e6ba358f1e4599f3ee4999522cebe0dd185a1c6a/media';
+const mediaBase = () => (process.env.STUDIO_MEDIA_BASE_URL ?? DEFAULT_MEDIA_BASE).replace(/\/+$/, '');
+
 function serveMedia(res, url) {
   const rel = url.pathname.slice('/media/'.length);
   const file = safeJoin(path.join(store.root, 'media'), rel);
   if (file && fs.existsSync(file) && fs.statSync(file).isFile()) return serveFile(res, file, { cache: 'public, max-age=3600' });
-  const base = (process.env.STUDIO_MEDIA_BASE_URL || '').replace(/\/+$/, '');
+  const base = mediaBase();
   if (file && base) {
     res.writeHead(302, { location: `${base}/${rel.split('/').map(encodeURIComponent).join('/')}`, 'cache-control': 'public, max-age=3600' });
     return res.end();

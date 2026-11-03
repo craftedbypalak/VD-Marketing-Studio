@@ -4,7 +4,7 @@
 // in the accent colour; the words are Gilmer.
 
 import {
-  palette, fit, textLines, textAt, eyebrow, footer, frame, warn, F, TAGLINE, pieceText, round, textWidth,
+  COLOR, palette, fit, textLines, textAt, eyebrow, footer, frame, warn, F, TAGLINE, pieceText, round, textWidth,
 } from './_kit.js';
 
 const W = 1080;
@@ -19,7 +19,7 @@ export const meta = {
   defaultTheme: 'navy',
   fields: [
     { key: 'eyebrow', label: 'Eyebrow', type: 'text' },
-    { key: 'head', label: 'Quote', type: 'textarea', rows: 4, hint: 'Put *stars* around the one word that should be yellow. Quotation marks are drawn for you.' },
+    { key: 'head', label: 'Quote', type: 'textarea', rows: 4, hint: 'Put *stars* around the one word that should be lime. Quotation marks are drawn for you.' },
     { key: 'name', label: 'Said by', type: 'text', hint: 'Only with permission; otherwise write a role, such as "An owner in Indore".' },
     { key: 'role', label: 'Role or place (optional)', type: 'text' },
     { key: 'footer', label: 'Footer line', type: 'text' },
@@ -64,7 +64,7 @@ export function render(fields, theme = 'navy', opts = {}) {
   // Attribution: a short accent bar, then the name and the role.
   const aTop = Math.max(qTop + q.height + 56, 900);
   if (fields.name || fields.role) {
-    svg += `<rect x="${PAD}" y="${round(aTop)}" width="64" height="6" rx="3" fill="${pal.theme === 'light' ? pal.star : '#f9c74f'}"/>`;
+    svg += `<rect x="${PAD}" y="${round(aTop)}" width="64" height="6" rx="3" fill="${pal.theme === 'light' ? pal.star : COLOR.lime}"/>`;
     let y = aTop + 62;
     if (fields.name) {
       let s = 38;

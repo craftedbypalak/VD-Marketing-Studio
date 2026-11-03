@@ -8,7 +8,7 @@
 //
 // Environment (Vercel project settings):
 //   ANTHROPIC_API_KEY       AI steps run on the Claude API (there is no `claude` command here)
-//   STUDIO_MEDIA_BASE_URL   where /media/* files live; defaults to the repo's media/ on jsDelivr
+//   STUDIO_MEDIA_BASE_URL   where /media/* files live; see server/app.mjs for the default
 //   STUDIO_AI_MODE          'api' or 'cli' to force; defaults to 'api' when a key is set
 
 import fs from 'node:fs';
@@ -32,9 +32,6 @@ function prepare() {
   process.env.STUDIO_ROOT = RUN_ROOT;
   process.env.STUDIO_EPHEMERAL = '1';
   if (!process.env.STUDIO_AI_MODE && process.env.ANTHROPIC_API_KEY) process.env.STUDIO_AI_MODE = 'api';
-  if (process.env.STUDIO_MEDIA_BASE_URL === undefined) {
-    process.env.STUDIO_MEDIA_BASE_URL = 'https://cdn.jsdelivr.net/gh/craftedbypalak/VD-Marketing-Studio@main/media';
-  }
 }
 
 let ready = null;

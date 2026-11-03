@@ -589,7 +589,7 @@ export async function render(container, params) {
             button({ kind: 'ghost', small: true, icon: 'trash', title: 'Delete the slide', onClick: () => { piece.slides.splice(i, 1); draw(); changed(); } }),
           ]),
           el('div', { class: 'form-grid' }, [f('Eyebrow', 'eyebrow'), f('Number or label', 'n')]),
-          f('Head (a word in *stars* turns yellow)', 'head'),
+          f('Head (a word in *stars* turns lime)', 'head'),
           f('Body', 'body', true),
           field({ label: 'List items, one per line', input: textarea({ value: (s.items || []).join('\n'), onInput: (e) => { const l = linesToList(e.target.value); if (l.length) s.items = l; else delete s.items; changed(); } }) }),
           f('Footer', 'foot'),
@@ -703,7 +703,7 @@ export async function render(container, params) {
     } else if (key === 'fb') {
       wrap.append(ta('Text', 'text', lim('vd-fb', 2200), 6));
     } else if (key === 'waStatus') {
-      wrap.append(ta('Status text', 'text', lim('wa-st', 700), 4, 'One line. Words in *stars* show in yellow.'));
+      wrap.append(ta('Status text', 'text', lim('wa-st', 700), 4, 'One line. Words in *stars* show in lime.'));
     } else if (key === 'waNote') {
       wrap.append(ta('Note', 'text', lim('wa-note', 1200), 8, 'About 90 words, to people who said yes.'));
     } else if (key === 'yt') {

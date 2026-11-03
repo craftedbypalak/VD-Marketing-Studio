@@ -2,8 +2,6 @@
 media/
 video/
 docs/
-research/
-PLAN.html
 server/*.test.mjs
 server/_scratch.mjs
 server/_storeContract.mjs

@@ -12,7 +12,7 @@
   padding: 9px 11px; cursor: pointer; display: flex; flex-direction: column; gap: 2px;
 }
 .cards-template:hover { border-color: var(--navy); }
-.cards-template.active { border-color: var(--navy); background: var(--yellow-tint); box-shadow: inset 3px 0 0 var(--yellow); }
+.cards-template.active { border-color: var(--navy); background: var(--lime-tint); box-shadow: inset 3px 0 0 var(--lime); }
 .cards-template b { font-size: 13px; color: var(--navy); font-weight: 700; }
 .cards-template span { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
 
@@ -32,7 +32,7 @@
 
 .cards-lock { position: relative; }
 .cards-lock .textarea { background: var(--surface); color: var(--text-secondary); font-size: 13px; min-height: 84px; cursor: not-allowed; padding-top: 30px; }
-.cards-lock-tag { position: absolute; top: 8px; right: 10px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--yellow-ink); background: var(--yellow-tint); border-radius: var(--r-pill); padding: 2px 8px; }
+.cards-lock-tag { position: absolute; top: 8px; right: 10px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--lime-ink); background: var(--lime-tint); border-radius: var(--r-pill); padding: 2px 8px; }
 
 .cards-illustration { margin-top: 20px; }
 .cards-illu-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px; }

@@ -1,12 +1,14 @@
 # Venture Drafters Studio
 
+Brand: Sapphire Lime (sapphire `#0f2350`, lime `#cdf22b`) with the round-D VD mark, from the Venture Drafters design system. The tokens are `app/css/tokens.css`; the logos are `app/img/`.
+
 The in-house marketing tool: content, calendar, video production, pictures and recurring events in one place. Plain JavaScript, no build step. The contract every builder follows is `docs/ARCHITECTURE.md`.
 
 The network CRM (people, tiers, touches) is a separate tool, **Network**, in `../Network/`, for the founder only. Studio holds nothing about a person; Network reads the calendar and the published pieces from Studio over two read-only link routes (`docs/SPLIT-AND-HOSTING.md`).
 
 ## Start here (Palak)
 
-1. **Read the plan.** Open `PLAN.html` in a browser: channels, calendar, pipeline, YouTube, Instagram, WhatsApp, recurring events, the tool and the build order.
+1. **Open it.** On the website (Vercel, see "On Vercel" below), or on a Mac with `node server/index.mjs`.
 2. **Sign in to Claude Code once.** In a terminal run `claude`, then `/login`. Every AI step in Studio (propose, draft, refine, check, greetings, video scripts) runs through that login on your subscription. Until this is done each AI button shows "Run claude and /login in a terminal".
 3. **Run Studio.** `cd "Venture Drafters/Studio" && node server/index.mjs`, then open http://localhost:4747. It opens on the calendar: the month at a glance with every slot, piece and event on its day, and the Today strip above it (unfold it for what is due, what is blocked, the queue and the month card). The left nav groups the rest: Content (Library, Review, Video, Visuals, Occasions) and Settings; on the phone the tab bar shows those three and a sub-bar for Content. Settings shows who you are working as (you are the approver).
 4. **First hour.** Content holds all 85 existing pieces, every one in review with its video or slides. The checker has found 19 pieces that break the brief (retired lines, "best", six hashtags): in Content, choose "Blocked by the checker" under Checker, or follow the link from the Today strip on the calendar. "Check all" in Content re-runs the checker over every piece. Press "Review pass" in the review queue to have the AI propose a refined version 2 of every piece; then approve, edit or keep the original, one card at a time, on your phone or the Mac.
@@ -16,7 +18,7 @@ The network CRM (people, tiers, touches) is a separate tool, **Network**, in `..
 8. **Link to Network.** Settings, Link, shows the token Network needs (copy it into Network's settings as the Studio token).
 9. **Video**: YouTube is fortnightly from Monday 16 November 2026 (every other Monday at 11:00, Shorts between, never fewer than two uploads a month). The ten episodes of Built to Run: Stories are in the library as long-video pieces with a video project each, placed on the ten Mondays to 22 March, with the VSP film on 5 April; the VSP-system case studies join the alternate Mondays once one is produced. "New video project" from a system in the Solutions list, then Outline, Script, Scenes, Footage, Voice, Own clips, Edit (the hand-off folder with the exact commands for the brand-video pipeline) and Shorts. `node server/import/case-studies.mjs` re-imports the episodes from Marketing/case-studies (re-runnable).
 
-What is not done yet: posting to the platforms (phase 2), hosting on the website (phase 2, see `docs/SPLIT-AND-HOSTING.md`), AI illustrations need an image API key, and the AI prompts have only been checked as prompts, never against a real model reply, because the login had expired on 29 October 2026. The three audits that shaped the tool, and every judgement call made in them, are under `docs/audits/`.
+What is not done yet: posting to the platforms (phase 2), keeping data on the website (Google Sheets, see `docs/SPLIT-AND-HOSTING.md`), AI illustrations need an image API key, and the AI prompts have only been checked as prompts, never against a real model reply, because the login had expired on 29 October 2026. 
 
 ## Run it
 
@@ -28,7 +30,7 @@ node server/index.mjs
 
 Node 24 or later. No npm install: the server uses `node:http`, `node:fs` and `node:child_process` only. Stop it with Ctrl-C. `PORT` and `HOST` can be set in the environment.
 
-The server serves `app/` as the single-page app (any non-API path returns `index.html`), `/media/*` from `media/`, `/data/<collection>.json` read-only, and `/api/*` as described in the contract (section 5).
+The server serves `app/` as the single-page app (any non-API path returns `index.html`), `/media/*` from `media/` (or the media CDN when the file is not on this machine), `/data/<collection>.json` read-only, and `/api/*` as described in the contract (section 5).
 
 A quick check from another terminal:
 
@@ -44,7 +46,7 @@ curl -s -X POST localhost:4747/api/pieces -H 'content-type: application/json' -H
 The repo deploys to Vercel as it is (`vercel.json`): `scripts/build-static.mjs` copies `app/` to `public/`, the only folder served as files, and `api/index.mjs` runs the same handler as the local server for `/api/*`, `/media/*` and `/data/*`. `data/`, `server/` and the docs are never reachable as plain files. In the Vercel project leave Root Directory empty and Framework Preset on Other; `vercel.json` sets the build.
 
 - **Data.** The function copies `data/` to `/tmp` on a cold start and works on that copy, so changes made on the hosted tool last only until the instance restarts. The app shows a banner saying so. The Google Sheets store (`docs/SPLIT-AND-HOSTING.md`, section 3) is what makes it keep data.
-- **Media.** `media/` is not deployed. `/media/*` redirects to `STUDIO_MEDIA_BASE_URL`, by default the repo's `media/` folder on jsDelivr (works while the repo is public). Point it at Drive or a bucket when the media moves.
+- **Media.** `media/` is not deployed. `/media/*` redirects to `STUDIO_MEDIA_BASE_URL`, by default the media library as it stood in commit `e6ba358` (V1), served by jsDelivr while the repo is public. The library is no longer in the repo; point `STUDIO_MEDIA_BASE_URL` at Google Drive or a bucket when it moves there. To get the files back on a Mac: `git checkout e6ba358 -- media`.
 - **AI.** There is no `claude` command on Vercel. Add `ANTHROPIC_API_KEY` in the Vercel project's environment variables and the AI steps use the Claude API (`STUDIO_AI_MODE` forces either mode).
 - **Limits.** Uploads over 4.5 MB (video clips) and the video hand-off folder need the Mac until Drive uploads land.
 
@@ -72,7 +74,9 @@ server/   index.mjs (http), store.mjs (JSON store), api.mjs (routes), ai.mjs (Cl
           *.test.mjs tests; _scratch.mjs starts a throwaway server on a copy of the data
 app/      index.html, css/, js/ (api.js, router.js, ui.js, app.js, views/), fonts/, img/
 data/     one JSON array per collection; settings.json and rules.json hold a single document
-media/    uploads (ignored by git)
+media/    uploads on this machine (ignored by git; the library is on the media CDN)
+api/      index.mjs, the Vercel function
+scripts/  build-static.mjs, the Vercel build
 video/    one folder per video project
 ```
 
@@ -133,7 +137,7 @@ With `settings.runnerWaitMs` above zero (Settings, AI, "Wait for a runner"), an 
 
 ## The content round of 30 October 2026
 
-Every imported piece now carries a version 2 from the review pass, written by hand in Claude's place because the login was expired, with a change note saying what changed and why; the imported text stays as version 1. Six festival greetings carry their three wordings, and an example announcement campaign holds three drafts. The audits are `docs/audits/06` to `09`; the faults found by pattern, and what the rules now prevent, are in `docs/audits/09-content-icp-register.md`.
+Every imported piece now carries a version 2 from the review pass, written by hand in Claude's place because the login was expired, with a change note saying what changed and why; the imported text stays as version 1. Six festival greetings carry their three wordings, and an example announcement campaign holds three drafts.
 
 ## Posting, until phase 2
 

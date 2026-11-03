@@ -1,16 +1,17 @@
-/* Venture Drafters design tokens. Shared by the site and every animated scene. In the website folder the font paths point at ../assets/. */
+/* Venture Drafters design tokens: Sapphire Lime (chosen 28 October 2026). Sapphire leads; lime is a small accent and never text on white. */
 @font-face{font-family:'Gilmer';src:url('../fonts/Gilmer-Regular.otf') format('opentype');font-weight:400;font-display:swap}
 @font-face{font-family:'Gilmer';src:url('../fonts/Gilmer-Bold.otf') format('opentype');font-weight:700;font-display:swap}
 :root{
-  --navy:#0a3050; --navy-mid:#0d3a5c; --navy-deep:#06223a;
-  --yellow:#f9c74f; --yellow-light:#fbd679; --yellow-tint:#fef6dc; --yellow-ink:#7a5500; --accent:var(--yellow);
-  --green:#8ace8a; --green-tint:#e8f5e8; --green-ink:#1a5c1a; --ok:var(--green); /* status only: done, active, success */
+  --navy:#0f2350; --navy-mid:#1a3366; --navy-deep:#0a1838;
+  --sapphire:var(--navy); --sapphire-mid:var(--navy-mid); --sapphire-deep:var(--navy-deep);
+  --lime:#cdf22b; --lime-light:#d9f55c; --lime-tint:#f5fbdc; --lime-ink:#4f5f00; --accent:var(--lime);
+  --green:#5fbf8f; --green-tint:#e5f5ec; --green-ink:#155c3a; --ok:var(--green); /* status only: done, active, success */
   --white:#ffffff; --surface:#f5f7fa; --border:#dde6ee;
   --text:#0a1f2e; --text-secondary:#4a4a4a; --text-muted:#6b6b6b;
   --warn:#f29a3a; --warn-bg:#fff1e0; --warn-text:#8a4600; --risk:#f29a3a; --bad:#d9534f; --late:#d9534f; --bad-bg:#fef2f2;
   --r-sm:5px; --r-md:8px; --r-lg:10px; --r-xl:14px; --r-pill:99px;
-  --shadow-card:0 1px 4px rgba(10,48,80,.07),0 4px 12px rgba(10,48,80,.06);
-  --shadow-raised:0 4px 16px rgba(10,48,80,.12),0 8px 24px rgba(10,48,80,.08);
+  --shadow-card:0 1px 4px rgba(15,35,80,.07),0 4px 12px rgba(15,35,80,.06);
+  --shadow-raised:0 4px 16px rgba(15,35,80,.12),0 8px 24px rgba(15,35,80,.08);
   --font-heading:'Gilmer','Plus Jakarta Sans',system-ui,sans-serif;
   --font-body:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,Menlo,monospace;

@@ -18,7 +18,7 @@ export const meta = {
   defaultTheme: 'navy',
   fields: [
     { key: 'eyebrow', label: 'Eyebrow', type: 'text' },
-    { key: 'head', label: 'Headline', type: 'textarea', rows: 3, hint: 'Eight words or fewer. Put *stars* around the one word that should be yellow.' },
+    { key: 'head', label: 'Headline', type: 'textarea', rows: 3, hint: 'Eight words or fewer. Put *stars* around the one word that should be lime.' },
     { key: 'body', label: 'Body (portrait only)', type: 'textarea', rows: 2 },
     { key: 'footer', label: 'Footer line', type: 'text' },
   ],

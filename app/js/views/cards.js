@@ -15,7 +15,7 @@ export const route = '#/visuals';
 export const title = 'Visuals';
 
 const DEFAULT_PREFIX =
-  'Flat vector illustration, navy #0a3050 and warm yellow #f9c74f on white or navy, soft corners, no gradients, no text, ' +
+  'Flat vector illustration, sapphire navy #0f2350 with a small lime #cdf22b accent on white or sapphire, soft corners, no gradients, no text, ' +
   'no faces drawn as real people, never a screen, sheet or phone drawn as a real product screenshot';
 
 const LOGIN_HINT = 'Run claude and /login in a terminal, then try again.';
@@ -227,7 +227,7 @@ export async function render(container, params) {
     if (!t.meta.supportsImage) { imageRow.replaceChildren(); return; }
     const body = state.imagePath
       ? el('div', { class: 'row' }, [
-        chip({ label: state.imagePath.split('/').pop(), tone: 'yellow' }),
+        chip({ label: state.imagePath.split('/').pop(), tone: 'lime' }),
         button({ kind: 'ghost', small: true, label: 'Remove', onClick: () => { state.imagePath = ''; state.imageData = ''; buildImageRow(); drawPreview(); } }),
       ])
       : el('span', { class: 'small muted', text: 'None. Use a picture from the Illustration panel or the saved pictures below.' });

@@ -7,7 +7,7 @@
 .vid-head-main { flex: 1 1 360px; min-width: 0; }
 .vid-title-input { font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--navy); border: 1px solid transparent; background: transparent; padding: 4px 8px; margin: 0 -8px; border-radius: var(--r-sm); width: 100%; }
 .vid-title-input:hover { border-color: var(--border); background: var(--white); }
-.vid-title-input:focus { outline: none; border-color: var(--navy); background: var(--white); box-shadow: 0 0 0 3px var(--yellow-tint); }
+.vid-title-input:focus { outline: none; border-color: var(--navy); background: var(--white); box-shadow: 0 0 0 3px var(--lime-tint); }
 .vid-meta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--text-muted); margin-top: 4px; }
 .vid-save { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
 .vid-save.bad { color: var(--bad); }
@@ -26,9 +26,9 @@
 }
 .vid-step .icon { width: 14px; height: 14px; }
 .vid-step.done .vid-step-n { background: var(--green-tint); border-color: var(--green); color: var(--green-ink); }
-.vid-step.current .vid-step-n { background: var(--yellow); border-color: var(--yellow); color: var(--navy); }
+.vid-step.current .vid-step-n { background: var(--lime); border-color: var(--lime); color: var(--navy); }
 .vid-step.current button { color: var(--navy); }
-.vid-step.viewing button { color: var(--navy); border-bottom-color: var(--yellow); }
+.vid-step.viewing button { color: var(--navy); border-bottom-color: var(--lime); }
 .vid-step.viewing .vid-step-n { border-color: var(--navy); }
 
 /* ------------------------------------------------------------------ panels */
@@ -58,13 +58,13 @@
 .vid-chapter-n { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: var(--white); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 13px; font-weight: 700; }
 .vid-chapter-title { font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--navy); border: 1px solid transparent; background: transparent; padding: 3px 6px; border-radius: var(--r-sm); width: 100%; min-width: 0; }
 .vid-chapter-title:hover { border-color: var(--border); }
-.vid-chapter-title:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px var(--yellow-tint); }
+.vid-chapter-title:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px var(--lime-tint); }
 .vid-minutes { width: 74px; font-family: var(--font-mono); }
 .vid-short-row { display: grid; grid-template-columns: 1fr 84px 84px auto; gap: 8px; margin-bottom: 8px; align-items: center; }
 .vid-script { min-height: 220px; font-size: 14.5px; line-height: 1.6; }
 .vid-spoken { white-space: pre-wrap; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px 14px; font-size: 14.5px; line-height: 1.6; min-height: 120px; }
-.vid-spoken mark { background: var(--yellow-tint); color: var(--yellow-ink); border-radius: 3px; padding: 0 3px; font-weight: 600; }
-.vid-opening { border-left: 3px solid var(--yellow); background: var(--yellow-tint); color: var(--yellow-ink); padding: 8px 12px; font-size: 13.5px; border-radius: 0 var(--r-sm) var(--r-sm) 0; margin-bottom: 10px; }
+.vid-spoken mark { background: var(--lime-tint); color: var(--lime-ink); border-radius: 3px; padding: 0 3px; font-weight: 600; }
+.vid-opening { border-left: 3px solid var(--lime); background: var(--lime-tint); color: var(--lime-ink); padding: 8px 12px; font-size: 13.5px; border-radius: 0 var(--r-sm) var(--r-sm) 0; margin-bottom: 10px; }
 .vid-opening b { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px; }
 
 /* scenes */
@@ -80,7 +80,7 @@
 .vid-scenes .seconds { width: 74px; }
 .vid-kind { display: inline-block; padding: 1px 8px; border-radius: var(--r-pill); font-size: 11.5px; font-weight: 700; background: var(--surface); border: 1px solid var(--border); color: var(--text-secondary); }
 .vid-kind.face { background: var(--navy); border-color: var(--navy); color: var(--white); }
-.vid-kind.screen { background: var(--yellow-tint); border-color: var(--yellow-tint); color: var(--yellow-ink); }
+.vid-kind.screen { background: var(--lime-tint); border-color: var(--lime-tint); color: var(--lime-ink); }
 .vid-flag { color: var(--bad); font-size: 12px; margin-top: 4px; }
 
 /* footage */

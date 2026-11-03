@@ -23,7 +23,6 @@ Written 29 October 2026. The product design is in `docs/PRODUCT.md`; the phase 1
 ```
 Studio/
   README.md                how to run it
-  PLAN.html                the master plan page (designed)
   docs/                    ARCHITECTURE.md (this), PRODUCT.md, MODULES/*.md
   research/                research notes and the India calendar JSON
   server/

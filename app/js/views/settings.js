@@ -187,8 +187,8 @@ export async function render(container, params) {
         el('hr', { class: 'rule' }),
         el('h3', { text: 'How the tool runs', style: { marginBottom: '6px' } }),
         el('ul', { class: 'rc-rules', style: { margin: '0 0 12px', paddingLeft: '18px', fontSize: '13px', color: 'var(--text-secondary)' } }, [
-          'Studio runs on this Mac only, at localhost:4747, from the files in Studio/data. When the Mac is off or asleep there is no tool; hosting on the website is the next step (docs/SPLIT-AND-HOSTING.md).',
-          'The AI steps run through the Claude Code sign-in on this Mac. When that sign-in expires every AI button fails with a message, and everything else keeps working; run claude and /login in a terminal to restore it.',
+          'Studio runs in two places: on the website (Vercel) and on a Mac at localhost:4747. On the website, changes are kept only until the server restarts until Google Sheets is connected; on a Mac they are saved to the files in data/.',
+          'On the website the AI steps use the Claude API key set in the Vercel project. On a Mac they run through the Claude Code sign-in; when it expires, run claude and /login in a terminal. Either way, if AI fails everything else keeps working.',
           'Two people may work at once. A save made from a copy that someone else has changed meanwhile is refused with their name and time; the editor then offers Reload or Save anyway, and every save stays in the versions list.',
           'Every change and every AI call is written to data/log.json with who and when. The Today strip on the calendar shows the month\'s counts from it.',
         ].map((t) => el('li', { text: t }))),

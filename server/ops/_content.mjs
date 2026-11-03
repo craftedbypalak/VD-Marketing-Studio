@@ -49,7 +49,7 @@ const TYPE_BRIEF = {
   'youtube-short': 'A YouTube Short under 60 seconds: a complete Problem, Impact, Solution in spoken lines.',
   'linkedin-text': 'A text post from Palak\'s personal LinkedIn. The first two lines are the hook and must carry the tap on "see more" (the post is cut at about 210 characters on a phone). Short paragraphs of one idea each, written in the first person. No link in the body; any link goes in the first comment. No hashtags in the body; up to three on the last line. End with one question.',
   'field-story': 'A short LinkedIn post about one observation from the floor of an event, with credit to the host and no names without consent.',
-  'status-rule': 'One line for WhatsApp Status, plain text, a single idea. Words wrapped in *stars* show in yellow. No offer.',
+  'status-rule': 'One line for WhatsApp Status, plain text, a single idea. Words wrapped in *stars* show in lime. No offer.',
   greeting: 'A plain greeting for Status or a post: warm wishes, signed "Palak Gupta, Venture Drafters". No design, no offer, no topical tie-in.',
   'wa-note': 'The monthly WhatsApp note to people who said yes: about 90 words, plain, one idea, one offer of help. Never a hard sell.',
   announcement: 'An announcement written once and fitted to each target account. Plain facts first, then one line on what the owner can do next.',
@@ -65,7 +65,7 @@ const RENDITION_BRIEF = {
   li: 'li: { text, firstComment }. text is the full post for Palak\'s LinkedIn: the first line is the hook, no hashtags in the body, at most {liHashtagsBottom} hashtags on the very last line; firstComment is optional and carries any link.',
   liCo: 'liCo: { text }. One line that introduces a reshare of the strongest post on the Venture Drafters LinkedIn page. No original claim, no hashtags.',
   fb: 'fb: { text }. A plain Facebook text, no hashtags.',
-  waStatus: 'waStatus: { text }. One line for WhatsApp Status, plain text, at most 700 characters, one idea. Words in *stars* show in yellow.',
+  waStatus: 'waStatus: { text }. One line for WhatsApp Status, plain text, at most 700 characters, one idea. Words in *stars* show in lime.',
   waNote: 'waNote: { text }. The monthly note for opted-in contacts, about 90 words, at most 1200 characters.',
   yt: 'yt: { title, description, tags[] }. title under 100 characters; description opens with the promise; at most three hashtags at the bottom of the description; tags are plain keywords.',
 };
@@ -154,7 +154,7 @@ export const slidesSchema = {
     properties: {
       t: { type: 'string', enum: ['cover', 'point', 'list', 'cta'] },
       eyebrow: str(),
-      head: str('The slide head; one word or short phrase in *stars* is highlighted in yellow'),
+      head: str('The slide head; one word or short phrase in *stars* is highlighted in lime'),
       body: str(),
       n: str('The point number or label, such as 1, Before or After'),
       items: strList('The lines of a list slide'),
