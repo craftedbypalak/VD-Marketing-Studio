@@ -7,8 +7,9 @@ import * as hook from './hook.js';
 import * as thumbnail from './thumbnail.js';
 import * as carouselSlide from './carouselSlide.js';
 import * as linkedinImage from './linkedinImage.js';
+import * as festivalGreeting from './festivalGreeting.js';
 
-export const TEMPLATES = [statusRule, quote, hook, thumbnail, carouselSlide, linkedinImage];
+export const TEMPLATES = [statusRule, quote, hook, thumbnail, carouselSlide, linkedinImage, festivalGreeting];
 
 export const byId = (id) => TEMPLATES.find((t) => t.meta.id === id) || null;
 

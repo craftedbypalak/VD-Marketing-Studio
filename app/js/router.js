@@ -15,9 +15,10 @@ import * as video from './views/video.js';
 import * as recurring from './views/recurring.js';
 import * as cards from './views/cards.js';
 import * as settings from './views/settings.js';
+import * as builder from './views/builder.js';
 
 // Today is no longer a page: its lists fold into the calendar's Today strip (30 October 2026).
-export const VIEWS = [library, piece, review, calendar, video, recurring, cards, settings];
+export const VIEWS = [library, piece, review, calendar, video, recurring, cards, settings, builder];
 
 // Main navigation, grouped: the calendar is the home view; Content holds the library, the review
 // queue, video, pictures and recurring; Settings stands alone. The phone tab bar shows the three
@@ -38,7 +39,7 @@ export const NAV = [
 ];
 
 // Which item and group a path belongs to.
-const ITEM_OF = { calendar: 'calendar', today: 'calendar', content: 'library', review: 'review', video: 'video', visuals: 'visuals', pictures: 'visuals', occasions: 'occasions', recurring: 'occasions', settings: 'settings' };
+const ITEM_OF = { calendar: 'calendar', today: 'calendar', content: 'library', review: 'review', video: 'video', visuals: 'visuals', pictures: 'visuals', occasions: 'occasions', recurring: 'occasions', settings: 'settings', builder: 'builder' };
 const GROUP_OF = { library: 'content', review: 'content', video: 'content', visuals: 'content', occasions: 'content' };
 
 // Old routes keep working: Pictures became Visuals and Recurring became Occasions on 30 October 2026.

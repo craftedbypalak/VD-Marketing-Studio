@@ -10,6 +10,8 @@
 import { api } from '../api.js';
 import { el, card, field, input, textarea, select, button, toast, chip, confirm, fmt } from '../ui.js';
 import { TEMPLATES, byId, ready, brandIssues } from '../cards/index.js';
+import { setBrand, useBrand } from '../cards/_kit.js';
+import { svgToPng } from '../cards/png.js';
 
 export const route = '#/visuals';
 export const title = 'Visuals';
@@ -49,33 +51,12 @@ async function toDataUrl(path, maxEdge = 1400) {
   } finally { URL.revokeObjectURL(url); }
 }
 
-/** Draws an SVG string onto a canvas at its own pixel size and returns the PNG blob. */
-async function svgToPng(svg, w, h) {
-  const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  try {
-    const img = new Image();
-    img.src = url;
-    await img.decode();
-    const canvas = document.createElement('canvas');
-    canvas.width = w;
-    canvas.height = h;
-    const ctx = canvas.getContext('2d');
-    // The embedded fonts decode on first paint; a second draw makes sure they are in.
-    ctx.drawImage(img, 0, 0, w, h);
-    await new Promise((r) => setTimeout(r, 60));
-    ctx.clearRect(0, 0, w, h);
-    ctx.drawImage(img, 0, 0, w, h);
-    return await new Promise((resolve, reject) => canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('The PNG could not be made'))), 'image/png'));
-  } finally { URL.revokeObjectURL(url); }
-}
-
 const pieceLabel = (p) => `${p.hook || p.id}  (${p.type || 'piece'})`;
 
 /** The template that fits a piece type, so arriving from a piece opens on the right card. */
 const TEMPLATE_BY_TYPE = {
   broll: 'hook', 'reel-animated': 'hook', episode: 'hook', 'youtube-short': 'hook', 'image-post': 'hook',
-  carousel: 'carouselSlide', 'linkedin-carousel': 'carouselSlide', 'status-rule': 'statusRule', greeting: 'statusRule',
+  carousel: 'carouselSlide', 'linkedin-carousel': 'carouselSlide', 'status-rule': 'statusRule', greeting: 'festivalGreeting',
   'youtube-long': 'thumbnail', 'youtube-short': 'thumbnail', 'linkedin-text': 'linkedinImage', 'field-story': 'linkedinImage', announcement: 'linkedinImage',
 };
 
@@ -98,6 +79,7 @@ export async function render(container, params) {
 
   const prefix = (settings.illustrationPrefix || '').trim() || DEFAULT_PREFIX;
   const provider = settings.imageProvider || 'none';
+  setBrand(settings.brand);
 
   // ------------------------------------------------------------- state
   const first = TEMPLATES[0];
@@ -161,6 +143,7 @@ export async function render(container, params) {
   const piecesRow = el('div');
   const templatesRow = el('div', { class: 'cards-templates' });
   const themeRow = el('div');
+  const brandRow = el('div', { class: 'cards-brand' });
   const formatRow = el('div');
   const fieldsBox = el('div');
   const imageRow = el('div');
@@ -186,6 +169,18 @@ export async function render(container, params) {
         onClick: () => { state.theme = id; state.themeTouched = true; buildTheme(); drawPreview(); },
       })));
     themeRow.replaceChildren(field({ label: 'Theme', input: seg, hint: state.theme === 'navy' || state.theme === 'auto' ? 'Navy uses the reverse logo; light uses the colour logo.' : 'Light uses the colour logo; navy uses the reverse logo.' }));
+  }
+
+  // Brand on this card: the builder's defaults (Builder page), changeable per card.
+  const brand = { ...useBrand() };
+  function buildBrand() {
+    const seg = (key, label, opts) => field({ label, input: el('div', { class: 'cards-seg', role: 'group', 'aria-label': label }, opts.map(([v, t]) =>
+      el('button', { type: 'button', class: brand[key] === v ? 'active' : '', text: t, onClick: () => { brand[key] = v; useBrand(brand); buildBrand(); drawPreview(); } }))) });
+    brandRow.replaceChildren(
+      seg('position', 'Brand', [['bottom', 'Bottom'], ['top', 'Top']]),
+      seg('logo', 'Logo', [['full', 'Full logo'], ['mark', 'VD mark']]),
+      seg('taglineLayout', 'Tagline', [['line', 'One line'], ['stacked', 'Below logo']]),
+    );
   }
 
   function buildFormat() {
@@ -296,7 +291,7 @@ export async function render(container, params) {
   }
 
   function buildAll() {
-    buildTemplates(); buildTheme(); buildFormat(); buildFields(); buildImageRow(); buildPieces();
+    buildTemplates(); buildTheme(); buildBrand(); buildFormat(); buildFields(); buildImageRow(); buildPieces();
   }
 
   // ------------------------------------------------------------- export
@@ -541,7 +536,7 @@ export async function render(container, params) {
   }
 
   // --------------------------------------------------------------- layout
-  controls.append(piecesRow, el('div', { class: 'field-label', style: { marginBottom: '6px' }, text: 'Template' }), templatesRow, themeRow, formatRow, fieldsBox, imageRow);
+  controls.append(piecesRow, el('div', { class: 'field-label', style: { marginBottom: '6px' }, text: 'Template' }), templatesRow, themeRow, brandRow, formatRow, fieldsBox, imageRow);
   const left = card({ title: 'Card', class: 'cards-controls', body: controls });
   const stage = el('div', { class: 'cards-stage' }, card({
     title: 'Preview',

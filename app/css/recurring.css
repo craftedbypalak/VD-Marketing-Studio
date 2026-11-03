@@ -92,7 +92,7 @@
 @media (max-width: 800px) { .rc-lines { grid-template-columns: 1fr; gap: 2px 0; } .rc-lines dd { margin-bottom: 6px; } }
 
 /* Occasions, 3 November 2026: category toggles, post-type dots, crisp rules */
-.rc-toolbar { flex-direction: column; align-items: stretch; }
+.rc-toolbar-stack { flex-direction: column; align-items: stretch; }
 .rc-toolbar-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .rc-toolbar-row .input, .rc-toolbar-row select { width: auto; flex: 0 1 200px; }
 .rc-cats { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -111,3 +111,13 @@
 }
 .rc-toolbar-row .btn { align-self: center; }
 .rc-more { margin: 6px 0 10px; } .rc-more summary { cursor: pointer; font: 600 13px var(--font-body); color: var(--navy); }
+
+/* Occasions, greetings as images */
+.rc-about { margin: -4px 0 14px; }
+.rc-greet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.rc-greet { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.rc-greet-img { aspect-ratio: 1 / 1; background: var(--navy); }
+.rc-greet-img svg { display: block; width: 100%; height: 100%; }
+.rc-greet-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
+.rc-greet-body h3 { margin: 0; font-size: 17px; }
+.rc-greet-actions { flex-wrap: wrap; gap: 6px; margin-top: 4px; }

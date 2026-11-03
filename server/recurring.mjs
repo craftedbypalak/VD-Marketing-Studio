@@ -308,7 +308,7 @@ function makePiece(ev, by) {
     plannedTime: GREETING_TIME,
     eventId: ev.id,
     tags: ['greeting'],
-    notes: `Greeting for ${ev.shortName || shortName(ev.name)} on ${ev.date}. Goes on Status the evening before, plain text, no offer.`,
+    notes: `Greeting for ${ev.shortName || shortName(ev.name)} on ${ev.date}: the branded greeting image (Visuals, Festival greeting) on Status the evening before. No offer.`,
     ...(by ? { by } : {}),
   };
 }

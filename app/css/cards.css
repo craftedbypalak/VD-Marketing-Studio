@@ -57,3 +57,4 @@
   .cards-illu-grid { grid-template-columns: 1fr; }
   .cards-frame { width: min(100%, calc(var(--ar, 1) * 60vh)); }
 }
+.cards-brand { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0 12px; }

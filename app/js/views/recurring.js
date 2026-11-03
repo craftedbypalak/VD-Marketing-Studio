@@ -1,22 +1,26 @@
-// Occasions: every dated day in one calendar, sorted by category; basic wishes for the next weeks;
-// creative posts for the big festivals; campaigns; and the short rules. [recurring]
+// Occasions: every dated day in one calendar, sorted by category; the branded greeting image for each
+// festival; festival ideas for the big ones; and announcements. [recurring]
 //
-// Each occasion has one post type: a creative post (big festivals: concept plus wish), a basic wish
-// (plain text on the eve), or no post. Festival wishes go to everyone (3 November 2026).
+// Each occasion has one post type: greeting plus an idea post (big festivals), greeting only, or no post.
+// Greetings are branded images (cards/festivalGreeting.js) and go to everyone (3 November 2026).
+// Plain-text one-to-one wishes belong to the Network tool. The mourning switch is in Settings.
 
 import { api } from '../api.js';
 import { roleOf } from '../roles.js';
-import { el, card, field, input, textarea, select, button, chip, tabs, toast, dialog, confirm, empty, listRow, checkbox, fmt } from '../ui.js';
+import { el, card, field, input, textarea, select, button, chip, tabs, toast, dialog, confirm, empty, fmt } from '../ui.js';
+import { ready as cardsReady } from '../cards/index.js';
+import * as greetingCard from '../cards/festivalGreeting.js';
+import { svgToPng, downloadBlob } from '../cards/png.js';
+import { setBrand } from '../cards/_kit.js';
 
 export const route = '#/occasions';
 export const title = 'Occasions';
 
 const TABS = [
-  { id: 'events', label: 'Calendar' },
-  { id: 'greetings', label: 'Wishes' },
-  { id: 'concepts', label: 'Creative posts' },
-  { id: 'announcements', label: 'Campaigns' },
-  { id: 'rules', label: 'Rules' },
+  { id: 'events', label: 'Calendar', about: 'Every festival and important date. Choose what we post for each.' },
+  { id: 'greetings', label: 'Greetings', about: 'A branded greeting image for each festival, posted the evening before. Goes to everyone.' },
+  { id: 'concepts', label: 'Festival ideas', about: 'Big festivals only: a post that links the festival to our work, a few days before. Pick one of three ideas.' },
+  { id: 'announcements', label: 'Announcements', about: 'News about us: a launch, an offer or an event. Write the facts once and get a post for each account.' },
 ];
 
 // What an occasion is. Set on each event as `category` (server/recurring.mjs, categoryOf).
@@ -28,7 +32,7 @@ const categoryOf = (e) => (CATEGORIES.includes(e.category) ? e.category : 'festi
 
 // What we post for it.
 const POSTS = ['creative', 'wish', 'none'];
-const POST_LABEL = { creative: 'Creative post', wish: 'Basic wish', none: 'No post' };
+const POST_LABEL = { creative: 'Greeting and idea', wish: 'Greeting', none: 'No post' };
 const POST_TONE = { creative: 'accent', wish: 'navy', none: 'muted' };
 const GREETING_KINDS = ['greeting', 'greeting-only'];
 const postOf = (e) => (e.conceptAllowed ? 'creative' : GREETING_KINDS.includes(e.kind) && e.greetingText ? 'wish' : 'none');
@@ -36,7 +40,7 @@ const defaultWish = (name) => `Wishing you and your family a happy ${name}. Pala
 const CONCEPT_TYPES = [['broll', 'B-roll video'], ['reel-animated', 'Animated reel'], ['carousel', 'Carousel'], ['status-rule', 'Status rule']];
 
 const RULES = ['normal', 'greeting-only', 'dark', 'quiet'];
-const RULE_LABEL = { normal: 'Post as usual', 'greeting-only': 'Wish only', dark: 'No posting', quiet: 'Quiet' };
+const RULE_LABEL = { normal: 'Post as usual', 'greeting-only': 'Greeting only', dark: 'No posting', quiet: 'Quiet' };
 const RULE_TONE = { normal: 'default', 'greeting-only': 'warn', dark: 'bad', quiet: 'muted' };
 const CAMPAIGN_KINDS = ['announcement', 'launch', 'offer', 'event', 'milestone'];
 const DOW = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -73,6 +77,7 @@ export async function render(container, params) {
     let settings;
     [events, accounts, settings] = await Promise.all([api.get('/events'), api.get('/accounts'), api.settings().catch(() => null)]);
     const me = (api.user.get() || '').toLowerCase();
+    setBrand(settings?.brand);
     const role = roleOf((settings?.users || []).find((u) => String(u.email).toLowerCase() === me));
     approver = Boolean(me) && (role === 'manager' || role === 'director');
     director = Boolean(me) && role === 'director';
@@ -89,10 +94,12 @@ export async function render(container, params) {
     onChange: (id) => { history.replaceState(null, '', `#/occasions?tab=${id}`); show(id); },
   });
   bar.classList.add('rc-tabs');
-  container.append(bar, panel);
+  const about = el('p', { class: 'note rc-about' });
+  container.append(bar, about, panel);
 
-  const views = { events: eventsTab, greetings: greetingsTab, concepts: conceptsTab, announcements: announcementsTab, rules: rulesTab };
+  const views = { events: eventsTab, greetings: greetingsTab, concepts: conceptsTab, announcements: announcementsTab };
   async function show(id) {
+    about.textContent = TABS.find((t) => t.id === id)?.about || '';
     panel.replaceChildren(el('div', { class: 'loading', text: 'Loading' }));
     try {
       const node = await views[id]();
@@ -133,7 +140,7 @@ export async function render(container, params) {
     const postSel = select({ options: [{ value: '', label: 'Any post' }, ...POSTS.map((k) => ({ value: k, label: POST_LABEL[k] }))], value: '', 'aria-label': 'Post', onChange: (e) => { f.post = e.target.value; redraw(); } });
     const search = input({ type: 'search', placeholder: 'Search', 'aria-label': 'Search', onInput: (e) => { f.q = e.target.value.trim().toLowerCase(); redraw(); } });
 
-    root.appendChild(el('div', { class: 'rc-toolbar' }, [
+    root.appendChild(el('div', { class: 'rc-toolbar rc-toolbar-stack' }, [
       catBar,
       el('div', { class: 'rc-toolbar-row' }, [
         postSel, search,
@@ -245,7 +252,7 @@ export async function render(container, params) {
     const rule = select({ options: RULES.map((k) => ({ value: k, label: RULE_LABEL[k] })), value: e.postingRule || 'normal' });
     const text = textarea({ value: e.greetingText || '', rows: 3, placeholder: defaultWish(e.shortName || e.name || 'the day') });
     const note = textarea({ value: e.note || '', rows: 2 });
-    const wishField = field({ label: 'Wish', input: text });
+    const wishField = field({ label: 'Greeting line', input: text, hint: 'Shown on the greeting image under the festival name.' });
     const syncWish = () => { wishField.hidden = post.value === 'none'; };
     post.addEventListener('change', syncWish);
     syncWish();
@@ -254,7 +261,7 @@ export async function render(container, params) {
         field({ label: 'Date', input: date }),
         field({ label: 'Name', input: name }),
         field({ label: 'Category', input: category }),
-        field({ label: 'Post', input: post, hint: approver ? '' : 'A manager or the director sets creative posts.' }),
+        field({ label: 'Post', input: post, hint: approver ? '' : 'A manager or the director sets festival ideas.' }),
         field({ label: 'Other posts that day', input: rule }),
       ]),
       wishField,
@@ -326,7 +333,7 @@ export async function render(container, params) {
         return el('li', {}, [el('b', { text: `${e.name}: ` }), bits.join('; ')]);
       });
       summary.replaceChildren(card({
-        class: 'rc-summary', title: 'Wishes made', eyebrow: `${fmt.date(r.from)} to ${fmt.date(r.to)}`,
+        class: 'rc-summary', title: 'Added to the calendar', eyebrow: `${fmt.date(r.from)} to ${fmt.date(r.to)}`,
         body: lines.length ? el('ul', {}, lines) : el('p', { class: 'note', text: 'None in this range.' }),
       }));
     }
@@ -339,64 +346,58 @@ export async function render(container, params) {
       controls.replaceChildren(
         field({ label: 'Range', input: daysSel }),
         el('span', { class: 'rc-spacer' }),
-        button({ kind: 'primary', label: 'Make all wishes', icon: 'content', disabled: !generatable.length, title: 'A draft wish on the eve, 19:00, for each occasion in range', onClick: () => runGenerate({}, 'Wishes') }),
+        button({ kind: 'primary', label: 'Add all to the calendar', icon: 'content', disabled: !generatable.length, title: 'A draft greeting on the eve, 19:00, for each festival in range', onClick: () => runGenerate({}, 'Greetings') }),
       );
       if (data.goDark?.on) {
         summary.replaceChildren(el('div', { class: 'banner banner-warn' }, `Go dark is on${data.goDark.from ? ` from ${fmt.date(data.goDark.from)}` : ''}. Nothing posts until it is switched off in Settings.`));
       } else if (!summary.children.length) summary.replaceChildren();
       listBox.replaceChildren();
       if (!items.length) {
-        listBox.appendChild(empty({ title: 'No wishes in this range', hint: 'Choose a longer range.' }));
+        listBox.appendChild(empty({ title: 'No greetings in this range', hint: 'Choose a longer range.' }));
         return;
       }
-      for (const e of items) listBox.appendChild(greetingCard(e));
+      await cardsReady().catch(() => {});
+      const grid = el('div', { class: 'rc-greet-grid' }, items.map((e) => greetingTile(e)));
+      listBox.appendChild(grid);
     }
 
-    function greetingCard(e) {
-      const w = e.wording;
-      const own = e.templates && (e.templates.status || e.templates.linkedin || e.templates.whatsapp);
-      const block = (label, text) => el('div', { class: `rc-text${text ? '' : ' empty-text'}` }, [el('span', { class: 'eyebrow', text: label }), el('p', { text: text || 'Not written yet' })]);
-      const meta = [
-        e.conceptAllowed && chip({ label: POST_LABEL.creative, tone: POST_TONE.creative }),
-        e.pieceGenerated && chip({ label: 'Piece generated', tone: 'ok', icon: 'check' }),
-        own && chip({ label: 'Wording written', tone: 'accent' }),
-      ].filter(Boolean);
-      const body = [el('div', { class: 'rc-meta' }, meta)];
-      if (e.alternate) {
-        body.push(el('p', { class: 'note', text: 'Same festival, other date. No second wish.' }));
-      } else {
-        body.push(el('div', { class: 'rc-texts' }, [block('WhatsApp Status', w.status), block('LinkedIn', w.linkedin)]));
-        if (e.note) body.push(el('p', { class: 'note', text: e.note }));
-      }
-      const actions = e.alternate ? [] : [
-        button({ kind: 'ghost', small: true, icon: 'sparkle', label: own ? 'Rewrite wording' : 'Write wording', title: 'Runs the greetingTemplates operation and saves the three lines on the event', onClick: (ev) => writeWording(e, ev.currentTarget) }),
-        button({ kind: 'secondary', small: true, label: e.pieceGenerated ? 'Wish made' : 'Make wish', disabled: e.pieceGenerated, onClick: () => runGenerate({ eventId: e.id }, shortOf(e)) }),
-      ];
-      if (e.pieceId) actions.push(button({ kind: 'ghost', small: true, label: 'Open piece', href: `#/content/${e.pieceId}` }));
-      return card({
-        class: 'rc-greeting',
-        eyebrow: `${e.weekday || weekdayOf(e.date)} ${fmt.date(e.date)}${e.alternate ? '' : `. Posts on the eve, 19:00`}${e.daysAway === 0 ? '. Today' : e.daysAway === 1 ? '. Tomorrow' : `. In ${e.daysAway} days`}`,
-        title: shortOf(e),
-        body,
-        footer: actions.length ? actions : undefined,
-        actions: [button({ kind: 'ghost', small: true, icon: 'edit', label: 'Edit', onClick: () => editEvent(events.find((x) => x.id === e.id) || e) })],
-      });
-    }
-
-    async function writeWording(e, btn) {
-      btn.disabled = true;
-      const old = btn.lastChild.textContent;
-      btn.lastChild.textContent = 'Writing';
+    function greetingTile(e) {
+      const fields = greetingCard.greetingFields(e, 'square');
+      let preview;
       try {
-        await api.post('/recurring/templates', { eventId: e.id });
-        toast(`Wording saved for ${shortOf(e)}`, 'ok');
-        await reloadEvents();
-        await load();
-      } catch (err) {
-        aiFailure(err, 'The wording');
-        btn.disabled = false;
-        btn.lastChild.textContent = old;
-      }
+        const svg = greetingCard.render(fields, 'navy', { embedFonts: false, warnings: [] });
+        preview = el('div', { class: 'rc-greet-img', 'aria-label': `Greeting image for ${shortOf(e)}` });
+        preview.innerHTML = svg;
+      } catch { preview = el('div', { class: 'rc-greet-img empty-text', text: 'Preview unavailable' }); }
+      const download = async (format) => {
+        const f = greetingCard.greetingFields(e, format);
+        const { w, h } = greetingCard.size(f);
+        try {
+          const png = await svgToPng(greetingCard.render(f, 'navy', { warnings: [] }), w, h);
+          downloadBlob(png, `${(e.shortName || e.name).toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${format}.png`);
+        } catch (err) { toast(`The image could not be made: ${err.message}`, 'bad'); }
+      };
+      const when = e.daysAway === 0 ? 'Today' : e.daysAway === 1 ? 'Tomorrow' : `In ${e.daysAway} days`;
+      return el('div', { class: 'card rc-greet' }, [
+        preview,
+        el('div', { class: 'rc-greet-body' }, [
+          el('div', { class: 'eyebrow', text: `${fmt.date(e.date)}. ${when}` }),
+          el('h3', { text: shortOf(e) }),
+          el('div', { class: 'rc-meta' }, [
+            e.conceptAllowed && chip({ label: 'Festival idea too', tone: POST_TONE.creative }),
+            e.pieceGenerated && chip({ label: 'In the calendar', tone: 'ok', icon: 'check' }),
+            e.alternate && chip({ label: 'Same festival, other date', tone: 'muted' }),
+          ].filter(Boolean)),
+          e.alternate ? null : el('div', { class: 'row rc-greet-actions' }, [
+            button({ kind: 'secondary', small: true, icon: 'download', label: 'Status', title: 'Download the 1080 x 1920 image', onClick: () => download('status') }),
+            button({ kind: 'secondary', small: true, icon: 'download', label: 'Post', title: 'Download the 1080 x 1080 image', onClick: () => download('square') }),
+            e.pieceId
+              ? button({ kind: 'ghost', small: true, label: 'Open', href: `#/content/${e.pieceId}` })
+              : button({ kind: 'ghost', small: true, label: 'Add to calendar', onClick: () => runGenerate({ eventId: e.id }, shortOf(e)) }),
+            button({ kind: 'ghost', small: true, icon: 'edit', label: 'Edit', onClick: () => editEvent(events.find((x) => x.id === e.id) || e) }),
+          ]),
+        ]),
+      ]);
     }
 
     await load();
@@ -604,36 +605,4 @@ export async function render(container, params) {
     });
   }
 
-  // ================================================================= rules
-  async function rulesTab() {
-    const info = await api.get('/recurring/rules');
-    const gd = info.goDark || { on: false };
-    const rules = [
-      ['Wishes', [
-        `Plain text on WhatsApp Status, the evening before, ${info.greetingTime}.`,
-        'Goes to everyone. Signed Palak Gupta, Venture Drafters.',
-        'No offer, link or call to action in a wish.',
-      ]],
-      ['Creative posts', [
-        'Big festivals only. Three to seven days before.',
-        'A fresh idea each year; the wish still goes on the eve.',
-      ]],
-      ['Days', [
-        [ruleChip('dark'), ' nothing posts except the wish.'],
-        [ruleChip('greeting-only'), ' only the wish.'],
-        [ruleChip('quiet'), ' post, but nothing that needs a reply.'],
-      ]],
-    ];
-    return el('div', { class: 'rc-rules-crisp' }, [
-      ...rules.map(([title, lines]) => card({ title, body: el('ul', { class: 'rc-rules' }, lines.map((t) => el('li', {}, Array.isArray(t) ? t : [t]))) })),
-      card({
-        title: 'Mourning',
-        body: [
-          el('p', { title: info.mourningRule.text, text: 'A national loss: pause all posts at once and switch on Go dark. A plain-text condolence only.' }),
-          el('div', { class: 'row' }, [el('b', { text: 'Go dark' }), chip({ label: gd.on ? 'On' : 'Off', tone: gd.on ? 'bad' : 'ok' })]),
-        ],
-        footer: [button({ kind: 'secondary', small: true, icon: 'settings', label: 'Switch', href: '#/settings?tab=posting' })],
-      }),
-    ]);
-  }
 }

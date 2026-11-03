@@ -18,6 +18,7 @@ const TABS = [
   { id: 'rules', label: 'Rules' },
   { id: 'solutions', label: 'Solutions' },
   { id: 'link', label: 'Link' },
+  { id: 'builder', label: 'Builder' },
 ];
 // Shown to owners only: the companies this Studio serves (docs/WORKSPACES.md).
 const OWNER_TABS = [{ id: 'workspaces', label: 'Workspaces' }];
@@ -58,6 +59,7 @@ export async function render(container, params) {
     solutions: () => solutionsTab(solutions, () => api.get('/solutions').then((s) => { solutions = s; show('solutions'); })),
     link: () => linkTab(settings),
     workspaces: () => workspacesTab(spaces),
+    builder: () => el('div', { class: 'card', style: { padding: '18px' } }, [el('p', { text: 'Brand on visuals and the tools are set up in Builder.' }), button({ kind: 'primary', label: 'Open Builder', href: '#/builder' })]),
   };
   function show(id) { panel.replaceChildren(views[id]()); }
   show(bar.dataset.active);

@@ -10,6 +10,7 @@ const tabbar = document.getElementById('tabbar');
 const subnav = document.getElementById('subnav');
 const navUser = document.getElementById('nav-user');
 const navWorkspace = document.getElementById('nav-workspace');
+const navBuilder = document.getElementById('nav-builder');
 const pageTitle = document.getElementById('page-title');
 const pageEyebrow = document.getElementById('page-eyebrow');
 const topbarActions = document.getElementById('topbar-actions');
@@ -97,6 +98,15 @@ async function buildUserPicker() {
     },
   });
   navUser.replaceChildren(el('span', { class: 'eyebrow', text: 'Working as' }), picker);
+  // The builder sets the tool up (Builder page); shown to the director and owners.
+  const drawBuilder = () => {
+    const u = users.find((x) => x.email === api.user.get());
+    const show = Boolean(u && (u.owner || roleOf(u) === 'director'));
+    navBuilder.replaceChildren(...(show ? [el('a', { class: 'nav-item', href: '#/builder', dataset: { nav: 'builder' } }, [icon('edit'), el('span', { text: 'Builder' })])] : []));
+    markActive();
+  };
+  drawBuilder();
+  window.addEventListener('studio:user', drawBuilder);
   window.addEventListener('studio:user', (e) => { if (picker.value !== e.detail) picker.value = e.detail; });
 }
 

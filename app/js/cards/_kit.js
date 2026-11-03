@@ -58,7 +58,25 @@ const FACES = [
   { family: 'JetBrains Mono', weight: 700, file: 'fonts/jetbrainsmono-700-latin.woff2', format: 'woff2', mime: 'font/woff2' },
 ];
 
-const LOGO_FILES = { colour: 'img/vd-wordmark-colour.svg', reverse: 'img/vd-wordmark-reverse.svg' };
+const LOGO_FILES = {
+  colour: 'img/vd-wordmark-colour.svg', reverse: 'img/vd-wordmark-reverse.svg',
+  markColour: 'img/vd-mark-colour.svg', markReverse: 'img/vd-mark-reverse.svg',
+};
+
+// ------------------------------------------------------------------ brand
+// Where the brand sits on every card. The builder sets the defaults (Builder page,
+// settings.brand); Visuals may override them for one card. Renders are synchronous,
+// so the active brand is module state, set before a render with useBrand().
+//   position: 'bottom' | 'top'   logo: 'full' | 'mark'   taglineLayout: 'line' | 'stacked'
+export const BRAND_DEFAULTS = { position: 'bottom', logo: 'full', taglineLayout: 'line', tagline: null };
+let brandBase = { ...BRAND_DEFAULTS };
+let brandActive = { ...BRAND_DEFAULTS };
+/** The builder's defaults (settings.brand). */
+export function setBrand(b) { brandBase = { ...BRAND_DEFAULTS, ...(b || {}) }; brandActive = { ...brandBase }; }
+/** For the next renders: the defaults with a per-card override on top. */
+export function useBrand(override) { brandActive = { ...brandBase, ...(override || {}) }; return brandActive; }
+export const brandNow = () => ({ ...brandActive });
+let topBrand = null;   // a footer drawn at the top, picked up by frame()
 
 let loaded = null;     // { fontCss, logos } once ready
 let loading = null;
@@ -281,37 +299,62 @@ export function eyebrow(pal, { x, y, text, size = 26, maxW }) {
   return { svg, height: size };
 }
 
-/** The official word logo, inlined from the published SVG, placed by top-left and height. */
+const logoKey = (pal) => (brandActive.logo === 'mark' ? (pal.logo === 'colour' ? 'markColour' : 'markReverse') : pal.logo);
+
+/** The official logo (word logo or VD mark, per the brand), inlined from the published SVG. */
 export function logo(pal, { x, y, h }) {
   if (!loaded) return '';
-  const l = loaded.logos[pal.logo];
+  const l = loaded.logos[logoKey(pal)];
   const w = h * l.ratio;
   return `<svg x="${round(x)}" y="${round(y)}" width="${round(w)}" height="${round(h)}" viewBox="${l.viewBox}" role="img" aria-label="Venture Drafters">${l.inner}</svg>`;
 }
 
 export function logoWidth(pal, h) {
-  const l = loaded?.logos[pal.logo];
-  return l ? h * l.ratio : h * 8.08;
+  const l = loaded?.logos[logoKey(pal)];
+  return l ? h * l.ratio : h * (brandActive.logo === 'mark' ? 1.06 : 8.08);
 }
 
 /**
- * Footer: optional rule, the logo on the left, the tagline on the right. The
- * tagline shrinks if the line would run into the logo.
+ * Footer: the brand block. By default a rule, the logo on the left and the
+ * tagline on the right. The brand settings change it: the short VD mark instead
+ * of the word logo (drawn larger), the tagline under the logo, and the block at
+ * the top of the card instead of the bottom (frame() moves the content down).
  */
 export function footer(pal, { w, padX, ruleY, logoTop, logoH, tagline = TAGLINE, size = 28, rule = true, sub }) {
-  let out = '';
-  if (rule && ruleY != null) out += `<rect x="${padX}" y="${ruleY}" width="${w - 2 * padX}" height="2" fill="${pal.rule}"/>`;
-  out += logo(pal, { x: padX - 6, y: logoTop, h: logoH });
-  const cy = logoTop + logoH / 2;
-  const room = w - 2 * padX - logoWidth(pal, logoH) - 40;
-  let s = size;
-  while (s > 16 && textWidth(tagline, F.tag, s) > room) s -= 1;
-  if (tagline) {
-    const base = sub ? cy - 2 : cy + s * 0.35;
-    out += textAt({ str: tagline, x: w - padX, y: base, f: F.tag, size: s, fill: pal.muted, anchor: 'end' });
+  const b = brandActive;
+  const text = b.tagline != null && tagline === TAGLINE ? b.tagline : tagline;
+  const mark = b.logo === 'mark';
+  const lh = mark ? Math.round(logoH * 1.9) : logoH;
+  const stacked = b.taglineLayout === 'stacked' && text;
+  let s = stacked ? Math.round(size * 0.9) : size;
+  const room = stacked ? w - 2 * padX : w - 2 * padX - logoWidth(pal, lh) - 40;
+  while (s > 16 && textWidth(text || '', F.tag, s) > room) s -= 1;
+  const blockH = lh + (stacked ? Math.round(s * 0.6) + s : 0);
+  const bottom = logoTop + logoH;   // the block keeps its bottom edge
+
+  const draw = (top, ruleAt) => {
+    let out = '';
+    if (rule && ruleAt != null) out += `<rect x="${padX}" y="${ruleAt}" width="${w - 2 * padX}" height="2" fill="${pal.rule}"/>`;
+    out += logo(pal, { x: padX - (mark ? 0 : 6), y: top, h: lh });
+    if (text && stacked) out += textAt({ str: text, x: padX, y: top + lh + Math.round(s * 0.6) + s * 0.8, f: F.tag, size: s, fill: pal.muted });
+    else if (text) {
+      const cy = top + lh / 2;
+      out += textAt({ str: text, x: w - padX, y: sub ? cy - 2 : cy + s * 0.35, f: F.tag, size: s, fill: pal.muted, anchor: 'end' });
+    }
+    if (sub) out += textAt({ str: sub.toUpperCase(), x: w - padX, y: top + lh / 2 + 32, f: F.label, size: 18, fill: pal.muted, anchor: 'end' });
+    return out;
+  };
+
+  if (b.position === 'top') {
+    // Drawn from y = 0; frame() places it below the top margin (the Status safe zone
+    // on 1080 x 1920) and shifts the rest of the card down.
+    const ruleAt = rule && ruleY != null ? blockH + Math.round((logoTop - ruleY) * 0.9) : null;
+    topBrand = { svg: draw(0, ruleAt), h: (ruleAt ?? blockH) + 26 };
+    return '';
   }
-  if (sub) out += textAt({ str: sub.toUpperCase(), x: w - padX, y: cy + 32, f: F.label, size: 18, fill: pal.muted, anchor: 'end' });
-  return out;
+  const top = bottom - blockH;
+  const ruleAt = rule && ruleY != null ? ruleY - (blockH - logoH) : null;
+  return draw(top, ruleAt);
 }
 
 /** A rounded picture panel from a data URL, cropped to fill. */
@@ -326,6 +369,13 @@ export function imagePanel({ id, x, y, w, h, r = 28, href, pal }) {
 /** The SVG document: fixed pixel size, embedded fonts, flat background. */
 export function frame({ w, h, pal, body, opts }) {
   const fonts = opts && opts.embedFonts === false ? '' : (loaded?.fontCss || '');
+  if (topBrand) {
+    // The brand sits at the top: everything else moves down by the brand block's height.
+    const top = h >= 1900 ? 250 : Math.max(40, Math.round(w * 0.06));
+    const shift = topBrand.h + 24;   // the content keeps its own top margin, below the brand block
+    body = `<g transform="translate(0 ${top})">${topBrand.svg}</g><g transform="translate(0 ${round(shift)})">${body}</g>`;
+    topBrand = null;
+  }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" font-family="${esc(F.body.stack)}">` +
     (fonts ? `<style>${fonts}</style>` : '') +
     `<rect width="${w}" height="${h}" fill="${pal.bg}"/>${body}</svg>`;
