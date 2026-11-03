@@ -14,7 +14,7 @@
 
 import { api } from '../api.js';
 import { me } from '../roles.js';
-import { el, button, chip, statusPill, dialog, toast, empty, fmt, tabs, switchInput, icon } from '../ui.js';
+import { el, button, chip, statusPill, dialog, toast, empty, fmt, tabs, switchInput, icon, bullets } from '../ui.js';
 import {
   ensureStyles, loadRefs, typeLabel, pillarLabel, renditionKeys, RENDITION_LABEL, previewNode, mediaOf,
   checkSummary, violationList, compareView, aiFailed, directorRoute, noteDialog, trailList,
@@ -99,7 +99,7 @@ export async function render(container, params) {
     head.replaceChildren(
       el('div', { class: 'rv-nav' }, [prev, el('span', { class: 'rv-pos', text: q.length ? `${idx + 1} of ${q.length}` : '0 of 0' }), next]),
       el('span', { class: 'ct-spacer' }),
-      can.approve ? button({ kind: 'ghost', small: true, icon: 'sparkle', label: 'Review pass', title: 'Queue the AI review pass over pieces that still have only their original text', onClick: reviewPass }) : null,
+      can.approve ? button({ kind: 'ghost', small: true, icon: 'sparkle', label: 'Review pass', title: 'AI review of pieces with only their original text', onClick: reviewPass }) : null,
     );
   }
 
@@ -123,13 +123,13 @@ export async function render(container, params) {
   }
 
   function emptyFor(tab) {
-    if (tab === 'mine') return { title: 'None of your pieces is under review', hint: 'Submit a piece for review from the piece editor or the library; it appears here with where it stands.' };
+    if (tab === 'mine') return { title: 'None of your pieces is under review', hint: 'Submit one from the editor or the library to see it here.' };
     if (tab === 'manager') return director
-      ? { title: 'The manager\'s queue is empty', hint: 'Pieces submitted for review wait here for the manager, oldest first.' }
+      ? { title: 'The manager\'s queue is empty', hint: 'Submitted pieces wait here for the manager, oldest first.' }
       : { title: 'Your queue is empty', hint: 'Pieces submitted for review appear here, oldest first.' };
     return director
-      ? { title: 'Nothing is awaiting you', hint: 'Pieces the manager sends to you appear here, with the manager\'s note.' }
-      : { title: 'Nothing is with the director', hint: 'Pieces you send to the director appear here until the director decides.' };
+      ? { title: 'Nothing is awaiting you', hint: 'Pieces the manager sends you appear here, with a note.' }
+      : { title: 'Nothing is with the director', hint: 'Pieces you send on stay here until the director decides.' };
   }
 
   async function draw() {
@@ -164,12 +164,14 @@ export async function render(container, params) {
     if (st === 'changes-requested') {
       const rv = piece.review || {};
       nodes.push(el('div', { class: 'banner banner-warn rv-route' }, [icon('warn'), el('div', {}, [
-        el('b', { text: 'Changes requested. ' }), `${rv.by ? `${nameOf(rv.by)}: ` : ''}${rv.note || 'No note was given.'} Revise the piece and submit it for review again.`,
+        el('b', { text: 'Changes requested. ' }), `${rv.by ? `${nameOf(rv.by)}: ` : ''}${rv.note || 'No note was given.'}`,
+        el('div', { class: 'note', text: 'Revise, then submit again.' }),
       ])]));
     }
     if (st === 'in-review' && r.needsDirector) {
       nodes.push(el('div', { class: `banner ${director ? 'banner-info' : 'banner-warn'} rv-route` }, [icon('review'), el('div', {}, [
-        el('b', { text: 'Goes to the director. ' }), `${r.why}.${role === 'manager' ? ' Send it to the director; a manager cannot approve it.' : director ? ' You may approve it here.' : ''}`,
+        el('b', { text: 'Goes to the director. ' }), `${r.why}.`,
+        role === 'manager' ? el('div', { class: 'note', text: 'Send it on; a manager cannot approve it.' }) : director ? el('div', { class: 'note', text: 'You may approve it here.' }) : null,
       ])]));
     }
     return nodes;
@@ -211,7 +213,7 @@ export async function render(container, params) {
       });
       const paint = () => {
         if (!showOriginal) { holder.replaceChildren(); return; }
-        if (!proposal) { holder.replaceChildren(el('p', { class: 'note', style: { marginTop: '8px' }, text: 'This is the original. No proposal has been made yet; the review pass writes one as version 2.' })); return; }
+        if (!proposal) { holder.replaceChildren(el('p', { class: 'note', style: { marginTop: '8px' }, text: 'The original. The review pass writes a proposal as version 2.' })); return; }
         holder.replaceChildren(el('div', { style: { marginTop: '10px' } }, compareView(versions[0].snapshot, piece, { leftTitle: 'Original (version 1)', rightTitle: `Proposal (version ${latest.n})` })));
       };
       root.appendChild(el('div', { class: 'rv-sec' }, [toggle, holder]));
@@ -288,7 +290,7 @@ export async function render(container, params) {
     const r = directorRoute(piece, refs.settings, check);
     const acts = [];
     let why = '';
-    const blockWhy = blocks ? `The checker blocks approval (${blocks}). Edit the piece, or request changes.` : '';
+    const blockWhy = blocks ? `Checker blocks approval (${blocks}): edit, or request changes.` : '';
     const approveBtn = () => button({ kind: 'primary', icon: 'approve', label: 'Approve', disabled: blocks > 0, onClick: (e) => approve(piece, e.currentTarget) });
     const changesBtn = () => button({ kind: 'secondary', label: 'Request changes', onClick: () => requestChanges(piece) });
     if (st === 'in-review' && can.approve) {
@@ -304,9 +306,9 @@ export async function render(container, params) {
       acts.push(approveBtn(), changesBtn(), button({ kind: 'secondary', label: 'Return to manager', onClick: () => returnToManager(piece) }));
       why = blockWhy;
     } else if (st === 'director-review') {
-      why = 'With the director. The director approves it, requests changes or returns it to the manager.';
+      why = 'With the director: approve, request changes or return.';
     } else if (st === 'in-review') {
-      why = 'With the manager. The manager approves it, requests changes or sends it to the director.';
+      why = 'With the manager: approve, request changes or send on.';
     }
     const revise = st === 'changes-requested';
     acts.push(button({ kind: revise ? 'primary' : 'secondary', icon: 'edit', label: revise ? 'Open and revise' : 'Edit', href: `#/content/${encodeURIComponent(piece.id)}` }));
@@ -332,7 +334,7 @@ export async function render(container, params) {
       btn.disabled = false; cache.delete(piece.id);
       if (err.status === 409 && err.detail?.needsDirector) {
         piece.needsDirector = true; piece.needsDirectorWhy = err.detail.why || '';
-        toast(`${err.detail.why || 'This piece must reach the director'}. Send it to the director instead.`, 'warn', { ms: 6000 });
+        toast(`${err.detail.why || 'This piece must reach the director'}. Send it on instead.`, 'warn', { ms: 6000 });
         draw(); return;
       }
       toast(err.message, 'bad');
@@ -344,7 +346,7 @@ export async function render(container, params) {
     noteDialog({
       title: 'Send to director', label: 'Note for the director', sendLabel: 'Send to director',
       placeholder: 'What should the director look at?',
-      intro: r.needsDirector ? `${r.why}.` : 'You may approve this piece yourself; send it on when the director should decide.',
+      intro: r.needsDirector ? `${r.why}.` : 'You may approve it; send it on if the director should decide.',
       onSend: async (note) => {
         await api.post(`/pieces/${encodeURIComponent(piece.id)}/escalate`, { note });
         toast('Sent to the director', 'ok'); reload();
@@ -392,8 +394,13 @@ export async function render(container, params) {
     const d = dialog({
       title: 'Review pass',
       body: [
-        el('p', { text: `${eligible.total} ${eligible.total === 1 ? 'piece is' : 'pieces are'} in review with only the original text. The pass reads each one against the brief and writes a proposal as version 2, with a change note. Nothing is approved by it, and the status stays in review.` }),
-        el('p', { class: 'note', text: 'It uses Claude through the command line and takes a minute or so for each piece. You can leave this open or come back.' }),
+        el('p', { text: `${eligible.total} ${eligible.total === 1 ? 'piece has' : 'pieces have'} only the original text.` }),
+        bullets([
+          'Reads each against the brief.',
+          'Writes a proposal as version 2, with a change note.',
+          'Approves nothing; the status stays in review.',
+          'About a minute a piece through Claude; you may close this and come back.',
+        ]),
         out,
       ],
       actions: [button({ label: 'Close', onClick: () => d.close() }), run],

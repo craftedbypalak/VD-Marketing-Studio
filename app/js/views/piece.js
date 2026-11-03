@@ -13,7 +13,7 @@
 import { api } from '../api.js';
 import { roleOf, me as whoAmI } from '../roles.js';
 import {
-  el, card, field, input, textarea, select, button, chip, statusPill, dialog, toast, tabs, empty, fmt, icon, preview,
+  el, card, field, input, textarea, select, button, chip, statusPill, dialog, toast, tabs, empty, fmt, icon, preview, bullets,
 } from '../ui.js';
 
 export const route = '#/content/:id';
@@ -77,11 +77,13 @@ export const TEMPLATE_FOR_TYPE = {
   'youtube-long': 'the YouTube thumbnail', 'youtube-short': 'the YouTube thumbnail', 'linkedin-text': 'the LinkedIn image', 'field-story': 'the LinkedIn image',
   announcement: 'the LinkedIn image', 'image-post': 'the hook card', 'wa-note': 'the quote card',
 };
+/** A long rule from the data as short bullets: one per sentence or clause. */
+const sentences = (t) => String(t || '').split(/(?<=;)\s+|(?<=\.)\s+(?=[A-Z0-9"'(])/).map((x) => x.replace(/;$/, '').trim()).filter(Boolean);
 const TYPE_HINT = {
-  'reel-animated': 'Rendered on the Mac from the animation files; Studio keeps the text and the rendered file. For a new video, choose B-roll video and write the say-and-sees script.',
-  episode: 'Rendered on the Mac from the animation files; Studio keeps the text and the rendered file. For a new video, choose B-roll video and write the say-and-sees script.',
-  broll: 'A filmed Reel: write what is said and what the viewer sees, row by row, in the say-and-sees table below.',
-  carousel: 'Seven slides in the kit\'s four slide types; the pictures are made from them in Visuals.',
+  'reel-animated': 'Rendered on the Mac. For a new video, choose B-roll video.',
+  episode: 'Rendered on the Mac. For a new video, choose B-roll video.',
+  broll: 'A filmed Reel: fill the say-and-sees table below.',
+  carousel: 'Seven slides in the kit\'s four types; pictures made in Visuals.',
   'status-rule': 'One line for WhatsApp Status; the card is made from it in Visuals.',
 };
 
@@ -141,7 +143,7 @@ const ROLE_WORD = { employee: 'Employee', manager: 'Manager', director: 'Directo
 /** The review trail as a compact list, newest first: date, name, role, action, note. */
 export function trailList(trail, settings) {
   const list = Array.isArray(trail) ? trail : [];
-  if (!list.length) return el('p', { class: 'note', text: 'No review steps yet. The trail starts when the piece is submitted for review.' });
+  if (!list.length) return el('p', { class: 'note', text: 'No review steps yet; they start on submission.' });
   const nameOf = (by) => (settings?.users || []).find((u) => String(u.email).toLowerCase() === String(by || '').toLowerCase())?.name || by || 'unknown';
   return el('ul', { class: 'ct-trail' }, [...list].reverse().map((t) => el('li', {}, [
     el('div', { class: 'ct-ver-top' }, [
@@ -196,10 +198,10 @@ export function ask({ title = 'Please confirm', message, confirmLabel = 'Confirm
 export function aiFailed(err) {
   const msg = String(err?.message || 'The request failed').replace(/\.+$/, '');
   if (err?.status === 502 || /login|authenticate|oauth|session expired|claude/i.test(msg)) {
-    toast('Claude is not signed in on this Mac, so the AI step could not run. Ask Palak to run claude and /login in a terminal. The piece can still be written by hand.', 'bad', { ms: 10000 });
+    toast('Claude is signed out on this Mac. Ask Palak to run claude and /login, or write by hand.', 'bad', { ms: 10000 });
     return;
   }
-  if (err?.status === 504) { toast('Claude took too long to answer. Try once more; if it fails again, write the piece by hand.', 'bad', { ms: 9000 }); return; }
+  if (err?.status === 504) { toast('Claude took too long. Try once more, or write it by hand.', 'bad', { ms: 9000 }); return; }
   toast(`${msg}.`, 'bad', { ms: 9000 });
 }
 
@@ -526,7 +528,7 @@ export async function render(container, params) {
     });
     const sol = field({
       label: 'Solution, one line each',
-      hint: `Name the tool from the Solutions list (${(refs.solutions || []).slice(0, 4).map((s) => s.publicName).filter(Boolean).join(', ')}${(refs.solutions || []).length > 4 ? ' and others, in Settings, Solutions' : ''}), or say plainly what it does.`,
+      hint: 'Name a tool from Settings, Solutions, or say what it does.',
       input: textarea({ value: (p.solution || []).join('\n'), rows: 3, onInput: (e) => { p.solution = linesToList(e.target.value); refreshPreview(); changed(); } }),
     });
     return card({ title: 'Problem, Impact, Solution', body: [mk('Problem', 'problem'), mk('Impact', 'impact'), sol, mk('Close', 'close', 2)] });
@@ -661,7 +663,7 @@ export async function render(container, params) {
   function drawMiddle() {
     const keys = renditionKeys(piece);
     if (!keys.length) {
-      midHost.replaceChildren(card({ title: 'Renditions', body: empty({ title: 'Choose where the piece goes', hint: 'Pick at least one account on the left. Each account gets its own form of the text.' }) }));
+      midHost.replaceChildren(card({ title: 'Renditions', body: empty({ title: 'Choose where the piece goes', hint: 'Pick an account on the left; each gets its own text.' }) }));
       previewHost = null; activeKey = null;
       return;
     }
@@ -670,10 +672,10 @@ export async function render(container, params) {
     previewHost = el('div', { class: 'pe-preview' });
     const showPanel = () => { panel.replaceChildren(renditionFields(activeKey)); previewHost.replaceChildren(previewNode(piece, activeKey)); };
     const bar = tabs({ items: keys.map((k) => ({ id: k, label: RENDITION_LABEL[k] })), active: activeKey, onChange: (id) => { activeKey = id; showPanel(); } });
-    const fill = button({ kind: 'secondary', small: true, icon: 'sparkle', label: 'Fill from P.I.S.', title: 'Claude writes the missing text for each account from the Problem, Impact and Solution lines. Nothing already written is replaced.', onClick: (e) => fillFromPis(e.currentTarget) });
+    const fill = button({ kind: 'secondary', small: true, icon: 'sparkle', label: 'Fill from P.I.S.', title: 'Claude writes empty tabs from the P.I.S. lines; written text is kept', onClick: (e) => fillFromPis(e.currentTarget) });
     midHost.replaceChildren(card({
       title: 'Renditions', actions: [fill],
-      body: [el('p', { class: 'ct-hint', style: { margin: '0 0 8px' }, text: 'One tab per account the piece goes to. "Fill from P.I.S." asks Claude to write the empty tabs from the lines on the left; it never replaces text already written.' }), bar, panel, previewHost],
+      body: [bullets(['One tab per account.', '"Fill from P.I.S." writes only the empty tabs.'], { compact: true, class: 'ct-hint' }), bar, panel, previewHost],
     }));
     showPanel();
   }
@@ -692,12 +694,12 @@ export async function render(container, params) {
       const upd = () => { const n = (r.hashtags || []).length; count.textContent = `${n} / ${max}`; count.classList.toggle('over', n > max); };
       upd();
       wrap.append(
-        ta('Caption', 'caption', lim('vd-ig', 2200), 9, 'No hashtags in the caption; they go in the field below and are placed at the end.'),
+        ta('Caption', 'caption', lim('vd-ig', 2200), 9, 'No hashtags here; use the field below.'),
         fieldNode(['Hashtags ', count], input({ value: (r.hashtags || []).join(' '), class: 'mono', placeholder: '#BusinessOwners #SmallBusinessIndia', onInput: (e) => { r.hashtags = tagsToList(e.target.value); upd(); refreshPreview(); changed(); } })),
         ta('First comment', 'firstComment', 2200, 3, 'A link, if any, goes here.'),
       );
     } else if (key === 'li') {
-      wrap.append(ta('Post', 'text', lim('p-li', 3000), 14, 'The first 210 characters carry the hook. No hashtags in the body; up to three on the last line.'), ta('First comment', 'firstComment', 2000, 3, 'Any link goes here, never in the body.'));
+      wrap.append(ta('Post', 'text', lim('p-li', 3000), 14, 'Hook in the first 210 characters; hashtags only on the last line.'), ta('First comment', 'firstComment', 2000, 3, 'Any link goes here, never in the body.'));
     } else if (key === 'liCo') {
       wrap.append(ta('Reshare line', 'text', lim('vd-li', 3000), 4, 'One line above the reshared post.'));
     } else if (key === 'fb') {
@@ -754,23 +756,28 @@ export async function render(container, params) {
     const lim = refs.rules?.limits || {};
     const facts = [
       `The hook is ${lim.hookWords ?? 8} words or fewer.`,
-      `Instagram takes at most ${lim.igHashtags ?? 5} hashtags, at the end. LinkedIn takes none in the body and ${lim.liHashtagsBottom ?? 3} at most on the last line.`,
+      `Instagram: up to ${lim.igHashtags ?? 5} hashtags, at the end.`,
+      `LinkedIn: none in the body, up to ${lim.liHashtagsBottom ?? 3} on the last line.`,
       'No emoji, no exclamation marks, no ALL CAPS words. Sentence case.',
-      `${(refs.rules?.never || []).length} phrases the brief never uses ("best", "workflow", "the work assigns itself" among them), ${(refs.rules?.courseTerms || []).length} course terms, and every claim the brief blocks.`,
-      'No client, lender or staff name; no company outside the allowed list; no rupee, hours or percentage figure that is not marked as an example.',
+      `None of the ${(refs.rules?.never || []).length} banned phrases ("best", "workflow" among them) or ${(refs.rules?.courseTerms || []).length} course terms.`,
+      'No claim the brief blocks.',
+      'No client, lender or staff name; only allowed companies.',
+      'Rupee, hours and percentage figures only when marked as an example.',
       'Never that the business runs by itself, on autopilot or without people.',
     ];
     return el('details', { class: 'ct-rules' }, [
       el('summary', { text: 'What the checker looks for' }),
       el('ul', {}, facts.map((t) => el('li', { text: t }))),
-      auto.length ? el('p', { class: 'ct-hint', text: `From the brief's checklist, checked here: ${auto.map((c) => c.text.replace(/\.$/, '')).join('; ')}.` }) : null,
-      byHand.length ? el('p', { class: 'ct-hint', text: `Checked by the reviewer, not by the tool: ${byHand.map((c) => c.text.replace(/\.$/, '')).join('; ')}.` }) : null,
-      el('p', { class: 'ct-hint', text: 'The lists live in Settings, Rules. The brief (00-brief.md) wins where they disagree.' }),
+      auto.length ? el('div', { class: 'ct-hint', text: 'From the brief\'s checklist, checked here:' }) : null,
+      auto.length ? bullets(auto.flatMap((c) => sentences(c.text)), { compact: true, class: 'ct-hint' }) : null,
+      byHand.length ? el('div', { class: 'ct-hint', text: 'Checked by the reviewer, not the tool:' }) : null,
+      byHand.length ? bullets(byHand.flatMap((c) => sentences(c.text)), { compact: true, class: 'ct-hint' }) : null,
+      el('p', { class: 'ct-hint', text: 'Lists in Settings, Rules; the brief (00-brief.md) wins.' }),
     ]);
   }
 
   async function drawPictures() {
-    if (isNew) { picturesHost.replaceChildren(el('p', { class: 'note', text: 'Save the piece first; then a card can be made from its text in Visuals.' })); return; }
+    if (isNew) { picturesHost.replaceChildren(el('p', { class: 'note', text: 'Save first; then make a card in Visuals.' })); return; }
     let images = [];
     try { images = await api.get(`/pieces/${encodeURIComponent(piece.id)}/images`); } catch { images = []; }
     if (disposed) return;
@@ -781,12 +788,12 @@ export async function render(container, params) {
         el('img', { src: im.path, alt: im.template || im.kind, loading: 'lazy' }),
         el('span', { class: 'mono', text: `${im.w} x ${im.h}` }),
       ]))));
-      nodes.push(el('p', { class: 'ct-hint', text: `${images.length} ${images.length === 1 ? 'picture is' : 'pictures are'} saved with this piece. They are approved with it.` }));
+      nodes.push(el('p', { class: 'ct-hint', text: `${images.length} ${images.length === 1 ? 'picture' : 'pictures'} saved; approved with the piece.` }));
     } else {
-      nodes.push(el('p', { class: 'note', text: `No picture yet. This type usually takes ${fit}; the card maker fills it from the text of this piece.` }));
+      nodes.push(el('p', { class: 'note', text: `No picture yet. Usually ${fit}, made in Visuals.` }));
     }
     nodes.push(el('div', { class: 'row' }, [
-      button({ kind: 'secondary', small: true, icon: 'pictures', label: 'Make a card in Visuals', href: `#/visuals?piece=${encodeURIComponent(piece.id)}`, title: `Opens the card maker on this piece, with ${fit} ready to export` }),
+      button({ kind: 'secondary', small: true, icon: 'pictures', label: 'Make a card in Visuals', href: `#/visuals?piece=${encodeURIComponent(piece.id)}`, title: `Card maker with ${fit}` }),
       button({ kind: 'ghost', small: true, icon: 'upload', label: 'Upload a photo or clip', title: 'Real photos and footage go under Files, on the left', onClick: () => { leftHost.querySelector('.pe-asset, input[type=file]')?.closest('.card')?.scrollIntoView({ block: 'start', behavior: 'smooth' }); } }),
     ]));
     picturesHost.replaceChildren(...nodes);
@@ -812,7 +819,7 @@ export async function render(container, params) {
   }
 
   function drawTrail() {
-    if (isNew) { trailHost.replaceChildren(el('p', { class: 'note', text: 'The review history starts once the piece is saved and submitted.' })); return; }
+    if (isNew) { trailHost.replaceChildren(el('p', { class: 'note', text: 'History starts once saved and submitted.' })); return; }
     trailHost.replaceChildren(trailList(piece.reviewTrail, refs.settings));
   }
 
@@ -832,7 +839,7 @@ export async function render(container, params) {
         el('div', { class: 'ct-ver-actions' }, [
           button({ kind: 'secondary', small: true, label: 'Compare', onClick: () => dialog({ title: `Version ${v.n} and the working copy`, wide: true, body: compareView(v.snapshot, piece, { leftTitle: `Version ${v.n}`, rightTitle: 'Working copy' }) }) }),
           button({ kind: 'secondary', small: true, label: 'Revert', disabled: readOnly || v.id === latest.id, title: v.id === latest.id ? 'This is the latest version' : '', onClick: async () => {
-            if (!(await ask({ title: `Revert to version ${v.n}`, message: 'The working text is replaced by this version and the revert is saved as a new version.', confirmLabel: 'Revert' }))) return;
+            if (!(await ask({ title: `Revert to version ${v.n}`, message: 'Replaces the working text; saved as a new version.', confirmLabel: 'Revert' }))) return;
             try {
               const res = await api.post(`/pieces/${encodeURIComponent(piece.id)}/revert`, { versionId: v.id });
               await adopt(res.piece);
@@ -893,10 +900,10 @@ export async function render(container, params) {
     } });
 
     const blocks = [
-      el('p', { class: 'ct-hint', text: 'Every AI step runs through Claude on the founder\'s subscription and shows its result here before anything is kept. When Claude is not signed in on this Mac, the step fails with a message and the piece can still be written by hand.' }),
-      el('div', { class: 'ct-ai-block' }, [el('div', { class: 'pe-sub', text: 'Refine' }), el('p', { class: 'ct-hint', text: 'Write an instruction; Claude proposes a new version of the text and shows the difference. Nothing changes until "Apply".' }), refineBox, el('div', { class: 'ct-ai-actions' }, refineBtn), refineOut]),
-      el('div', { class: 'ct-ai-block' }, [el('div', { class: 'pe-sub', text: 'Check with AI' }), el('p', { class: 'ct-hint', text: 'Reads for what word lists cannot catch: a promised result in other words, a coach\'s tone, a casual aside. Adds its findings to the checker above.' }), el('div', { class: 'ct-ai-actions' }, checkBtn)]),
-      el('div', { class: 'ct-ai-block' }, [el('div', { class: 'pe-sub', text: 'Illustration prompt' }), el('p', { class: 'ct-hint', text: 'Writes the prompt for a house-style illustration (covers and thumbnails only) and the card texts. It makes no picture; the Visuals card above does.' }), el('div', { class: 'ct-ai-actions' }, imgBtn), imgOut]),
+      bullets(['Runs through Claude on the founder\'s subscription.', 'Shows each result before anything is kept.', 'If Claude is signed out, write by hand.'], { compact: true, class: 'ct-hint' }),
+      el('div', { class: 'ct-ai-block' }, [el('div', { class: 'pe-sub', text: 'Refine' }), el('p', { class: 'ct-hint', text: 'Claude proposes a new text and shows the difference; nothing changes until "Apply".' }), refineBox, el('div', { class: 'ct-ai-actions' }, refineBtn), refineOut]),
+      el('div', { class: 'ct-ai-block' }, [el('div', { class: 'pe-sub', text: 'Check with AI' }), el('p', { class: 'ct-hint', text: 'Finds what word lists miss; adds it to the checker.' }), bullets(['A promised result in other words.', 'A coach\'s tone.', 'A casual aside.'], { compact: true, class: 'ct-hint' }), el('div', { class: 'ct-ai-actions' }, checkBtn)]),
+      el('div', { class: 'ct-ai-block' }, [el('div', { class: 'pe-sub', text: 'Illustration prompt' }), el('p', { class: 'ct-hint', text: 'Prompt for a cover or thumbnail, plus card texts; Visuals makes the picture.' }), el('div', { class: 'ct-ai-actions' }, imgBtn), imgOut]),
     ];
     if (piece.type === 'youtube-long') {
       blocks.push(el('div', { class: 'ct-ai-block' }, [el('div', { class: 'pe-sub', text: 'Shorts' }), el('div', { class: 'ct-ai-actions' }, button({ kind: 'secondary', small: true, label: 'Make Shorts from this', onClick: async () => {
@@ -964,28 +971,28 @@ export async function render(container, params) {
   function drawBanner() {
     const nodes = [];
     const route = routeNow();
-    const banner = (tone, ic, head, text) => el('div', { class: `banner banner-${tone}` }, [icon(ic), el('div', {}, [el('b', { text: head }), ' ', text])]);
+    const banner = (tone, ic, head, text) => el('div', { class: `banner banner-${tone}` }, [icon(ic), el('div', {}, [el('b', { text: head }), Array.isArray(text) ? bullets(text, { compact: true }) : [' ', text]])]);
     if (piece.status === 'changes-requested') {
       const r = piece.review || {};
-      nodes.push(banner('warn', 'warn', 'Changes requested.', `${r.by ? `${nameOf(r.by)}: ` : ''}${r.note || 'No note was given.'} ${approver ? 'The author revises the piece and submits it for review again.' : 'Revise the piece and submit it for review again.'}`));
+      nodes.push(banner('warn', 'warn', 'Changes requested.', `${r.by ? `${nameOf(r.by)}: ` : ''}${r.note || 'No note was given.'} ${approver ? 'The author revises and resubmits.' : 'Revise, then submit again.'}`));
     }
     if (piece.status === 'in-review' && !isNew) {
-      if (!approver) nodes.push(banner('info', 'review', 'With the manager.', 'The manager sees it in Review and in the Today strip on the calendar. Nothing has to be sent by hand; add the picture in Visuals if the piece needs one.'));
-      else if (director) nodes.push(banner('info', 'review', 'In the manager\'s queue.', `You may approve it here or in Review once the checker is clear.${route.needsDirector ? ` ${route.why}, so the manager would send it to you.` : ''}`));
-      else if (route.needsDirector) nodes.push(banner('warn', 'review', 'This piece must reach the director.', `${route.why}. Send it to the director here or in Review, with a note.`));
-      else nodes.push(banner('info', 'review', 'In your queue.', 'Approve it here or in Review once the checker is clear, or send it to the director with a note.'));
+      if (!approver) nodes.push(banner('info', 'review', 'With the manager.', ['Shown in Review and in the Today strip.', 'Nothing to send by hand.', 'Add a picture in Visuals if needed.']));
+      else if (director) nodes.push(banner('info', 'review', 'In the manager\'s queue.', ['You may approve it here or in Review once the checker is clear.', route.needsDirector ? `${route.why}; the manager would send it to you.` : null]));
+      else if (route.needsDirector) nodes.push(banner('warn', 'review', 'This piece must reach the director.', [`${route.why}.`, 'Send it on here or in Review, with a note.']));
+      else nodes.push(banner('info', 'review', 'In your queue.', ['Approve here or in Review once the checker is clear.', 'Or send it to the director with a note.']));
     }
     if (piece.status === 'director-review' && !isNew) {
       const e = piece.escalation || {};
       const note = e.note ? `${e.by ? `${nameOf(e.by)}: ` : ''}${e.note}` : '';
-      if (director) nodes.push(banner('info', 'review', 'Awaiting you.', `${note ? `Note from the manager, ${note}. ` : ''}Approve it, request changes, or return it to the manager.`));
-      else nodes.push(banner('info', 'review', 'With the director.', `${note ? `Sent with the note, ${note}. ` : ''}The director approves it, requests changes or returns it to the manager.`));
+      if (director) nodes.push(banner('info', 'review', 'Awaiting you.', [note ? `Manager's note: ${note}` : null, 'Approve, request changes or return to the manager.']));
+      else nodes.push(banner('info', 'review', 'With the director.', [note ? `Note: ${note}` : null, 'The director approves, requests changes or returns it.']));
     }
     if (['posted', 'measured'].includes(piece.status) && piece.measure?.postedAt) {
       const acc = refs.accounts.find((a) => a.id === piece.measure.postedAccount);
-      nodes.push(el('div', { class: 'banner banner-info' }, [icon('check'), el('div', {}, [el('b', { text: 'Posted. ' }), `Recorded by hand by ${piece.measure.postedBy || 'unknown'}: ${acc ? acc.label : piece.measure.postedAccount || 'account not named'}, ${fmt.dateTime(piece.measure.postedAt)}${piece.measure.postedLink ? '. ' : '. No link recorded. '}`, piece.measure.postedLink ? el('a', { href: piece.measure.postedLink, target: '_blank', rel: 'noopener', text: 'Open the post' }) : null, ' Posting from Studio is phase 2; until then this record is the only trace.'])]));
+      nodes.push(el('div', { class: 'banner banner-info' }, [icon('check'), el('div', {}, [el('b', { text: 'Posted. ' }), `By ${piece.measure.postedBy || 'unknown'}: ${acc ? acc.label : piece.measure.postedAccount || 'account not named'}, ${fmt.dateTime(piece.measure.postedAt)}${piece.measure.postedLink ? '. ' : '. No link recorded.'}`, piece.measure.postedLink ? el('a', { href: piece.measure.postedLink, target: '_blank', rel: 'noopener', text: 'Open the post' }) : null, el('div', { class: 'note', text: 'Recorded by hand; the only trace until phase 2.' })])]));
     }
-    if (readOnly) nodes.push(el('div', { class: 'banner banner-info ct-readonly' }, [icon('check'), el('div', { text: 'This piece is approved and read-only. Use "Edit as new version" to change it; saving sends it back to review.' })]));
+    if (readOnly) nodes.push(el('div', { class: 'banner banner-info ct-readonly' }, [icon('check'), el('div', {}, [el('b', { text: 'Approved and read-only.' }), el('div', { class: 'note', text: 'Use "Edit as new version"; saving sends it back to review.' })])]));
     else if (piece.status === 'approved') nodes.push(el('div', { class: 'banner banner-warn' }, [icon('warn'), el('div', { text: 'Saving a change sends the approved piece back to review.' })]));
     bannerHost.replaceChildren(...nodes);
   }
@@ -1031,7 +1038,7 @@ export async function render(container, params) {
       title: 'Saved by someone else meanwhile',
       body: el('div', {}, [
         el('p', { text: `${err.detail.by || 'Someone else'} saved this piece at ${fmt.dateTime(err.detail.at)}, after you opened it.` }),
-        el('p', { class: 'note', text: 'Reload shows their version and discards your unsaved changes. Save anyway keeps yours and theirs stays in the versions list.' }),
+        bullets(['Reload: shows theirs; your unsaved changes are lost.', 'Save anyway: keeps yours; theirs stays in Versions.'], { compact: true }),
       ]),
       actions: [
         button({ kind: 'secondary', label: 'Reload', onClick: async () => { d.close(); try { await adopt(await api.get(`/pieces/${encodeURIComponent(piece.id)}`)); toast('Reloaded the latest version', 'ok'); } catch (e2) { toast(e2.message, 'bad'); } } }),
@@ -1067,7 +1074,7 @@ export async function render(container, params) {
     noteDialog({
       title: 'Send to director', label: 'Note for the director', sendLabel: 'Send to director',
       placeholder: 'What should the director look at?',
-      intro: route.needsDirector ? `${route.why}.` : 'This piece may be approved by you; send it on when the director should decide.',
+      intro: route.needsDirector ? `${route.why}.` : 'You may approve it; send it on if the director should decide.',
       onSend: async (note) => {
         if (isDirty()) await save_('');
         const res = await api.post(`/pieces/${encodeURIComponent(piece.id)}/escalate`, { note });
@@ -1122,7 +1129,7 @@ export async function render(container, params) {
     d = dialog({
       title: 'Record as posted',
       body: el('div', {}, [
-        el('p', { class: 'note', text: `Recorded by hand, as ${api.user.get() || 'the chosen user'}, after the post has gone up, until posting from Studio is connected (phase 2). The time must have passed. The piece moves to Posted and the calendar's month card counts it as out.` }),
+        bullets([`Recorded by hand, as ${api.user.get() || 'the chosen user'}, until phase 2.`, 'The time must have passed.', 'The piece moves to Posted and counts as out.'], { compact: true }),
         el('div', { class: 'form-grid' }, [field({ label: 'Date', input: dateIn }), field({ label: 'Time', input: timeIn }), field({ label: 'Account', input: accSel })]),
         field({ label: 'Link to the post', input: urlIn, hint: 'Optional now; needed for the Friday measurement.' }),
         field({ label: 'Note', input: noteIn }),
@@ -1141,7 +1148,7 @@ export async function render(container, params) {
   }
 
   async function retire() {
-    if (!(await ask({ title: 'Retire this piece', message: 'A retired piece leaves the queues and cannot be placed in the calendar. You can restore it later.', confirmLabel: 'Retire', danger: true }))) return;
+    if (!(await ask({ title: 'Retire this piece', message: 'It leaves the queues and the calendar; you can restore it later.', confirmLabel: 'Retire', danger: true }))) return;
     piece.status = 'retired';
     await save_('Retired');
   }

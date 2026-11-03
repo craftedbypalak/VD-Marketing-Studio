@@ -3,7 +3,7 @@
 // "New piece" and "Propose from a moment".
 
 import { api } from '../api.js';
-import { el, button, field, input, select, textarea, chip, statusPill, dialog, toast, empty, fmt, checkbox } from '../ui.js';
+import { el, button, field, input, select, textarea, chip, statusPill, dialog, toast, empty, fmt, checkbox, bullets } from '../ui.js';
 import {
   TYPES, PILLARS, STATUSES, AWAITING_REVIEW, SUBMITTABLE, statusLabel, typeLabel, pillarLabel, defaultTargets, ensureStyles, loadRefs, aiFailed, ask,
 } from './piece.js';
@@ -91,7 +91,7 @@ export async function render(container, params) {
     el('div', { class: 'ct-toolbar' }, [
       q,
       el('span', { class: 'ct-spacer' }),
-      button({ kind: 'secondary', icon: 'check', label: 'Check all', title: 'Runs the brief checker over every piece and stores the result', onClick: checkAll }),
+      button({ kind: 'secondary', icon: 'check', label: 'Check all', title: 'Run the brief checker over every piece', onClick: checkAll }),
       button({ kind: 'secondary', icon: 'sparkle', label: 'Propose from a moment', onClick: () => proposeDialog() }),
       button({ kind: 'primary', icon: 'plus', label: 'New piece', onClick: () => newDialog() }),
     ]),
@@ -238,7 +238,7 @@ export async function render(container, params) {
 
   // -------------------------------------------------------------- propose
   function proposeDialog() {
-    const moment = textarea({ rows: 3, placeholder: 'One sentence: for example, the owner calls three people at 7 pm to ask whether the dispatch went out.' });
+    const moment = textarea({ rows: 3, placeholder: 'One sentence, e.g. the owner calls three people at 7 pm about the dispatch.' });
     const pillar = select({ options: [{ value: '', label: 'Any pillar' }, ...PILLARS.slice(0, 5)], value: '' });
     const sector = input({ placeholder: 'Optional: textiles, distribution, a professional firm' });
     const results = el('div');
@@ -293,7 +293,7 @@ export async function render(container, params) {
           el('dl', {}, [
             el('dt', { text: 'Problem' }), el('dd', { text: s.pis?.problem || '' }),
             el('dt', { text: 'Impact' }), el('dd', { text: s.pis?.impact || '' }),
-            el('dt', { text: 'Solution' }), el('dd', { text: (s.pis?.solution || []).join(' ') }),
+            el('dt', { text: 'Solution' }), el('dd', {}, (s.pis?.solution || []).length > 1 ? bullets(s.pis.solution, { compact: true }) : (s.pis?.solution || []).join(' ')),
             el('dt', { text: 'Close' }), el('dd', { text: s.pis?.close || '' }),
           ]),
           el('div', { class: 'eyebrow', text: 'Hooks' }), hooks,

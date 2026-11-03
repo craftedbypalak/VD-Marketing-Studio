@@ -203,3 +203,7 @@
 .cal-more[open] summary { border-color: var(--navy); }
 .cal-more .cal-actions { margin: 8px 0 0; }
 @media (max-width: 800px) { .cal-more { margin-left: 0; width: 100%; } }
+
+/* Data text shown as bullets (glance() in calendar.js). */
+.cal-why .bullets, .cal-ev .bullets { margin: 4px 0 0; }
+ul.cal-reason.bullets { margin: 4px 0; }
