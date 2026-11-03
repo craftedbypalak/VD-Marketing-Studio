@@ -29,7 +29,6 @@ export async function render(container, params = {}) {
     container.append(
       el('div', { class: 'bx-head' }, [
         button({ kind: 'ghost', small: true, icon: 'back', label: 'All tools', href: '#/builder' }),
-        el('h1', { class: 'bx-title' }, [icon(box.icon), el('span', { text: box.title })]),
         !ctx.canEdit && el('span', { class: 'chip chip-muted', text: 'Read-only' }),
       ]),
       body,
