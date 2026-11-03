@@ -1,6 +1,6 @@
 # Venture Drafters Studio
 
-Brand: Sapphire Lime (sapphire `#0f2350`, lime `#cdf22b`) with the round-D VD mark, from the Venture Drafters design system. The tokens are `app/css/tokens.css`; the logos are `app/img/`.
+Brand: the same as the website. Navy `#0a3050` leads, green `#8ace8a` is the accent, and the VD logo has the angled D with a green arrow. The tokens are `app/css/tokens.css` (change the brand there only, through `--accent`); the logos in `app/img/` are copies of the website's `logo/` folder.
 
 The in-house marketing tool: content, calendar, video production, pictures and recurring events in one place. Plain JavaScript, no build step. The contract every builder follows is `docs/ARCHITECTURE.md`.
 

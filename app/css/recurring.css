@@ -19,7 +19,7 @@
 }
 .rc-day:hover { border-color: var(--navy); }
 .rc-day.blank { visibility: hidden; border: 0; cursor: default; }
-.rc-day.today { box-shadow: inset 0 0 0 2px var(--lime); }
+.rc-day.today { box-shadow: inset 0 0 0 2px var(--accent); }
 .rc-day.picked { background: var(--navy); color: var(--white); border-color: var(--navy); }
 .rc-day.has-dark { background: var(--bad-bg); }
 .rc-day.picked.has-dark { background: var(--navy); }
@@ -67,7 +67,7 @@
 /* rules */
 .rc-rules { margin: 0; padding-left: 18px; }
 .rc-rules li { margin-bottom: 6px; }
-.rc-quote { border-left: 3px solid var(--lime); padding: 4px 0 4px 14px; margin: 0 0 8px; color: var(--text); }
+.rc-quote { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 0 0 8px; color: var(--text); }
 
 @media (max-width: 800px) {
   .rc-tabs .tab { padding: 10px 9px; font-size: 14px; }

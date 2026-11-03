@@ -30,7 +30,7 @@ export const meta = {
     { key: 't', label: 'Slide type', type: 'select', options: TYPES.map((t) => ({ value: t.id, label: t.label })) },
     { key: 'eyebrow', label: 'Eyebrow (cover)', type: 'text', show: (f) => f.t === 'cover' },
     { key: 'n', label: 'Number or word', type: 'text', hint: 'A number, or a word such as Before or After.', show: (f) => f.t === 'point' },
-    { key: 'head', label: 'Headline', type: 'textarea', rows: 3, hint: 'Put *stars* around the one word that should be lime.' },
+    { key: 'head', label: 'Headline', type: 'textarea', rows: 3, hint: 'Put *stars* around the one word that should be green.' },
     { key: 'body', label: 'Body', type: 'textarea', rows: 3, show: (f) => f.t === 'point' || f.t === 'cta' },
     { key: 'items', label: 'List items (one per line, three at most)', type: 'textarea', rows: 4, show: (f) => f.t === 'list' },
     { key: 'button', label: 'Button text', type: 'text', hint: 'Leave empty for no button.', show: (f) => f.t === 'cta' },
@@ -78,7 +78,7 @@ function numberChip(pal, str, y) {
     const w = Math.max(132, tw + 68);
     return {
       height: 132,
-      svg: `<rect x="${PAD}" y="${round(y)}" width="${round(w)}" height="132" rx="66" fill="${COLOR.lime}"/>` +
+      svg: `<rect x="${PAD}" y="${round(y)}" width="${round(w)}" height="132" rx="66" fill="${COLOR.accent}"/>` +
         textAt({ str: label, x: PAD + w / 2, y: y + 132 / 2 + 72 * 0.35, f: F.mono, size: 72, fill: COLOR.navy, anchor: 'middle' }),
     };
   }
@@ -87,14 +87,14 @@ function numberChip(pal, str, y) {
   const w = tw + 68;
   return {
     height: 84,
-    svg: `<rect x="${PAD}" y="${round(y)}" width="${round(w)}" height="84" rx="42" fill="${COLOR.lime}"/>` +
+    svg: `<rect x="${PAD}" y="${round(y)}" width="${round(w)}" height="84" rx="42" fill="${COLOR.accent}"/>` +
       textAt({ str: up, x: PAD + w / 2, y: y + 42 + 38 * 0.35, f: F.strong, size: 38, fill: COLOR.navy, anchor: 'middle', ls: 38 * 0.06 }),
   };
 }
 
 function check(x, y, s) {
   const k = s / 58;
-  return `<g transform="translate(${round(x)} ${round(y)}) scale(${round(k)})"><circle cx="29" cy="29" r="29" fill="${COLOR.lime}"/>` +
+  return `<g transform="translate(${round(x)} ${round(y)}) scale(${round(k)})"><circle cx="29" cy="29" r="29" fill="${COLOR.accent}"/>` +
     `<path d="M16 30 l9 9 l17 -19" fill="none" stroke="${COLOR.navy}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>`;
 }
 
@@ -158,7 +158,7 @@ export function render(fields, theme = 'auto', opts = {}) {
       h: it.h,
       draw: (y) => `<rect x="${PAD}" y="${round(y)}" width="${INNER}" height="${round(it.h)}" rx="24" fill="#ffffff" stroke="${COLOR.border}" stroke-width="2"/>` +
         check(PAD + 34, y + it.h / 2 - 27, 54) +
-        textLines({ lines: it.f.lines, x: textX, y: y + (it.h - it.f.height) / 2, size: it.f.size, lineH: it.f.lineH, f: F.tag, fill: COLOR.navy, starFill: COLOR.limeInk }),
+        textLines({ lines: it.f.lines, x: textX, y: y + (it.h - it.f.height) / 2, size: it.f.size, lineH: it.f.lineH, f: F.tag, fill: COLOR.navy, starFill: COLOR.accentInk }),
     }));
     stack(blocks, 24);
   } else {
@@ -168,7 +168,7 @@ export function render(fields, theme = 'auto', opts = {}) {
     if (label) {
       const tw = textWidth(label, F.strong, 40);
       const bw = tw + 92;
-      blocks.push({ h: 100, draw: (y) => `<rect x="${PAD}" y="${round(y)}" width="${round(bw)}" height="100" rx="16" fill="${COLOR.lime}"/>` +
+      blocks.push({ h: 100, draw: (y) => `<rect x="${PAD}" y="${round(y)}" width="${round(bw)}" height="100" rx="16" fill="${COLOR.accent}"/>` +
         textAt({ str: label, x: PAD + bw / 2, y: y + 50 + 40 * 0.35, f: F.strong, size: 40, fill: COLOR.navy, anchor: 'middle' }) });
     }
     stack(blocks, 40, bodyTop, fields.note ? 1060 : 1150);

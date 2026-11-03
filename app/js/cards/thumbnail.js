@@ -20,7 +20,7 @@ export const meta = {
   defaultTheme: 'navy',
   fields: [
     { key: 'eyebrow', label: 'Eyebrow', type: 'text', hint: 'Four words or fewer.' },
-    { key: 'head', label: 'Headline', type: 'textarea', rows: 3, hint: 'Put *stars* around the one word that should be lime.' },
+    { key: 'head', label: 'Headline', type: 'textarea', rows: 3, hint: 'Put *stars* around the one word that should be green.' },
     { key: 'footer', label: 'Footer line (optional)', type: 'text', hint: 'Left empty on purpose: YouTube covers the bottom right corner.' },
   ],
   defaults: {

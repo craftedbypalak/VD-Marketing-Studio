@@ -20,22 +20,22 @@ const BASE = new URL('../../', import.meta.url);
 export const TAGLINE = 'See everything. Chase nothing.';
 
 export const COLOR = {
-  navy: '#0f2350', lime: '#cdf22b', limeInk: '#4f5f00', white: '#ffffff', surface: '#f5f7fa',
+  navy: '#0a3050', accent: '#8ace8a', accentInk: '#1a5c1a', white: '#ffffff', surface: '#f5f7fa',
   border: '#dde6ee', textSecondary: '#4a4a4a', textMuted: '#6b6b6b', onNavyBody: '#d6e4f0',
 };
 
 export function palette(theme) {
   if (theme === 'light') {
     return {
-      theme: 'light', bg: COLOR.surface, ink: COLOR.navy, star: COLOR.limeInk, eyebrow: COLOR.limeInk,
-      body: COLOR.textSecondary, muted: COLOR.textMuted, rule: 'rgba(15,35,80,.18)', logo: 'colour',
-      chipBg: COLOR.lime, chipInk: COLOR.navy,
+      theme: 'light', bg: COLOR.surface, ink: COLOR.navy, star: COLOR.accentInk, eyebrow: COLOR.accentInk,
+      body: COLOR.textSecondary, muted: COLOR.textMuted, rule: 'rgba(10,48,80,.18)', logo: 'colour',
+      chipBg: COLOR.accent, chipInk: COLOR.navy,
     };
   }
   return {
-    theme: 'navy', bg: COLOR.navy, ink: COLOR.white, star: COLOR.lime, eyebrow: COLOR.lime,
-    body: COLOR.onNavyBody, muted: 'rgba(255,255,255,.78)', rule: 'rgba(205,242,43,.35)', logo: 'reverse',
-    chipBg: COLOR.lime, chipInk: COLOR.navy,
+    theme: 'navy', bg: COLOR.navy, ink: COLOR.white, star: COLOR.accent, eyebrow: COLOR.accent,
+    body: COLOR.onNavyBody, muted: 'rgba(255,255,255,.78)', rule: 'rgba(138,206,138,.35)', logo: 'reverse',
+    chipBg: COLOR.accent, chipInk: COLOR.navy,
   };
 }
 
@@ -260,7 +260,7 @@ export function textAt({ str, x, y, f, size, fill, anchor = 'start', ls }) {
 
 // --------------------------------------------------------------- SVG parts
 
-/** Eyebrow: a lime dot with a soft ring, then the label in small caps. Returns { svg, height }. */
+/** Eyebrow: a green dot with a soft ring, then the label in small caps. Returns { svg, height }. */
 export function eyebrow(pal, { x, y, text, size = 26, maxW }) {
   const label = String(text ?? '').trim().toUpperCase();
   if (!label) return { svg: '', height: 0 };
@@ -275,8 +275,8 @@ export function eyebrow(pal, { x, y, text, size = 26, maxW }) {
   const cx = x + ring + dot / 2;
   const base = y + size * 0.5 + s * 0.35;
   const svg =
-    `<circle cx="${round(cx)}" cy="${round(cy)}" r="${round(dot / 2 + ring)}" fill="${COLOR.lime}" fill-opacity=".28"/>` +
-    `<circle cx="${round(cx)}" cy="${round(cy)}" r="${round(dot / 2)}" fill="${COLOR.lime}"/>` +
+    `<circle cx="${round(cx)}" cy="${round(cy)}" r="${round(dot / 2 + ring)}" fill="${COLOR.accent}" fill-opacity=".28"/>` +
+    `<circle cx="${round(cx)}" cy="${round(cy)}" r="${round(dot / 2)}" fill="${COLOR.accent}"/>` +
     textAt({ str: label, x: cx + dot / 2 + ring + gap, y: base, f: F.label, size: s, fill: pal.eyebrow });
   return { svg, height: size };
 }

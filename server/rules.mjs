@@ -577,11 +577,11 @@ export function check(piece, rules = {}, accounts = [], extra = {}) {
     }
   }
 
-  // 17. A Status rule marks the phrase that shows in lime (warn).
+  // 17. A Status rule marks the phrase that shows in green (warn).
   if (piece.type === 'status-rule') {
     const st = String(piece.renditions?.waStatus?.text || '');
     if (st.trim() && !/\*[^*\n]{2,}\*/.test(st)) {
-      add({ check: 17, severity: 'warn', field: 'renditions.waStatus.text', text: st.slice(0, 80), rule: 'A Status rule card marks one word or short phrase in *stars*; it shows in lime on the card.', fix: 'Put *stars* around the words that carry the rule.' });
+      add({ check: 17, severity: 'warn', field: 'renditions.waStatus.text', text: st.slice(0, 80), rule: 'A Status rule card marks one word or short phrase in *stars*; it shows in green on the card.', fix: 'Put *stars* around the words that carry the rule.' });
     }
   }
 

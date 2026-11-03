@@ -373,7 +373,7 @@ export async function render(container, params) {
         chip({ label: `Greets ${e.whoGets}`, tone: 'muted' }),
         e.tiers?.length ? chip({ label: `Goes to ${tierList(e.tiers)}`, tone: 'navy' }) : chip({ label: 'Status only', tone: 'muted' }),
         e.pieceGenerated && chip({ label: 'Piece generated', tone: 'ok', icon: 'check' }),
-        own && chip({ label: 'Wording written', tone: 'lime' }),
+        own && chip({ label: 'Wording written', tone: 'accent' }),
         e.confidence !== 'gazetted' && chip({ label: cap(e.confidence), tone: 'muted' }),
       ].filter(Boolean);
       const body = [el('div', { class: 'rc-meta' }, meta)];
@@ -451,7 +451,7 @@ export async function render(container, params) {
         chip({ label: e.series, tone: 'navy' }),
         chip({ label: `${e.anglesUnused} of ${e.anglesTotal} angles unused`, tone: e.anglesUnused ? 'muted' : 'warn' }),
         e.pieceId && chip({ label: `Piece made: ${e.pieceStatus}${e.pieceDate ? `, ${fmt.date(e.pieceDate)}` : ', not placed'}`, tone: 'ok', icon: 'check' }),
-        e.proposedMode && chip({ label: e.proposedMode === 'hand' || e.proposedMode === 'runner' ? 'Concepts written by hand' : 'Concepts by Claude', tone: 'lime' }),
+        e.proposedMode && chip({ label: e.proposedMode === 'hand' || e.proposedMode === 'runner' ? 'Concepts written by hand' : 'Concepts by Claude', tone: 'accent' }),
       ].filter(Boolean);
       const body = [el('div', { class: 'rc-meta' }, meta)];
       if (e.proposals.length) {

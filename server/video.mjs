@@ -524,7 +524,7 @@ export function buildBrandJson(root, projectDir) {
   const t = readTokens(root);
   const rel = (abs) => path.relative(projectDir, abs).split(path.sep).join('/');
   const colors = {
-    brand: t.navy, deep: t['navy-deep'], accent: t.lime, accentInk: t['lime-ink'], accentTint: t['lime-tint'],
+    brand: t.navy, deep: t['navy-deep'], accent: t.accent, accentInk: t['accent-ink'], accentTint: t['accent-tint'],
     ink: t.text, ink2: t['text-secondary'], ink3: t['text-muted'], onDark: t.white,
     surface: t.surface, border: t.border, warnBg: t['warn-bg'], warnInk: t['warn-text'], warnBd: t.warn, infoInk: t['navy-mid'],
   };
@@ -544,7 +544,7 @@ export function buildBrandJson(root, projectDir) {
       onDark: rel(path.join(root, 'app', 'img', 'vd-wordmark-reverse.svg')),
       clearSpace: 0.5,
       rules: 'Venture Drafters logo rules. Use the official word logo only: the colour file on light backgrounds, the reversed file on navy. ' +
-        'The logo is sapphire and lime only, always two colours; the lime arrow is never dropped and there is no one-colour version. ' +
+        'The logo is navy and green only, always two colours; the green arrow is never dropped and there is no one-colour version. ' +
         'Do not redraw, stretch, rotate, skew or recolour it, and add no shadow or outline. Clear space is half the logo height on all four sides. ' +
         'Never render the word logo below 20 px high; below that use the Vd monogram. Approved backgrounds are white, the light surface and navy.',
     },

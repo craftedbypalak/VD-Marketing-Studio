@@ -28,7 +28,7 @@ const KIND_LABEL = {
 };
 const STATE_LABEL = { open: 'Open', optional: 'Optional', derived: 'Derived', 'greeting-only': 'Greeting only', dark: 'Dark', filled: 'Filled' };
 const MARKER_LABEL = { dark: 'Dark', 'greeting-only': 'Greeting only', compliance: 'Compliance', event: 'Event', quiet: 'Quiet', greeting: 'Greeting', rule: 'Standing rule' };
-const MARKER_TONE = { dark: 'bad', 'greeting-only': 'warn', compliance: 'lime', event: 'navy', quiet: 'muted', greeting: 'muted', rule: 'muted' };
+const MARKER_TONE = { dark: 'bad', 'greeting-only': 'warn', compliance: 'accent', event: 'navy', quiet: 'muted', greeting: 'muted', rule: 'muted' };
 const GROUPS = ['Venture Drafters', 'Palak', 'WhatsApp'];
 const STATUS_RANK = { approved: 0, scheduled: 1, 'in-review': 2, 'director-review': 2, 'changes-requested': 3, draft: 4, idea: 5, posted: 6, measured: 7, retired: 9 };
 const APPROVED = ['approved', 'scheduled', 'posted', 'measured'];

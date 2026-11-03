@@ -11,7 +11,7 @@ export const description = 'Writes the prompt for one flat illustration and the 
 export const inputFields = ['piece', 'kind'];
 
 export const DEFAULT_PREFIX =
-  'Flat vector illustration, sapphire navy #0f2350 with a small lime #cdf22b accent on white or sapphire, soft corners, no gradients, no text, ' +
+  'Flat vector illustration, navy #0a3050 with a small green #8ace8a accent on white or navy, soft corners, no gradients, no text, ' +
   'no faces drawn as real people, never a screen, sheet or phone drawn as a real product screenshot';
 
 export const CARD_TEMPLATES = ['statusRule', 'quote', 'hook', 'thumbnail', 'carouselSlide', 'linkedinImage'];
@@ -78,7 +78,7 @@ export const schema = {
         properties: {
           template: { type: 'string', enum: CARD_TEMPLATES },
           eyebrow: { type: 'string' },
-          head: { type: 'string', description: 'One *starred* word marks the lime highlight' },
+          head: { type: 'string', description: 'One *starred* word marks the green highlight' },
           body: { type: 'string' },
         },
         required: ['template', 'eyebrow', 'head', 'body'],
