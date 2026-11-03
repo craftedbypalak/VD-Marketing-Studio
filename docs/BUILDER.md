@@ -34,17 +34,13 @@ export const box = {
 |---|---|---|---|
 | Brand and logo | brand | logo type, tagline text, tagline layout, live preview of every template | `settings.brand` |
 | Card templates | cards | per template: on or off, default theme, default footer line, fixed words ("SWIPE", "A venture by VSP", "Warm wishes") | `settings.cards` |
-| Accounts and channels | accounts | add, edit, remove accounts: label, short, group, platform, limits, repurpose | `accounts` collection |
 | Posting rhythm | rhythm | weekly and monthly slots per account, calendar defaults, greeting time, time zone, go dark | `accounts[].weekly/monthly`, `settings.calendar`, `settings.timezone`, `settings.goDark` |
 | Checker rules | checker | voice, say, never say, course terms, names, claims, limits, checklist, allowed emoji, allowed capitals, Hinglish words | `rules` |
 | Video defaults | video | words a minute, target minutes and range, face chapters, face scenes per chapter, chapter plan, Shorts per video, website | `settings.video`, `settings.website` |
 | Occasions | occasions | greeting time, Status account, years before a concept repeats, festival angle bank | `settings.occasions`, `festival-angles` collection |
-| Solutions | solutions | add, edit, remove solutions | `solutions` collection |
-| AI | ai | model, mode, image provider and model, house-style prefix, runner wait | `settings` |
-| Team and review | team | users and roles, review routing | `settings.users`, `settings.reviewRouting` |
 
 - Every new setting falls back to today's hard-coded value when it is missing, so nothing changes until the director edits it.
-- Settings (`#/settings`) keeps only what is personal or system: who you are, your PIN, the Network link token, workspaces (owner).
+- Marketing only (Palak, 3 November 2026). Accounts, solutions, AI, users and review routing stay in Settings.
 
 ## 3. The logo on visuals
 - Bottom only. The "Top" choice is removed; a stored `position: 'top'` is read as bottom.
