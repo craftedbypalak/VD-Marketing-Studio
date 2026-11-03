@@ -104,7 +104,19 @@ async function buildUserPicker() {
 export function setActions(nodes = []) { topbarActions.replaceChildren(...nodes.filter(Boolean)); }
 export function setEyebrow(text) { pageEyebrow.textContent = text || (workspaceName ? `${workspaceName}, Studio` : 'Studio'); }
 
+/** The hosted preview keeps changes only for a while: say so above every page. */
+async function hostingBanner() {
+  const h = await api.get('/health').catch(() => null);
+  if (!h?.hosting || h.hosting.persistent !== false) return;
+  const main = document.getElementById('main');
+  const outlet = document.getElementById('outlet');
+  if (!main || !outlet) return;
+  const ai = h.hosting.aiMode === 'api' ? '' : ' AI steps need ANTHROPIC_API_KEY in the Vercel project settings.';
+  main.insertBefore(el('div', { class: 'banner banner-warn hosting-banner', role: 'status', text: `Hosted preview: changes are kept only for a short while and reset when the server restarts, until Google Sheets is connected.${ai}` }), outlet);
+}
+
 buildNav();
+hostingBanner();
 await buildWorkspaceSwitcher();
 await buildUserPicker();
 // The user changed: the workspaces they may enter may differ.

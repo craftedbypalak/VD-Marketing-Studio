@@ -1,0 +1,10 @@
+# Not part of the hosted tool. Media is served from STUDIO_MEDIA_BASE_URL.
+media/
+video/
+docs/
+research/
+PLAN.html
+server/*.test.mjs
+server/_scratch.mjs
+server/_storeContract.mjs
+data/workspaces/

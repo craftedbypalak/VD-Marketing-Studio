@@ -39,6 +39,15 @@ curl -s -X POST localhost:4747/api/pieces -H 'content-type: application/json' -H
   -d '{"type":"linkedin-text","pillar":"problem","status":"draft","hook":"You are the follow-up department"}'
 ```
 
+## On Vercel
+
+The repo deploys to Vercel as it is (`vercel.json`): `scripts/build-static.mjs` copies `app/` to `public/`, the only folder served as files, and `api/index.mjs` runs the same handler as the local server for `/api/*`, `/media/*` and `/data/*`. `data/`, `server/` and the docs are never reachable as plain files. In the Vercel project leave Root Directory empty and Framework Preset on Other; `vercel.json` sets the build.
+
+- **Data.** The function copies `data/` to `/tmp` on a cold start and works on that copy, so changes made on the hosted tool last only until the instance restarts. The app shows a banner saying so. The Google Sheets store (`docs/SPLIT-AND-HOSTING.md`, section 3) is what makes it keep data.
+- **Media.** `media/` is not deployed. `/media/*` redirects to `STUDIO_MEDIA_BASE_URL`, by default the repo's `media/` folder on jsDelivr (works while the repo is public). Point it at Drive or a bucket when the media moves.
+- **AI.** There is no `claude` command on Vercel. Add `ANTHROPIC_API_KEY` in the Vercel project's environment variables and the AI steps use the Claude API (`STUDIO_AI_MODE` forces either mode).
+- **Limits.** Uploads over 4.5 MB (video clips) and the video hand-off folder need the Mac until Drive uploads land.
+
 ## The AI bridge
 
 `server/ai.mjs` runs each operation through the Claude Code command line by default (`settings.aiMode: "cli"`), on the founder's subscription. The `claude` command must be logged in on the Mac: run `claude` once in a terminal and complete `/login`. With `ANTHROPIC_API_KEY` in the environment and `settings.aiMode: "api"`, the same operations use the Claude Messages API with structured outputs and prompt caching.

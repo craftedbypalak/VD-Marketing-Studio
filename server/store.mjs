@@ -14,7 +14,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-export const STUDIO_ROOT = path.resolve(here, '..');
+// STUDIO_ROOT may point the store at a writable copy (the Vercel function copies
+// data/ to /tmp on a cold start, because the deployed code folder is read-only).
+export const STUDIO_ROOT = process.env.STUDIO_ROOT ? path.resolve(process.env.STUDIO_ROOT) : path.resolve(here, '..');
 export const DATA_DIR = path.join(STUDIO_ROOT, 'data');
 
 // People and touches live in the separate Network tool (docs/SPLIT-AND-HOSTING.md).

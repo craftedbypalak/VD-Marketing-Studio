@@ -371,7 +371,7 @@ function monthSummary(today, settings, by) {
     month: ym, from: monthStart, to: monthEnd,
     slots: counts,
     posted: postedPieces.map((p) => ({ id: p.id, hook: p.hook, postedAt: p.measure?.postedAt || null, link: p.measure?.postedLink || null })),
-    ai: { calls: aiCalls.length, byHand, failed, costUsd: costKnown ? Math.round(cost * 100) / 100 : null, costKnownFor: costKnown, mode: settings.aiMode === 'api' ? 'api' : 'cli', last: ai.lastCall || null },
+    ai: { calls: aiCalls.length, byHand, failed, costUsd: costKnown ? Math.round(cost * 100) / 100 : null, costKnownFor: costKnown, mode: ai.aiModeOf(settings), last: ai.lastCall || null },
     actionsThisWeek: Object.entries(byPerson).map(([who, n]) => ({ by: who, actions: n })).sort((a, b) => b.actions - a.actions),
     lastChange: last ? { at: last.at, by: last.by, what: last.what } : null,
     approver: role === 'manager' || role === 'director',
@@ -415,6 +415,14 @@ export function registerCoreRoutes(router, modules = {}) {
   // ---- health
   router.add('GET', '/api/health', () => ({
     ok: true, at: new Date().toISOString(), collections: COLLECTIONS, routes: router.list().length,
+    // The hosted tool keeps its data in a copy that lasts only as long as the server
+    // instance, until the Google Sheets store lands; the app shows a banner while so.
+    hosting: {
+      host: process.env.VERCEL ? 'vercel' : 'local',
+      store: store.backend,
+      persistent: !process.env.STUDIO_EPHEMERAL,
+      aiMode: ai.aiModeOf(settingsDoc()),
+    },
   }));
 
   // ---- today (section 5): the one call the Today view makes

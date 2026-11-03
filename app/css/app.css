@@ -338,3 +338,4 @@ hr.rule { border: 0; border-top: 1px solid var(--border); margin: 16px 0; }
   .subnav-item.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
   .tab-item { font-size: 11px; }
 }
+.hosting-banner { margin-bottom: 12px; }

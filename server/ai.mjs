@@ -156,11 +156,21 @@ function serialise(key, fn) {
 
 // ----------------------------------------------------------------------- run
 
+/**
+ * 'api' or 'cli'. STUDIO_AI_MODE in the environment wins over settings.aiMode:
+ * the hosted tool has no `claude` command, so it runs on the API when a key is set.
+ */
+export function aiModeOf(settings = {}) {
+  const forced = (process.env.STUDIO_AI_MODE || '').trim().toLowerCase();
+  if (forced === 'api' || forced === 'cli') return forced;
+  return settings.aiMode === 'api' ? 'api' : 'cli';
+}
+
 export async function run(opName, input = {}, ctx) {
   const op = await loadOp(opName);
   const context = ctx || buildCtx();
   const settings = context.settings || {};
-  const mode = settings.aiMode === 'api' ? 'api' : 'cli';
+  const mode = aiModeOf(settings);
   const { handOutput, ...cleanInput } = input || {};
   const prompt = op.buildPrompt(cleanInput, context);
   if (!prompt || typeof prompt.system !== 'string' || typeof prompt.user !== 'string') {
@@ -423,5 +433,5 @@ export function getJob(id) {
   return jobs.get(id) || null;
 }
 
-export const ai = { run, listOps, loadOp, buildCtx, createJob, getJob, modelId, AiError, lastCall, listPending, answerPending };
+export const ai = { run, aiModeOf, listOps, loadOp, buildCtx, createJob, getJob, modelId, AiError, lastCall, listPending, answerPending };
 export default ai;

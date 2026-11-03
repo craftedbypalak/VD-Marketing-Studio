@@ -1,0 +1,16 @@
+{
+  "name": "venture-drafters-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Venture Drafters Studio: the marketing tool. Plain Node, no build step, no dependencies.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server/index.mjs",
+    "test": "node --test server/*.test.mjs",
+    "build": "node scripts/build-static.mjs"
+  },
+  "dependencies": {}
+}
