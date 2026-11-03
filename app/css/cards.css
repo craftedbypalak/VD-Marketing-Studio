@@ -58,3 +58,22 @@
   .cards-frame { width: min(100%, calc(var(--ar, 1) * 60vh)); }
 }
 .cards-brand { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0 12px; }
+
+/* Builder boxes: Brand and logo, Card templates (app/js/builder/boxes/brand.js, cards.js). */
+.cards-bx-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4px 16px; margin-top: 12px; }
+.cards-bx-controls .cards-seg { max-width: 100%; }
+.cards-bx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 14px 12px; align-items: end; }
+.cards-bx-fig { margin: 0; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.cards-bx-fig figcaption { font-size: 11px; line-height: 1.3; color: var(--text-muted); }
+.cards-bx-thumb { width: 100%; line-height: 0; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); background: var(--white); }
+.cards-bx-thumb svg { width: 100%; height: 100%; display: block; }
+.cards-bx-tpl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(120px, 220px); gap: 16px; align-items: start; }
+.cards-bx-fields { display: grid; gap: 2px; min-width: 0; }
+.cards-bx-one { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px; }
+.cards-bx-off .cards-bx-tpl { opacity: .45; }
+.cards-bx-save { display: flex; justify-content: flex-end; }
+@media (max-width: 560px) {
+  .cards-bx-tpl { grid-template-columns: 1fr; }
+  .cards-bx-one { max-width: 260px; }
+  .cards-bx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

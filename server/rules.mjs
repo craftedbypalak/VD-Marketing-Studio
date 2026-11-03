@@ -15,6 +15,7 @@
 //   POST /api/content/review-pass            queue `refine` over every in-review piece with one version
 //   GET  /api/content/review-pass/:jobId     progress, with what was written per piece
 //   GET|POST /api/content/prompt/:op         debug: the system and user prompt and the schema, with no model call
+//   GET  /api/checker/defaults               the code defaults of the lists Builder edits (emojiOk, capsOk, ...)
 //
 // POST /api/pieces/:id/place and /unplace belong to the calendar module.
 
@@ -126,25 +127,27 @@ export function publicFields(piece = {}) {
 
 // ----------------------------------------------------------------- the checker
 
-const EMOJI_OK = new Set(['©', '®', '™']);
+// The lists below are the code defaults. A rules document may carry its own copy
+// (rules.emojiOk, rules.capsOk, rules.hinglish, rules.companySuffixes, rules.notNames),
+// edited in Builder, Checker rules; an array there replaces the default, and when
+// the key is absent the default here applies.
+
+export const DEFAULT_EMOJI_OK = ['©', '®', '™'];
 const EMOJI_RE = /[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}⃣️]/gu;
 
-const CAPS_OK = new Set(['AIMP', 'MSME', 'GSTR', 'GSTIN', 'BNI']);
+export const DEFAULT_CAPS_OK = ['AIMP', 'MSME', 'GSTR', 'GSTIN', 'BNI'];
 
-const HINGLISH = [
+export const DEFAULT_HINGLISH = [
   'ho gaya', 'hua', 'kya', 'hai', 'nahi', 'nahin', 'karo', 'bhai', 'yaar', 'achha', 'accha', 'theek hai', 'kaise', 'kyun', 'abhi', 'bilkul',
 ];
 
-const SUFFIX_RE = new RegExp(
-  '(?<![\\p{L}\\p{N}])(?:\\p{Lu}[\\p{L}&\'’-]*[ \\t]+){0,3}\\p{Lu}[\\p{L}&\'’-]*[ \\t]+' +
-  '(?:Pvt\\.?[ \\t]?Ltd\\.?|Private[ \\t]Limited|Limited|Ltd\\.?|LLP|Inc\\.?|Corp\\.?|Industries|Enterprises|Traders|Textiles|Associates|' +
-  'Consultants|Technologies|Solutions|Group|Exports|Foods|Pharma|Motors|Steel|Plastics|Packaging|Logistics|Constructions|Builders)(?![\\p{L}\\p{N}])',
-  'gu',
-);
+// A dot after a word makes the dot optional ("Pvt. Ltd." also finds "Pvt Ltd" and "PvtLtd").
+export const DEFAULT_COMPANY_SUFFIXES = [
+  'Pvt. Ltd.', 'Private Limited', 'Limited', 'Ltd.', 'LLP', 'Inc.', 'Corp.', 'Industries', 'Enterprises', 'Traders', 'Textiles', 'Associates',
+  'Consultants', 'Technologies', 'Solutions', 'Group', 'Exports', 'Foods', 'Pharma', 'Motors', 'Steel', 'Plastics', 'Packaging', 'Logistics', 'Constructions', 'Builders',
+];
 
-const CAP_SEQ_RE = /(?<![\p{L}\p{N}#@/])\p{Lu}[\p{L}\p{N}&'’-]+(?:[ \t]+\p{Lu}[\p{L}\p{N}&'’-]+)+/gu;
-
-const NOT_NAMES = [
+export const DEFAULT_NOT_NAMES = [
   'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday',
   'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',
   'Diwali', 'Dhanteras', 'Holi', 'Dussehra', 'Navratri', 'Eid', 'Christmas', 'Easter', 'Baisakhi', 'Onam', 'Pongal',
@@ -154,6 +157,51 @@ const NOT_NAMES = [
   'Instagram', 'LinkedIn', 'WhatsApp Status', 'WhatsApp', 'YouTube Shorts', 'YouTube Short', 'YouTube', 'Facebook', 'Google Sheets', 'Google Drive', 'Google Account',
   'Status', 'Reel', 'Reels', 'Stories',
 ];
+
+/** The editable checker lists with their code defaults, for Builder. */
+export const CHECKER_LIST_DEFAULTS = {
+  emojiOk: DEFAULT_EMOJI_OK,
+  capsOk: DEFAULT_CAPS_OK,
+  hinglish: DEFAULT_HINGLISH,
+  companySuffixes: DEFAULT_COMPANY_SUFFIXES,
+  notNames: DEFAULT_NOT_NAMES,
+};
+
+/** rules[key] when it is an array (blank lines dropped), else the default. */
+export function listOf(rules, key) {
+  const v = rules?.[key];
+  if (!Array.isArray(v)) return CHECKER_LIST_DEFAULTS[key];
+  return v.map((x) => String(x ?? '').trim()).filter(Boolean);
+}
+
+function suffixPattern(suffix) {
+  const words = String(suffix).trim().split(/\s+/).filter(Boolean);
+  return words.map((w, i) => {
+    const dotted = w.endsWith('.');
+    const core = esc(w.replace(/\.+$/, '')) + (dotted ? '\\.?' : '');
+    const gap = i < words.length - 1 ? (dotted ? '[ \\t]?' : '[ \\t]+') : '';
+    return core + gap;
+  }).join('');
+}
+
+const suffixCache = new Map();
+/** The firm-name pattern: up to four capitalised words ending in a company suffix. Null when the list is empty. */
+export function suffixRe(suffixes) {
+  const list = [...suffixes].filter((x) => String(x).trim()).sort((a, b) => b.length - a.length);
+  if (!list.length) return null;
+  const key = list.join('\u0000');
+  if (suffixCache.has(key)) return suffixCache.get(key);
+  const re = new RegExp(
+    '(?<![\\p{L}\\p{N}])(?:\\p{Lu}[\\p{L}&\'’-]*[ \\t]+){0,3}\\p{Lu}[\\p{L}&\'’-]*[ \\t]+' +
+    `(?:${list.map(suffixPattern).join('|')})(?![\\p{L}\\p{N}])`,
+    'gu',
+  );
+  if (suffixCache.size > 20) suffixCache.clear();
+  suffixCache.set(key, re);
+  return re;
+}
+
+const CAP_SEQ_RE = /(?<![\p{L}\p{N}#@/])\p{Lu}[\p{L}\p{N}&'’-]+(?:[ \t]+\p{Lu}[\p{L}\p{N}&'’-]+)+/gu;
 
 function claimText(rules, re, fallback) {
   const hit = (rules.claimsBlocked || []).find((c) => re.test(c));
@@ -174,6 +222,11 @@ export function check(piece, rules = {}, accounts = [], extra = {}) {
   const acct = (id) => (accounts || []).find((a) => a.id === id) || null;
 
   const add = (v) => violations.push({ severity: 'warn', fix: '', ...v });
+  const EMOJI_OK = new Set(listOf(rules, 'emojiOk'));
+  const CAPS_OK = new Set(listOf(rules, 'capsOk'));
+  const HINGLISH = listOf(rules, 'hinglish');
+  const NOT_NAMES = listOf(rules, 'notNames');
+  const SUFFIX_RE = suffixRe(listOf(rules, 'companySuffixes'));
 
   // 1. Course terms: always block, anywhere in any public field.
   for (const term of rules.courseTerms || []) {
@@ -428,7 +481,7 @@ export function check(piece, rules = {}, accounts = [], extra = {}) {
     let text = f.text.replace(/#[\p{L}\p{N}_]+/gu, (m) => ' '.repeat(m.length)).replace(/https?:\/\/\S+/g, (m) => ' '.repeat(m.length));
     for (const re of allowRes) text = text.replace(re, (m) => '\u0001'.repeat(m.length));
     const seen = [];
-    for (const re of [SUFFIX_RE, CAP_SEQ_RE]) {
+    for (const re of [SUFFIX_RE, CAP_SEQ_RE].filter(Boolean)) {
       for (const m of matches(text, re)) {
         const end = m.index + m.text.length;
         if (seen.some(([a, b]) => m.index < b && end > a)) continue;
@@ -443,7 +496,7 @@ export function check(piece, rules = {}, accounts = [], extra = {}) {
   }
 
   // 9. Whole Hindi sentences: Devanagari runs over 12 characters, or more than one Hinglish tag (warn).
-  const hinglishRe = new RegExp(`${LB}(?:${HINGLISH.map(esc).join('|')})${RB}`, 'giu');
+  const hinglishRe = HINGLISH.length ? new RegExp(`${LB}(?:${HINGLISH.map(esc).join('|')})${RB}`, 'giu') : null;
   for (const f of fields) {
     for (const m of matches(f.text, /[ऀ-ॿ][ऀ-ॿ\s.,?।]*/gu)) {
       if (m.text.trim().length > 12) {
@@ -453,7 +506,7 @@ export function check(piece, rules = {}, accounts = [], extra = {}) {
         });
       }
     }
-    const tags = [...matches(f.text, hinglishRe)];
+    const tags = hinglishRe ? [...matches(f.text, hinglishRe)] : [];
     if (tags.length > 1) {
       add({
         check: 9, severity: 'warn', field: f.field, text: tags.map((t) => t.text).join(', '),
@@ -705,6 +758,12 @@ export async function enrichToday(payload) {
 }
 
 export const routes = [
+  {
+    // The code defaults of the editable checker lists, shown in Builder when the rules document has none.
+    method: 'GET',
+    path: '/api/checker/defaults',
+    handler: () => ({ ...CHECKER_LIST_DEFAULTS }),
+  },
   {
     method: 'POST',
     path: '/api/content/check-all',

@@ -64,19 +64,59 @@ const LOGO_FILES = {
 };
 
 // ------------------------------------------------------------------ brand
-// Where the brand sits on every card. The builder sets the defaults (Builder page,
+// How the brand shows on every card. The Builder sets the defaults (Brand and logo box,
 // settings.brand); Visuals may override them for one card. Renders are synchronous,
 // so the active brand is module state, set before a render with useBrand().
-//   position: 'bottom' | 'top'   logo: 'full' | 'mark'   taglineLayout: 'line' | 'stacked'
-export const BRAND_DEFAULTS = { position: 'bottom', logo: 'full', taglineLayout: 'line', tagline: null };
+//   logo: 'full' | 'mark'   taglineLayout: 'line' | 'stacked'   tagline: text or null (the house line)
+// The brand always sits at the bottom, at a fixed place and size per format (docs/BUILDER.md 3).
+// A stored position: 'top' (removed on 3 November 2026) is ignored.
+export const BRAND_DEFAULTS = { logo: 'full', taglineLayout: 'line', tagline: null };
+const cleanBrand = (b) => {
+  const out = { ...BRAND_DEFAULTS };
+  if (b && b.logo === 'mark') out.logo = 'mark';
+  if (b && b.taglineLayout === 'stacked') out.taglineLayout = 'stacked';
+  if (b && typeof b.tagline === 'string' && b.tagline.trim()) out.tagline = b.tagline.trim();
+  return out;
+};
 let brandBase = { ...BRAND_DEFAULTS };
 let brandActive = { ...BRAND_DEFAULTS };
 /** The builder's defaults (settings.brand). */
-export function setBrand(b) { brandBase = { ...BRAND_DEFAULTS, ...(b || {}) }; brandActive = { ...brandBase }; }
+export function setBrand(b) { brandBase = cleanBrand(b); brandActive = { ...brandBase }; }
 /** For the next renders: the defaults with a per-card override on top. */
-export function useBrand(override) { brandActive = { ...brandBase, ...(override || {}) }; return brandActive; }
+export function useBrand(override) { brandActive = cleanBrand({ ...brandBase, ...(override || {}) }); return { ...brandActive }; }
 export const brandNow = () => ({ ...brandActive });
-let topBrand = null;   // a footer drawn at the top, picked up by frame()
+
+// --------------------------------------------------------- card settings
+// Per template: on or off, default theme, default footer line; and the fixed words
+// some templates draw. The Builder sets them (Card templates box, settings.cards):
+//   { off: [ids], theme: { id: 'navy'|'light'|'auto' }, footer: { id: text }, text: { swipe, ventureLine, greetingEyebrow } }
+// Anything missing falls back to the hard-coded values below.
+export const CARD_TEXT = { swipe: 'SWIPE', ventureLine: 'A venture by VSP', greetingEyebrow: 'Warm wishes' };
+let cardSet = { off: [], theme: {}, footer: {}, text: {} };
+const strMap = (o) => Object.fromEntries(Object.entries(o && typeof o === 'object' ? o : {}).filter(([, v]) => typeof v === 'string' && v.trim()).map(([k, v]) => [k, v.trim()]));
+/** The builder's card settings (settings.cards). Set it wherever setBrand is set. */
+export function setCards(c) {
+  const src = c && typeof c === 'object' ? c : {};
+  cardSet = {
+    off: Array.isArray(src.off) ? src.off.filter((x) => typeof x === 'string') : [],
+    theme: strMap(src.theme), footer: strMap(src.footer), text: strMap(src.text),
+  };
+}
+export const cardsNow = () => JSON.parse(JSON.stringify(cardSet));
+/** A fixed word of a template ('swipe', 'ventureLine', 'greetingEyebrow'). */
+export const cardText = (key) => cardSet.text[key] || CARD_TEXT[key] || '';
+export const isTemplateOn = (id) => !cardSet.off.includes(id);
+/** The default theme of a template: the builder's choice if it is one the template has. */
+export function themeFor(meta) {
+  const t = cardSet.theme[meta.id];
+  const themes = meta.themes || ['navy', 'light'];
+  return t && themes.includes(t) ? t : meta.defaultTheme;
+}
+/** The default footer line of a template: the builder's, else the template's own default. */
+export function footerFor(meta) {
+  if (cardSet.footer[meta.id] != null) return cardSet.footer[meta.id];
+  return meta.defaults && meta.defaults.footer != null ? meta.defaults.footer : TAGLINE;
+}
 
 let loaded = null;     // { fontCss, logos } once ready
 let loading = null;
@@ -315,46 +355,53 @@ export function logoWidth(pal, h) {
 }
 
 /**
- * Footer: the brand block. By default a rule, the logo on the left and the
- * tagline on the right. The brand settings change it: the short VD mark instead
- * of the word logo (drawn larger), the tagline under the logo, and the block at
- * the top of the card instead of the bottom (frame() moves the content down).
+ * Footer: the brand block, always at the bottom. A rule, the logo on the left and the
+ * tagline on the right. The logo's x, bottom edge and height are fixed per format
+ * (logoTop + logoH is the bottom edge): they never change with the text, the theme or
+ * the tagline layout. The VD mark has one fixed, larger size per format (logoH x 1.9)
+ * on the same bottom edge; the rule moves up to clear it.
+ * "Below logo" (stacked) draws the tagline under the logo, in the bottom margin down
+ * to `limit` (default: the canvas edge less a small margin; the Status cards pass the
+ * safe zone's bottom line). It shrinks to a floor; if it still does not fit, it falls
+ * back to one line beside the logo.
  */
-export function footer(pal, { w, padX, ruleY, logoTop, logoH, tagline = TAGLINE, size = 28, rule = true, sub }) {
+export function footer(pal, { w, h, padX, ruleY, logoTop, logoH, tagline = TAGLINE, size = 28, rule = true, sub, limit }) {
+  const geo = logoBox(pal, { padX, logoTop, logoH });
   const b = brandActive;
   const text = b.tagline != null && tagline === TAGLINE ? b.tagline : tagline;
-  const mark = b.logo === 'mark';
-  const lh = mark ? Math.round(logoH * 1.9) : logoH;
-  const stacked = b.taglineLayout === 'stacked' && text;
-  let s = stacked ? Math.round(size * 0.9) : size;
-  const room = stacked ? w - 2 * padX : w - 2 * padX - logoWidth(pal, lh) - 40;
-  while (s > 16 && textWidth(text || '', F.tag, s) > room) s -= 1;
-  const blockH = lh + (stacked ? Math.round(s * 0.6) + s : 0);
-  const bottom = logoTop + logoH;   // the block keeps its bottom edge
+  let out = '';
+  if (rule && ruleY != null) out += `<rect x="${padX}" y="${round(ruleY - (geo.h - logoH))}" width="${w - 2 * padX}" height="2" fill="${pal.rule}"/>`;
+  out += logo(pal, { x: geo.x, y: geo.y, h: geo.h });
 
-  const draw = (top, ruleAt) => {
-    let out = '';
-    if (rule && ruleAt != null) out += `<rect x="${padX}" y="${ruleAt}" width="${w - 2 * padX}" height="2" fill="${pal.rule}"/>`;
-    out += logo(pal, { x: padX - (mark ? 0 : 6), y: top, h: lh });
-    if (text && stacked) out += textAt({ str: text, x: padX, y: top + lh + Math.round(s * 0.6) + s * 0.8, f: F.tag, size: s, fill: pal.muted });
-    else if (text) {
-      const cy = top + lh / 2;
-      out += textAt({ str: text, x: w - padX, y: sub ? cy - 2 : cy + s * 0.35, f: F.tag, size: s, fill: pal.muted, anchor: 'end' });
+  let below = false;
+  if (text && b.taglineLayout === 'stacked' && h) {
+    const edge = limit ?? h - Math.max(16, Math.round(h * 0.016));
+    const gap = 10;
+    let s = Math.round(size * 0.8);
+    const fits = (n) => textWidth(text, F.tag, n) <= w - 2 * padX && geo.bottom + gap + n * 1.05 <= edge;
+    while (s > 16 && !fits(s)) s -= 1;
+    if (fits(s)) {
+      below = true;
+      out += textAt({ str: text, x: padX, y: geo.bottom + gap + s * 0.8, f: F.tag, size: s, fill: pal.muted });
     }
-    if (sub) out += textAt({ str: sub.toUpperCase(), x: w - padX, y: top + lh / 2 + 32, f: F.label, size: 18, fill: pal.muted, anchor: 'end' });
-    return out;
-  };
-
-  if (b.position === 'top') {
-    // Drawn from y = 0; frame() places it below the top margin (the Status safe zone
-    // on 1080 x 1920) and shifts the rest of the card down.
-    const ruleAt = rule && ruleY != null ? blockH + Math.round((logoTop - ruleY) * 0.9) : null;
-    topBrand = { svg: draw(0, ruleAt), h: (ruleAt ?? blockH) + 26 };
-    return '';
   }
-  const top = bottom - blockH;
-  const ruleAt = rule && ruleY != null ? ruleY - (blockH - logoH) : null;
-  return draw(top, ruleAt);
+  if (text && !below) {
+    let s = size;
+    const room = w - 2 * padX - geo.w - 40;
+    while (s > 16 && textWidth(text, F.tag, s) > room) s -= 1;
+    const cy = geo.y + geo.h / 2;
+    out += textAt({ str: text, x: w - padX, y: sub ? cy - 2 : cy + s * 0.35, f: F.tag, size: s, fill: pal.muted, anchor: 'end' });
+  }
+  if (sub) out += textAt({ str: sub.toUpperCase(), x: w - padX, y: geo.y + geo.h / 2 + 32, f: F.label, size: 18, fill: pal.muted, anchor: 'end' });
+  return out;
+}
+
+/** Where the logo sits: { x, y, w, h, bottom }. Depends only on the format and the logo choice. */
+export function logoBox(pal, { padX, logoTop, logoH }) {
+  const mark = brandActive.logo === 'mark';
+  const h = mark ? Math.round(logoH * 1.9) : logoH;
+  const bottom = logoTop + logoH;
+  return { x: padX - (mark ? 0 : 6), y: bottom - h, w: logoWidth(pal, h), h, bottom };
 }
 
 /** A rounded picture panel from a data URL, cropped to fill. */
@@ -369,13 +416,6 @@ export function imagePanel({ id, x, y, w, h, r = 28, href, pal }) {
 /** The SVG document: fixed pixel size, embedded fonts, flat background. */
 export function frame({ w, h, pal, body, opts }) {
   const fonts = opts && opts.embedFonts === false ? '' : (loaded?.fontCss || '');
-  if (topBrand) {
-    // The brand sits at the top: everything else moves down by the brand block's height.
-    const top = h >= 1900 ? 250 : Math.max(40, Math.round(w * 0.06));
-    const shift = topBrand.h + 24;   // the content keeps its own top margin, below the brand block
-    body = `<g transform="translate(0 ${top})">${topBrand.svg}</g><g transform="translate(0 ${round(shift)})">${body}</g>`;
-    topBrand = null;
-  }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" font-family="${esc(F.body.stack)}">` +
     (fonts ? `<style>${fonts}</style>` : '') +
     `<rect width="${w}" height="${h}" fill="${pal.bg}"/>${body}</svg>`;
@@ -394,7 +434,7 @@ export const warn = (opts, message) => { if (opts && Array.isArray(opts.warnings
  *        zone: { top, bottom }, align: 'center' | 'top',
  *        head: { max, min, line, maxLines }, body: { max, min, line, maxLines, maxH } | null, gap,
  *        image: { minH, maxH } | null,
- *        footer: { ruleY, logoTop, logoH, size } }
+ *        footer: { ruleY, logoTop, logoH, size, limit } }
  */
 export function stackCard(cfg) {
   const { w, h, fields, opts } = cfg;
@@ -405,7 +445,10 @@ export function stackCard(cfg) {
 
   if (fields.eyebrow) svg += eyebrow(pal, { x: padX, y: cfg.eyebrow.y, text: fields.eyebrow, size: cfg.eyebrow.size, maxW: innerW }).svg;
 
-  const zoneH = cfg.zone.bottom - cfg.zone.top;
+  // The text zone ends above the footer rule (which moves up for the taller VD mark).
+  const markLift = brandActive.logo === 'mark' ? Math.round(cfg.footer.logoH * 1.9) - cfg.footer.logoH : 0;
+  const zone = { top: cfg.zone.top, bottom: Math.min(cfg.zone.bottom, cfg.footer.ruleY != null ? cfg.footer.ruleY - markLift - 36 : cfg.zone.bottom) };
+  const zoneH = zone.bottom - zone.top;
   const wantImage = Boolean(cfg.image && fields.imageData);
   const bodyMax = cfg.body && fields.body ? cfg.body.maxH ?? zoneH * 0.35 : 0;
   const head = fit(fields.head, F.head, {
@@ -426,7 +469,7 @@ export function stackCard(cfg) {
     else warn(opts, 'There is no room for the illustration with this much text.');
   }
   const total = textH + (imageH ? cfg.gap + imageH : 0);
-  const top = cfg.align === 'center' && !imageH ? cfg.zone.top + (zoneH - total) / 2 : cfg.zone.top;
+  const top = cfg.align === 'center' && !imageH ? zone.top + (zoneH - total) / 2 : zone.top;
 
   svg += textLines({ lines: head.lines, x: padX, y: top, size: head.size, lineH: head.lineH, f: F.head, fill: pal.ink, starFill: pal.star });
   let y = top + head.height;
@@ -437,7 +480,7 @@ export function stackCard(cfg) {
   }
   if (imageH) svg += imagePanel({ id: 'pic', x: padX, y: y + cfg.gap, w: innerW, h: imageH, href: fields.imageData, pal });
 
-  svg += footer(pal, { w, padX, ruleY: cfg.footer.ruleY, logoTop: cfg.footer.logoTop, logoH: cfg.footer.logoH, tagline: fields.footer ?? TAGLINE, size: cfg.footer.size ?? 28 });
+  svg += footer(pal, { w, h, padX, ruleY: cfg.footer.ruleY, logoTop: cfg.footer.logoTop, logoH: cfg.footer.logoH, tagline: fields.footer ?? TAGLINE, size: cfg.footer.size ?? 28, limit: cfg.footer.limit });
   return frame({ w, h, pal, body: svg, opts });
 }
 

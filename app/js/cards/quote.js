@@ -4,7 +4,7 @@
 // in the accent colour; the words are Gilmer.
 
 import {
-  COLOR, palette, fit, textLines, textAt, eyebrow, footer, frame, warn, F, TAGLINE, pieceText, round, textWidth,
+  COLOR, palette, fit, textLines, textAt, eyebrow, footer, frame, warn, F, TAGLINE, pieceText, round, textWidth, footerFor,
 } from './_kit.js';
 
 const W = 1080;
@@ -80,7 +80,7 @@ export function render(fields, theme = 'navy', opts = {}) {
   }
   if (aTop > 1120) warn(opts, 'The quote runs into the footer. Shorten it.');
 
-  svg += footer(pal, { w: W, padX: PAD, ruleY: 1210, logoTop: 1240, logoH: 52, tagline: fields.footer ?? TAGLINE });
+  svg += footer(pal, { w: W, h: H, padX: PAD, ruleY: 1210, logoTop: 1240, logoH: 52, tagline: fields.footer ?? footerFor(meta) });
   return frame({ w: W, h: H, pal, body: svg, opts });
 }
 

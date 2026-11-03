@@ -8,9 +8,9 @@
 // Open with #/visuals?piece=<id> to fill from a piece ("Use piece text"); #/pictures redirects here.
 
 import { api } from '../api.js';
-import { el, card, field, input, textarea, select, button, toast, chip, confirm, fmt } from '../ui.js';
-import { TEMPLATES, byId, ready, brandIssues } from '../cards/index.js';
-import { setBrand, useBrand } from '../cards/_kit.js';
+import { el, card, field, input, textarea, select, button, toast, chip, confirm, fmt, bullets } from '../ui.js';
+import { byId, ready, brandIssues, activeTemplates, defaultsFor, isTemplateOn } from '../cards/index.js';
+import { setBrand, useBrand, setCards, themeFor } from '../cards/_kit.js';
 import { svgToPng } from '../cards/png.js';
 
 export const route = '#/visuals';
@@ -80,15 +80,16 @@ export async function render(container, params) {
   const prefix = (settings.illustrationPrefix || '').trim() || DEFAULT_PREFIX;
   const provider = settings.imageProvider || 'none';
   setBrand(settings.brand);
+  setCards(settings.cards);
 
   // ------------------------------------------------------------- state
-  const first = TEMPLATES[0];
+  const first = activeTemplates()[0];
   const state = {
     template: first.meta.id,
-    theme: first.meta.defaultTheme,
+    theme: themeFor(first.meta),
     themeTouched: false,
     format: first.meta.formats[0].id,
-    fields: { ...first.meta.defaults },
+    fields: defaultsFor(first),
     pieceId: params.query?.piece || '',
     slide: 0,
     imagePath: '',
@@ -109,7 +110,7 @@ export async function render(container, params) {
   const frame = el('div', { class: 'cards-frame' });
   const meta = el('div', { class: 'cards-meta' });
   const warnBox = el('div', { class: 'cards-warnings' });
-  const noteBox = el('div', { class: 'small muted' });
+  const noteBox = el('div', { class: 'small muted cards-note' });
 
   function drawPreview() {
     const t = tplOf();
@@ -128,13 +129,12 @@ export async function render(container, params) {
     frame.innerHTML = svg;
     meta.replaceChildren(
       el('span', { class: 'mono', text: `${w} x ${h} px` }),
-      el('span', { class: 'small muted', text: t.meta.note || '' }),
     );
+    const notes = String(t.meta.note || '').split(/(?<=\.)\s+/).map((n) => n.replace(/\.$/, '')).filter(Boolean);
     const issues = [...warnings, ...brandIssues(state.fields)];
     warnBox.replaceChildren(...issues.map((m) => el('div', { class: 'banner banner-warn', text: m })));
-    noteBox.textContent = t.meta.supportsImage && !state.imageData
-      ? 'This template can carry an illustration: generate one below, or pick a saved one, and use it in the card.'
-      : '';
+    if (t.meta.supportsImage && !state.imageData) notes.push('Can carry an illustration: generate one below or use a saved one');
+    noteBox.replaceChildren(notes.length ? bullets(notes, { compact: true }) : '');
   }
   const schedule = debounce(drawPreview, 70);
 
@@ -151,7 +151,7 @@ export async function render(container, params) {
   function set(key, value) { state.fields[key] = value; schedule(); }
 
   function buildTemplates() {
-    templatesRow.replaceChildren(...TEMPLATES.map((t) => {
+    templatesRow.replaceChildren(...activeTemplates().map((t) => {
       const sizes = t.meta.formats.map((f) => f.label.replace(/^[A-Za-z]+ (?=\d)/, '')).join(' or ');
       return el('button', {
         type: 'button', class: `cards-template${t.meta.id === state.template ? ' active' : ''}`,
@@ -168,16 +168,16 @@ export async function render(container, params) {
         type: 'button', class: id === state.theme ? 'active' : '', text: THEME_LABEL[id] || id,
         onClick: () => { state.theme = id; state.themeTouched = true; buildTheme(); drawPreview(); },
       })));
-    themeRow.replaceChildren(field({ label: 'Theme', input: seg, hint: state.theme === 'navy' || state.theme === 'auto' ? 'Navy uses the reverse logo; light uses the colour logo.' : 'Light uses the colour logo; navy uses the reverse logo.' }));
+    themeRow.replaceChildren(field({ label: 'Theme', input: seg, hint: 'Navy takes the reverse logo, light the colour logo.' }));
   }
 
-  // Brand on this card: the builder's defaults (Builder page), changeable per card.
+  // Brand on this card: the Builder's defaults (Brand and logo box), changeable per card.
+  // The logo is always at the bottom, at a fixed place and size.
   const brand = { ...useBrand() };
   function buildBrand() {
     const seg = (key, label, opts) => field({ label, input: el('div', { class: 'cards-seg', role: 'group', 'aria-label': label }, opts.map(([v, t]) =>
       el('button', { type: 'button', class: brand[key] === v ? 'active' : '', text: t, onClick: () => { brand[key] = v; useBrand(brand); buildBrand(); drawPreview(); } }))) });
     brandRow.replaceChildren(
-      seg('position', 'Brand', [['bottom', 'Bottom'], ['top', 'Top']]),
       seg('logo', 'Logo', [['full', 'Full logo'], ['mark', 'VD mark']]),
       seg('taglineLayout', 'Tagline', [['line', 'One line'], ['stacked', 'Below logo']]),
     );
@@ -225,7 +225,7 @@ export async function render(container, params) {
         chip({ label: state.imagePath.split('/').pop(), tone: 'accent' }),
         button({ kind: 'ghost', small: true, label: 'Remove', onClick: () => { state.imagePath = ''; state.imageData = ''; buildImageRow(); drawPreview(); } }),
       ])
-      : el('span', { class: 'small muted', text: 'None. Use a picture from the Illustration panel or the saved pictures below.' });
+      : el('span', { class: 'small muted', text: 'None yet. Use one from Illustration or Saved below.' });
     imageRow.replaceChildren(field({ label: 'Illustration', input: body, hint: t.meta.id === 'hook' ? 'Shown on the portrait size only.' : undefined }));
   }
 
@@ -271,13 +271,14 @@ export async function render(container, params) {
     const next = byId(id);
     if (!next || id === state.template) return;
     // Text carries over; a field still on the old template's default takes the new default.
-    for (const [k, v] of Object.entries(next.meta.defaults)) {
+    const oldDefaults = defaultsFor(old);
+    for (const [k, v] of Object.entries(defaultsFor(next))) {
       const cur = state.fields[k];
-      if (cur === undefined || cur === '' || cur === old.meta.defaults[k]) state.fields[k] = v;
+      if (cur === undefined || cur === '' || cur === oldDefaults[k]) state.fields[k] = v;
     }
     state.template = id;
     const themes = next.meta.themes || ['navy', 'light'];
-    if (!themes.includes(state.theme) || !state.themeTouched) state.theme = next.meta.defaultTheme;
+    if (!themes.includes(state.theme) || !state.themeTouched) state.theme = themeFor(next.meta);
     if (!next.meta.formats.some((f) => f.id === state.format)) state.format = next.meta.formats[0].id;
     // With a piece chosen, the new template fills from the piece rather than showing its default text.
     const p = pieceOf();
@@ -355,7 +356,7 @@ export async function render(container, params) {
   const downloadBtn = button({ kind: 'secondary', label: 'Export and download', onClick: () => exportPng({ download: true }) });
 
   // ------------------------------------------------------- illustration
-  const promptTa = textarea({ rows: 5, placeholder: 'Describe the subject: what is drawn and how it is arranged. The house style is added for you.' });
+  const promptTa = textarea({ rows: 5, placeholder: 'What is drawn and how it is arranged. House style is added.' });
   const aspectSel = select({ options: [{ value: '1:1', label: 'Square 1:1' }, { value: '16:9', label: 'Landscape 16:9 (thumbnail)' }, { value: '4:5', label: 'Portrait 4:5' }], value: '1:1' });
   const result = el('div', { class: 'cards-illu-result', text: 'The picture appears here.' });
   const illuNote = el('div');
@@ -381,7 +382,7 @@ export async function render(container, params) {
     const claudeProblem = err.status === 502 || err.status === 504 || /claude/i.test(err.message || '');
     if (claudeProblem) {
       toast(`The AI could not run. ${LOGIN_HINT}`, 'bad', { ms: 6000 });
-      illuNote.replaceChildren(el('div', { class: 'banner banner-warn', text: `The AI could not write the prompt (${err.message}). ${LOGIN_HINT} You can still type a prompt by hand.` }));
+      illuNote.replaceChildren(el('div', { class: 'banner banner-warn' }, bullets([`The AI could not write the prompt: ${err.message}`, LOGIN_HINT, 'Or type a prompt by hand'], { compact: true })));
     } else {
       toast(err.message, 'bad');
     }
@@ -396,7 +397,7 @@ export async function render(container, params) {
       const r = await api.post('/images/prompts', { pieceId: p.id, kind: 'cover' });
       const out = r.output || {};
       promptTa.value = out.scene || '';
-      suggestBox.replaceChildren(...(out.cards || []).map((c) => {
+      suggestBox.replaceChildren(...(out.cards || []).filter((c) => !byId(c.template) || isTemplateOn(c.template)).map((c) => {
         const t = byId(c.template);
         return el('div', { class: 'cards-suggest-row' }, [
           el('div', {}, [el('b', { text: t ? t.meta.label : c.template }), el('span', { text: [c.eyebrow, c.head, c.body].filter(Boolean).join(' | ') })]),
@@ -417,7 +418,7 @@ export async function render(container, params) {
     try {
       const r = await api.post('/images/prompts', { pieceId: p.id, dryRun: true });
       promptView.replaceChildren(
-        el('div', { class: 'small muted', text: 'This is what the AI is asked. Nothing was sent.' }),
+        el('div', { class: 'small muted', text: 'What the AI is asked. Nothing was sent.' }),
         el('pre', { class: 'cards-pre', text: `SYSTEM\n${r.system}\n\nUSER\n${r.user}` }),
       );
     } catch (err) { toast(err.message, 'bad'); }
@@ -438,7 +439,7 @@ export async function render(container, params) {
       result.replaceChildren(document.createTextNode('No picture was made.'));
       const prompt = err.detail?.prompt || fullPrompt();
       const bits = [el('div', { class: 'banner banner-warn' }, [el('div', {}, [el('b', { text: err.message }), err.detail?.reason ? el('div', { text: err.detail.reason }) : null])])];
-      bits.push(el('div', { class: 'small muted', text: 'The full prompt, to use in an image tool of your own:' }));
+      bits.push(el('div', { class: 'small muted', text: 'The full prompt, for an image tool of your own' }));
       bits.push(el('pre', { class: 'cards-pre', text: prompt }));
       illuNote.replaceChildren(...bits);
     } finally { generateBtn.disabled = false; }
@@ -481,9 +482,9 @@ export async function render(container, params) {
               el('textarea', { class: 'textarea', readOnly: true, rows: 3, 'aria-readonly': 'true', value: prefix }),
               el('span', { class: 'cards-lock-tag', text: 'Locked' }),
             ]),
-            el('span', { class: 'field-hint', text: 'Set in Settings. It is added to every prompt on the server.' }),
+            el('span', { class: 'field-hint', text: 'Set in Builder, AI. Added to every prompt.' }),
           ]),
-          field({ label: 'Subject', input: promptTa, hint: 'No text, no real faces, never a screen or sheet drawn as a real product.' }),
+          field({ label: 'Subject', input: promptTa, hint: 'No text, no real faces, no real product screens.' }),
           field({ label: 'Shape', input: aspectSel }),
           el('div', { class: 'row' }, [suggestBtn, previewPromptBtn, copyBtn, generateBtn]),
           illuNote,
@@ -492,9 +493,9 @@ export async function render(container, params) {
         ]),
         el('div', {}, [
           result,
-          el('p', { class: 'small muted', style: { marginTop: '10px' }, text: provider === 'none'
-            ? 'No image provider is set. Generate will say so and give you the prompt to copy. Choose Gemini or OpenAI in Settings, AI, with the key in the server environment.'
-            : `Provider: ${provider}. The key is read from ${provider === 'gemini' ? 'GEMINI_API_KEY' : 'OPENAI_API_KEY'} on the server.` }),
+          el('div', { class: 'small muted', style: { marginTop: '10px' } }, bullets(provider === 'none'
+            ? ['No image provider set', 'Generate gives you the prompt to copy', 'Choose Gemini or OpenAI in Builder, AI']
+            : [`Provider: ${provider}`, `Key: ${provider === 'gemini' ? 'GEMINI_API_KEY' : 'OPENAI_API_KEY'} on the server`], { compact: true })),
         ]),
       ]),
     ],
@@ -511,7 +512,7 @@ export async function render(container, params) {
     } catch (err) { galleryBox.replaceChildren(el('div', { class: 'banner banner-warn', text: `Saved pictures could not be loaded: ${err.message}` })); return; }
     galleryBox.replaceChildren(rows.length
       ? el('div', { class: 'cards-gallery' }, rows.map(thumb))
-      : el('p', { class: 'muted', text: state.pieceId ? 'No pictures are saved for this piece yet.' : 'No pictures are saved yet.' }));
+      : el('p', { class: 'muted', text: state.pieceId ? 'Nothing saved for this piece yet' : 'Nothing saved yet' }));
   }
 
   function thumb(im) {
@@ -519,7 +520,7 @@ export async function render(container, params) {
     const actions = [];
     if (im.kind === 'illustration') actions.push(button({ kind: 'secondary', small: true, label: 'Use', onClick: () => useIllustration(im.path) }));
     actions.push(button({ kind: 'ghost', small: true, label: 'Delete', onClick: async () => {
-      const ok = await confirm({ title: 'Delete this picture', message: 'The file and its record are removed. This cannot be undone.', confirmLabel: 'Delete', danger: true });
+      const ok = await confirm({ title: 'Delete this picture', message: 'The file and its record go for good.', confirmLabel: 'Delete', danger: true });
       if (!ok) return;
       try { await api.del(`/images/${encodeURIComponent(im.id)}`); loadGallery(); } catch (err) { toast(err.message, 'bad'); }
     } }));
@@ -561,7 +562,7 @@ export async function render(container, params) {
     // Arriving from a piece: open on the template that fits its type and fill the card from its text.
     const p = pieceOf();
     const fit = TEMPLATE_BY_TYPE[p.type];
-    if (fit && fit !== state.template && byId(fit)) switchTemplate(fit);
+    if (fit && fit !== state.template && byId(fit) && isTemplateOn(fit)) switchTemplate(fit);
     const patch = tplOf().meta.fromPiece(p, { slide: 0 });
     for (const [k, v] of Object.entries(patch)) if (v) state.fields[k] = v;
     buildFields();

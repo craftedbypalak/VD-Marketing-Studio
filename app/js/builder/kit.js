@@ -52,14 +52,14 @@ export async function makeCtx() {
 export function stringList(arr, { label, placeholder = '', canEdit = true, onChange = () => {} } = {}) {
   const wrap = el('div', { class: 'bx-list' });
   const draw = () => {
-    wrap.replaceChildren(
+    wrap.replaceChildren(...[
       label ? el('div', { class: 'bx-list-label', text: `${label} (${arr.length})` }) : null,
       ...arr.map((v, i) => el('div', { class: 'bx-row' }, [
         input({ value: v, placeholder, disabled: !canEdit, onInput: (e) => { arr[i] = e.target.value; onChange(); } }),
         canEdit && button({ kind: 'ghost', small: true, icon: 'trash', title: 'Remove', onClick: () => { arr.splice(i, 1); draw(); onChange(); } }),
       ])),
       canEdit && button({ kind: 'secondary', small: true, icon: 'plus', label: 'Add', onClick: () => { arr.push(''); draw(); onChange(); wrap.querySelector('.bx-row:last-of-type input')?.focus(); } }),
-    );
+    ].filter(Boolean));
   };
   draw();
   return wrap;
@@ -76,7 +76,7 @@ export function rowList(arr, { columns = [], newRow = () => ({}), canEdit = true
     return input({ type: c.type === 'time' ? 'time' : 'text', value: row[c.key] ?? '', placeholder: c.placeholder || '', disabled, onInput: (e) => set(e.target.value) });
   };
   const draw = () => {
-    wrap.replaceChildren(
+    wrap.replaceChildren(...[
       ...arr.map((row, i) => el('div', { class: 'bx-rowcard' }, [
         el('div', { class: 'bx-rowgrid' }, columns.map((c) => el('label', { class: 'bx-cell', style: c.width ? { flexBasis: c.width } : undefined }, [
           c.type === 'check' ? null : el('span', { class: 'bx-cell-label', text: c.label }), cell(row, c),
@@ -84,7 +84,7 @@ export function rowList(arr, { columns = [], newRow = () => ({}), canEdit = true
         canEdit && button({ kind: 'ghost', small: true, icon: 'trash', title: 'Remove', onClick: () => { arr.splice(i, 1); draw(); onChange(); } }),
       ])),
       canEdit && button({ kind: 'secondary', small: true, icon: 'plus', label: addLabel, onClick: () => { arr.push(newRow()); draw(); onChange(); } }),
-    );
+    ].filter(Boolean));
   };
   draw();
   return wrap;

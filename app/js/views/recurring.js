@@ -11,7 +11,7 @@ import { el, card, field, input, textarea, select, button, chip, checkbox, tabs,
 import { ready as cardsReady } from '../cards/index.js';
 import * as greetingCard from '../cards/festivalGreeting.js';
 import { svgToPng, downloadBlob } from '../cards/png.js';
-import { setBrand } from '../cards/_kit.js';
+import { setBrand, setCards } from '../cards/_kit.js';
 
 export const route = '#/occasions';
 export const title = 'Occasions';
@@ -108,7 +108,7 @@ export async function render(container, params) {
     let settings;
     [events, accounts, settings] = await Promise.all([api.get('/events'), api.get('/accounts'), api.settings().catch(() => null)]);
     const me = (api.user.get() || '').toLowerCase();
-    setBrand(settings?.brand);
+    setBrand(settings?.brand); setCards(settings?.cards);
     OCC = occasionsConfig(settings);
     const role = roleOf((settings?.users || []).find((u) => String(u.email).toLowerCase() === me));
     approver = Boolean(me) && (role === 'manager' || role === 'director');

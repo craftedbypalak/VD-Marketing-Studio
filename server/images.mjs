@@ -19,7 +19,7 @@ import { parseMultipart, imageSize } from './multipart.mjs';
 import { prefixFor, composePrompt, DEFAULT_PREFIX } from './ops/imagePrompts.mjs';
 
 const MEDIA_ROOT = (store) => path.join(store.root, 'media');
-const TEMPLATES = ['statusRule', 'quote', 'hook', 'thumbnail', 'carouselSlide', 'linkedinImage'];
+const TEMPLATES = ['statusRule', 'quote', 'hook', 'thumbnail', 'carouselSlide', 'linkedinImage', 'festivalGreeting'];
 const ASPECTS = { '1:1': '1024x1024', '16:9': '1536x1024', '4:5': '1024x1536', '9:16': '1024x1536' };
 
 export { DEFAULT_PREFIX };
