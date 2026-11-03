@@ -90,3 +90,24 @@
 .rc-lines dt { color: var(--text-muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding-top: 2px; }
 .rc-lines dd { margin: 0; white-space: pre-wrap; }
 @media (max-width: 800px) { .rc-lines { grid-template-columns: 1fr; gap: 2px 0; } .rc-lines dd { margin-bottom: 6px; } }
+
+/* Occasions, 3 November 2026: category toggles, post-type dots, crisp rules */
+.rc-toolbar { flex-direction: column; align-items: stretch; }
+.rc-toolbar-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.rc-toolbar-row .input, .rc-toolbar-row select { width: auto; flex: 0 1 200px; }
+.rc-cats { display: flex; flex-wrap: wrap; gap: 8px; }
+.rc-cat { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: var(--r-pill); border: 1px solid var(--border); background: var(--white); color: var(--text-secondary); font: 600 13px var(--font-body); cursor: pointer; }
+.rc-cat:hover { border-color: var(--navy); color: var(--navy); }
+.rc-cat.on { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.rc-cat-n { font: 500 11.5px var(--font-mono); opacity: .75; }
+.rc-dot.post-creative { background: var(--accent); box-shadow: 0 0 0 1px var(--accent-ink) inset; }
+.rc-dot.post-wish { background: var(--navy); }
+.rc-dot.post-none { background: var(--border); }
+.rc-day.picked .rc-dot.post-wish { background: var(--white); }
+.rc-intro { margin: 0 0 14px; }
+.rc-rules-crisp { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; align-items: start; }
+@media (max-width: 720px) {
+  .rc-toolbar-row .input, .rc-toolbar-row select { flex: 1 1 calc(50% - 5px); }
+}
+.rc-toolbar-row .btn { align-self: center; }
+.rc-more { margin: 6px 0 10px; } .rc-more summary { cursor: pointer; font: 600 13px var(--font-body); color: var(--navy); }

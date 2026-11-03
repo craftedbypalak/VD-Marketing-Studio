@@ -132,23 +132,34 @@ export function recurrenceFor(rec) {
   return 'none';
 }
 
-// Tiers a festival goes to, from research/india-business-calendar-2027.md
-// sections 3 and 4. A greeting on a national or civic day goes on Status only.
-// Network reads these over the link and decides who, by name, receives it.
-const STATUS_ONLY = /^(Republic Day|Independence Day|Gandhi Jayanti|Dr B\. R\. Ambedkar|Madhya Pradesh Foundation Day|Devi Ahilyabai|Raksha Bandhan|Onam)/i;
-const MINORITY = new Set(['muslim', 'sikh', 'christian', 'jain', 'buddhist']);
+// Festival wishes go to everyone (decided 3 November 2026): every network tier,
+// every community. Network reads `tiers` over the link; an alternate reckoning
+// of a festival carries none, so nobody receives two wishes.
+export const ALL_TIERS = ['platinum', 'gold', 'silver', 'bronze'];
 
 export function tiersFor(rec) {
   if (!GREETING_KINDS.has(rec.kind) || !rec.greetingText) return [];
+  if (isAlternate(rec.name)) return [];
+  return [...ALL_TIERS];
+}
+
+// What an occasion is, for the Occasions page. Stored on each event as `category`.
+export const CATEGORIES = ['festival', 'national', 'business', 'wedding', 'local', 'break'];
+const NATIONAL = /^(Republic Day|Independence Day|Gandhi Jayanti|Dr B\. R\. Ambedkar|Ambedkar Jayanti|Madhya Pradesh Foundation Day|Devi Ahilyabai|Ahilyabai Holkar|Birsa Munda)/i;
+const BUSINESS = /Budget|Economic Survey|GST|TDS|Advance tax|financial year/i;
+const LOCAL = /Marathon|summit|Board Class|examinations/i;
+const BREAK = /block begins|Year-end dark day|Day after Holi/i;
+
+export function categoryOf(rec) {
   const name = String(rec.name || '');
-  if (isAlternate(name)) return [];
-  if (/^Diwali/i.test(name)) return ['platinum', 'gold', 'silver', 'bronze'];
-  if (/^(Holi\b|Makar Sankranti|Rangpanchami|Dussehra)/i.test(name)) return ['platinum', 'gold'];
-  if (/^New Year/i.test(name)) return ['platinum', 'gold', 'silver'];
-  if (STATUS_ONLY.test(name)) return [];
-  if (MINORITY.has(rec.whoGets)) return ['platinum', 'gold', 'silver'];
-  if (rec.whoGets === 'hindu' || rec.whoGets === 'business-only') return ['platinum', 'gold'];
-  return [];
+  const short = String(rec.shortName || '');
+  const head = short || name;   // the long name often mentions other days; decide on the short one
+  if (rec.kind === 'wedding-muhurat' || /^Last wedding muhurat/i.test(head)) return 'wedding';
+  if (rec.kind === 'compliance' || rec.kind === 'budget' || BUSINESS.test(head)) return 'business';
+  if (NATIONAL.test(name) || NATIONAL.test(short)) return 'national';
+  if (LOCAL.test(head)) return 'local';
+  if (BREAK.test(head)) return 'break';
+  return 'festival';
 }
 
 // -------------------------------------------------------------------- import
@@ -197,13 +208,14 @@ export async function importSeed({ file, by } = {}) {
       kind,
       scope: rec.scope || 'national',
       greetingText: rec.greetingText || '',
-      whoGets: rec.whoGets || 'none',
+      whoGets: GREETING_KINDS.has(kind) && rec.greetingText ? 'everyone' : 'none',
       postingRule,
       confidence: rec.confidence || 'expected',
       source: rec.source || '',
       note: rec.note || '',
       recurrence: recurrenceFor({ ...rec, kind }),
       tiers: tiersFor({ ...rec, kind }),
+      category: categoryOf({ ...rec, kind }),
       templates: {},
       generated: {},
     };

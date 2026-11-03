@@ -14,7 +14,12 @@
     "source": "https://en.wikipedia.org/wiki/Madhya_Pradesh_Day",
     "note": "Fixed date; not a declared holiday every year",
     "recurrence": "annual-fixed",
-    "tiers": [],
+    "tiers": [
+      "platinum",
+      "gold",
+      "silver",
+      "bronze"
+    ],
     "templates": {
       "status": "Warm wishes on Madhya Pradesh Foundation Day to everyone who builds and works here. Palak Gupta, Venture Drafters",
       "linkedin": "Warm wishes on Madhya Pradesh Foundation Day.\n\nThe firms I meet in Indore, Pithampur and Dewas are built by people who show up every morning and make things work. Today is theirs.\n\nPalak Gupta, Venture Drafters",
@@ -25,7 +30,8 @@
     "updatedAt": "2026-10-30T11:07:51.367Z",
     "series": "mp-foundation-day",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "national"
   },
   {
     "id": "ev-0002",
@@ -36,7 +42,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Wishing you prosperity and good health this Dhanteras. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "gazetted",
     "source": "https://www.drikpanchang.com/festivals/lunar-month/festivals-kartika.html?year=2026",
@@ -44,7 +50,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {
       "status": "Wishing you prosperity and good health this Dhanteras. Palak Gupta, Venture Drafters",
@@ -104,7 +112,8 @@
         "mode": "hand",
         "by": "tools@vspindia.com"
       }
-    }
+    },
+    "category": "festival"
   },
   {
     "id": "ev-0003",
@@ -125,7 +134,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.355Z",
-    "updatedAt": "2026-10-29T09:40:03.355Z"
+    "updatedAt": "2026-10-29T09:40:03.355Z",
+    "category": "break"
   },
   {
     "id": "ev-0004",
@@ -147,7 +157,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.355Z",
-    "updatedAt": "2026-10-29T09:40:03.355Z"
+    "updatedAt": "2026-10-29T09:40:03.355Z",
+    "category": "business"
   },
   {
     "id": "ev-0005",
@@ -228,7 +239,8 @@
         "mode": "hand",
         "by": "tools@vspindia.com"
       }
-    }
+    },
+    "category": "festival"
   },
   {
     "id": "ev-0006",
@@ -249,7 +261,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.356Z",
-    "updatedAt": "2026-10-29T09:40:03.356Z"
+    "updatedAt": "2026-10-29T09:40:03.356Z",
+    "category": "festival"
   },
   {
     "id": "ev-0007",
@@ -270,7 +283,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.357Z",
-    "updatedAt": "2026-10-29T09:40:03.357Z"
+    "updatedAt": "2026-10-29T09:40:03.357Z",
+    "category": "festival"
   },
   {
     "id": "ev-0008",
@@ -291,7 +305,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.357Z",
-    "updatedAt": "2026-10-29T09:40:03.357Z"
+    "updatedAt": "2026-10-29T09:40:03.357Z",
+    "category": "festival"
   },
   {
     "id": "ev-0009",
@@ -312,7 +327,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.358Z",
-    "updatedAt": "2026-10-29T09:40:03.358Z"
+    "updatedAt": "2026-10-29T09:40:03.358Z",
+    "category": "business"
   },
   {
     "id": "ev-0010",
@@ -323,7 +339,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Warm wishes on Chhath Puja to you and your family. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "dark",
     "confidence": "gazetted",
     "source": "https://www.drikpanchang.com/festivals/lunar-month/festivals-kartika.html?year=2026",
@@ -331,7 +347,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {
       "status": "Warm wishes on Chhath Puja to you and your family. Palak Gupta, Venture Drafters",
@@ -343,7 +361,8 @@
     "updatedAt": "2026-10-30T11:07:51.386Z",
     "series": "chhath-puja",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0011",
@@ -364,7 +383,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.359Z",
-    "updatedAt": "2026-10-29T09:40:03.359Z"
+    "updatedAt": "2026-10-29T09:40:03.359Z",
+    "category": "festival"
   },
   {
     "id": "ev-0012",
@@ -385,7 +405,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.359Z",
-    "updatedAt": "2026-10-29T09:40:03.359Z"
+    "updatedAt": "2026-10-29T09:40:03.359Z",
+    "category": "business"
   },
   {
     "id": "ev-0013",
@@ -406,7 +427,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.360Z",
-    "updatedAt": "2026-10-29T09:40:03.360Z"
+    "updatedAt": "2026-10-29T09:40:03.360Z",
+    "category": "festival"
   },
   {
     "id": "ev-0014",
@@ -427,7 +449,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.360Z",
-    "updatedAt": "2026-10-29T09:40:03.360Z"
+    "updatedAt": "2026-10-29T09:40:03.360Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0015",
@@ -438,7 +461,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Warm wishes on Guru Nanak Jayanti. Gurpurab di lakh lakh vadhaiyan. Palak Gupta, Venture Drafters",
-    "whoGets": "sikh",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "gazetted",
     "source": "https://www.drikpanchang.com/festivals/lunar-month/festivals-kartika.html?year=2026",
@@ -447,7 +470,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {
       "status": "Warm wishes on Guru Nanak Jayanti. Gurpurab di lakh lakh vadhaiyan. Palak Gupta, Venture Drafters",
@@ -459,7 +483,8 @@
     "updatedAt": "2026-10-30T11:07:51.392Z",
     "series": "guru-nanak-jayanti",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0016",
@@ -480,7 +505,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.362Z",
-    "updatedAt": "2026-10-29T09:40:03.362Z"
+    "updatedAt": "2026-10-29T09:40:03.362Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0017",
@@ -501,7 +527,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.362Z",
-    "updatedAt": "2026-10-29T09:40:03.362Z"
+    "updatedAt": "2026-10-29T09:40:03.362Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0018",
@@ -522,7 +549,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.363Z",
-    "updatedAt": "2026-10-29T09:40:03.363Z"
+    "updatedAt": "2026-10-29T09:40:03.363Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0019",
@@ -543,7 +571,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.363Z",
-    "updatedAt": "2026-10-29T09:40:03.363Z"
+    "updatedAt": "2026-10-29T09:40:03.363Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0020",
@@ -564,7 +593,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.364Z",
-    "updatedAt": "2026-10-29T09:40:03.364Z"
+    "updatedAt": "2026-10-29T09:40:03.364Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0021",
@@ -585,7 +615,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.365Z",
-    "updatedAt": "2026-10-29T09:40:03.365Z"
+    "updatedAt": "2026-10-29T09:40:03.365Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0022",
@@ -606,7 +637,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.366Z",
-    "updatedAt": "2026-10-29T09:40:03.366Z"
+    "updatedAt": "2026-10-29T09:40:03.366Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0023",
@@ -627,7 +659,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.366Z",
-    "updatedAt": "2026-10-29T09:40:03.366Z"
+    "updatedAt": "2026-10-29T09:40:03.366Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0024",
@@ -648,7 +681,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.367Z",
-    "updatedAt": "2026-10-29T09:40:03.367Z"
+    "updatedAt": "2026-10-29T09:40:03.367Z",
+    "category": "business"
   },
   {
     "id": "ev-0025",
@@ -669,7 +703,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.368Z",
-    "updatedAt": "2026-10-29T09:40:03.368Z"
+    "updatedAt": "2026-10-29T09:40:03.368Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0026",
@@ -690,7 +725,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.368Z",
-    "updatedAt": "2026-10-29T09:40:03.368Z"
+    "updatedAt": "2026-10-29T09:40:03.368Z",
+    "category": "business"
   },
   {
     "id": "ev-0027",
@@ -711,7 +747,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.369Z",
-    "updatedAt": "2026-10-29T09:40:03.369Z"
+    "updatedAt": "2026-10-29T09:40:03.369Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0028",
@@ -732,7 +769,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.369Z",
-    "updatedAt": "2026-10-29T09:40:03.369Z"
+    "updatedAt": "2026-10-29T09:40:03.369Z",
+    "category": "festival"
   },
   {
     "id": "ev-0029",
@@ -754,7 +792,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.369Z",
-    "updatedAt": "2026-10-29T09:40:03.369Z"
+    "updatedAt": "2026-10-29T09:40:03.369Z",
+    "category": "business"
   },
   {
     "id": "ev-0030",
@@ -775,7 +814,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.370Z",
-    "updatedAt": "2026-10-29T09:40:03.370Z"
+    "updatedAt": "2026-10-29T09:40:03.370Z",
+    "category": "festival"
   },
   {
     "id": "ev-0031",
@@ -796,7 +836,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.370Z",
-    "updatedAt": "2026-10-29T09:40:03.370Z"
+    "updatedAt": "2026-10-29T09:40:03.370Z",
+    "category": "local"
   },
   {
     "id": "ev-0032",
@@ -818,7 +859,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.371Z",
-    "updatedAt": "2026-10-29T09:40:03.371Z"
+    "updatedAt": "2026-10-29T09:40:03.371Z",
+    "category": "business"
   },
   {
     "id": "ev-0033",
@@ -829,7 +871,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Merry Christmas and best wishes for the season. Palak Gupta, Venture Drafters",
-    "whoGets": "christian",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.greythr.com/wiki/acts/st-madhya-pradesh/holidays/2026/",
@@ -843,7 +885,8 @@
     "updatedAt": "2026-10-30T11:07:51.396Z",
     "series": "christmas",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0034",
@@ -854,7 +897,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Merry Christmas and warm wishes for the season. Palak Gupta, Venture Drafters",
-    "whoGets": "christian",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "gazetted",
     "source": "https://www.greythr.com/wiki/acts/st-madhya-pradesh/holidays/2026/",
@@ -863,7 +906,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {
       "status": "Merry Christmas and warm wishes for the season. Palak Gupta, Venture Drafters",
@@ -924,7 +968,8 @@
         "mode": "hand",
         "by": "tools@vspindia.com"
       }
-    }
+    },
+    "category": "festival"
   },
   {
     "id": "ev-0035",
@@ -946,7 +991,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.373Z",
-    "updatedAt": "2026-10-29T09:40:03.373Z"
+    "updatedAt": "2026-10-29T09:40:03.373Z",
+    "category": "business"
   },
   {
     "id": "ev-0036",
@@ -966,7 +1012,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -974,7 +1021,8 @@
     "updatedAt": "2026-10-30T11:07:51.404Z",
     "series": "new-year",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0037",
@@ -995,7 +1043,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.374Z",
-    "updatedAt": "2026-10-29T09:40:03.374Z"
+    "updatedAt": "2026-10-29T09:40:03.374Z",
+    "category": "break"
   },
   {
     "id": "ev-0038",
@@ -1016,7 +1065,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.374Z",
-    "updatedAt": "2026-10-29T09:40:03.374Z"
+    "updatedAt": "2026-10-29T09:40:03.374Z",
+    "category": "break"
   },
   {
     "id": "ev-0039",
@@ -1037,7 +1087,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.375Z",
-    "updatedAt": "2026-10-29T09:40:03.375Z"
+    "updatedAt": "2026-10-29T09:40:03.375Z",
+    "category": "business"
   },
   {
     "id": "ev-0040",
@@ -1058,7 +1109,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.375Z",
-    "updatedAt": "2026-10-29T09:40:03.375Z"
+    "updatedAt": "2026-10-29T09:40:03.375Z",
+    "category": "business"
   },
   {
     "id": "ev-0041",
@@ -1069,7 +1121,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Warm wishes on Lohri. Palak Gupta, Venture Drafters",
-    "whoGets": "sikh",
+    "whoGets": "everyone",
     "postingRule": "normal",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/indian/indiancalendar.html?year=2027",
@@ -1078,7 +1130,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -1086,7 +1139,8 @@
     "updatedAt": "2026-10-30T11:07:51.408Z",
     "series": "lohri",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0042",
@@ -1107,7 +1161,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.376Z",
-    "updatedAt": "2026-10-29T09:40:03.376Z"
+    "updatedAt": "2026-10-29T09:40:03.376Z",
+    "category": "business"
   },
   {
     "id": "ev-0043",
@@ -1118,7 +1173,7 @@
     "kind": "greeting-only",
     "scope": "indore",
     "greetingText": "Warm wishes on Makar Sankranti. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/sankranti/sankranti.html?year=2027",
@@ -1132,7 +1187,8 @@
     "updatedAt": "2026-10-30T11:07:51.411Z",
     "series": "makar-sankranti",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0044",
@@ -1143,7 +1199,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Warm wishes on Makar Sankranti and Uttarayan. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/hindu/hinducalendar.html?year=2027",
@@ -1151,7 +1207,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -1159,7 +1217,8 @@
     "updatedAt": "2026-10-30T11:07:51.415Z",
     "series": "makar-sankranti",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0045",
@@ -1180,7 +1239,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.378Z",
-    "updatedAt": "2026-10-29T09:40:03.378Z"
+    "updatedAt": "2026-10-29T09:40:03.378Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0046",
@@ -1201,7 +1261,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.378Z",
-    "updatedAt": "2026-10-29T09:40:03.378Z"
+    "updatedAt": "2026-10-29T09:40:03.378Z",
+    "category": "local"
   },
   {
     "id": "ev-0047",
@@ -1222,7 +1283,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.378Z",
-    "updatedAt": "2026-10-29T09:40:03.378Z"
+    "updatedAt": "2026-10-29T09:40:03.378Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0048",
@@ -1243,7 +1305,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.379Z",
-    "updatedAt": "2026-10-29T09:40:03.379Z"
+    "updatedAt": "2026-10-29T09:40:03.379Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0049",
@@ -1264,7 +1327,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.379Z",
-    "updatedAt": "2026-10-29T09:40:03.379Z"
+    "updatedAt": "2026-10-29T09:40:03.379Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0050",
@@ -1285,7 +1349,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.380Z",
-    "updatedAt": "2026-10-29T09:40:03.380Z"
+    "updatedAt": "2026-10-29T09:40:03.380Z",
+    "category": "business"
   },
   {
     "id": "ev-0051",
@@ -1306,7 +1371,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.380Z",
-    "updatedAt": "2026-10-29T09:40:03.380Z"
+    "updatedAt": "2026-10-29T09:40:03.380Z",
+    "category": "business"
   },
   {
     "id": "ev-0052",
@@ -1327,7 +1393,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.380Z",
-    "updatedAt": "2026-10-29T09:40:03.380Z"
+    "updatedAt": "2026-10-29T09:40:03.380Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0053",
@@ -1344,14 +1411,20 @@
     "source": "https://7thpaycommissionnews.in/central-government-holidays-2027/",
     "note": "Tuesday; move the LinkedIn post; also a wedding muhurat",
     "recurrence": "annual-fixed",
-    "tiers": [],
+    "tiers": [
+      "platinum",
+      "gold",
+      "silver",
+      "bronze"
+    ],
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.381Z",
     "updatedAt": "2026-10-30T11:07:51.419Z",
     "series": "republic-day",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "national"
   },
   {
     "id": "ev-0054",
@@ -1372,7 +1445,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.381Z",
-    "updatedAt": "2026-10-29T09:40:03.381Z"
+    "updatedAt": "2026-10-29T09:40:03.381Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0055",
@@ -1393,7 +1467,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.381Z",
-    "updatedAt": "2026-10-29T09:40:03.381Z"
+    "updatedAt": "2026-10-29T09:40:03.381Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0056",
@@ -1414,7 +1489,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.382Z",
-    "updatedAt": "2026-10-29T09:40:03.382Z"
+    "updatedAt": "2026-10-29T09:40:03.382Z",
+    "category": "business"
   },
   {
     "id": "ev-0057",
@@ -1435,7 +1511,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.382Z",
-    "updatedAt": "2026-10-29T09:40:03.382Z"
+    "updatedAt": "2026-10-29T09:40:03.382Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0058",
@@ -1456,7 +1533,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.383Z",
-    "updatedAt": "2026-10-29T09:40:03.383Z"
+    "updatedAt": "2026-10-29T09:40:03.383Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0059",
@@ -1478,7 +1556,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.383Z",
-    "updatedAt": "2026-10-29T09:40:03.383Z"
+    "updatedAt": "2026-10-29T09:40:03.383Z",
+    "category": "business"
   },
   {
     "id": "ev-0060",
@@ -1499,7 +1578,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.384Z",
-    "updatedAt": "2026-10-29T09:40:03.384Z"
+    "updatedAt": "2026-10-29T09:40:03.384Z",
+    "category": "business"
   },
   {
     "id": "ev-0061",
@@ -1520,7 +1600,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.384Z",
-    "updatedAt": "2026-10-29T09:40:03.384Z"
+    "updatedAt": "2026-10-29T09:40:03.384Z",
+    "category": "business"
   },
   {
     "id": "ev-0062",
@@ -1541,7 +1622,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.385Z",
-    "updatedAt": "2026-10-29T09:40:03.385Z"
+    "updatedAt": "2026-10-29T09:40:03.385Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0063",
@@ -1562,7 +1644,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.386Z",
-    "updatedAt": "2026-10-29T09:40:03.386Z"
+    "updatedAt": "2026-10-29T09:40:03.386Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0064",
@@ -1583,7 +1666,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.386Z",
-    "updatedAt": "2026-10-29T09:40:03.386Z"
+    "updatedAt": "2026-10-29T09:40:03.386Z",
+    "category": "festival"
   },
   {
     "id": "ev-0065",
@@ -1604,7 +1688,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.387Z",
-    "updatedAt": "2026-10-29T09:40:03.387Z"
+    "updatedAt": "2026-10-29T09:40:03.387Z",
+    "category": "festival"
   },
   {
     "id": "ev-0066",
@@ -1626,7 +1711,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.387Z",
-    "updatedAt": "2026-10-29T09:40:03.387Z"
+    "updatedAt": "2026-10-29T09:40:03.387Z",
+    "category": "business"
   },
   {
     "id": "ev-0067",
@@ -1637,7 +1723,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Ramadan Mubarak. Wishing you a blessed and peaceful month. Palak Gupta, Venture Drafters",
-    "whoGets": "muslim",
+    "whoGets": "everyone",
     "postingRule": "normal",
     "confidence": "expected",
     "source": "https://jamiahafs.com/ramadan-2027-dates/",
@@ -1646,7 +1732,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -1654,7 +1741,8 @@
     "updatedAt": "2026-10-30T11:07:51.422Z",
     "series": "ramadan",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0068",
@@ -1675,7 +1763,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.388Z",
-    "updatedAt": "2026-10-29T09:40:03.388Z"
+    "updatedAt": "2026-10-29T09:40:03.388Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0069",
@@ -1696,7 +1785,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.388Z",
-    "updatedAt": "2026-10-29T09:40:03.388Z"
+    "updatedAt": "2026-10-29T09:40:03.388Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0070",
@@ -1707,7 +1797,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Warm wishes on Vasant Panchami. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "quiet",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/hindu/hinducalendar.html?year=2027",
@@ -1715,7 +1805,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -1723,7 +1815,8 @@
     "updatedAt": "2026-10-30T11:07:51.427Z",
     "series": "vasant-panchami",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0071",
@@ -1744,7 +1837,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.389Z",
-    "updatedAt": "2026-10-29T09:40:03.389Z"
+    "updatedAt": "2026-10-29T09:40:03.389Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0072",
@@ -1765,7 +1859,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.390Z",
-    "updatedAt": "2026-10-29T09:40:03.390Z"
+    "updatedAt": "2026-10-29T09:40:03.390Z",
+    "category": "business"
   },
   {
     "id": "ev-0073",
@@ -1786,7 +1881,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.390Z",
-    "updatedAt": "2026-10-29T09:40:03.390Z"
+    "updatedAt": "2026-10-29T09:40:03.390Z",
+    "category": "local"
   },
   {
     "id": "ev-0074",
@@ -1807,7 +1903,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.390Z",
-    "updatedAt": "2026-10-29T09:40:03.390Z"
+    "updatedAt": "2026-10-29T09:40:03.390Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0075",
@@ -1828,7 +1925,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.391Z",
-    "updatedAt": "2026-10-29T09:40:03.391Z"
+    "updatedAt": "2026-10-29T09:40:03.391Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0076",
@@ -1849,7 +1947,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.391Z",
-    "updatedAt": "2026-10-29T09:40:03.391Z"
+    "updatedAt": "2026-10-29T09:40:03.391Z",
+    "category": "local"
   },
   {
     "id": "ev-0077",
@@ -1870,7 +1969,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.392Z",
-    "updatedAt": "2026-10-29T09:40:03.392Z"
+    "updatedAt": "2026-10-29T09:40:03.392Z",
+    "category": "festival"
   },
   {
     "id": "ev-0078",
@@ -1892,7 +1992,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.392Z",
-    "updatedAt": "2026-10-29T09:40:03.392Z"
+    "updatedAt": "2026-10-29T09:40:03.392Z",
+    "category": "business"
   },
   {
     "id": "ev-0079",
@@ -1913,7 +2014,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.392Z",
-    "updatedAt": "2026-10-29T09:40:03.392Z"
+    "updatedAt": "2026-10-29T09:40:03.392Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0080",
@@ -1934,7 +2036,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.393Z",
-    "updatedAt": "2026-10-29T09:40:03.393Z"
+    "updatedAt": "2026-10-29T09:40:03.393Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0081",
@@ -1955,7 +2058,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.395Z",
-    "updatedAt": "2026-10-29T09:40:03.395Z"
+    "updatedAt": "2026-10-29T09:40:03.395Z",
+    "category": "local"
   },
   {
     "id": "ev-0082",
@@ -1976,7 +2080,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.395Z",
-    "updatedAt": "2026-10-29T09:40:03.395Z"
+    "updatedAt": "2026-10-29T09:40:03.395Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0083",
@@ -1997,7 +2102,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.396Z",
-    "updatedAt": "2026-10-29T09:40:03.396Z"
+    "updatedAt": "2026-10-29T09:40:03.396Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0084",
@@ -2018,7 +2124,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.396Z",
-    "updatedAt": "2026-10-29T09:40:03.396Z"
+    "updatedAt": "2026-10-29T09:40:03.396Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0085",
@@ -2039,7 +2146,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.397Z",
-    "updatedAt": "2026-10-29T09:40:03.397Z"
+    "updatedAt": "2026-10-29T09:40:03.397Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0086",
@@ -2060,7 +2168,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.397Z",
-    "updatedAt": "2026-10-29T09:40:03.397Z"
+    "updatedAt": "2026-10-29T09:40:03.397Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0087",
@@ -2081,7 +2190,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.398Z",
-    "updatedAt": "2026-10-29T09:40:03.398Z"
+    "updatedAt": "2026-10-29T09:40:03.398Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0088",
@@ -2102,7 +2212,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.398Z",
-    "updatedAt": "2026-10-29T09:40:03.398Z"
+    "updatedAt": "2026-10-29T09:40:03.398Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0089",
@@ -2123,7 +2234,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.398Z",
-    "updatedAt": "2026-10-29T09:40:03.398Z"
+    "updatedAt": "2026-10-29T09:40:03.398Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0090",
@@ -2144,7 +2256,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.399Z",
-    "updatedAt": "2026-10-29T09:40:03.399Z"
+    "updatedAt": "2026-10-29T09:40:03.399Z",
+    "category": "festival"
   },
   {
     "id": "ev-0091",
@@ -2155,7 +2268,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Warm wishes on Maha Shivaratri. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "dark",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/hindu/hinducalendar.html?year=2027",
@@ -2163,7 +2276,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -2171,7 +2286,8 @@
     "updatedAt": "2026-10-30T11:07:51.430Z",
     "series": "maha-shivaratri",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0092",
@@ -2193,7 +2309,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.400Z",
-    "updatedAt": "2026-10-29T09:40:03.400Z"
+    "updatedAt": "2026-10-29T09:40:03.400Z",
+    "category": "business"
   },
   {
     "id": "ev-0093",
@@ -2204,7 +2321,7 @@
     "kind": "greeting-only",
     "scope": "mp",
     "greetingText": "Eid Mubarak to you and your family. Palak Gupta, Venture Drafters",
-    "whoGets": "muslim",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.officeholidays.com/countries/india/madhya-pradesh/2027",
@@ -2218,7 +2335,8 @@
     "updatedAt": "2026-10-30T11:07:51.434Z",
     "series": "eid-al-fitr",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0094",
@@ -2239,7 +2357,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.400Z",
-    "updatedAt": "2026-10-29T09:40:03.400Z"
+    "updatedAt": "2026-10-29T09:40:03.400Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0095",
@@ -2250,7 +2369,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Eid Mubarak to you and your family. Palak Gupta, Venture Drafters",
-    "whoGets": "muslim",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/indian/indiancalendar.html?year=2027",
@@ -2259,7 +2378,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -2267,7 +2387,8 @@
     "updatedAt": "2026-10-30T11:07:51.437Z",
     "series": "eid-al-fitr",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0096",
@@ -2288,7 +2409,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.401Z",
-    "updatedAt": "2026-10-29T09:40:03.401Z"
+    "updatedAt": "2026-10-29T09:40:03.401Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0097",
@@ -2309,7 +2431,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.402Z",
-    "updatedAt": "2026-10-29T09:40:03.402Z"
+    "updatedAt": "2026-10-29T09:40:03.402Z",
+    "category": "business"
   },
   {
     "id": "ev-0098",
@@ -2330,7 +2453,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.402Z",
-    "updatedAt": "2026-10-29T09:40:03.402Z"
+    "updatedAt": "2026-10-29T09:40:03.402Z",
+    "category": "local"
   },
   {
     "id": "ev-0099",
@@ -2351,7 +2475,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.403Z",
-    "updatedAt": "2026-10-29T09:40:03.403Z"
+    "updatedAt": "2026-10-29T09:40:03.403Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0100",
@@ -2372,7 +2497,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.403Z",
-    "updatedAt": "2026-10-29T09:40:03.403Z"
+    "updatedAt": "2026-10-29T09:40:03.403Z",
+    "category": "festival"
   },
   {
     "id": "ev-0101",
@@ -2394,7 +2520,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.403Z",
-    "updatedAt": "2026-10-29T09:40:03.403Z"
+    "updatedAt": "2026-10-29T09:40:03.403Z",
+    "category": "business"
   },
   {
     "id": "ev-0102",
@@ -2416,7 +2543,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.404Z",
-    "updatedAt": "2026-10-29T09:40:03.404Z"
+    "updatedAt": "2026-10-29T09:40:03.404Z",
+    "category": "business"
   },
   {
     "id": "ev-0103",
@@ -2437,7 +2565,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.404Z",
-    "updatedAt": "2026-10-29T09:40:03.404Z"
+    "updatedAt": "2026-10-29T09:40:03.404Z",
+    "category": "festival"
   },
   {
     "id": "ev-0104",
@@ -2456,7 +2585,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -2464,7 +2595,8 @@
     "updatedAt": "2026-10-30T11:07:51.441Z",
     "series": "holi",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0105",
@@ -2485,7 +2617,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.405Z",
-    "updatedAt": "2026-10-29T09:40:03.405Z"
+    "updatedAt": "2026-10-29T09:40:03.405Z",
+    "category": "break"
   },
   {
     "id": "ev-0106",
@@ -2506,7 +2639,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.406Z",
-    "updatedAt": "2026-10-29T09:40:03.406Z"
+    "updatedAt": "2026-10-29T09:40:03.406Z",
+    "category": "festival"
   },
   {
     "id": "ev-0107",
@@ -2525,7 +2659,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -2533,7 +2669,8 @@
     "updatedAt": "2026-10-30T11:07:51.444Z",
     "series": "holi",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0108",
@@ -2544,7 +2681,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Wishing you a blessed Easter. Palak Gupta, Venture Drafters",
-    "whoGets": "christian",
+    "whoGets": "everyone",
     "postingRule": "normal",
     "confidence": "gazetted",
     "source": "https://www.drikpanchang.com/calendars/indian/indiancalendar.html?year=2027",
@@ -2553,7 +2690,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -2561,7 +2699,8 @@
     "updatedAt": "2026-10-30T11:07:51.447Z",
     "series": "easter",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0109",
@@ -2583,7 +2722,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.407Z",
-    "updatedAt": "2026-10-29T09:40:03.407Z"
+    "updatedAt": "2026-10-29T09:40:03.407Z",
+    "category": "business"
   },
   {
     "id": "ev-0110",
@@ -2604,7 +2744,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.407Z",
-    "updatedAt": "2026-10-29T09:40:03.407Z"
+    "updatedAt": "2026-10-29T09:40:03.407Z",
+    "category": "business"
   },
   {
     "id": "ev-0111",
@@ -2615,7 +2756,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Warm wishes on Gudi Padwa and a prosperous Hindu New Year. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/hindu/hinducalendar.html?year=2027",
@@ -2623,7 +2764,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -2631,7 +2774,8 @@
     "updatedAt": "2026-10-30T11:07:51.450Z",
     "series": "gudi-padwa",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0112",
@@ -2652,7 +2796,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.408Z",
-    "updatedAt": "2026-10-29T09:40:03.408Z"
+    "updatedAt": "2026-10-29T09:40:03.408Z",
+    "category": "business"
   },
   {
     "id": "ev-0113",
@@ -2674,7 +2819,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.409Z",
-    "updatedAt": "2026-10-29T09:40:03.409Z"
+    "updatedAt": "2026-10-29T09:40:03.409Z",
+    "category": "business"
   },
   {
     "id": "ev-0114",
@@ -2695,7 +2841,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.409Z",
-    "updatedAt": "2026-10-29T09:40:03.409Z"
+    "updatedAt": "2026-10-29T09:40:03.409Z",
+    "category": "business"
   },
   {
     "id": "ev-0115",
@@ -2712,14 +2859,20 @@
     "source": "https://www.officeholidays.com/countries/india/madhya-pradesh/2027",
     "note": "Wednesday; Vaisakhi and Bihu the same day",
     "recurrence": "annual-fixed",
-    "tiers": [],
+    "tiers": [
+      "platinum",
+      "gold",
+      "silver",
+      "bronze"
+    ],
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.410Z",
     "updatedAt": "2026-10-30T11:07:51.453Z",
     "series": "ambedkar-jayanti",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "national"
   },
   {
     "id": "ev-0116",
@@ -2730,7 +2883,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Warm wishes on Ram Navami. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "gazetted",
     "source": "https://7thpaycommissionnews.in/central-government-holidays-2027/",
@@ -2738,7 +2891,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -2746,7 +2901,8 @@
     "updatedAt": "2026-10-30T11:07:51.455Z",
     "series": "ram-navami",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0117",
@@ -2767,7 +2923,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.411Z",
-    "updatedAt": "2026-10-29T09:40:03.411Z"
+    "updatedAt": "2026-10-29T09:40:03.411Z",
+    "category": "festival"
   },
   {
     "id": "ev-0118",
@@ -2788,7 +2945,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.411Z",
-    "updatedAt": "2026-10-29T09:40:03.411Z"
+    "updatedAt": "2026-10-29T09:40:03.411Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0119",
@@ -2799,7 +2957,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Warm wishes on Mahavir Jayanti. May the message of ahimsa guide the year ahead. Palak Gupta, Venture Drafters",
-    "whoGets": "jain",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "gazetted",
     "source": "https://www.drikpanchang.com/festivals/lunar-month/festivals-chaitra.html?year=2027",
@@ -2808,7 +2966,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -2816,7 +2975,8 @@
     "updatedAt": "2026-10-30T11:07:51.458Z",
     "series": "mahavir-jayanti",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0120",
@@ -2837,7 +2997,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.412Z",
-    "updatedAt": "2026-10-29T09:40:03.412Z"
+    "updatedAt": "2026-10-29T09:40:03.412Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0121",
@@ -2858,7 +3019,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.412Z",
-    "updatedAt": "2026-10-29T09:40:03.412Z"
+    "updatedAt": "2026-10-29T09:40:03.412Z",
+    "category": "festival"
   },
   {
     "id": "ev-0122",
@@ -2879,7 +3041,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.413Z",
-    "updatedAt": "2026-10-29T09:40:03.413Z"
+    "updatedAt": "2026-10-29T09:40:03.413Z",
+    "category": "business"
   },
   {
     "id": "ev-0123",
@@ -2900,7 +3063,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.413Z",
-    "updatedAt": "2026-10-29T09:40:03.413Z"
+    "updatedAt": "2026-10-29T09:40:03.413Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0124",
@@ -2921,7 +3085,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.414Z",
-    "updatedAt": "2026-10-29T09:40:03.414Z"
+    "updatedAt": "2026-10-29T09:40:03.414Z",
+    "category": "business"
   },
   {
     "id": "ev-0125",
@@ -2942,7 +3107,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.415Z",
-    "updatedAt": "2026-10-29T09:40:03.415Z"
+    "updatedAt": "2026-10-29T09:40:03.415Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0126",
@@ -2963,7 +3129,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.415Z",
-    "updatedAt": "2026-10-29T09:40:03.415Z"
+    "updatedAt": "2026-10-29T09:40:03.415Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0127",
@@ -2984,7 +3151,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.416Z",
-    "updatedAt": "2026-10-29T09:40:03.416Z"
+    "updatedAt": "2026-10-29T09:40:03.416Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0128",
@@ -3005,7 +3173,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.416Z",
-    "updatedAt": "2026-10-29T09:40:03.416Z"
+    "updatedAt": "2026-10-29T09:40:03.416Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0129",
@@ -3026,7 +3195,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.416Z",
-    "updatedAt": "2026-10-29T09:40:03.416Z"
+    "updatedAt": "2026-10-29T09:40:03.416Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0130",
@@ -3047,7 +3217,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.417Z",
-    "updatedAt": "2026-10-29T09:40:03.417Z"
+    "updatedAt": "2026-10-29T09:40:03.417Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0131",
@@ -3068,7 +3239,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.418Z",
-    "updatedAt": "2026-10-29T09:40:03.418Z"
+    "updatedAt": "2026-10-29T09:40:03.418Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0132",
@@ -3089,7 +3261,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.419Z",
-    "updatedAt": "2026-10-29T09:40:03.419Z"
+    "updatedAt": "2026-10-29T09:40:03.419Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0133",
@@ -3110,7 +3283,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.420Z",
-    "updatedAt": "2026-10-29T09:40:03.420Z"
+    "updatedAt": "2026-10-29T09:40:03.420Z",
+    "category": "business"
   },
   {
     "id": "ev-0134",
@@ -3131,7 +3305,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.420Z",
-    "updatedAt": "2026-10-29T09:40:03.420Z"
+    "updatedAt": "2026-10-29T09:40:03.420Z",
+    "category": "festival"
   },
   {
     "id": "ev-0135",
@@ -3142,7 +3317,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Warm wishes on Akshaya Tritiya. May the year ahead bring lasting prosperity. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/hindu/hinducalendar.html?year=2027",
@@ -3150,7 +3325,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -3158,7 +3335,8 @@
     "updatedAt": "2026-10-30T11:07:51.461Z",
     "series": "akshaya-tritiya",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0136",
@@ -3179,7 +3357,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.421Z",
-    "updatedAt": "2026-10-29T09:40:03.421Z"
+    "updatedAt": "2026-10-29T09:40:03.421Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0137",
@@ -3200,7 +3379,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.422Z",
-    "updatedAt": "2026-10-29T09:40:03.422Z"
+    "updatedAt": "2026-10-29T09:40:03.422Z",
+    "category": "business"
   },
   {
     "id": "ev-0138",
@@ -3221,7 +3401,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.423Z",
-    "updatedAt": "2026-10-29T09:40:03.423Z"
+    "updatedAt": "2026-10-29T09:40:03.423Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0139",
@@ -3242,7 +3423,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.423Z",
-    "updatedAt": "2026-10-29T09:40:03.423Z"
+    "updatedAt": "2026-10-29T09:40:03.423Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0140",
@@ -3263,7 +3445,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.424Z",
-    "updatedAt": "2026-10-29T09:40:03.424Z"
+    "updatedAt": "2026-10-29T09:40:03.424Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0141",
@@ -3274,7 +3457,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Eid al-Adha Mubarak to you and your family. Palak Gupta, Venture Drafters",
-    "whoGets": "muslim",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://gulfnews.com/uae/ramadan/when-does-ramadan-2027-begin-everything-you-need-to-know-1.500630523",
@@ -3288,7 +3471,8 @@
     "updatedAt": "2026-10-30T11:07:51.465Z",
     "series": "eid-al-adha",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0142",
@@ -3309,7 +3493,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.425Z",
-    "updatedAt": "2026-10-29T09:40:03.425Z"
+    "updatedAt": "2026-10-29T09:40:03.425Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0143",
@@ -3320,7 +3505,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Eid al-Adha Mubarak to you and your family. Palak Gupta, Venture Drafters",
-    "whoGets": "muslim",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://7thpaycommissionnews.in/central-government-holidays-2027/",
@@ -3329,7 +3514,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -3337,7 +3523,8 @@
     "updatedAt": "2026-10-30T11:07:51.467Z",
     "series": "eid-al-adha",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0144",
@@ -3358,7 +3545,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.426Z",
-    "updatedAt": "2026-10-29T09:40:03.426Z"
+    "updatedAt": "2026-10-29T09:40:03.426Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0145",
@@ -3379,7 +3567,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.427Z",
-    "updatedAt": "2026-10-29T09:40:03.427Z"
+    "updatedAt": "2026-10-29T09:40:03.427Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0146",
@@ -3400,7 +3589,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.428Z",
-    "updatedAt": "2026-10-29T09:40:03.428Z"
+    "updatedAt": "2026-10-29T09:40:03.428Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0147",
@@ -3411,7 +3601,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Warm wishes on Buddha Purnima. Palak Gupta, Venture Drafters",
-    "whoGets": "buddhist",
+    "whoGets": "everyone",
     "postingRule": "quiet",
     "confidence": "gazetted",
     "source": "https://7thpaycommissionnews.in/central-government-holidays-2027/",
@@ -3420,7 +3610,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -3428,7 +3619,8 @@
     "updatedAt": "2026-10-30T11:07:51.470Z",
     "series": "buddha-purnima",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0148",
@@ -3449,7 +3641,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.429Z",
-    "updatedAt": "2026-10-29T09:40:03.429Z"
+    "updatedAt": "2026-10-29T09:40:03.429Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0149",
@@ -3470,7 +3663,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.429Z",
-    "updatedAt": "2026-10-29T09:40:03.429Z"
+    "updatedAt": "2026-10-29T09:40:03.429Z",
+    "category": "business"
   },
   {
     "id": "ev-0150",
@@ -3491,7 +3685,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.430Z",
-    "updatedAt": "2026-10-29T09:40:03.430Z"
+    "updatedAt": "2026-10-29T09:40:03.430Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0151",
@@ -3512,7 +3707,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.430Z",
-    "updatedAt": "2026-10-29T09:40:03.430Z"
+    "updatedAt": "2026-10-29T09:40:03.430Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0152",
@@ -3533,7 +3729,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.431Z",
-    "updatedAt": "2026-10-29T09:40:03.431Z"
+    "updatedAt": "2026-10-29T09:40:03.431Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0153",
@@ -3554,7 +3751,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.431Z",
-    "updatedAt": "2026-10-29T09:40:03.431Z"
+    "updatedAt": "2026-10-29T09:40:03.431Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0154",
@@ -3575,7 +3773,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.432Z",
-    "updatedAt": "2026-10-29T09:40:03.432Z"
+    "updatedAt": "2026-10-29T09:40:03.432Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0155",
@@ -3596,7 +3795,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.432Z",
-    "updatedAt": "2026-10-29T09:40:03.432Z"
+    "updatedAt": "2026-10-29T09:40:03.432Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0156",
@@ -3613,14 +3813,20 @@
     "source": "https://www.incredibleindia.gov.in/en/festivals-and-events/madhya-pradesh/devi-ahilya-jayanti-parv",
     "note": "Fixed date; the Collector declared a half-day for Ahilya Utsav on 22 Aug in 2025, so the civic programme date may differ",
     "recurrence": "annual-fixed",
-    "tiers": [],
+    "tiers": [
+      "platinum",
+      "gold",
+      "silver",
+      "bronze"
+    ],
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.433Z",
     "updatedAt": "2026-10-30T11:07:51.473Z",
     "series": "ahilyabai-holkar-jayanti",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "national"
   },
   {
     "id": "ev-0157",
@@ -3641,7 +3847,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.433Z",
-    "updatedAt": "2026-10-29T09:40:03.433Z"
+    "updatedAt": "2026-10-29T09:40:03.433Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0158",
@@ -3662,7 +3869,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.434Z",
-    "updatedAt": "2026-10-29T09:40:03.434Z"
+    "updatedAt": "2026-10-29T09:40:03.434Z",
+    "category": "business"
   },
   {
     "id": "ev-0159",
@@ -3683,7 +3891,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.434Z",
-    "updatedAt": "2026-10-29T09:40:03.434Z"
+    "updatedAt": "2026-10-29T09:40:03.434Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0160",
@@ -3704,7 +3913,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.434Z",
-    "updatedAt": "2026-10-29T09:40:03.434Z"
+    "updatedAt": "2026-10-29T09:40:03.434Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0161",
@@ -3725,7 +3935,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.435Z",
-    "updatedAt": "2026-10-29T09:40:03.435Z"
+    "updatedAt": "2026-10-29T09:40:03.435Z",
+    "category": "festival"
   },
   {
     "id": "ev-0162",
@@ -3746,7 +3957,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.436Z",
-    "updatedAt": "2026-10-29T09:40:03.436Z"
+    "updatedAt": "2026-10-29T09:40:03.436Z",
+    "category": "business"
   },
   {
     "id": "ev-0163",
@@ -3767,7 +3979,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.436Z",
-    "updatedAt": "2026-10-29T09:40:03.436Z"
+    "updatedAt": "2026-10-29T09:40:03.436Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0164",
@@ -3788,7 +4001,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.437Z",
-    "updatedAt": "2026-10-29T09:40:03.437Z"
+    "updatedAt": "2026-10-29T09:40:03.437Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0165",
@@ -3809,7 +4023,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.438Z",
-    "updatedAt": "2026-10-29T09:40:03.438Z"
+    "updatedAt": "2026-10-29T09:40:03.438Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0166",
@@ -3830,7 +4045,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.438Z",
-    "updatedAt": "2026-10-29T09:40:03.438Z"
+    "updatedAt": "2026-10-29T09:40:03.438Z",
+    "category": "business"
   },
   {
     "id": "ev-0167",
@@ -3851,7 +4067,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.439Z",
-    "updatedAt": "2026-10-29T09:40:03.439Z"
+    "updatedAt": "2026-10-29T09:40:03.439Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0168",
@@ -3872,7 +4089,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.439Z",
-    "updatedAt": "2026-10-29T09:40:03.439Z"
+    "updatedAt": "2026-10-29T09:40:03.439Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0169",
@@ -3893,7 +4111,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.440Z",
-    "updatedAt": "2026-10-29T09:40:03.440Z"
+    "updatedAt": "2026-10-29T09:40:03.440Z",
+    "category": "festival"
   },
   {
     "id": "ev-0170",
@@ -3914,7 +4133,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.441Z",
-    "updatedAt": "2026-10-29T09:40:03.441Z"
+    "updatedAt": "2026-10-29T09:40:03.441Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0171",
@@ -3936,7 +4156,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.441Z",
-    "updatedAt": "2026-10-29T09:40:03.441Z"
+    "updatedAt": "2026-10-29T09:40:03.441Z",
+    "category": "business"
   },
   {
     "id": "ev-0172",
@@ -3957,7 +4178,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.442Z",
-    "updatedAt": "2026-10-29T09:40:03.442Z"
+    "updatedAt": "2026-10-29T09:40:03.442Z",
+    "category": "festival"
   },
   {
     "id": "ev-0173",
@@ -3978,7 +4200,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.442Z",
-    "updatedAt": "2026-10-29T09:40:03.442Z"
+    "updatedAt": "2026-10-29T09:40:03.442Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0174",
@@ -3999,7 +4222,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.443Z",
-    "updatedAt": "2026-10-29T09:40:03.443Z"
+    "updatedAt": "2026-10-29T09:40:03.443Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0175",
@@ -4020,7 +4244,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.443Z",
-    "updatedAt": "2026-10-29T09:40:03.443Z"
+    "updatedAt": "2026-10-29T09:40:03.443Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0176",
@@ -4041,7 +4266,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.444Z",
-    "updatedAt": "2026-10-29T09:40:03.444Z"
+    "updatedAt": "2026-10-29T09:40:03.444Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0177",
@@ -4063,7 +4289,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.444Z",
-    "updatedAt": "2026-10-29T09:40:03.444Z"
+    "updatedAt": "2026-10-29T09:40:03.444Z",
+    "category": "business"
   },
   {
     "id": "ev-0178",
@@ -4084,7 +4311,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.445Z",
-    "updatedAt": "2026-10-29T09:40:03.445Z"
+    "updatedAt": "2026-10-29T09:40:03.445Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0179",
@@ -4105,7 +4333,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.445Z",
-    "updatedAt": "2026-10-29T09:40:03.445Z"
+    "updatedAt": "2026-10-29T09:40:03.445Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0180",
@@ -4126,7 +4355,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.446Z",
-    "updatedAt": "2026-10-29T09:40:03.446Z"
+    "updatedAt": "2026-10-29T09:40:03.446Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0181",
@@ -4147,7 +4377,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.447Z",
-    "updatedAt": "2026-10-29T09:40:03.447Z"
+    "updatedAt": "2026-10-29T09:40:03.447Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0182",
@@ -4168,7 +4399,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.447Z",
-    "updatedAt": "2026-10-29T09:40:03.447Z"
+    "updatedAt": "2026-10-29T09:40:03.447Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0183",
@@ -4189,7 +4421,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.448Z",
-    "updatedAt": "2026-10-29T09:40:03.448Z"
+    "updatedAt": "2026-10-29T09:40:03.448Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0184",
@@ -4210,7 +4443,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.448Z",
-    "updatedAt": "2026-10-29T09:40:03.448Z"
+    "updatedAt": "2026-10-29T09:40:03.448Z",
+    "category": "business"
   },
   {
     "id": "ev-0185",
@@ -4231,7 +4465,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.449Z",
-    "updatedAt": "2026-10-29T09:40:03.449Z"
+    "updatedAt": "2026-10-29T09:40:03.449Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0186",
@@ -4252,7 +4487,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.449Z",
-    "updatedAt": "2026-10-29T09:40:03.449Z"
+    "updatedAt": "2026-10-29T09:40:03.449Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0187",
@@ -4273,7 +4509,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.450Z",
-    "updatedAt": "2026-10-29T09:40:03.450Z"
+    "updatedAt": "2026-10-29T09:40:03.450Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0188",
@@ -4295,7 +4532,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.451Z",
-    "updatedAt": "2026-10-29T09:40:03.451Z"
+    "updatedAt": "2026-10-29T09:40:03.451Z",
+    "category": "business"
   },
   {
     "id": "ev-0189",
@@ -4316,7 +4554,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.451Z",
-    "updatedAt": "2026-10-29T09:40:03.451Z"
+    "updatedAt": "2026-10-29T09:40:03.451Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0190",
@@ -4337,7 +4576,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.452Z",
-    "updatedAt": "2026-10-29T09:40:03.452Z"
+    "updatedAt": "2026-10-29T09:40:03.452Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0191",
@@ -4358,7 +4598,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.452Z",
-    "updatedAt": "2026-10-29T09:40:03.452Z"
+    "updatedAt": "2026-10-29T09:40:03.452Z",
+    "category": "business"
   },
   {
     "id": "ev-0192",
@@ -4379,7 +4620,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.453Z",
-    "updatedAt": "2026-10-29T09:40:03.453Z"
+    "updatedAt": "2026-10-29T09:40:03.453Z",
+    "category": "festival"
   },
   {
     "id": "ev-0193",
@@ -4400,7 +4642,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.454Z",
-    "updatedAt": "2026-10-29T09:40:03.454Z"
+    "updatedAt": "2026-10-29T09:40:03.454Z",
+    "category": "festival"
   },
   {
     "id": "ev-0194",
@@ -4421,7 +4664,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.455Z",
-    "updatedAt": "2026-10-29T09:40:03.455Z"
+    "updatedAt": "2026-10-29T09:40:03.455Z",
+    "category": "business"
   },
   {
     "id": "ev-0195",
@@ -4442,7 +4686,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.455Z",
-    "updatedAt": "2026-10-29T09:40:03.455Z"
+    "updatedAt": "2026-10-29T09:40:03.455Z",
+    "category": "business"
   },
   {
     "id": "ev-0196",
@@ -4464,7 +4709,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.456Z",
-    "updatedAt": "2026-10-29T09:40:03.456Z"
+    "updatedAt": "2026-10-29T09:40:03.456Z",
+    "category": "business"
   },
   {
     "id": "ev-0197",
@@ -4486,7 +4732,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.457Z",
-    "updatedAt": "2026-10-29T09:40:03.457Z"
+    "updatedAt": "2026-10-29T09:40:03.457Z",
+    "category": "business"
   },
   {
     "id": "ev-0198",
@@ -4507,7 +4754,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.458Z",
-    "updatedAt": "2026-10-29T09:40:03.458Z"
+    "updatedAt": "2026-10-29T09:40:03.458Z",
+    "category": "business"
   },
   {
     "id": "ev-0199",
@@ -4524,14 +4772,20 @@
     "source": "https://7thpaycommissionnews.in/central-government-holidays-2027/",
     "note": "Sunday; send the Milad greeting to Muslim contacts the same day or on 16 Aug, whichever Indore observes",
     "recurrence": "annual-fixed",
-    "tiers": [],
+    "tiers": [
+      "platinum",
+      "gold",
+      "silver",
+      "bronze"
+    ],
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.458Z",
     "updatedAt": "2026-10-30T11:07:51.477Z",
     "series": "independence-day",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "national"
   },
   {
     "id": "ev-0200",
@@ -4542,7 +4796,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Eid Milad-un-Nabi Mubarak to you and your family. Palak Gupta, Venture Drafters",
-    "whoGets": "muslim",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/indian/muslim-festivals/milad-un-nabi/milad-un-nabi-date-time.html?year=2027",
@@ -4551,7 +4805,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -4559,7 +4814,8 @@
     "updatedAt": "2026-10-30T11:07:51.479Z",
     "series": "milad-un-nabi",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0201",
@@ -4570,20 +4826,26 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Warm wishes on Raksha Bandhan. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "quiet",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/hindu/hinducalendar.html?year=2027",
     "note": "Tuesday; family day, offices half-open; move the LinkedIn post",
     "recurrence": "lunar",
-    "tiers": [],
+    "tiers": [
+      "platinum",
+      "gold",
+      "silver",
+      "bronze"
+    ],
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.460Z",
     "updatedAt": "2026-10-30T11:07:51.482Z",
     "series": "raksha-bandhan",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0202",
@@ -4604,7 +4866,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.460Z",
-    "updatedAt": "2026-10-29T09:40:03.460Z"
+    "updatedAt": "2026-10-29T09:40:03.460Z",
+    "category": "business"
   },
   {
     "id": "ev-0203",
@@ -4615,7 +4878,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Warm wishes on Janmashtami. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "gazetted",
     "source": "https://7thpaycommissionnews.in/central-government-holidays-2027/",
@@ -4623,7 +4886,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -4631,7 +4896,8 @@
     "updatedAt": "2026-10-30T11:07:51.485Z",
     "series": "janmashtami",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0204",
@@ -4652,7 +4918,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.462Z",
-    "updatedAt": "2026-10-29T09:40:03.462Z"
+    "updatedAt": "2026-10-29T09:40:03.462Z",
+    "category": "festival"
   },
   {
     "id": "ev-0205",
@@ -4663,7 +4930,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Michhami Dukkadam. If I have hurt you knowingly or unknowingly in the past year, I seek your forgiveness. Palak Gupta, Venture Drafters",
-    "whoGets": "jain",
+    "whoGets": "everyone",
     "postingRule": "normal",
     "confidence": "expected",
     "source": "https://orsl.usc.edu/life/jain-holy-days-calendar/",
@@ -4672,7 +4939,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -4680,7 +4948,8 @@
     "updatedAt": "2026-10-30T11:07:51.488Z",
     "series": "samvatsari",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0206",
@@ -4691,7 +4960,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Warm wishes on Ganesh Chaturthi. Ganpati Bappa Morya. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/hindu/hinducalendar.html?year=2027",
@@ -4699,7 +4968,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -4707,7 +4978,8 @@
     "updatedAt": "2026-10-30T11:07:51.492Z",
     "series": "ganesh-chaturthi",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0207",
@@ -4728,7 +5000,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.464Z",
-    "updatedAt": "2026-10-29T09:40:03.464Z"
+    "updatedAt": "2026-10-29T09:40:03.464Z",
+    "category": "business"
   },
   {
     "id": "ev-0208",
@@ -4750,7 +5023,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.465Z",
-    "updatedAt": "2026-10-29T09:40:03.465Z"
+    "updatedAt": "2026-10-29T09:40:03.465Z",
+    "category": "business"
   },
   {
     "id": "ev-0209",
@@ -4761,20 +5035,26 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Warm wishes on Onam. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "normal",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/indian/indiancalendar.html?year=2027",
     "note": "Malayali contacts only; Sunday",
     "recurrence": "lunar",
-    "tiers": [],
+    "tiers": [
+      "platinum",
+      "gold",
+      "silver",
+      "bronze"
+    ],
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.466Z",
     "updatedAt": "2026-10-30T11:07:51.495Z",
     "series": "onam",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0210",
@@ -4795,7 +5075,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.467Z",
-    "updatedAt": "2026-10-29T09:40:03.467Z"
+    "updatedAt": "2026-10-29T09:40:03.467Z",
+    "category": "festival"
   },
   {
     "id": "ev-0211",
@@ -4817,7 +5098,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.467Z",
-    "updatedAt": "2026-10-29T09:40:03.467Z"
+    "updatedAt": "2026-10-29T09:40:03.467Z",
+    "category": "business"
   },
   {
     "id": "ev-0212",
@@ -4838,7 +5120,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.468Z",
-    "updatedAt": "2026-10-29T09:40:03.468Z"
+    "updatedAt": "2026-10-29T09:40:03.468Z",
+    "category": "festival"
   },
   {
     "id": "ev-0213",
@@ -4849,7 +5132,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Warm wishes on Vishwakarma Puja to you and your team. Palak Gupta, Venture Drafters",
-    "whoGets": "business-only",
+    "whoGets": "everyone",
     "postingRule": "normal",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/sankranti/sankranti.html?year=2027",
@@ -4857,7 +5140,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -4865,7 +5150,8 @@
     "updatedAt": "2026-10-30T11:07:51.499Z",
     "series": "vishwakarma-puja",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0214",
@@ -4886,7 +5172,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.470Z",
-    "updatedAt": "2026-10-29T09:40:03.470Z"
+    "updatedAt": "2026-10-29T09:40:03.470Z",
+    "category": "business"
   },
   {
     "id": "ev-0215",
@@ -4907,7 +5194,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.470Z",
-    "updatedAt": "2026-10-29T09:40:03.470Z"
+    "updatedAt": "2026-10-29T09:40:03.470Z",
+    "category": "festival"
   },
   {
     "id": "ev-0216",
@@ -4918,7 +5206,7 @@
     "kind": "greeting-only",
     "scope": "indore",
     "greetingText": "Warm wishes for Navratri. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "quiet",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/calendars/hindu/hinducalendar.html?year=2027",
@@ -4926,7 +5214,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -4934,7 +5224,8 @@
     "updatedAt": "2026-10-30T11:07:51.501Z",
     "series": "navratri",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0217",
@@ -4955,7 +5246,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.471Z",
-    "updatedAt": "2026-10-29T09:40:03.471Z"
+    "updatedAt": "2026-10-29T09:40:03.471Z",
+    "category": "business"
   },
   {
     "id": "ev-0218",
@@ -4972,14 +5264,20 @@
     "source": "https://7thpaycommissionnews.in/central-government-holidays-2027/",
     "note": "Saturday; dry day",
     "recurrence": "annual-fixed",
-    "tiers": [],
+    "tiers": [
+      "platinum",
+      "gold",
+      "silver",
+      "bronze"
+    ],
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.473Z",
     "updatedAt": "2026-10-30T11:07:51.504Z",
     "series": "gandhi-jayanti",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "national"
   },
   {
     "id": "ev-0219",
@@ -5000,7 +5298,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.473Z",
-    "updatedAt": "2026-10-29T09:40:03.473Z"
+    "updatedAt": "2026-10-29T09:40:03.473Z",
+    "category": "festival"
   },
   {
     "id": "ev-0220",
@@ -5021,7 +5320,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.474Z",
-    "updatedAt": "2026-10-29T09:40:03.474Z"
+    "updatedAt": "2026-10-29T09:40:03.474Z",
+    "category": "business"
   },
   {
     "id": "ev-0221",
@@ -5042,7 +5342,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.474Z",
-    "updatedAt": "2026-10-29T09:40:03.474Z"
+    "updatedAt": "2026-10-29T09:40:03.474Z",
+    "category": "festival"
   },
   {
     "id": "ev-0222",
@@ -5061,7 +5362,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -5069,7 +5372,8 @@
     "updatedAt": "2026-10-30T11:07:51.507Z",
     "series": "dussehra",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0223",
@@ -5090,7 +5394,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.476Z",
-    "updatedAt": "2026-10-29T09:40:03.476Z"
+    "updatedAt": "2026-10-29T09:40:03.476Z",
+    "category": "festival"
   },
   {
     "id": "ev-0224",
@@ -5111,7 +5416,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.477Z",
-    "updatedAt": "2026-10-29T09:40:03.477Z"
+    "updatedAt": "2026-10-29T09:40:03.477Z",
+    "category": "business"
   },
   {
     "id": "ev-0225",
@@ -5132,7 +5438,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.477Z",
-    "updatedAt": "2026-10-29T09:40:03.477Z"
+    "updatedAt": "2026-10-29T09:40:03.477Z",
+    "category": "business"
   },
   {
     "id": "ev-0226",
@@ -5153,7 +5460,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.478Z",
-    "updatedAt": "2026-10-29T09:40:03.478Z"
+    "updatedAt": "2026-10-29T09:40:03.478Z",
+    "category": "festival"
   },
   {
     "id": "ev-0227",
@@ -5174,7 +5482,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.479Z",
-    "updatedAt": "2026-10-29T09:40:03.479Z"
+    "updatedAt": "2026-10-29T09:40:03.479Z",
+    "category": "festival"
   },
   {
     "id": "ev-0228",
@@ -5195,7 +5504,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.480Z",
-    "updatedAt": "2026-10-29T09:40:03.480Z"
+    "updatedAt": "2026-10-29T09:40:03.480Z",
+    "category": "festival"
   },
   {
     "id": "ev-0229",
@@ -5216,7 +5526,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.480Z",
-    "updatedAt": "2026-10-29T09:40:03.480Z"
+    "updatedAt": "2026-10-29T09:40:03.480Z",
+    "category": "business"
   },
   {
     "id": "ev-0230",
@@ -5237,7 +5548,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.481Z",
-    "updatedAt": "2026-10-29T09:40:03.481Z"
+    "updatedAt": "2026-10-29T09:40:03.481Z",
+    "category": "business"
   },
   {
     "id": "ev-0231",
@@ -5258,7 +5570,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.482Z",
-    "updatedAt": "2026-10-29T09:40:03.482Z"
+    "updatedAt": "2026-10-29T09:40:03.482Z",
+    "category": "festival"
   },
   {
     "id": "ev-0232",
@@ -5269,7 +5582,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Wishing you prosperity and good health this Dhanteras. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/festivals/lunar-month/festivals-kartika.html?year=2027",
@@ -5277,7 +5590,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -5285,7 +5600,8 @@
     "updatedAt": "2026-10-30T11:07:51.510Z",
     "series": "dhanteras",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0233",
@@ -5306,7 +5622,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.483Z",
-    "updatedAt": "2026-10-29T09:40:03.483Z"
+    "updatedAt": "2026-10-29T09:40:03.483Z",
+    "category": "festival"
   },
   {
     "id": "ev-0234",
@@ -5335,7 +5652,8 @@
     "updatedAt": "2026-10-30T11:07:51.513Z",
     "series": "diwali",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0235",
@@ -5356,7 +5674,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.485Z",
-    "updatedAt": "2026-10-29T09:40:03.485Z"
+    "updatedAt": "2026-10-29T09:40:03.485Z",
+    "category": "festival"
   },
   {
     "id": "ev-0236",
@@ -5377,7 +5696,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.486Z",
-    "updatedAt": "2026-10-29T09:40:03.486Z"
+    "updatedAt": "2026-10-29T09:40:03.486Z",
+    "category": "festival"
   },
   {
     "id": "ev-0237",
@@ -5399,7 +5719,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.487Z",
-    "updatedAt": "2026-10-29T09:40:03.487Z"
+    "updatedAt": "2026-10-29T09:40:03.487Z",
+    "category": "business"
   },
   {
     "id": "ev-0238",
@@ -5416,14 +5737,20 @@
     "source": "https://en.wikipedia.org/wiki/Madhya_Pradesh_Day",
     "note": "Monday; owners catching up",
     "recurrence": "annual-fixed",
-    "tiers": [],
+    "tiers": [
+      "platinum",
+      "gold",
+      "silver",
+      "bronze"
+    ],
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.488Z",
     "updatedAt": "2026-10-30T11:07:51.516Z",
     "series": "mp-foundation-day",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "national"
   },
   {
     "id": "ev-0239",
@@ -5434,7 +5761,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Warm wishes on Chhath Puja to you and your family. Palak Gupta, Venture Drafters",
-    "whoGets": "hindu",
+    "whoGets": "everyone",
     "postingRule": "quiet",
     "confidence": "expected",
     "source": "https://www.drikpanchang.com/festivals/lunar-month/festivals-kartika.html?year=2027",
@@ -5442,7 +5769,9 @@
     "recurrence": "lunar",
     "tiers": [
       "platinum",
-      "gold"
+      "gold",
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -5450,7 +5779,8 @@
     "updatedAt": "2026-10-30T11:07:51.519Z",
     "series": "chhath-puja",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0240",
@@ -5472,7 +5802,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.490Z",
-    "updatedAt": "2026-10-29T09:40:03.490Z"
+    "updatedAt": "2026-10-29T09:40:03.490Z",
+    "category": "business"
   },
   {
     "id": "ev-0241",
@@ -5493,7 +5824,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.491Z",
-    "updatedAt": "2026-10-29T09:40:03.491Z"
+    "updatedAt": "2026-10-29T09:40:03.491Z",
+    "category": "festival"
   },
   {
     "id": "ev-0242",
@@ -5514,7 +5846,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.492Z",
-    "updatedAt": "2026-10-29T09:40:03.492Z"
+    "updatedAt": "2026-10-29T09:40:03.492Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0243",
@@ -5535,7 +5868,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.493Z",
-    "updatedAt": "2026-10-29T09:40:03.493Z"
+    "updatedAt": "2026-10-29T09:40:03.493Z",
+    "category": "festival"
   },
   {
     "id": "ev-0244",
@@ -5556,7 +5890,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.493Z",
-    "updatedAt": "2026-10-29T09:40:03.493Z"
+    "updatedAt": "2026-10-29T09:40:03.493Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0245",
@@ -5577,7 +5912,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.495Z",
-    "updatedAt": "2026-10-29T09:40:03.495Z"
+    "updatedAt": "2026-10-29T09:40:03.495Z",
+    "category": "business"
   },
   {
     "id": "ev-0246",
@@ -5598,7 +5934,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.495Z",
-    "updatedAt": "2026-10-29T09:40:03.495Z"
+    "updatedAt": "2026-10-29T09:40:03.495Z",
+    "category": "festival"
   },
   {
     "id": "ev-0247",
@@ -5609,7 +5946,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Warm wishes on Guru Nanak Jayanti. Gurpurab di lakh lakh vadhaiyan. Palak Gupta, Venture Drafters",
-    "whoGets": "sikh",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "gazetted",
     "source": "https://www.drikpanchang.com/festivals/lunar-month/festivals-kartika.html?year=2027",
@@ -5618,7 +5955,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -5626,7 +5964,8 @@
     "updatedAt": "2026-10-30T11:07:51.523Z",
     "series": "guru-nanak-jayanti",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0248",
@@ -5647,7 +5986,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.497Z",
-    "updatedAt": "2026-10-29T09:40:03.497Z"
+    "updatedAt": "2026-10-29T09:40:03.497Z",
+    "category": "national"
   },
   {
     "id": "ev-0249",
@@ -5668,7 +6008,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.498Z",
-    "updatedAt": "2026-10-29T09:40:03.498Z"
+    "updatedAt": "2026-10-29T09:40:03.498Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0250",
@@ -5689,7 +6030,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.499Z",
-    "updatedAt": "2026-10-29T09:40:03.499Z"
+    "updatedAt": "2026-10-29T09:40:03.499Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0251",
@@ -5710,7 +6052,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.499Z",
-    "updatedAt": "2026-10-29T09:40:03.499Z"
+    "updatedAt": "2026-10-29T09:40:03.499Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0252",
@@ -5732,7 +6075,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.500Z",
-    "updatedAt": "2026-10-29T09:40:03.500Z"
+    "updatedAt": "2026-10-29T09:40:03.500Z",
+    "category": "business"
   },
   {
     "id": "ev-0253",
@@ -5753,7 +6097,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.501Z",
-    "updatedAt": "2026-10-29T09:40:03.501Z"
+    "updatedAt": "2026-10-29T09:40:03.501Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0254",
@@ -5774,7 +6119,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.502Z",
-    "updatedAt": "2026-10-29T09:40:03.502Z"
+    "updatedAt": "2026-10-29T09:40:03.502Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0255",
@@ -5795,7 +6141,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.503Z",
-    "updatedAt": "2026-10-29T09:40:03.503Z"
+    "updatedAt": "2026-10-29T09:40:03.503Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0256",
@@ -5816,7 +6163,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.504Z",
-    "updatedAt": "2026-10-29T09:40:03.504Z"
+    "updatedAt": "2026-10-29T09:40:03.504Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0257",
@@ -5837,7 +6185,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.505Z",
-    "updatedAt": "2026-10-29T09:40:03.505Z"
+    "updatedAt": "2026-10-29T09:40:03.505Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0258",
@@ -5858,7 +6207,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.505Z",
-    "updatedAt": "2026-10-29T09:40:03.505Z"
+    "updatedAt": "2026-10-29T09:40:03.505Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0259",
@@ -5879,7 +6229,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.506Z",
-    "updatedAt": "2026-10-29T09:40:03.506Z"
+    "updatedAt": "2026-10-29T09:40:03.506Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0260",
@@ -5900,7 +6251,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.508Z",
-    "updatedAt": "2026-10-29T09:40:03.508Z"
+    "updatedAt": "2026-10-29T09:40:03.508Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0261",
@@ -5921,7 +6273,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.508Z",
-    "updatedAt": "2026-10-29T09:40:03.508Z"
+    "updatedAt": "2026-10-29T09:40:03.508Z",
+    "category": "business"
   },
   {
     "id": "ev-0262",
@@ -5942,7 +6295,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.509Z",
-    "updatedAt": "2026-10-29T09:40:03.509Z"
+    "updatedAt": "2026-10-29T09:40:03.509Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0263",
@@ -5963,7 +6317,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.510Z",
-    "updatedAt": "2026-10-29T09:40:03.510Z"
+    "updatedAt": "2026-10-29T09:40:03.510Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0264",
@@ -5985,7 +6340,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.510Z",
-    "updatedAt": "2026-10-29T09:40:03.510Z"
+    "updatedAt": "2026-10-29T09:40:03.510Z",
+    "category": "business"
   },
   {
     "id": "ev-0265",
@@ -6006,7 +6362,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.511Z",
-    "updatedAt": "2026-10-29T09:40:03.511Z"
+    "updatedAt": "2026-10-29T09:40:03.511Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0266",
@@ -6027,7 +6384,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.512Z",
-    "updatedAt": "2026-10-29T09:40:03.512Z"
+    "updatedAt": "2026-10-29T09:40:03.512Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0267",
@@ -6048,7 +6406,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.512Z",
-    "updatedAt": "2026-10-29T09:40:03.512Z"
+    "updatedAt": "2026-10-29T09:40:03.512Z",
+    "category": "wedding"
   },
   {
     "id": "ev-0268",
@@ -6070,7 +6429,8 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.513Z",
-    "updatedAt": "2026-10-29T09:40:03.513Z"
+    "updatedAt": "2026-10-29T09:40:03.513Z",
+    "category": "business"
   },
   {
     "id": "ev-0269",
@@ -6091,7 +6451,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.514Z",
-    "updatedAt": "2026-10-29T09:40:03.514Z"
+    "updatedAt": "2026-10-29T09:40:03.514Z",
+    "category": "festival"
   },
   {
     "id": "ev-0270",
@@ -6112,7 +6473,8 @@
     "templates": {},
     "generated": {},
     "createdAt": "2026-10-29T09:40:03.515Z",
-    "updatedAt": "2026-10-29T09:40:03.515Z"
+    "updatedAt": "2026-10-29T09:40:03.515Z",
+    "category": "business"
   },
   {
     "id": "ev-0271",
@@ -6123,7 +6485,7 @@
     "kind": "greeting-only",
     "scope": "national",
     "greetingText": "Merry Christmas and best wishes for the season. Palak Gupta, Venture Drafters",
-    "whoGets": "christian",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "expected",
     "source": "https://www.officeholidays.com/countries/india/madhya-pradesh/2027",
@@ -6137,7 +6499,8 @@
     "updatedAt": "2026-10-30T11:07:51.526Z",
     "series": "christmas",
     "conceptAllowed": false,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0272",
@@ -6148,7 +6511,7 @@
     "kind": "greeting",
     "scope": "national",
     "greetingText": "Merry Christmas and best wishes for the season. Palak Gupta, Venture Drafters",
-    "whoGets": "christian",
+    "whoGets": "everyone",
     "postingRule": "greeting-only",
     "confidence": "gazetted",
     "source": "https://7thpaycommissionnews.in/central-government-holidays-2027/",
@@ -6157,7 +6520,8 @@
     "tiers": [
       "platinum",
       "gold",
-      "silver"
+      "silver",
+      "bronze"
     ],
     "templates": {},
     "generated": {},
@@ -6165,7 +6529,8 @@
     "updatedAt": "2026-10-30T11:07:51.531Z",
     "series": "christmas",
     "conceptAllowed": true,
-    "lastBy": "tools@vspindia.com"
+    "lastBy": "tools@vspindia.com",
+    "category": "festival"
   },
   {
     "id": "ev-0273",
@@ -6187,6 +6552,7 @@
     "generated": {},
     "seedPostingRule": "dark",
     "createdAt": "2026-10-29T09:40:03.518Z",
-    "updatedAt": "2026-10-29T09:40:03.518Z"
+    "updatedAt": "2026-10-29T09:40:03.518Z",
+    "category": "business"
   }
 ]
