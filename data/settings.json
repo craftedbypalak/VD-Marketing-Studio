@@ -1,0 +1,52 @@
+[
+  {
+    "id": "settings",
+    "users": [
+      {
+        "email": "tools@vspindia.com",
+        "name": "Palak Gupta",
+        "role": "director"
+      },
+      {
+        "email": "employee@venturedrafters.test",
+        "name": "Marketing Employee (demo)",
+        "role": "employee"
+      },
+      {
+        "email": "manager@venturedrafters.test",
+        "name": "Marketing Manager (demo)",
+        "role": "manager"
+      }
+    ],
+    "model": "sonnet",
+    "aiMode": "cli",
+    "imageProvider": "none",
+    "timezone": "Asia/Kolkata",
+    "goDark": {
+      "on": false,
+      "from": "",
+      "to": "",
+      "reason": ""
+    },
+    "studioRoot": "/Users/palakgupta/Downloads/Venture Drafters/Studio",
+    "marketingRoot": "/Users/palakgupta/Downloads/Venture Drafters/Marketing",
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T17:31:14.959Z",
+    "linkToken": "3025794a1e892383b3a753924333a59ba365f133ae4c3a6e",
+    "by": "tools@vspindia.com",
+    "lastBy": "tools@vspindia.com",
+    "runnerWaitMs": 900000,
+    "reviewRouting": {
+      "directorTypes": [
+        "youtube-long",
+        "episode",
+        "announcement"
+      ],
+      "directorPillars": [
+        "offer",
+        "founder"
+      ],
+      "directorOnWarnings": false
+    }
+  }
+]

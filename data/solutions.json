@@ -1,0 +1,284 @@
+[
+  {
+    "id": "step-by-step-jobs",
+    "publicName": "The step-by-step job flow",
+    "oneLine": "A new piece of work moves through fixed steps, each with a doer and a due time. A tick on one step puts the next person's step on their screen.",
+    "removes": [
+      "Work stops between two people, and nobody notices.",
+      "A lead goes quiet between two people and nobody notices.",
+      "You find out when the client does."
+    ],
+    "department": "Business development",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "partner-follow-up",
+    "publicName": "Partner follow-up",
+    "oneLine": "Referral partners kept in tiers, each with a monthly touchpoint that comes up by itself.",
+    "removes": [
+      "Partners hear from you only when you need something."
+    ],
+    "department": "Business development",
+    "confirm": true,
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "document-checklist",
+    "publicName": "The document checklist",
+    "oneLine": "Every job type has a document list in three priorities: needed now, needed for the decision, collected along the way. Each item has an owner and a chase date.",
+    "removes": [
+      "You ask the client for everything at once and get nothing."
+    ],
+    "department": "Delivery",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "template-library",
+    "publicName": "The template library",
+    "oneLine": "One format and one short standard procedure per repeated task, so every proposal and note comes out the same way.",
+    "removes": [
+      "Every proposal is written differently, and you correct each one.",
+      "Everyone does the same job a different way."
+    ],
+    "department": "Admin",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "project-milestones",
+    "publicName": "Project milestones",
+    "oneLine": "A big job tracked stage by stage, with each stage's owner and date in view.",
+    "removes": [
+      "Big jobs drift, stage to stage."
+    ],
+    "department": "Delivery",
+    "confirm": true,
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "my-day",
+    "publicName": "My Day",
+    "oneLine": "Each person opens one screen: today's routines, the steps due and the tasks given to them.",
+    "removes": [
+      "People wait to be told what to do.",
+      "You gave it on Monday. On Friday, it has not started."
+    ],
+    "department": "Everyone",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "routines",
+    "publicName": "Routines",
+    "oneLine": "Each repeating task has a person and a repeat rule, and appears on the right day by itself.",
+    "removes": [
+      "Repeating work gets skipped, and nobody notices until it matters."
+    ],
+    "department": "Everyone",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "one-off-tasks",
+    "publicName": "One-off tasks",
+    "oneLine": "A task given once gets one owner and one date, written down where both can see it.",
+    "removes": [
+      "A task given by voice is forgotten by Friday.",
+      "You say everything twice."
+    ],
+    "department": "Everyone",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "reminder-desk",
+    "publicName": "The reminder desk",
+    "oneLine": "Late work gets a WhatsApp or email nudge. If it still stalls, a coordinator calls the doer and sets a new time. The owner is not called.",
+    "removes": [
+      "You are the follow-up department.",
+      "Seven in the evening, and you are still asking whether it is done."
+    ],
+    "department": "Follow-up",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "weekly-score",
+    "publicName": "The weekly score",
+    "oneLine": "A score from 0 to 100 for every person, every week: done on time, out of given.",
+    "removes": [
+      "Appraisals are a debate with no record.",
+      "Who actually did what?"
+    ],
+    "department": "Owner",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "owner-screen",
+    "publicName": "The owner's screen",
+    "oneLine": "The whole business on one screen: what is late, what is waiting, who is carrying what.",
+    "removes": [
+      "A client tells you about a delay before your team does.",
+      "You find out last."
+    ],
+    "department": "Owner",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "question-tray",
+    "publicName": "The question tray",
+    "oneLine": "Questions for the owner wait in one tray and are answered in one sitting.",
+    "removes": [
+      "Your door does not stay closed for ten minutes.",
+      "Ten questions before lunch, each needing you now."
+    ],
+    "department": "Owner",
+    "confirm": true,
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "weekly-sit-down",
+    "publicName": "One sit-down a week",
+    "oneLine": "Late items, decisions needed and new work, in one weekly meeting, for what only the owner can decide.",
+    "removes": [
+      "Every decision reaches you, all day."
+    ],
+    "department": "Owner",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "marketing-tracker",
+    "publicName": "The marketing tracker",
+    "oneLine": "Campaigns, posts and events tracked with stages and owners.",
+    "removes": [
+      "Campaigns start and fade."
+    ],
+    "department": "Marketing",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "hiring-work-test",
+    "publicName": "Hiring with a work test",
+    "oneLine": "Job post to offer, with a technical test built from the role's own template, so you see the work before you hire.",
+    "removes": [
+      "A good interview. A month later, they cannot do the job.",
+      "You learn a month after hiring that they cannot do the job."
+    ],
+    "department": "People",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "onboarding-checklist",
+    "publicName": "The onboarding checklist",
+    "oneLine": "Documents, access, introductions and training for a new joiner, as a checklist with owners.",
+    "removes": [
+      "A new joiner's first week depends on who is free."
+    ],
+    "department": "People",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "academy",
+    "publicName": "The academy",
+    "oneLine": "Every template has a written lesson a new hire reads on day one. Write the lesson once; everyone learns from it.",
+    "removes": [
+      "Training takes your best people off work.",
+      "The new joiner shadows your best person for a month."
+    ],
+    "department": "People",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "skill-chart",
+    "publicName": "The skill chart",
+    "oneLine": "Who can do which process, and where the gaps are.",
+    "removes": [
+      "You do not know who else can do a job when someone is away."
+    ],
+    "department": "People",
+    "confirm": true,
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "assets-register",
+    "publicName": "The assets register",
+    "oneLine": "Every asset with a tag, an owner and an audit date.",
+    "removes": [
+      "Nobody knows who has which laptop."
+    ],
+    "department": "Admin",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "change-record",
+    "publicName": "The change record",
+    "oneLine": "Every change recorded, nothing overwritten. Editing a process does not disturb work in progress.",
+    "removes": [
+      "When something goes wrong, nobody can say what happened."
+    ],
+    "department": "Everything",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "stock-colour-sheet",
+    "publicName": "The stock colour sheet",
+    "oneLine": "Each product has a maximum. Every evening the closing stock gets a colour, and the colour says buy, hold or sell down.",
+    "removes": [
+      "Out of what sells. Full of what does not.",
+      "Your cash is sitting in the godown."
+    ],
+    "department": "Stock",
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "payment-order",
+    "publicName": "Vendors and payments",
+    "oneLine": "Who to pay, how much, and in what order, as cash comes in.",
+    "removes": [
+      "Every vendor calls on the same day.",
+      "You pay whoever shouts loudest."
+    ],
+    "department": "Money",
+    "confirm": true,
+    "proofAssetId": null,
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T00:00:00.000Z"
+  }
+]

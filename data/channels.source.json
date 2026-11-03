@@ -1,0 +1,82 @@
+{
+  "_about": "Accounts, the days allotted to each, the repurposing rules and the dark days. Read by build-kit.mjs to make calendar.html. One piece is written once in calendar.csv; everything it is repurposed to comes from the rules here, never from a second row.",
+
+  "accounts": {
+    "vd-ig":   { "label": "Venture Drafters Instagram", "short": "IG", "group": "Venture Drafters", "role": "The main channel. Every piece starts here unless it is a LinkedIn text post." },
+    "vd-fb":   { "label": "Venture Drafters Facebook page", "short": "FB", "group": "Venture Drafters", "role": "Automatic: turn on 'Share to Facebook' in Instagram once. No separate posting." },
+    "yt":      { "label": "YouTube", "short": "YT", "group": "Venture Drafters", "role": "Every Monday Reel as a Short, the same evening. One long video a month from December." },
+    "vd-li":   { "label": "Venture Drafters LinkedIn page", "short": "in·VD", "group": "Venture Drafters", "role": "Friday only: reshare the week's strongest post from Palak's LinkedIn, with one line. No original posts." },
+    "p-li":    { "label": "Palak's LinkedIn", "short": "in", "group": "Palak", "role": "The main written channel. Two a week; the fortnightly PDF carousel is one of the two." },
+    "p-ig":    { "label": "Palak's Instagram", "short": "IG·P", "group": "Palak", "role": "Monday Reel as a Collab post (one post, on both grids). Thursday carousel shared to Stories." },
+    "p-fb":    { "label": "Palak's Facebook", "short": "FB·P", "group": "Palak", "role": "Share the Monday Reel once a week from the Venture Drafters page. Nothing else." },
+    "wa-st":   { "label": "WhatsApp Status (Palak)", "short": "ST", "group": "WhatsApp", "role": "Tuesday and Thursday about 9 am, Saturday optional. Three a week at most." },
+    "wa-note": { "label": "Monthly note (opted-in only)", "short": "Note", "group": "WhatsApp", "role": "Second Wednesday, 10:30 to 11:30 am, only to people who said yes. No note in March." },
+    "fam":     { "label": "Family WhatsApp Status", "short": "Fam", "group": "WhatsApp", "role": "Once a month at most: the month's most-sent Reel on your father's and sister's Status. Never sent to groups, never as messages." },
+    "irl":     { "label": "In person", "short": "IRL", "group": "Palak", "role": "Events and visits. Stories from the floor, with the host's credit." }
+  },
+
+  "channelMap": {
+    "Instagram": ["vd-ig"],
+    "LinkedIn": ["p-li"],
+    "WhatsApp Status": ["wa-st"],
+    "WhatsApp": ["wa-note"],
+    "YouTube": ["yt"],
+    "Instagram and WhatsApp Status": ["vd-ig", "wa-st"],
+    "Instagram Stories and WhatsApp Status": ["vd-ig", "wa-st", "irl"]
+  },
+
+  "repurpose": [
+    { "when": { "account": "vd-ig", "format": "^Reel" }, "to": [
+      { "account": "p-ig", "how": "Collab post: invite Palak's account when posting, so one post shows on both grids" },
+      { "account": "vd-fb", "how": "Automatic share to the Facebook page" },
+      { "account": "yt", "how": "Upload the same file as a Short the same evening; title = the hook" },
+      { "account": "p-fb", "how": "Share from the Venture Drafters page to Palak's Facebook" } ] },
+    { "when": { "account": "vd-ig", "format": "^Carousel" }, "to": [
+      { "account": "vd-fb", "how": "Automatic share to the Facebook page" },
+      { "account": "p-ig", "how": "Share to Palak's Instagram Stories" } ] },
+    { "when": { "account": "p-li" }, "to": [
+      { "account": "vd-li", "how": "If it is the week's strongest post, reshare it from the company page on Friday with one line" } ] },
+    { "when": { "account": "yt", "format": "^Long" }, "to": [
+      { "account": "p-li", "how": "Pin to Featured on Palak's LinkedIn" } ] }
+  ],
+
+  "weekly": [
+    { "day": "Mon", "time": "7:30 pm", "account": "vd-ig", "kind": "reel", "label": "Reel (Collab with Palak's Instagram)" },
+    { "day": "Tue", "time": "8:30 am", "account": "p-li", "kind": "li", "label": "LinkedIn post" },
+    { "day": "Tue", "time": "9:00 am", "account": "wa-st", "kind": "status", "label": "Status: a glimpse" },
+    { "day": "Wed", "time": "7:30 pm", "account": "vd-ig", "kind": "trial", "label": "Trial Reel (optional, off the grid)" },
+    { "day": "Wed", "time": "4:30 pm", "account": "p-li", "kind": "li-carousel", "label": "PDF carousel (alternate weeks, replaces Thursday)", "alternate": true },
+    { "day": "Thu", "time": "8:30 am", "account": "p-li", "kind": "li", "label": "LinkedIn post (weeks without a carousel)", "alternate": true },
+    { "day": "Thu", "time": "9:00 am", "account": "wa-st", "kind": "status", "label": "Status: a rule card" },
+    { "day": "Thu", "time": "7:30 pm", "account": "vd-ig", "kind": "carousel", "label": "Carousel" },
+    { "day": "Fri", "time": "11:00 am", "account": "vd-li", "kind": "reshare", "label": "Company page: reshare the week's strongest post", "derived": true },
+    { "day": "Sat", "time": "any", "account": "wa-st", "kind": "status-opt", "label": "Status: field or working life (optional)" }
+  ],
+
+  "monthly": [
+    { "rule": "2nd Wed", "time": "10:30 am", "account": "wa-note", "kind": "note", "label": "Monthly note to opted-in contacts", "skipMonths": ["2027-03"] },
+    { "rule": "3rd Mon", "time": "evening", "account": "yt", "kind": "yt-long", "label": "YouTube long video (6 to 10 minutes)" },
+    { "rule": "2nd Sat", "time": "evening", "account": "fam", "kind": "family", "label": "Family Status: the month's most-sent Reel", "derived": true }
+  ],
+
+  "openSlotsFrom": "2027-01-04",
+  "openSlotsTo": "2027-03-31",
+
+  "dark": {
+    "2026-11-07": "Diwali block", "2026-11-09": "Diwali block", "2026-11-10": "Diwali block", "2026-11-11": "Diwali block",
+    "2026-11-15": "Do not post", "2026-11-21": "Do not post", "2026-12-20": "Do not post",
+    "2026-12-31": "Year-end dark", "2027-01-01": "New Year: greeting only", "2027-01-02": "Year-end dark", "2027-01-03": "Year-end dark",
+    "2027-01-14": "Makar Sankranti: greeting only", "2027-01-15": "Greeting only", "2027-01-24": "Do not post", "2027-01-26": "Republic Day: greeting only",
+    "2027-01-30": "Do not post", "2027-01-31": "Do not post", "2027-02-01": "Budget day: dark",
+    "2027-02-06": "Do not post", "2027-02-07": "Do not post", "2027-02-14": "Do not post", "2027-02-20": "Do not post",
+    "2027-03-06": "Do not post", "2027-03-07": "Do not post", "2027-03-09": "Greeting only (expected)", "2027-03-14": "Do not post", "2027-03-15": "Do not post",
+    "2027-03-20": "Do not post", "2027-03-21": "Do not post", "2027-03-22": "Do not post", "2027-03-27": "Do not post", "2027-03-31": "Do not post"
+  },
+  "quiet": [["2026-12-16", "2026-12-23"], ["2027-01-04", "2027-01-14"]],
+  "events": {
+    "2026-11-17": "BNI Fortune, 7:30 am, Sayaji Hotel",
+    "2026-11-19": "BNI Amadeus, 8:00 am, Sayaji Hotel",
+    "2026-11-27": "Plast Pack, Labhganga (to 30 Nov)",
+    "2027-01-16": "YEF Bharat Indore summit"
+  }
+}

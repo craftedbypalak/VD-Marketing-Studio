@@ -1,0 +1,7760 @@
+[
+  {
+    "id": "lg-0001",
+    "at": "2026-10-29T09:38:53.760Z",
+    "by": null,
+    "what": "recurring.import",
+    "ref": {
+      "created": 273,
+      "already": 0,
+      "skipped": 1
+    }
+  },
+  {
+    "id": "lg-0002",
+    "at": "2026-10-29T09:39:18.668Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.import",
+    "ref": {
+      "created": 0,
+      "already": 273,
+      "skipped": 1
+    }
+  },
+  {
+    "id": "lg-0003",
+    "at": "2026-10-29T09:39:18.686Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0001"
+  },
+  {
+    "id": "lg-0004",
+    "at": "2026-10-29T09:39:18.689Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0002"
+  },
+  {
+    "id": "lg-0005",
+    "at": "2026-10-29T09:39:18.692Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0003"
+  },
+  {
+    "id": "lg-0006",
+    "at": "2026-10-29T09:39:18.695Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0004"
+  },
+  {
+    "id": "lg-0007",
+    "at": "2026-10-29T09:39:18.697Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0005"
+  },
+  {
+    "id": "lg-0008",
+    "at": "2026-10-29T09:39:18.736Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.generate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2026-11-30",
+      "only": "both",
+      "events": 5,
+      "piecesCreated": 5,
+      "piecesExisting": 0,
+      "touchesCreated": 5,
+      "touchesExisting": 0,
+      "alternates": 0
+    }
+  },
+  {
+    "id": "lg-0009",
+    "at": "2026-10-29T09:39:18.747Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.generate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2026-11-30",
+      "only": "both",
+      "events": 5,
+      "piecesCreated": 0,
+      "piecesExisting": 5,
+      "touchesCreated": 0,
+      "touchesExisting": 5,
+      "alternates": 0
+    }
+  },
+  {
+    "id": "lg-0010",
+    "at": "2026-10-29T09:39:18.756Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0001"
+  },
+  {
+    "id": "lg-0011",
+    "at": "2026-10-29T09:39:18.757Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0002"
+  },
+  {
+    "id": "lg-0012",
+    "at": "2026-10-29T09:39:18.758Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0003"
+  },
+  {
+    "id": "lg-0013",
+    "at": "2026-10-29T09:39:18.759Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0004"
+  },
+  {
+    "id": "lg-0014",
+    "at": "2026-10-29T09:39:18.760Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0005"
+  },
+  {
+    "id": "lg-0015",
+    "at": "2026-10-29T09:40:02.868Z",
+    "by": null,
+    "what": "pieces.delete",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0016",
+    "at": "2026-10-29T09:40:02.871Z",
+    "by": null,
+    "what": "pieces.delete",
+    "ref": "pc-0002"
+  },
+  {
+    "id": "lg-0017",
+    "at": "2026-10-29T09:40:02.874Z",
+    "by": null,
+    "what": "pieces.delete",
+    "ref": "pc-0003"
+  },
+  {
+    "id": "lg-0018",
+    "at": "2026-10-29T09:40:02.877Z",
+    "by": null,
+    "what": "pieces.delete",
+    "ref": "pc-0004"
+  },
+  {
+    "id": "lg-0019",
+    "at": "2026-10-29T09:40:02.880Z",
+    "by": null,
+    "what": "pieces.delete",
+    "ref": "pc-0005"
+  },
+  {
+    "id": "lg-0020",
+    "at": "2026-10-29T09:40:02.883Z",
+    "by": null,
+    "what": "touches.delete",
+    "ref": "tc-0001"
+  },
+  {
+    "id": "lg-0021",
+    "at": "2026-10-29T09:40:02.886Z",
+    "by": null,
+    "what": "touches.delete",
+    "ref": "tc-0002"
+  },
+  {
+    "id": "lg-0022",
+    "at": "2026-10-29T09:40:02.889Z",
+    "by": null,
+    "what": "touches.delete",
+    "ref": "tc-0003"
+  },
+  {
+    "id": "lg-0023",
+    "at": "2026-10-29T09:40:02.891Z",
+    "by": null,
+    "what": "touches.delete",
+    "ref": "tc-0004"
+  },
+  {
+    "id": "lg-0024",
+    "at": "2026-10-29T09:40:02.896Z",
+    "by": null,
+    "what": "touches.delete",
+    "ref": "tc-0005"
+  },
+  {
+    "id": "lg-0025",
+    "at": "2026-10-29T09:40:02.904Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0001"
+  },
+  {
+    "id": "lg-0026",
+    "at": "2026-10-29T09:40:02.907Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0002"
+  },
+  {
+    "id": "lg-0027",
+    "at": "2026-10-29T09:40:02.909Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0003"
+  },
+  {
+    "id": "lg-0028",
+    "at": "2026-10-29T09:40:02.912Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0004"
+  },
+  {
+    "id": "lg-0029",
+    "at": "2026-10-29T09:40:02.914Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0005"
+  },
+  {
+    "id": "lg-0030",
+    "at": "2026-10-29T09:40:02.916Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0006"
+  },
+  {
+    "id": "lg-0031",
+    "at": "2026-10-29T09:40:02.919Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0007"
+  },
+  {
+    "id": "lg-0032",
+    "at": "2026-10-29T09:40:02.920Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0008"
+  },
+  {
+    "id": "lg-0033",
+    "at": "2026-10-29T09:40:02.922Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0009"
+  },
+  {
+    "id": "lg-0034",
+    "at": "2026-10-29T09:40:02.924Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0010"
+  },
+  {
+    "id": "lg-0035",
+    "at": "2026-10-29T09:40:02.926Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0011"
+  },
+  {
+    "id": "lg-0036",
+    "at": "2026-10-29T09:40:02.928Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0012"
+  },
+  {
+    "id": "lg-0037",
+    "at": "2026-10-29T09:40:02.930Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0013"
+  },
+  {
+    "id": "lg-0038",
+    "at": "2026-10-29T09:40:02.932Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0014"
+  },
+  {
+    "id": "lg-0039",
+    "at": "2026-10-29T09:40:02.934Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0015"
+  },
+  {
+    "id": "lg-0040",
+    "at": "2026-10-29T09:40:02.937Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0016"
+  },
+  {
+    "id": "lg-0041",
+    "at": "2026-10-29T09:40:02.939Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0017"
+  },
+  {
+    "id": "lg-0042",
+    "at": "2026-10-29T09:40:02.941Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0018"
+  },
+  {
+    "id": "lg-0043",
+    "at": "2026-10-29T09:40:02.943Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0019"
+  },
+  {
+    "id": "lg-0044",
+    "at": "2026-10-29T09:40:02.945Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0020"
+  },
+  {
+    "id": "lg-0045",
+    "at": "2026-10-29T09:40:02.947Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0021"
+  },
+  {
+    "id": "lg-0046",
+    "at": "2026-10-29T09:40:02.949Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0022"
+  },
+  {
+    "id": "lg-0047",
+    "at": "2026-10-29T09:40:02.951Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0023"
+  },
+  {
+    "id": "lg-0048",
+    "at": "2026-10-29T09:40:02.953Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0024"
+  },
+  {
+    "id": "lg-0049",
+    "at": "2026-10-29T09:40:02.955Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0025"
+  },
+  {
+    "id": "lg-0050",
+    "at": "2026-10-29T09:40:02.956Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0026"
+  },
+  {
+    "id": "lg-0051",
+    "at": "2026-10-29T09:40:02.958Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0027"
+  },
+  {
+    "id": "lg-0052",
+    "at": "2026-10-29T09:40:02.960Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0028"
+  },
+  {
+    "id": "lg-0053",
+    "at": "2026-10-29T09:40:02.962Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0029"
+  },
+  {
+    "id": "lg-0054",
+    "at": "2026-10-29T09:40:02.964Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0030"
+  },
+  {
+    "id": "lg-0055",
+    "at": "2026-10-29T09:40:02.966Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0031"
+  },
+  {
+    "id": "lg-0056",
+    "at": "2026-10-29T09:40:02.967Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0032"
+  },
+  {
+    "id": "lg-0057",
+    "at": "2026-10-29T09:40:02.970Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0033"
+  },
+  {
+    "id": "lg-0058",
+    "at": "2026-10-29T09:40:02.972Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0034"
+  },
+  {
+    "id": "lg-0059",
+    "at": "2026-10-29T09:40:02.974Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0035"
+  },
+  {
+    "id": "lg-0060",
+    "at": "2026-10-29T09:40:02.976Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0036"
+  },
+  {
+    "id": "lg-0061",
+    "at": "2026-10-29T09:40:02.978Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0037"
+  },
+  {
+    "id": "lg-0062",
+    "at": "2026-10-29T09:40:02.980Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0038"
+  },
+  {
+    "id": "lg-0063",
+    "at": "2026-10-29T09:40:02.982Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0039"
+  },
+  {
+    "id": "lg-0064",
+    "at": "2026-10-29T09:40:02.984Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0040"
+  },
+  {
+    "id": "lg-0065",
+    "at": "2026-10-29T09:40:02.986Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0041"
+  },
+  {
+    "id": "lg-0066",
+    "at": "2026-10-29T09:40:02.988Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0042"
+  },
+  {
+    "id": "lg-0067",
+    "at": "2026-10-29T09:40:02.990Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0043"
+  },
+  {
+    "id": "lg-0068",
+    "at": "2026-10-29T09:40:02.991Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0044"
+  },
+  {
+    "id": "lg-0069",
+    "at": "2026-10-29T09:40:02.994Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0045"
+  },
+  {
+    "id": "lg-0070",
+    "at": "2026-10-29T09:40:02.996Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0046"
+  },
+  {
+    "id": "lg-0071",
+    "at": "2026-10-29T09:40:02.998Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0047"
+  },
+  {
+    "id": "lg-0072",
+    "at": "2026-10-29T09:40:03.000Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0048"
+  },
+  {
+    "id": "lg-0073",
+    "at": "2026-10-29T09:40:03.002Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0049"
+  },
+  {
+    "id": "lg-0074",
+    "at": "2026-10-29T09:40:03.005Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0050"
+  },
+  {
+    "id": "lg-0075",
+    "at": "2026-10-29T09:40:03.007Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0051"
+  },
+  {
+    "id": "lg-0076",
+    "at": "2026-10-29T09:40:03.009Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0052"
+  },
+  {
+    "id": "lg-0077",
+    "at": "2026-10-29T09:40:03.011Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0053"
+  },
+  {
+    "id": "lg-0078",
+    "at": "2026-10-29T09:40:03.013Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0054"
+  },
+  {
+    "id": "lg-0079",
+    "at": "2026-10-29T09:40:03.015Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0055"
+  },
+  {
+    "id": "lg-0080",
+    "at": "2026-10-29T09:40:03.017Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0056"
+  },
+  {
+    "id": "lg-0081",
+    "at": "2026-10-29T09:40:03.020Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0057"
+  },
+  {
+    "id": "lg-0082",
+    "at": "2026-10-29T09:40:03.021Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0058"
+  },
+  {
+    "id": "lg-0083",
+    "at": "2026-10-29T09:40:03.023Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0059"
+  },
+  {
+    "id": "lg-0084",
+    "at": "2026-10-29T09:40:03.025Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0060"
+  },
+  {
+    "id": "lg-0085",
+    "at": "2026-10-29T09:40:03.027Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0061"
+  },
+  {
+    "id": "lg-0086",
+    "at": "2026-10-29T09:40:03.029Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0062"
+  },
+  {
+    "id": "lg-0087",
+    "at": "2026-10-29T09:40:03.031Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0063"
+  },
+  {
+    "id": "lg-0088",
+    "at": "2026-10-29T09:40:03.033Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0064"
+  },
+  {
+    "id": "lg-0089",
+    "at": "2026-10-29T09:40:03.036Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0065"
+  },
+  {
+    "id": "lg-0090",
+    "at": "2026-10-29T09:40:03.038Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0066"
+  },
+  {
+    "id": "lg-0091",
+    "at": "2026-10-29T09:40:03.040Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0067"
+  },
+  {
+    "id": "lg-0092",
+    "at": "2026-10-29T09:40:03.041Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0068"
+  },
+  {
+    "id": "lg-0093",
+    "at": "2026-10-29T09:40:03.044Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0069"
+  },
+  {
+    "id": "lg-0094",
+    "at": "2026-10-29T09:40:03.046Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0070"
+  },
+  {
+    "id": "lg-0095",
+    "at": "2026-10-29T09:40:03.048Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0071"
+  },
+  {
+    "id": "lg-0096",
+    "at": "2026-10-29T09:40:03.050Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0072"
+  },
+  {
+    "id": "lg-0097",
+    "at": "2026-10-29T09:40:03.052Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0073"
+  },
+  {
+    "id": "lg-0098",
+    "at": "2026-10-29T09:40:03.054Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0074"
+  },
+  {
+    "id": "lg-0099",
+    "at": "2026-10-29T09:40:03.056Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0075"
+  },
+  {
+    "id": "lg-0100",
+    "at": "2026-10-29T09:40:03.058Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0076"
+  },
+  {
+    "id": "lg-0101",
+    "at": "2026-10-29T09:40:03.060Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0077"
+  },
+  {
+    "id": "lg-0102",
+    "at": "2026-10-29T09:40:03.062Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0078"
+  },
+  {
+    "id": "lg-0103",
+    "at": "2026-10-29T09:40:03.064Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0079"
+  },
+  {
+    "id": "lg-0104",
+    "at": "2026-10-29T09:40:03.065Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0080"
+  },
+  {
+    "id": "lg-0105",
+    "at": "2026-10-29T09:40:03.068Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0081"
+  },
+  {
+    "id": "lg-0106",
+    "at": "2026-10-29T09:40:03.070Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0082"
+  },
+  {
+    "id": "lg-0107",
+    "at": "2026-10-29T09:40:03.072Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0083"
+  },
+  {
+    "id": "lg-0108",
+    "at": "2026-10-29T09:40:03.074Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0084"
+  },
+  {
+    "id": "lg-0109",
+    "at": "2026-10-29T09:40:03.076Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0085"
+  },
+  {
+    "id": "lg-0110",
+    "at": "2026-10-29T09:40:03.079Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0086"
+  },
+  {
+    "id": "lg-0111",
+    "at": "2026-10-29T09:40:03.081Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0087"
+  },
+  {
+    "id": "lg-0112",
+    "at": "2026-10-29T09:40:03.082Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0088"
+  },
+  {
+    "id": "lg-0113",
+    "at": "2026-10-29T09:40:03.084Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0089"
+  },
+  {
+    "id": "lg-0114",
+    "at": "2026-10-29T09:40:03.086Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0090"
+  },
+  {
+    "id": "lg-0115",
+    "at": "2026-10-29T09:40:03.088Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0091"
+  },
+  {
+    "id": "lg-0116",
+    "at": "2026-10-29T09:40:03.090Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0092"
+  },
+  {
+    "id": "lg-0117",
+    "at": "2026-10-29T09:40:03.092Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0093"
+  },
+  {
+    "id": "lg-0118",
+    "at": "2026-10-29T09:40:03.093Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0094"
+  },
+  {
+    "id": "lg-0119",
+    "at": "2026-10-29T09:40:03.095Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0095"
+  },
+  {
+    "id": "lg-0120",
+    "at": "2026-10-29T09:40:03.096Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0096"
+  },
+  {
+    "id": "lg-0121",
+    "at": "2026-10-29T09:40:03.100Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0097"
+  },
+  {
+    "id": "lg-0122",
+    "at": "2026-10-29T09:40:03.106Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0098"
+  },
+  {
+    "id": "lg-0123",
+    "at": "2026-10-29T09:40:03.109Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0099"
+  },
+  {
+    "id": "lg-0124",
+    "at": "2026-10-29T09:40:03.110Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0100"
+  },
+  {
+    "id": "lg-0125",
+    "at": "2026-10-29T09:40:03.112Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0101"
+  },
+  {
+    "id": "lg-0126",
+    "at": "2026-10-29T09:40:03.114Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0102"
+  },
+  {
+    "id": "lg-0127",
+    "at": "2026-10-29T09:40:03.115Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0103"
+  },
+  {
+    "id": "lg-0128",
+    "at": "2026-10-29T09:40:03.116Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0104"
+  },
+  {
+    "id": "lg-0129",
+    "at": "2026-10-29T09:40:03.118Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0105"
+  },
+  {
+    "id": "lg-0130",
+    "at": "2026-10-29T09:40:03.120Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0106"
+  },
+  {
+    "id": "lg-0131",
+    "at": "2026-10-29T09:40:03.121Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0107"
+  },
+  {
+    "id": "lg-0132",
+    "at": "2026-10-29T09:40:03.122Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0108"
+  },
+  {
+    "id": "lg-0133",
+    "at": "2026-10-29T09:40:03.123Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0109"
+  },
+  {
+    "id": "lg-0134",
+    "at": "2026-10-29T09:40:03.124Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0110"
+  },
+  {
+    "id": "lg-0135",
+    "at": "2026-10-29T09:40:03.126Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0111"
+  },
+  {
+    "id": "lg-0136",
+    "at": "2026-10-29T09:40:03.127Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0112"
+  },
+  {
+    "id": "lg-0137",
+    "at": "2026-10-29T09:40:03.129Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0113"
+  },
+  {
+    "id": "lg-0138",
+    "at": "2026-10-29T09:40:03.130Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0114"
+  },
+  {
+    "id": "lg-0139",
+    "at": "2026-10-29T09:40:03.131Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0115"
+  },
+  {
+    "id": "lg-0140",
+    "at": "2026-10-29T09:40:03.133Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0116"
+  },
+  {
+    "id": "lg-0141",
+    "at": "2026-10-29T09:40:03.134Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0117"
+  },
+  {
+    "id": "lg-0142",
+    "at": "2026-10-29T09:40:03.136Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0118"
+  },
+  {
+    "id": "lg-0143",
+    "at": "2026-10-29T09:40:03.138Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0119"
+  },
+  {
+    "id": "lg-0144",
+    "at": "2026-10-29T09:40:03.139Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0120"
+  },
+  {
+    "id": "lg-0145",
+    "at": "2026-10-29T09:40:03.140Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0121"
+  },
+  {
+    "id": "lg-0146",
+    "at": "2026-10-29T09:40:03.142Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0122"
+  },
+  {
+    "id": "lg-0147",
+    "at": "2026-10-29T09:40:03.143Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0123"
+  },
+  {
+    "id": "lg-0148",
+    "at": "2026-10-29T09:40:03.144Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0124"
+  },
+  {
+    "id": "lg-0149",
+    "at": "2026-10-29T09:40:03.145Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0125"
+  },
+  {
+    "id": "lg-0150",
+    "at": "2026-10-29T09:40:03.147Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0126"
+  },
+  {
+    "id": "lg-0151",
+    "at": "2026-10-29T09:40:03.148Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0127"
+  },
+  {
+    "id": "lg-0152",
+    "at": "2026-10-29T09:40:03.149Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0128"
+  },
+  {
+    "id": "lg-0153",
+    "at": "2026-10-29T09:40:03.151Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0129"
+  },
+  {
+    "id": "lg-0154",
+    "at": "2026-10-29T09:40:03.152Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0130"
+  },
+  {
+    "id": "lg-0155",
+    "at": "2026-10-29T09:40:03.153Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0131"
+  },
+  {
+    "id": "lg-0156",
+    "at": "2026-10-29T09:40:03.155Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0132"
+  },
+  {
+    "id": "lg-0157",
+    "at": "2026-10-29T09:40:03.156Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0133"
+  },
+  {
+    "id": "lg-0158",
+    "at": "2026-10-29T09:40:03.157Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0134"
+  },
+  {
+    "id": "lg-0159",
+    "at": "2026-10-29T09:40:03.158Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0135"
+  },
+  {
+    "id": "lg-0160",
+    "at": "2026-10-29T09:40:03.159Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0136"
+  },
+  {
+    "id": "lg-0161",
+    "at": "2026-10-29T09:40:03.160Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0137"
+  },
+  {
+    "id": "lg-0162",
+    "at": "2026-10-29T09:40:03.161Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0138"
+  },
+  {
+    "id": "lg-0163",
+    "at": "2026-10-29T09:40:03.163Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0139"
+  },
+  {
+    "id": "lg-0164",
+    "at": "2026-10-29T09:40:03.164Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0140"
+  },
+  {
+    "id": "lg-0165",
+    "at": "2026-10-29T09:40:03.165Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0141"
+  },
+  {
+    "id": "lg-0166",
+    "at": "2026-10-29T09:40:03.167Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0142"
+  },
+  {
+    "id": "lg-0167",
+    "at": "2026-10-29T09:40:03.168Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0143"
+  },
+  {
+    "id": "lg-0168",
+    "at": "2026-10-29T09:40:03.169Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0144"
+  },
+  {
+    "id": "lg-0169",
+    "at": "2026-10-29T09:40:03.171Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0145"
+  },
+  {
+    "id": "lg-0170",
+    "at": "2026-10-29T09:40:03.172Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0146"
+  },
+  {
+    "id": "lg-0171",
+    "at": "2026-10-29T09:40:03.173Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0147"
+  },
+  {
+    "id": "lg-0172",
+    "at": "2026-10-29T09:40:03.174Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0148"
+  },
+  {
+    "id": "lg-0173",
+    "at": "2026-10-29T09:40:03.176Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0149"
+  },
+  {
+    "id": "lg-0174",
+    "at": "2026-10-29T09:40:03.177Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0150"
+  },
+  {
+    "id": "lg-0175",
+    "at": "2026-10-29T09:40:03.178Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0151"
+  },
+  {
+    "id": "lg-0176",
+    "at": "2026-10-29T09:40:03.179Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0152"
+  },
+  {
+    "id": "lg-0177",
+    "at": "2026-10-29T09:40:03.181Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0153"
+  },
+  {
+    "id": "lg-0178",
+    "at": "2026-10-29T09:40:03.182Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0154"
+  },
+  {
+    "id": "lg-0179",
+    "at": "2026-10-29T09:40:03.184Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0155"
+  },
+  {
+    "id": "lg-0180",
+    "at": "2026-10-29T09:40:03.185Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0156"
+  },
+  {
+    "id": "lg-0181",
+    "at": "2026-10-29T09:40:03.186Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0157"
+  },
+  {
+    "id": "lg-0182",
+    "at": "2026-10-29T09:40:03.188Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0158"
+  },
+  {
+    "id": "lg-0183",
+    "at": "2026-10-29T09:40:03.189Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0159"
+  },
+  {
+    "id": "lg-0184",
+    "at": "2026-10-29T09:40:03.190Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0160"
+  },
+  {
+    "id": "lg-0185",
+    "at": "2026-10-29T09:40:03.191Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0161"
+  },
+  {
+    "id": "lg-0186",
+    "at": "2026-10-29T09:40:03.193Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0162"
+  },
+  {
+    "id": "lg-0187",
+    "at": "2026-10-29T09:40:03.194Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0163"
+  },
+  {
+    "id": "lg-0188",
+    "at": "2026-10-29T09:40:03.195Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0164"
+  },
+  {
+    "id": "lg-0189",
+    "at": "2026-10-29T09:40:03.197Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0165"
+  },
+  {
+    "id": "lg-0190",
+    "at": "2026-10-29T09:40:03.199Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0166"
+  },
+  {
+    "id": "lg-0191",
+    "at": "2026-10-29T09:40:03.201Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0167"
+  },
+  {
+    "id": "lg-0192",
+    "at": "2026-10-29T09:40:03.203Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0168"
+  },
+  {
+    "id": "lg-0193",
+    "at": "2026-10-29T09:40:03.204Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0169"
+  },
+  {
+    "id": "lg-0194",
+    "at": "2026-10-29T09:40:03.206Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0170"
+  },
+  {
+    "id": "lg-0195",
+    "at": "2026-10-29T09:40:03.207Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0171"
+  },
+  {
+    "id": "lg-0196",
+    "at": "2026-10-29T09:40:03.209Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0172"
+  },
+  {
+    "id": "lg-0197",
+    "at": "2026-10-29T09:40:03.210Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0173"
+  },
+  {
+    "id": "lg-0198",
+    "at": "2026-10-29T09:40:03.211Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0174"
+  },
+  {
+    "id": "lg-0199",
+    "at": "2026-10-29T09:40:03.212Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0175"
+  },
+  {
+    "id": "lg-0200",
+    "at": "2026-10-29T09:40:03.214Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0176"
+  },
+  {
+    "id": "lg-0201",
+    "at": "2026-10-29T09:40:03.215Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0177"
+  },
+  {
+    "id": "lg-0202",
+    "at": "2026-10-29T09:40:03.216Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0178"
+  },
+  {
+    "id": "lg-0203",
+    "at": "2026-10-29T09:40:03.217Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0179"
+  },
+  {
+    "id": "lg-0204",
+    "at": "2026-10-29T09:40:03.218Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0180"
+  },
+  {
+    "id": "lg-0205",
+    "at": "2026-10-29T09:40:03.220Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0181"
+  },
+  {
+    "id": "lg-0206",
+    "at": "2026-10-29T09:40:03.221Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0182"
+  },
+  {
+    "id": "lg-0207",
+    "at": "2026-10-29T09:40:03.223Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0183"
+  },
+  {
+    "id": "lg-0208",
+    "at": "2026-10-29T09:40:03.225Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0184"
+  },
+  {
+    "id": "lg-0209",
+    "at": "2026-10-29T09:40:03.226Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0185"
+  },
+  {
+    "id": "lg-0210",
+    "at": "2026-10-29T09:40:03.227Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0186"
+  },
+  {
+    "id": "lg-0211",
+    "at": "2026-10-29T09:40:03.228Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0187"
+  },
+  {
+    "id": "lg-0212",
+    "at": "2026-10-29T09:40:03.229Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0188"
+  },
+  {
+    "id": "lg-0213",
+    "at": "2026-10-29T09:40:03.230Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0189"
+  },
+  {
+    "id": "lg-0214",
+    "at": "2026-10-29T09:40:03.232Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0190"
+  },
+  {
+    "id": "lg-0215",
+    "at": "2026-10-29T09:40:03.233Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0191"
+  },
+  {
+    "id": "lg-0216",
+    "at": "2026-10-29T09:40:03.234Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0192"
+  },
+  {
+    "id": "lg-0217",
+    "at": "2026-10-29T09:40:03.236Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0193"
+  },
+  {
+    "id": "lg-0218",
+    "at": "2026-10-29T09:40:03.238Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0194"
+  },
+  {
+    "id": "lg-0219",
+    "at": "2026-10-29T09:40:03.239Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0195"
+  },
+  {
+    "id": "lg-0220",
+    "at": "2026-10-29T09:40:03.240Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0196"
+  },
+  {
+    "id": "lg-0221",
+    "at": "2026-10-29T09:40:03.241Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0197"
+  },
+  {
+    "id": "lg-0222",
+    "at": "2026-10-29T09:40:03.242Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0198"
+  },
+  {
+    "id": "lg-0223",
+    "at": "2026-10-29T09:40:03.244Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0199"
+  },
+  {
+    "id": "lg-0224",
+    "at": "2026-10-29T09:40:03.245Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0200"
+  },
+  {
+    "id": "lg-0225",
+    "at": "2026-10-29T09:40:03.247Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0201"
+  },
+  {
+    "id": "lg-0226",
+    "at": "2026-10-29T09:40:03.248Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0202"
+  },
+  {
+    "id": "lg-0227",
+    "at": "2026-10-29T09:40:03.249Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0203"
+  },
+  {
+    "id": "lg-0228",
+    "at": "2026-10-29T09:40:03.250Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0204"
+  },
+  {
+    "id": "lg-0229",
+    "at": "2026-10-29T09:40:03.251Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0205"
+  },
+  {
+    "id": "lg-0230",
+    "at": "2026-10-29T09:40:03.252Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0206"
+  },
+  {
+    "id": "lg-0231",
+    "at": "2026-10-29T09:40:03.253Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0207"
+  },
+  {
+    "id": "lg-0232",
+    "at": "2026-10-29T09:40:03.254Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0208"
+  },
+  {
+    "id": "lg-0233",
+    "at": "2026-10-29T09:40:03.255Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0209"
+  },
+  {
+    "id": "lg-0234",
+    "at": "2026-10-29T09:40:03.256Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0210"
+  },
+  {
+    "id": "lg-0235",
+    "at": "2026-10-29T09:40:03.257Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0211"
+  },
+  {
+    "id": "lg-0236",
+    "at": "2026-10-29T09:40:03.259Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0212"
+  },
+  {
+    "id": "lg-0237",
+    "at": "2026-10-29T09:40:03.260Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0213"
+  },
+  {
+    "id": "lg-0238",
+    "at": "2026-10-29T09:40:03.261Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0214"
+  },
+  {
+    "id": "lg-0239",
+    "at": "2026-10-29T09:40:03.262Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0215"
+  },
+  {
+    "id": "lg-0240",
+    "at": "2026-10-29T09:40:03.263Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0216"
+  },
+  {
+    "id": "lg-0241",
+    "at": "2026-10-29T09:40:03.264Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0217"
+  },
+  {
+    "id": "lg-0242",
+    "at": "2026-10-29T09:40:03.266Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0218"
+  },
+  {
+    "id": "lg-0243",
+    "at": "2026-10-29T09:40:03.267Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0219"
+  },
+  {
+    "id": "lg-0244",
+    "at": "2026-10-29T09:40:03.268Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0220"
+  },
+  {
+    "id": "lg-0245",
+    "at": "2026-10-29T09:40:03.269Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0221"
+  },
+  {
+    "id": "lg-0246",
+    "at": "2026-10-29T09:40:03.270Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0222"
+  },
+  {
+    "id": "lg-0247",
+    "at": "2026-10-29T09:40:03.271Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0223"
+  },
+  {
+    "id": "lg-0248",
+    "at": "2026-10-29T09:40:03.272Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0224"
+  },
+  {
+    "id": "lg-0249",
+    "at": "2026-10-29T09:40:03.273Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0225"
+  },
+  {
+    "id": "lg-0250",
+    "at": "2026-10-29T09:40:03.274Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0226"
+  },
+  {
+    "id": "lg-0251",
+    "at": "2026-10-29T09:40:03.275Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0227"
+  },
+  {
+    "id": "lg-0252",
+    "at": "2026-10-29T09:40:03.277Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0228"
+  },
+  {
+    "id": "lg-0253",
+    "at": "2026-10-29T09:40:03.278Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0229"
+  },
+  {
+    "id": "lg-0254",
+    "at": "2026-10-29T09:40:03.279Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0230"
+  },
+  {
+    "id": "lg-0255",
+    "at": "2026-10-29T09:40:03.280Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0231"
+  },
+  {
+    "id": "lg-0256",
+    "at": "2026-10-29T09:40:03.281Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0232"
+  },
+  {
+    "id": "lg-0257",
+    "at": "2026-10-29T09:40:03.282Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0233"
+  },
+  {
+    "id": "lg-0258",
+    "at": "2026-10-29T09:40:03.283Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0234"
+  },
+  {
+    "id": "lg-0259",
+    "at": "2026-10-29T09:40:03.284Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0235"
+  },
+  {
+    "id": "lg-0260",
+    "at": "2026-10-29T09:40:03.286Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0236"
+  },
+  {
+    "id": "lg-0261",
+    "at": "2026-10-29T09:40:03.287Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0237"
+  },
+  {
+    "id": "lg-0262",
+    "at": "2026-10-29T09:40:03.289Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0238"
+  },
+  {
+    "id": "lg-0263",
+    "at": "2026-10-29T09:40:03.290Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0239"
+  },
+  {
+    "id": "lg-0264",
+    "at": "2026-10-29T09:40:03.291Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0240"
+  },
+  {
+    "id": "lg-0265",
+    "at": "2026-10-29T09:40:03.292Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0241"
+  },
+  {
+    "id": "lg-0266",
+    "at": "2026-10-29T09:40:03.293Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0242"
+  },
+  {
+    "id": "lg-0267",
+    "at": "2026-10-29T09:40:03.295Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0243"
+  },
+  {
+    "id": "lg-0268",
+    "at": "2026-10-29T09:40:03.296Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0244"
+  },
+  {
+    "id": "lg-0269",
+    "at": "2026-10-29T09:40:03.297Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0245"
+  },
+  {
+    "id": "lg-0270",
+    "at": "2026-10-29T09:40:03.299Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0246"
+  },
+  {
+    "id": "lg-0271",
+    "at": "2026-10-29T09:40:03.300Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0247"
+  },
+  {
+    "id": "lg-0272",
+    "at": "2026-10-29T09:40:03.302Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0248"
+  },
+  {
+    "id": "lg-0273",
+    "at": "2026-10-29T09:40:03.305Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0249"
+  },
+  {
+    "id": "lg-0274",
+    "at": "2026-10-29T09:40:03.307Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0250"
+  },
+  {
+    "id": "lg-0275",
+    "at": "2026-10-29T09:40:03.309Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0251"
+  },
+  {
+    "id": "lg-0276",
+    "at": "2026-10-29T09:40:03.311Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0252"
+  },
+  {
+    "id": "lg-0277",
+    "at": "2026-10-29T09:40:03.312Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0253"
+  },
+  {
+    "id": "lg-0278",
+    "at": "2026-10-29T09:40:03.313Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0254"
+  },
+  {
+    "id": "lg-0279",
+    "at": "2026-10-29T09:40:03.314Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0255"
+  },
+  {
+    "id": "lg-0280",
+    "at": "2026-10-29T09:40:03.316Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0256"
+  },
+  {
+    "id": "lg-0281",
+    "at": "2026-10-29T09:40:03.317Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0257"
+  },
+  {
+    "id": "lg-0282",
+    "at": "2026-10-29T09:40:03.318Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0258"
+  },
+  {
+    "id": "lg-0283",
+    "at": "2026-10-29T09:40:03.319Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0259"
+  },
+  {
+    "id": "lg-0284",
+    "at": "2026-10-29T09:40:03.321Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0260"
+  },
+  {
+    "id": "lg-0285",
+    "at": "2026-10-29T09:40:03.322Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0261"
+  },
+  {
+    "id": "lg-0286",
+    "at": "2026-10-29T09:40:03.323Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0262"
+  },
+  {
+    "id": "lg-0287",
+    "at": "2026-10-29T09:40:03.324Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0263"
+  },
+  {
+    "id": "lg-0288",
+    "at": "2026-10-29T09:40:03.325Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0264"
+  },
+  {
+    "id": "lg-0289",
+    "at": "2026-10-29T09:40:03.327Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0265"
+  },
+  {
+    "id": "lg-0290",
+    "at": "2026-10-29T09:40:03.328Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0266"
+  },
+  {
+    "id": "lg-0291",
+    "at": "2026-10-29T09:40:03.329Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0267"
+  },
+  {
+    "id": "lg-0292",
+    "at": "2026-10-29T09:40:03.330Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0268"
+  },
+  {
+    "id": "lg-0293",
+    "at": "2026-10-29T09:40:03.331Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0269"
+  },
+  {
+    "id": "lg-0294",
+    "at": "2026-10-29T09:40:03.332Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0270"
+  },
+  {
+    "id": "lg-0295",
+    "at": "2026-10-29T09:40:03.333Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0271"
+  },
+  {
+    "id": "lg-0296",
+    "at": "2026-10-29T09:40:03.333Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0272"
+  },
+  {
+    "id": "lg-0297",
+    "at": "2026-10-29T09:40:03.334Z",
+    "by": null,
+    "what": "events.delete",
+    "ref": "ev-0273"
+  },
+  {
+    "id": "lg-0298",
+    "at": "2026-10-29T09:40:03.518Z",
+    "by": null,
+    "what": "recurring.import",
+    "ref": {
+      "created": 273,
+      "already": 0,
+      "skipped": 1
+    }
+  },
+  {
+    "id": "lg-0299",
+    "at": "2026-10-29T09:40:03.585Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.import",
+    "ref": {
+      "created": 0,
+      "already": 273,
+      "skipped": 1
+    }
+  },
+  {
+    "id": "lg-0300",
+    "at": "2026-10-29T09:40:03.598Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0001"
+  },
+  {
+    "id": "lg-0301",
+    "at": "2026-10-29T09:40:03.600Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0002"
+  },
+  {
+    "id": "lg-0302",
+    "at": "2026-10-29T09:40:03.602Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0003"
+  },
+  {
+    "id": "lg-0303",
+    "at": "2026-10-29T09:40:03.604Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0004"
+  },
+  {
+    "id": "lg-0304",
+    "at": "2026-10-29T09:40:03.606Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0005"
+  },
+  {
+    "id": "lg-0305",
+    "at": "2026-10-29T09:40:03.631Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.generate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2026-11-30",
+      "only": "both",
+      "events": 5,
+      "piecesCreated": 5,
+      "piecesExisting": 0,
+      "touchesCreated": 5,
+      "touchesExisting": 0,
+      "alternates": 0
+    }
+  },
+  {
+    "id": "lg-0306",
+    "at": "2026-10-29T09:40:03.641Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.generate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2026-11-30",
+      "only": "both",
+      "events": 5,
+      "piecesCreated": 0,
+      "piecesExisting": 5,
+      "touchesCreated": 0,
+      "touchesExisting": 5,
+      "alternates": 0
+    }
+  },
+  {
+    "id": "lg-0307",
+    "at": "2026-10-29T09:40:03.652Z",
+    "by": "tools@vspindia.com",
+    "what": "campaigns.create",
+    "ref": "cp-0001"
+  },
+  {
+    "id": "lg-0308",
+    "at": "2026-10-29T09:40:06.791Z",
+    "by": "tools@vspindia.com",
+    "what": "campaigns.delete",
+    "ref": "cp-0001"
+  },
+  {
+    "id": "lg-0309",
+    "at": "2026-10-29T09:40:06.798Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0310",
+    "at": "2026-10-29T09:40:06.801Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0002"
+  },
+  {
+    "id": "lg-0311",
+    "at": "2026-10-29T09:40:06.803Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0003"
+  },
+  {
+    "id": "lg-0312",
+    "at": "2026-10-29T09:40:06.805Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0004"
+  },
+  {
+    "id": "lg-0313",
+    "at": "2026-10-29T09:40:06.807Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0005"
+  },
+  {
+    "id": "lg-0314",
+    "at": "2026-10-29T09:40:06.809Z",
+    "by": "tools@vspindia.com",
+    "what": "touches.delete",
+    "ref": "tc-0001"
+  },
+  {
+    "id": "lg-0315",
+    "at": "2026-10-29T09:40:06.811Z",
+    "by": "tools@vspindia.com",
+    "what": "touches.delete",
+    "ref": "tc-0002"
+  },
+  {
+    "id": "lg-0316",
+    "at": "2026-10-29T09:40:06.812Z",
+    "by": "tools@vspindia.com",
+    "what": "touches.delete",
+    "ref": "tc-0003"
+  },
+  {
+    "id": "lg-0317",
+    "at": "2026-10-29T09:40:06.813Z",
+    "by": "tools@vspindia.com",
+    "what": "touches.delete",
+    "ref": "tc-0004"
+  },
+  {
+    "id": "lg-0318",
+    "at": "2026-10-29T09:40:06.814Z",
+    "by": "tools@vspindia.com",
+    "what": "touches.delete",
+    "ref": "tc-0005"
+  },
+  {
+    "id": "lg-0319",
+    "at": "2026-10-29T09:40:06.819Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0001"
+  },
+  {
+    "id": "lg-0320",
+    "at": "2026-10-29T09:40:06.821Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0002"
+  },
+  {
+    "id": "lg-0321",
+    "at": "2026-10-29T09:40:06.823Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0005"
+  },
+  {
+    "id": "lg-0322",
+    "at": "2026-10-29T09:40:06.825Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0010"
+  },
+  {
+    "id": "lg-0323",
+    "at": "2026-10-29T09:40:06.827Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0015"
+  },
+  {
+    "id": "lg-0324",
+    "at": "2026-10-29T09:40:06.829Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0001"
+  },
+  {
+    "id": "lg-0325",
+    "at": "2026-10-29T09:40:06.830Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0002"
+  },
+  {
+    "id": "lg-0326",
+    "at": "2026-10-29T09:40:06.831Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0003"
+  },
+  {
+    "id": "lg-0327",
+    "at": "2026-10-29T09:40:06.832Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0004"
+  },
+  {
+    "id": "lg-0328",
+    "at": "2026-10-29T09:40:06.833Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0005"
+  },
+  {
+    "id": "lg-0329",
+    "at": "2026-10-29T09:41:22.538Z",
+    "by": null,
+    "what": "network.import",
+    "ref": {
+      "created": 2,
+      "skipped": 1
+    }
+  },
+  {
+    "id": "lg-0330",
+    "at": "2026-10-29T09:42:58.743Z",
+    "by": null,
+    "what": "people.create",
+    "ref": "pp-0003"
+  },
+  {
+    "id": "lg-0331",
+    "at": "2026-10-29T09:42:58.754Z",
+    "by": null,
+    "what": "people.create",
+    "ref": "pp-0004"
+  },
+  {
+    "id": "lg-0332",
+    "at": "2026-10-29T09:42:58.765Z",
+    "by": null,
+    "what": "people.create",
+    "ref": "pp-0005"
+  },
+  {
+    "id": "lg-0333",
+    "at": "2026-10-29T09:43:17.282Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.generate",
+    "ref": {
+      "from": "2026-10-29",
+      "to": "2026-11-28",
+      "only": "pieces",
+      "events": 5,
+      "piecesCreated": 5,
+      "piecesExisting": 0,
+      "touchesCreated": 0,
+      "touchesExisting": 0,
+      "alternates": 0
+    }
+  },
+  {
+    "id": "lg-0334",
+    "at": "2026-10-29T09:43:18.728Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.generate",
+    "ref": {
+      "from": "2026-10-29",
+      "to": "2026-11-28",
+      "only": "touches",
+      "events": 5,
+      "piecesCreated": 0,
+      "piecesExisting": 0,
+      "touchesCreated": 5,
+      "touchesExisting": 0,
+      "alternates": 0
+    }
+  },
+  {
+    "id": "lg-0335",
+    "at": "2026-10-29T09:43:50.474Z",
+    "by": null,
+    "what": "campaigns.create",
+    "ref": "cp-0001"
+  },
+  {
+    "id": "lg-0336",
+    "at": "2026-10-29T09:44:58.894Z",
+    "by": null,
+    "what": "people.delete",
+    "ref": "pp-0003"
+  },
+  {
+    "id": "lg-0337",
+    "at": "2026-10-29T09:44:58.898Z",
+    "by": null,
+    "what": "people.delete",
+    "ref": "pp-0004"
+  },
+  {
+    "id": "lg-0338",
+    "at": "2026-10-29T09:44:58.900Z",
+    "by": null,
+    "what": "people.delete",
+    "ref": "pp-0005"
+  },
+  {
+    "id": "lg-0339",
+    "at": "2026-10-29T09:44:58.903Z",
+    "by": null,
+    "what": "campaigns.delete",
+    "ref": "cp-0001"
+  },
+  {
+    "id": "lg-0340",
+    "at": "2026-10-29T09:44:58.907Z",
+    "by": null,
+    "what": "pieces.delete",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0341",
+    "at": "2026-10-29T09:44:58.910Z",
+    "by": null,
+    "what": "pieces.delete",
+    "ref": "pc-0002"
+  },
+  {
+    "id": "lg-0342",
+    "at": "2026-10-29T09:44:58.912Z",
+    "by": null,
+    "what": "pieces.delete",
+    "ref": "pc-0003"
+  },
+  {
+    "id": "lg-0343",
+    "at": "2026-10-29T09:44:58.915Z",
+    "by": null,
+    "what": "pieces.delete",
+    "ref": "pc-0004"
+  },
+  {
+    "id": "lg-0344",
+    "at": "2026-10-29T09:44:58.917Z",
+    "by": null,
+    "what": "pieces.delete",
+    "ref": "pc-0005"
+  },
+  {
+    "id": "lg-0345",
+    "at": "2026-10-29T09:44:58.920Z",
+    "by": null,
+    "what": "touches.delete",
+    "ref": "tc-0001"
+  },
+  {
+    "id": "lg-0346",
+    "at": "2026-10-29T09:44:58.921Z",
+    "by": null,
+    "what": "touches.delete",
+    "ref": "tc-0002"
+  },
+  {
+    "id": "lg-0347",
+    "at": "2026-10-29T09:44:58.922Z",
+    "by": null,
+    "what": "touches.delete",
+    "ref": "tc-0003"
+  },
+  {
+    "id": "lg-0348",
+    "at": "2026-10-29T09:44:58.930Z",
+    "by": null,
+    "what": "touches.delete",
+    "ref": "tc-0004"
+  },
+  {
+    "id": "lg-0349",
+    "at": "2026-10-29T09:44:58.935Z",
+    "by": null,
+    "what": "touches.delete",
+    "ref": "tc-0005"
+  },
+  {
+    "id": "lg-0350",
+    "at": "2026-10-29T09:44:58.946Z",
+    "by": null,
+    "what": "events.patch",
+    "ref": "ev-0001"
+  },
+  {
+    "id": "lg-0351",
+    "at": "2026-10-29T09:44:58.948Z",
+    "by": null,
+    "what": "events.patch",
+    "ref": "ev-0002"
+  },
+  {
+    "id": "lg-0352",
+    "at": "2026-10-29T09:44:58.951Z",
+    "by": null,
+    "what": "events.patch",
+    "ref": "ev-0005"
+  },
+  {
+    "id": "lg-0353",
+    "at": "2026-10-29T09:44:58.953Z",
+    "by": null,
+    "what": "events.patch",
+    "ref": "ev-0010"
+  },
+  {
+    "id": "lg-0354",
+    "at": "2026-10-29T09:44:58.956Z",
+    "by": null,
+    "what": "events.patch",
+    "ref": "ev-0015"
+  },
+  {
+    "id": "lg-0355",
+    "at": "2026-10-29T09:44:59.049Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.import",
+    "ref": {
+      "created": 0,
+      "already": 273,
+      "skipped": 1
+    }
+  },
+  {
+    "id": "lg-0356",
+    "at": "2026-10-29T09:44:59.068Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0003"
+  },
+  {
+    "id": "lg-0357",
+    "at": "2026-10-29T09:44:59.073Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0004"
+  },
+  {
+    "id": "lg-0358",
+    "at": "2026-10-29T09:44:59.078Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0005"
+  },
+  {
+    "id": "lg-0359",
+    "at": "2026-10-29T09:44:59.085Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0006"
+  },
+  {
+    "id": "lg-0360",
+    "at": "2026-10-29T09:44:59.089Z",
+    "by": "tools@vspindia.com",
+    "what": "people.create",
+    "ref": "pp-0007"
+  },
+  {
+    "id": "lg-0361",
+    "at": "2026-10-29T09:44:59.106Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.generate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2026-11-30",
+      "only": "both",
+      "events": 5,
+      "piecesCreated": 5,
+      "piecesExisting": 0,
+      "touchesCreated": 5,
+      "touchesExisting": 0,
+      "alternates": 0
+    }
+  },
+  {
+    "id": "lg-0362",
+    "at": "2026-10-29T09:44:59.116Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.generate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2026-11-30",
+      "only": "both",
+      "events": 5,
+      "piecesCreated": 0,
+      "piecesExisting": 5,
+      "touchesCreated": 0,
+      "touchesExisting": 5,
+      "alternates": 0
+    }
+  },
+  {
+    "id": "lg-0363",
+    "at": "2026-10-29T09:44:59.124Z",
+    "by": "tools@vspindia.com",
+    "what": "campaigns.create",
+    "ref": "cp-0001"
+  },
+  {
+    "id": "lg-0364",
+    "at": "2026-10-29T09:45:02.383Z",
+    "by": "tools@vspindia.com",
+    "what": "campaigns.delete",
+    "ref": "cp-0001"
+  },
+  {
+    "id": "lg-0365",
+    "at": "2026-10-29T09:45:02.386Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0366",
+    "at": "2026-10-29T09:45:02.388Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0002"
+  },
+  {
+    "id": "lg-0367",
+    "at": "2026-10-29T09:45:02.390Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0003"
+  },
+  {
+    "id": "lg-0368",
+    "at": "2026-10-29T09:45:02.392Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0004"
+  },
+  {
+    "id": "lg-0369",
+    "at": "2026-10-29T09:45:02.394Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0005"
+  },
+  {
+    "id": "lg-0370",
+    "at": "2026-10-29T09:45:02.396Z",
+    "by": "tools@vspindia.com",
+    "what": "touches.delete",
+    "ref": "tc-0001"
+  },
+  {
+    "id": "lg-0371",
+    "at": "2026-10-29T09:45:02.398Z",
+    "by": "tools@vspindia.com",
+    "what": "touches.delete",
+    "ref": "tc-0002"
+  },
+  {
+    "id": "lg-0372",
+    "at": "2026-10-29T09:45:02.400Z",
+    "by": "tools@vspindia.com",
+    "what": "touches.delete",
+    "ref": "tc-0003"
+  },
+  {
+    "id": "lg-0373",
+    "at": "2026-10-29T09:45:02.401Z",
+    "by": "tools@vspindia.com",
+    "what": "touches.delete",
+    "ref": "tc-0004"
+  },
+  {
+    "id": "lg-0374",
+    "at": "2026-10-29T09:45:02.403Z",
+    "by": "tools@vspindia.com",
+    "what": "touches.delete",
+    "ref": "tc-0005"
+  },
+  {
+    "id": "lg-0375",
+    "at": "2026-10-29T09:45:02.409Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0001"
+  },
+  {
+    "id": "lg-0376",
+    "at": "2026-10-29T09:45:02.411Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0002"
+  },
+  {
+    "id": "lg-0377",
+    "at": "2026-10-29T09:45:02.413Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0005"
+  },
+  {
+    "id": "lg-0378",
+    "at": "2026-10-29T09:45:02.415Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0010"
+  },
+  {
+    "id": "lg-0379",
+    "at": "2026-10-29T09:45:02.417Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0015"
+  },
+  {
+    "id": "lg-0380",
+    "at": "2026-10-29T09:45:02.419Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0003"
+  },
+  {
+    "id": "lg-0381",
+    "at": "2026-10-29T09:45:02.421Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0004"
+  },
+  {
+    "id": "lg-0382",
+    "at": "2026-10-29T09:45:02.422Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0005"
+  },
+  {
+    "id": "lg-0383",
+    "at": "2026-10-29T09:45:02.424Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0006"
+  },
+  {
+    "id": "lg-0384",
+    "at": "2026-10-29T09:45:02.425Z",
+    "by": "tools@vspindia.com",
+    "what": "people.delete",
+    "ref": "pp-0007"
+  },
+  {
+    "id": "lg-0385",
+    "at": "2026-10-29T09:46:08.396Z",
+    "by": null,
+    "what": "media.upload",
+    "ref": [
+      "/media/test-illustration.png"
+    ]
+  },
+  {
+    "id": "lg-0386",
+    "at": "2026-10-29T09:46:08.402Z",
+    "by": null,
+    "what": "images.create",
+    "ref": "im-0001"
+  },
+  {
+    "id": "lg-0387",
+    "at": "2026-10-29T09:46:39.806Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0001",
+      "pieceId": "pc-0001"
+    }
+  },
+  {
+    "id": "lg-0388",
+    "at": "2026-10-29T09:47:10.802Z",
+    "by": null,
+    "what": "content.review-pass.queue",
+    "ref": {
+      "jobId": "job-mvtd0axc-wt86",
+      "total": 2
+    }
+  },
+  {
+    "id": "lg-0389",
+    "at": "2026-10-29T09:47:16.852Z",
+    "by": null,
+    "what": "content.review-pass.queue",
+    "ref": {
+      "jobId": "job-mvtd0flg-0h6p",
+      "total": 1
+    }
+  },
+  {
+    "id": "lg-0390",
+    "at": "2026-10-29T09:53:08.020Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0391",
+    "at": "2026-10-29T09:55:34.583Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.patch",
+    "ref": "vd-0001"
+  },
+  {
+    "id": "lg-0392",
+    "at": "2026-10-29T09:55:34.605Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0002",
+      "pieceId": "pc-0002"
+    }
+  },
+  {
+    "id": "lg-0393",
+    "at": "2026-10-29T09:55:56.719Z",
+    "by": "tools@vspindia.com",
+    "what": "video.outline",
+    "ref": {
+      "id": "vd-0001",
+      "mode": "supplied"
+    }
+  },
+  {
+    "id": "lg-0394",
+    "at": "2026-10-29T09:55:56.739Z",
+    "by": "tools@vspindia.com",
+    "what": "video.shorts",
+    "ref": {
+      "id": "vd-0001",
+      "pieces": [
+        "pc-0003",
+        "pc-0004",
+        "pc-0005"
+      ]
+    }
+  },
+  {
+    "id": "lg-0395",
+    "at": "2026-10-29T09:55:56.743Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.patch",
+    "ref": "vd-0001"
+  },
+  {
+    "id": "lg-0396",
+    "at": "2026-10-29T09:56:31.180Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.patch",
+    "ref": "vd-0001"
+  },
+  {
+    "id": "lg-0397",
+    "at": "2026-10-29T09:58:59.550Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.patch",
+    "ref": "vd-0001"
+  },
+  {
+    "id": "lg-0398",
+    "at": "2026-10-29T09:59:25.219Z",
+    "by": "tools@vspindia.com",
+    "what": "video.handoff",
+    "ref": {
+      "id": "vd-0001",
+      "files": 13
+    }
+  },
+  {
+    "id": "lg-0399",
+    "at": "2026-10-29T10:00:33.015Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "pc-0006"
+  },
+  {
+    "id": "lg-0400",
+    "at": "2026-10-29T10:00:33.026Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0003",
+      "pieceId": "pc-0006"
+    }
+  },
+  {
+    "id": "lg-0401",
+    "at": "2026-10-29T10:00:33.036Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0004",
+      "pieceId": "film"
+    }
+  },
+  {
+    "id": "lg-0402",
+    "at": "2026-10-29T10:00:33.060Z",
+    "by": "tools@vspindia.com",
+    "what": "video.outline",
+    "ref": {
+      "id": "vd-0003",
+      "mode": "supplied"
+    }
+  },
+  {
+    "id": "lg-0403",
+    "at": "2026-10-29T10:00:33.065Z",
+    "by": "tools@vspindia.com",
+    "what": "video.script",
+    "ref": {
+      "id": "vd-0003",
+      "chapters": [
+        1
+      ]
+    }
+  },
+  {
+    "id": "lg-0404",
+    "at": "2026-10-29T10:00:33.068Z",
+    "by": "tools@vspindia.com",
+    "what": "video.script",
+    "ref": {
+      "id": "vd-0003",
+      "chapters": [
+        2
+      ]
+    }
+  },
+  {
+    "id": "lg-0405",
+    "at": "2026-10-29T10:00:33.071Z",
+    "by": "tools@vspindia.com",
+    "what": "video.script",
+    "ref": {
+      "id": "vd-0003",
+      "chapters": [
+        3
+      ]
+    }
+  },
+  {
+    "id": "lg-0406",
+    "at": "2026-10-29T10:00:33.074Z",
+    "by": "tools@vspindia.com",
+    "what": "video.script",
+    "ref": {
+      "id": "vd-0003",
+      "chapters": [
+        4
+      ]
+    }
+  },
+  {
+    "id": "lg-0407",
+    "at": "2026-10-29T10:00:33.076Z",
+    "by": "tools@vspindia.com",
+    "what": "video.script",
+    "ref": {
+      "id": "vd-0003",
+      "chapters": [
+        5
+      ]
+    }
+  },
+  {
+    "id": "lg-0408",
+    "at": "2026-10-29T10:00:33.078Z",
+    "by": "tools@vspindia.com",
+    "what": "video.script",
+    "ref": {
+      "id": "vd-0003",
+      "chapters": [
+        6
+      ]
+    }
+  },
+  {
+    "id": "lg-0409",
+    "at": "2026-10-29T10:00:33.084Z",
+    "by": "tools@vspindia.com",
+    "what": "video.scenes",
+    "ref": {
+      "id": "vd-0003",
+      "parts": [
+        1
+      ]
+    }
+  },
+  {
+    "id": "lg-0410",
+    "at": "2026-10-29T10:00:33.088Z",
+    "by": "tools@vspindia.com",
+    "what": "video.scenes",
+    "ref": {
+      "id": "vd-0003",
+      "parts": [
+        2
+      ]
+    }
+  },
+  {
+    "id": "lg-0411",
+    "at": "2026-10-29T10:00:33.091Z",
+    "by": "tools@vspindia.com",
+    "what": "video.scenes",
+    "ref": {
+      "id": "vd-0003",
+      "parts": [
+        3
+      ]
+    }
+  },
+  {
+    "id": "lg-0412",
+    "at": "2026-10-29T10:00:33.094Z",
+    "by": "tools@vspindia.com",
+    "what": "video.scenes",
+    "ref": {
+      "id": "vd-0003",
+      "parts": [
+        4
+      ]
+    }
+  },
+  {
+    "id": "lg-0413",
+    "at": "2026-10-29T10:00:33.098Z",
+    "by": "tools@vspindia.com",
+    "what": "video.scenes",
+    "ref": {
+      "id": "vd-0003",
+      "parts": [
+        5
+      ]
+    }
+  },
+  {
+    "id": "lg-0414",
+    "at": "2026-10-29T10:00:33.101Z",
+    "by": "tools@vspindia.com",
+    "what": "video.scenes",
+    "ref": {
+      "id": "vd-0003",
+      "parts": [
+        6
+      ]
+    }
+  },
+  {
+    "id": "lg-0415",
+    "at": "2026-10-29T10:00:33.105Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.patch",
+    "ref": "vd-0003"
+  },
+  {
+    "id": "lg-0416",
+    "at": "2026-10-29T10:00:33.109Z",
+    "by": "tools@vspindia.com",
+    "what": "video.scenes",
+    "ref": {
+      "id": "vd-0003",
+      "parts": [
+        1
+      ]
+    }
+  },
+  {
+    "id": "lg-0417",
+    "at": "2026-10-29T10:01:17.411Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.patch",
+    "ref": "pc-0006"
+  },
+  {
+    "id": "lg-0418",
+    "at": "2026-10-29T10:01:29.186Z",
+    "by": "tools@vspindia.com",
+    "what": "video.own-clips.register",
+    "ref": {
+      "id": "vd-0001",
+      "path": "clips/manual.mov"
+    }
+  },
+  {
+    "id": "lg-0419",
+    "at": "2026-10-29T10:01:29.303Z",
+    "by": "tools@vspindia.com",
+    "what": "video.voice",
+    "ref": {
+      "id": "vd-0001",
+      "bytes": 300000
+    }
+  },
+  {
+    "id": "lg-0420",
+    "at": "2026-10-29T10:01:50.591Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.patch",
+    "ref": "vd-0001"
+  },
+  {
+    "id": "lg-0421",
+    "at": "2026-10-29T10:01:50.598Z",
+    "by": "tools@vspindia.com",
+    "what": "video.own-clips.register",
+    "ref": {
+      "id": "vd-0001",
+      "path": "clips/manual.mov"
+    }
+  },
+  {
+    "id": "lg-0422",
+    "at": "2026-10-29T10:02:28.731Z",
+    "by": "tools@vspindia.com",
+    "what": "video.outline",
+    "ref": {
+      "id": "vd-0003",
+      "mode": "supplied"
+    }
+  },
+  {
+    "id": "lg-0423",
+    "at": "2026-10-29T10:02:33.754Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.patch",
+    "ref": "vd-0003"
+  },
+  {
+    "id": "lg-0424",
+    "at": "2026-10-29T10:03:56.009Z",
+    "by": null,
+    "what": "slots.regenerate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2027-03-31",
+      "created": 172,
+      "updated": 0,
+      "removed": 0,
+      "kept": 0,
+      "total": 172,
+      "quietWindows": [
+        {
+          "from": "2026-12-16",
+          "to": "2026-12-23"
+        },
+        {
+          "from": "2027-01-04",
+          "to": "2027-01-14"
+        }
+      ]
+    }
+  },
+  {
+    "id": "lg-0425",
+    "at": "2026-10-29T10:03:56.084Z",
+    "by": null,
+    "what": "calendar.import-rows",
+    "ref": {
+      "ok": true,
+      "rows": 51,
+      "filled": 37,
+      "created": 14,
+      "refreshed": 0,
+      "dropped": 3,
+      "skipped": 0,
+      "piecesMissing": [],
+      "imported": 51,
+      "message": "51 of 51 rows are in the calendar (37 filled generated slots, 14 new slots, 0 refreshed)."
+    }
+  },
+  {
+    "id": "lg-0426",
+    "at": "2026-10-29T16:00:30.329Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "D2",
+      "slotId": "sl-0050",
+      "from": "sl-0056"
+    }
+  },
+  {
+    "id": "lg-0427",
+    "at": "2026-10-29T16:00:48.258Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "D2",
+      "slotId": "sl-0056",
+      "from": "sl-0050"
+    }
+  },
+  {
+    "id": "lg-0428",
+    "at": "2026-10-29T16:05:12.489Z",
+    "by": "tools@vspindia.com",
+    "what": "content.check-all",
+    "ref": {
+      "checked": 85,
+      "blocked": 19
+    }
+  },
+  {
+    "id": "lg-0429",
+    "at": "2026-10-29T16:06:36.373Z",
+    "by": "tools@vspindia.com",
+    "what": "settings.replace",
+    "ref": "settings"
+  },
+  {
+    "id": "lg-0430",
+    "at": "2026-10-29T16:07:55.146Z",
+    "by": "helper@example.test",
+    "what": "pieces.create",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0431",
+    "at": "2026-10-29T16:08:13.485Z",
+    "by": "helper@example.test",
+    "what": "pieces.replace",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0432",
+    "at": "2026-10-29T16:08:52.516Z",
+    "by": "helper@example.test",
+    "what": "images.card",
+    "ref": {
+      "id": "im-0001",
+      "template": "statusRule",
+      "pieceId": "pc-0001"
+    }
+  },
+  {
+    "id": "lg-0433",
+    "at": "2026-10-29T16:14:16.108Z",
+    "by": "helper@example.test",
+    "what": "settings.replace",
+    "ref": "settings"
+  },
+  {
+    "id": "lg-0434",
+    "at": "2026-10-29T16:14:16.111Z",
+    "by": "tools@vspindia.com",
+    "what": "settings.replace",
+    "ref": "settings"
+  },
+  {
+    "id": "lg-0435",
+    "at": "2026-10-29T16:14:16.136Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0436",
+    "at": "2026-10-29T16:14:16.143Z",
+    "by": "helper@example.test",
+    "what": "pieces.replace",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0437",
+    "at": "2026-10-29T16:20:30.281Z",
+    "by": "helper@example.test",
+    "what": "pieces.replace",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0438",
+    "at": "2026-10-29T16:20:50.000Z",
+    "by": "tools@vspindia.com",
+    "what": "settings.pin.set",
+    "ref": "tools@vspindia.com"
+  },
+  {
+    "id": "lg-0439",
+    "at": "2026-10-29T16:21:34.956Z",
+    "by": "helper@example.test",
+    "what": "pieces.replace",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0440",
+    "at": "2026-10-29T16:22:49.940Z",
+    "by": "tools@vspindia.com",
+    "what": "settings.replace",
+    "ref": "settings"
+  },
+  {
+    "id": "lg-0441",
+    "at": "2026-10-29T16:23:02.445Z",
+    "by": "tools@vspindia.com",
+    "what": "settings.pin.cleared",
+    "ref": "tools@vspindia.com"
+  },
+  {
+    "id": "lg-0442",
+    "at": "2026-10-29T16:24:46.928Z",
+    "by": "tools@vspindia.com",
+    "what": "content.check-all",
+    "ref": {
+      "checked": 86,
+      "blocked": 19
+    }
+  },
+  {
+    "id": "lg-0443",
+    "at": "2026-10-29T16:26:07.873Z",
+    "by": "tools@vspindia.com",
+    "what": "images.delete",
+    "ref": "im-0001"
+  },
+  {
+    "id": "lg-0444",
+    "at": "2026-10-29T16:26:07.901Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0445",
+    "at": "2026-10-29T16:26:07.908Z",
+    "by": "tools@vspindia.com",
+    "what": "settings.replace",
+    "ref": "settings"
+  },
+  {
+    "id": "lg-0446",
+    "at": "2026-10-29T17:06:53.140Z",
+    "by": "tools@vspindia.com",
+    "what": "ai.runner.answer",
+    "ref": {
+      "id": "rq-mvtspmv1-joys",
+      "op": "draft",
+      "answeredBy": "tools@vspindia.com"
+    }
+  },
+  {
+    "id": "lg-0447",
+    "at": "2026-10-29T17:06:53.140Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:draft",
+    "ref": {
+      "mode": "runner",
+      "ms": 8167,
+      "model": "runner",
+      "input": "{\"pis\":{\"problem\":\"Seven in the evening. You are still asking whether the dispatch went, whether the quote was sent, whether the payment came in.\",\"impact\":\"Every answer lives in someone's head, so...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0448",
+    "at": "2026-10-29T17:07:15.520Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0449",
+    "at": "2026-10-29T17:07:15.527Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "pc-0001",
+      "slotId": "sl-0007",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0450",
+    "at": "2026-10-29T17:07:29.762Z",
+    "by": "tools@vspindia.com",
+    "what": "ai.runner.answer",
+    "ref": {
+      "id": "rq-mvtsqc5k-uws3",
+      "op": "check",
+      "answeredBy": "tools@vspindia.com"
+    }
+  },
+  {
+    "id": "lg-0451",
+    "at": "2026-10-29T17:07:29.762Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:check",
+    "ref": {
+      "mode": "runner",
+      "ms": 11230,
+      "model": "runner",
+      "input": "{\"piece\":{\"type\":\"carousel\",\"pillar\":\"problem\",\"status\":\"draft\",\"hook\":\"Five questions you ask every evening\",\"pis\":{\"problem\":\"Seven in the evening. You are still asking whether the dispatch went,...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0452",
+    "at": "2026-10-29T17:07:42.749Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0453",
+    "at": "2026-10-29T17:07:45.761Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.approve",
+    "ref": {
+      "pieceId": "pc-0001",
+      "versionId": "vr-0087"
+    }
+  },
+  {
+    "id": "lg-0454",
+    "at": "2026-10-29T17:08:16.480Z",
+    "by": "tools@vspindia.com",
+    "what": "images.card",
+    "ref": {
+      "id": "im-0001",
+      "template": "carouselSlide",
+      "pieceId": "pc-0001"
+    }
+  },
+  {
+    "id": "lg-0455",
+    "at": "2026-10-29T17:08:17.570Z",
+    "by": "tools@vspindia.com",
+    "what": "images.card",
+    "ref": {
+      "id": "im-0002",
+      "template": "carouselSlide",
+      "pieceId": "pc-0001"
+    }
+  },
+  {
+    "id": "lg-0456",
+    "at": "2026-10-29T17:08:18.498Z",
+    "by": "tools@vspindia.com",
+    "what": "images.card",
+    "ref": {
+      "id": "im-0003",
+      "template": "carouselSlide",
+      "pieceId": "pc-0001"
+    }
+  },
+  {
+    "id": "lg-0457",
+    "at": "2026-10-29T17:08:20.533Z",
+    "by": "tools@vspindia.com",
+    "what": "images.card",
+    "ref": {
+      "id": "im-0004",
+      "template": "carouselSlide",
+      "pieceId": "pc-0001"
+    }
+  },
+  {
+    "id": "lg-0458",
+    "at": "2026-10-29T17:08:21.622Z",
+    "by": "tools@vspindia.com",
+    "what": "images.card",
+    "ref": {
+      "id": "im-0005",
+      "template": "carouselSlide",
+      "pieceId": "pc-0001"
+    }
+  },
+  {
+    "id": "lg-0459",
+    "at": "2026-10-29T17:08:23.657Z",
+    "by": "tools@vspindia.com",
+    "what": "images.card",
+    "ref": {
+      "id": "im-0006",
+      "template": "carouselSlide",
+      "pieceId": "pc-0001"
+    }
+  },
+  {
+    "id": "lg-0460",
+    "at": "2026-10-29T17:08:24.756Z",
+    "by": "tools@vspindia.com",
+    "what": "images.card",
+    "ref": {
+      "id": "im-0007",
+      "template": "carouselSlide",
+      "pieceId": "pc-0001"
+    }
+  },
+  {
+    "id": "lg-0461",
+    "at": "2026-10-29T17:09:03.876Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.record-posted",
+    "ref": {
+      "pieceId": "pc-0001",
+      "accountId": "vd-ig",
+      "postedAt": "2026-11-12T19:30",
+      "url": "https://www.instagram.com/p/example-12nov/"
+    }
+  },
+  {
+    "id": "lg-0462",
+    "at": "2026-10-29T17:11:06.447Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0463",
+    "at": "2026-10-29T17:11:06.452Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.patch",
+    "ref": "pc-0001"
+  },
+  {
+    "id": "lg-0464",
+    "at": "2026-10-29T17:14:28.862Z",
+    "by": "tools@vspindia.com",
+    "what": "ai.runner.answer",
+    "ref": {
+      "id": "rq-mvtsz426-bbz9",
+      "op": "propose",
+      "answeredBy": "tools@vspindia.com"
+    }
+  },
+  {
+    "id": "lg-0465",
+    "at": "2026-10-29T17:14:28.863Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:propose",
+    "ref": {
+      "mode": "runner",
+      "ms": 21752,
+      "model": "runner",
+      "input": "{\"moment\":\"The owner finds out about a late delivery when the client calls, not from the team.\"}",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0466",
+    "at": "2026-10-29T17:15:12.468Z",
+    "by": "tools@vspindia.com",
+    "what": "ai.runner.answer",
+    "ref": {
+      "id": "rq-mvtt0dnc-p4pp",
+      "op": "draft",
+      "answeredBy": "tools@vspindia.com"
+    }
+  },
+  {
+    "id": "lg-0467",
+    "at": "2026-10-29T17:15:12.469Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:draft",
+    "ref": {
+      "mode": "runner",
+      "ms": 6173,
+      "model": "runner",
+      "input": "{\"pis\":{\"problem\":\"The order was on time at every step you could see. The step you could not see is where it stopped.\",\"impact\":\"When work has no visible state, nobody knows it has stopped until so...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0468",
+    "at": "2026-10-29T17:15:12.482Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "pc-0002"
+  },
+  {
+    "id": "lg-0469",
+    "at": "2026-10-29T17:15:39.563Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "pc-0002"
+  },
+  {
+    "id": "lg-0470",
+    "at": "2026-10-29T17:15:47.775Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "pc-0002",
+      "slotId": "sl-0061",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0471",
+    "at": "2026-10-29T17:16:10.904Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.approve",
+    "ref": {
+      "pieceId": "pc-0002",
+      "versionId": "vr-0090"
+    }
+  },
+  {
+    "id": "lg-0472",
+    "at": "2026-10-29T17:16:40.941Z",
+    "by": "tools@vspindia.com",
+    "what": "images.card",
+    "ref": {
+      "id": "im-0008",
+      "template": "hook",
+      "pieceId": "pc-0002"
+    }
+  },
+  {
+    "id": "lg-0473",
+    "at": "2026-10-29T17:18:31.353Z",
+    "by": "tools@vspindia.com",
+    "what": "settings.replace",
+    "ref": "settings"
+  },
+  {
+    "id": "lg-0474",
+    "at": "2026-10-29T17:19:19.236Z",
+    "by": "tools@vspindia.com",
+    "what": "ai.runner.answer",
+    "ref": {
+      "id": "rq-mvtt5n9x-qswz",
+      "op": "draft",
+      "answeredBy": "tools@vspindia.com"
+    }
+  },
+  {
+    "id": "lg-0475",
+    "at": "2026-10-29T17:19:19.237Z",
+    "by": "helper@example.test",
+    "what": "ai:draft",
+    "ref": {
+      "mode": "runner",
+      "ms": 7170,
+      "model": "runner",
+      "input": "{\"pis\":{\"problem\":\"Questions come to you all day. Each one waits until you are free.\",\"impact\":\"Your day becomes other people's questions, and the decisions only you can make wait behind them.\",\"so...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0476",
+    "at": "2026-10-29T17:19:33.916Z",
+    "by": "helper@example.test",
+    "what": "pieces.create",
+    "ref": "pc-0003"
+  },
+  {
+    "id": "lg-0477",
+    "at": "2026-10-29T17:19:33.924Z",
+    "by": "helper@example.test",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "pc-0003",
+      "slotId": "sl-0025",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0478",
+    "at": "2026-10-29T17:19:53.050Z",
+    "by": "tools@vspindia.com",
+    "what": "ai.runner.answer",
+    "ref": {
+      "id": "rq-mvtt65wi-sc4f",
+      "op": "check",
+      "answeredBy": "tools@vspindia.com"
+    }
+  },
+  {
+    "id": "lg-0479",
+    "at": "2026-10-29T17:19:53.051Z",
+    "by": "helper@example.test",
+    "what": "ai:check",
+    "ref": {
+      "mode": "runner",
+      "ms": 16131,
+      "model": "runner",
+      "input": "{\"piece\":{\"type\":\"status-rule\",\"pillar\":\"problem\",\"status\":\"draft\",\"hook\":\"A question with no owner waits for you.\",\"pis\":{\"problem\":\"Questions come to you all day. Each one waits until you are fre...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0480",
+    "at": "2026-10-29T17:20:14.451Z",
+    "by": "helper@example.test",
+    "what": "pieces.replace",
+    "ref": "pc-0003"
+  },
+  {
+    "id": "lg-0481",
+    "at": "2026-10-29T17:20:21.724Z",
+    "by": "helper@example.test",
+    "what": "images.card",
+    "ref": {
+      "id": "im-0009",
+      "template": "statusRule",
+      "pieceId": "pc-0003"
+    }
+  },
+  {
+    "id": "lg-0482",
+    "at": "2026-10-29T17:20:30.864Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.approve",
+    "ref": {
+      "pieceId": "pc-0003",
+      "versionId": "vr-0092"
+    }
+  },
+  {
+    "id": "lg-0483",
+    "at": "2026-10-29T17:22:21.985Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass.queue",
+    "ref": {
+      "jobId": "job-mvtt9odc-xqp7",
+      "total": 79
+    }
+  },
+  {
+    "id": "lg-0484",
+    "at": "2026-10-29T17:22:21.987Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"founder\",\"hook\":\"My name is Palak Gupta.\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"My name is Palak Gupta. A designer who builds the system that does an...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0485",
+    "at": "2026-10-29T17:22:21.990Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"carousel\",\"pillar\":\"problem\",\"hook\":\"5 signs you are the middle of your business\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"Five signs you have become the middle of your ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0486",
+    "at": "2026-10-29T17:22:21.991Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"episode\",\"pillar\":\"problem\",\"hook\":\"Seven in the evening. Still asking, ‘ho gaya?’\",\"targets\":[\"vd-ig\",\"wa-st\"],\"pis\":{\"problem\":\"Seven in the evening. *Still* asking, ‘ho gaya?’\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0487",
+    "at": "2026-10-29T17:22:21.992Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"problem\",\"hook\":\"You are the follow-up department.\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"You are the follow-up department. Calls and messages all da...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0488",
+    "at": "2026-10-29T17:22:21.993Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"founder\",\"hook\":\"The designer comes home\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"I spent years designing products for large companies. Then I went...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0489",
+    "at": "2026-10-29T17:22:21.995Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"episode\",\"pillar\":\"problem\",\"hook\":\"Given on Monday. Friday, still not started.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Given on Monday. Friday, still not *started*.\",\"impact\":\"The...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0490",
+    "at": "2026-10-29T17:22:21.996Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"carousel\",\"pillar\":\"problem\",\"hook\":\"You are the follow-up department\",\"targets\":[\"vd-ig\",\"p-li\"],\"renditions\":{\"ig\":{\"caption\":\"Seven in the evening, and you are still asking 'ho...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0491",
+    "at": "2026-10-29T17:22:21.997Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"status-rule\",\"pillar\":\"problem\",\"hook\":\"Late work gets a nudge, then a coordinator. Never you.\",\"targets\":[\"wa-st\"],\"renditions\":{\"waStatus\":{\"text\":\"Late work gets a nudge, then ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0492",
+    "at": "2026-10-29T17:22:21.999Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"greeting\",\"pillar\":\"greeting\",\"hook\":\"Dhanteras greeting\",\"targets\":[\"wa-st\"],\"renditions\":{\"waStatus\":{\"text\":\"Wishing you and your family a prosperous Dhanteras. — Palak Gupta, ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0493",
+    "at": "2026-10-29T17:22:22.001Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"greeting\",\"pillar\":\"greeting\",\"hook\":\"Diwali greeting\",\"targets\":[\"vd-ig\",\"wa-st\"],\"renditions\":{\"waStatus\":{\"text\":\"Wishing you and your family a very happy Diwali. — Palak Gupta...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0494",
+    "at": "2026-10-29T17:22:22.002Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"episode\",\"pillar\":\"problem\",\"hook\":\"A week off, spent on the phone.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"A week off, spent on the *phone*.\",\"impact\":\"The work comes home. The ev...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0495",
+    "at": "2026-10-29T17:22:22.004Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"founder\",\"hook\":\"What service design taught me about a family business\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"Service design taught me one thing ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0496",
+    "at": "2026-10-29T17:22:22.005Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"problem\",\"hook\":\"Who did the chasing while you were away this Diwali?\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"Who did the chasing while you were away ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0497",
+    "at": "2026-10-29T17:22:22.006Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"episode\",\"pillar\":\"problem\",\"hook\":\"Work stops between two people. Nobody notices.\",\"targets\":[\"wa-st\",\"vd-ig\"],\"pis\":{\"problem\":\"Work stops between two people. Nobody *notices*.\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0498",
+    "at": "2026-10-29T17:22:22.008Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"episode\",\"pillar\":\"problem\",\"hook\":\"The client tells you before your team does.\",\"targets\":[\"vd-ig\",\"wa-st\"],\"pis\":{\"problem\":\"The client tells you *before* your team does.\",\"impa...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0499",
+    "at": "2026-10-29T17:22:22.009Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"problem\",\"hook\":\"Five signs you are the follow-up department\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"Five signs you are the follow-up department.\\...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0500",
+    "at": "2026-10-29T17:22:22.012Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"carousel\",\"pillar\":\"problem\",\"hook\":\"What is your hour worth? Do the sum\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"What is one hour of your time worth? Do the sum with y...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0501",
+    "at": "2026-10-29T17:22:22.014Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"science\",\"hook\":\"The day I stopped blaming the team\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"The day I stopped blaming the team.\\n\\nWhen work slipp...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0502",
+    "at": "2026-10-29T17:22:22.015Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"status-rule\",\"pillar\":\"problem\",\"hook\":\"Work needs a home: a name, a date, a next step.\",\"targets\":[\"wa-st\"],\"renditions\":{\"waStatus\":{\"text\":\"Work needs a home: a name, a date, a...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0503",
+    "at": "2026-10-29T17:22:22.017Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"glimpse\",\"hook\":\"I built this for my family's firm first.\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"I built this for my family's firm first. A designer'...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0504",
+    "at": "2026-10-29T17:22:22.018Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"greeting\",\"pillar\":\"greeting\",\"hook\":\"Guru Nanak Jayanti greeting\",\"targets\":[\"wa-st\"],\"renditions\":{\"waStatus\":{\"text\":\"Warm wishes on Guru Nanak Jayanti. — Palak Gupta, Venture ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0505",
+    "at": "2026-10-29T17:22:22.020Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"problem\",\"hook\":\"This is not new software\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"72% of Indian businesses regretted a software purchase within 18...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0506",
+    "at": "2026-10-29T17:22:22.022Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"carousel\",\"pillar\":\"glimpse\",\"hook\":\"One screen. One sit-down a week.\",\"targets\":[\"p-li\"],\"renditions\":{\"ig\":{\"caption\":\"Before: every task, question and update passes through you...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0507",
+    "at": "2026-10-29T17:22:22.024Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"carousel\",\"pillar\":\"problem\",\"hook\":\"A client tells you before your team does\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"Your client tells you about a delay before your t...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0508",
+    "at": "2026-10-29T17:22:22.026Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"glimpse\",\"hook\":\"Whose data is it?\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"Whose data is it? Most software keeps yours in its own system. Ours runs on...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0509",
+    "at": "2026-10-29T17:22:22.027Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"episode\",\"pillar\":\"problem\",\"hook\":\"Last year’s task app? Nobody opens it now.\",\"targets\":[\"wa-st\"],\"pis\":{\"problem\":\"Last year’s task app? Nobody *opens* it now.\",\"impact\":\"If yo...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0510",
+    "at": "2026-10-29T17:22:22.028Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"offer\",\"hook\":\"The owner's real job\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"The owner's real job.\\n\\nThree jobs exist in every business. Grow it. ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0511",
+    "at": "2026-10-29T17:22:22.029Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"episode\",\"pillar\":\"problem\",\"hook\":\"Your door never stays closed for ten minutes.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Your door never stays *closed* for ten minutes.\",\"impact\":...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0512",
+    "at": "2026-10-29T17:22:22.031Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"carousel\",\"pillar\":\"offer\",\"hook\":\"Whose data is it? 4 questions to ask any vendor\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"Most software keeps your data. If you stop p...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0513",
+    "at": "2026-10-29T17:22:22.032Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"offer\",\"hook\":\"What I am building\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"For most of this month I have been writing about one idea. The owner as ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0514",
+    "at": "2026-10-29T17:22:22.033Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"status-rule\",\"pillar\":\"problem\",\"hook\":\"Your data stays in your own Google account.\",\"targets\":[\"wa-st\"],\"renditions\":{\"waStatus\":{\"text\":\"Your data stays in your own Google accou...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0515",
+    "at": "2026-10-29T17:22:22.034Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"episode\",\"pillar\":\"problem\",\"hook\":\"New joiner. A month shadowing your best person.\",\"targets\":[\"wa-st\"],\"pis\":{\"problem\":\"New joiner. A month shadowing your *best* person.\",\"impa...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0516",
+    "at": "2026-10-29T17:22:22.035Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"carousel\",\"pillar\":\"science\",\"hook\":\"Work with no home gets lost\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"Work stops between two people, and nobody notices until the cl...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0517",
+    "at": "2026-10-29T17:22:22.036Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"status-rule\",\"pillar\":\"problem\",\"hook\":\"Questions wait for you, not the other way round.\",\"targets\":[\"wa-st\"],\"renditions\":{\"waStatus\":{\"text\":\"Questions wait for you, not the oth...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0518",
+    "at": "2026-10-29T17:22:22.037Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"offer\",\"hook\":\"Start with one process.\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"Start with one process. The one that is late most often. We set it up o...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0519",
+    "at": "2026-10-29T17:22:22.038Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"episode\",\"pillar\":\"problem\",\"hook\":\"Appraisal time. Who actually did what?\",\"targets\":[\"wa-st\"],\"pis\":{\"problem\":\"Appraisal time. Who actually did *what*?\",\"impact\":\"Good people s...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0520",
+    "at": "2026-10-29T17:22:22.040Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-carousel\",\"pillar\":\"glimpse\",\"hook\":\"Why I built it on a Google Sheet\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"Why I built it on a Google Sheet, and not as a produ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0521",
+    "at": "2026-10-29T17:22:22.041Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"carousel\",\"pillar\":\"science\",\"hook\":\"Who actually did what?\",\"targets\":[\"vd-ig\",\"p-li\"],\"renditions\":{\"ig\":{\"caption\":\"Appraisal time. Everyone says they worked hard, and there is...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0522",
+    "at": "2026-10-29T17:22:22.042Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"problem\",\"hook\":\"Seven pm.\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"Seven pm. Everyone has gone home. Now your work starts. Count the hours that were y...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0523",
+    "at": "2026-10-29T17:22:22.043Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"offer\",\"hook\":\"Run the business. Not the follow-ups.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"A system on your own Google Sheet.\",\"impact\":\"It hands out the...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0524",
+    "at": "2026-10-29T17:22:22.045Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"problem\",\"hook\":\"You are the follow-up department.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Calls and messages all day.\",\"impact\":\"All to ask one thing: is ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0525",
+    "at": "2026-10-29T17:22:22.046Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"problem\",\"hook\":\"You are the memory of your business.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Work goes out when you remember.\",\"impact\":\"Some of it, never...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0526",
+    "at": "2026-10-29T17:22:22.047Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"problem\",\"hook\":\"You find out last.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"You hear what slipped from the client.\",\"impact\":\"By then, it is already late.\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0527",
+    "at": "2026-10-29T17:22:22.048Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"problem\",\"hook\":\"Nine to seven. All of it is you.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Messages, calls, notes on the desk.\",\"impact\":\"Every answer waits...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0528",
+    "at": "2026-10-29T17:22:22.050Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"problem\",\"hook\":\"Small questions, all day.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Each one needs you right now.\",\"impact\":\"Or they can wait in one tray.\",...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0529",
+    "at": "2026-10-29T17:22:22.051Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"problem\",\"hook\":\"Your best person is training the new one.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"That is not their job.\",\"impact\":\"Their own work waits.\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0530",
+    "at": "2026-10-29T17:22:22.052Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"problem\",\"hook\":\"Work with no home gets lost.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"A notice arrives. Nobody owns it.\",\"impact\":\"Days pass. It goes late....",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0531",
+    "at": "2026-10-29T17:22:22.053Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"A day with a system in the middle.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Work moves from to do, to doing, to done.\",\"impact\":\"Everyone k...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0532",
+    "at": "2026-10-29T17:22:22.054Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"The work assigns itself.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"The right person gets it.\",\"impact\":\"A reminder follows it up.\",\"solution...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0533",
+    "at": "2026-10-29T17:22:22.055Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"The reminder chases. You don't.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"A polite nudge goes out.\",\"impact\":\"Pending cards move to done.\",\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0534",
+    "at": "2026-10-29T17:22:22.057Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"Work that moves by itself.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Each step has an owner.\",\"impact\":\"A checklist and a timer.\",\"solution\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0535",
+    "at": "2026-10-29T17:22:22.058Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"Keep only what needs you.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"One meeting a week.\",\"impact\":\"Only the decisions that are yours.\",\"solu...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0536",
+    "at": "2026-10-29T17:22:22.059Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"The whole business. One screen.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"An example dashboard.\",\"impact\":\"On time. Done. Pending. Needs you...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0537",
+    "at": "2026-10-29T17:22:22.060Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"Everyone sees their score.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Each person gets a weekly score.\",\"impact\":\"A low one gets a gentle nud...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0538",
+    "at": "2026-10-29T17:22:22.061Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"One list for your day.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Daily jobs. Project jobs. One-off jobs.\",\"impact\":\"All land in one list.\",\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0539",
+    "at": "2026-10-29T17:22:22.062Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"You hold the pencil.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"We bring the building blocks.\",\"impact\":\"Your team draws the process.\",\"solut...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0540",
+    "at": "2026-10-29T17:22:22.063Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"problem\",\"hook\":\"Where your time goes now.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"An example week.\",\"impact\":\"Chasing shrinks.\",\"solution\":[\"Sales, client...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0541",
+    "at": "2026-10-29T17:22:22.065Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"Stock and vendor bills sort themselves.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Stock drops below the line.\",\"impact\":\"A reorder note goes...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0542",
+    "at": "2026-10-29T17:22:22.066Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"Hire. Welcome. Train.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"A new person joins.\",\"impact\":\"A checklist welcomes them.\",\"solution\":[\"A le...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0543",
+    "at": "2026-10-29T17:22:22.067Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"glimpse\",\"hook\":\"Never miss an important date.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Dates glow on one calendar.\",\"impact\":\"A birthday message goes out.\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0544",
+    "at": "2026-10-29T17:22:22.068Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"science\",\"hook\":\"Most software keeps your data.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Your data goes into their system.\",\"impact\":\"Ask to export. Ask sup...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0545",
+    "at": "2026-10-29T17:22:22.069Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"reel-animated\",\"pillar\":\"science\",\"hook\":\"You own the data. We bring the brains.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Your data stays in your own sheet.\",\"impact\":\"We read it an...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0546",
+    "at": "2026-10-29T17:22:22.071Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"problem\",\"hook\":\"You find out last.\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"You find out last. Your team knew on Tuesday. The news just had nowhere to...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0547",
+    "at": "2026-10-29T17:22:22.072Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"problem\",\"hook\":\"Where does a task live in your business?\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"Where does a task live in your business? A diary, a ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0548",
+    "at": "2026-10-29T17:22:22.073Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"science\",\"hook\":\"It is not a discipline problem. It is a design problem.\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"It is not a discipline problem. It is...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0549",
+    "at": "2026-10-29T17:22:22.074Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"science\",\"hook\":\"Work needs a home.\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"Work needs a home. A name, a date, a next step. Without them it floats, an...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0550",
+    "at": "2026-10-29T17:22:22.075Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"broll\",\"pillar\":\"science\",\"hook\":\"People follow what they can see.\",\"targets\":[\"vd-ig\"],\"renditions\":{\"ig\":{\"caption\":\"People follow what they can see. A reminder works for a week...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0551",
+    "at": "2026-10-29T17:22:22.076Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"carousel\",\"pillar\":\"founder\",\"hook\":\"Why I built it on a Google Sheet\",\"targets\":[\"vd-ig\"],\"slides\":[{\"t\":\"cover\",\"eyebrow\":\"Palak Gupta, Founder\",\"head\":\"Why I built it on a *Goo...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0552",
+    "at": "2026-10-29T17:22:22.077Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"episode\",\"pillar\":\"problem\",\"hook\":\"Out of what sells. Full of slow stock.\",\"targets\":[\"vd-ig\"],\"pis\":{\"problem\":\"Out of what *sells*. Full of slow stock.\",\"impact\":\"Stock that do...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0553",
+    "at": "2026-10-29T17:22:22.078Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"problem\",\"hook\":\"I have a job title I never applied for: the follow-up department.\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"I have a job title I ne...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0554",
+    "at": "2026-10-29T17:22:22.079Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"offer\",\"hook\":\"For the last few weeks I have been posting about one idea: owners who are the middle of their business.\",\"targets\":[\"p-li\"],\"renditions\":{\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0555",
+    "at": "2026-10-29T17:22:22.081Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"problem\",\"hook\":\"One of the most expensive things in a business is not a salary. It is the task that nobody remembered.\",\"targets\":[\"p-li\"],\"renditions\":{...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0556",
+    "at": "2026-10-29T17:22:22.082Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"problem\",\"hook\":\"You hear about a late delivery from the client, not from your team.\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"You hear about a late...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0557",
+    "at": "2026-10-29T17:22:22.083Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"problem\",\"hook\":\"Nine to seven. Almost all of it was other people's questions.\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"Nine to seven. Almost all o...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0558",
+    "at": "2026-10-29T17:22:22.084Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"problem\",\"hook\":\"Small questions, all day.\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"Small questions, all day.\\n\\nEach one takes a minute. Together,...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0559",
+    "at": "2026-10-29T17:22:22.085Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"science\",\"hook\":\"What if every piece of work had a name and a date the moment it arrived?\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"What if every pi...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0560",
+    "at": "2026-10-29T17:22:22.086Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"glimpse\",\"hook\":\"One screen. Thirty minutes. Once a week.\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"One screen. Thirty minutes. Once a week.\\n\\nThat...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0561",
+    "at": "2026-10-29T17:22:22.087Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"glimpse\",\"hook\":\"Before you sign with any software company, ask one question: whose data is it?\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"Before you...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0562",
+    "at": "2026-10-29T17:22:22.089Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:refine",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"piece\":{\"type\":\"linkedin-text\",\"pillar\":\"founder\",\"hook\":\"The best system I have seen in a business was drawn by the team that uses it.\",\"targets\":[\"p-li\"],\"renditions\":{\"li\":{\"text\":\"The best sy...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0563",
+    "at": "2026-10-29T17:22:23.000Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B10",
+      "versionId": "vr-0093",
+      "changed": [
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0564",
+    "at": "2026-10-29T17:22:23.010Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "c1-five-signs",
+      "versionId": "vr-0094",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0565",
+    "at": "2026-10-29T17:22:23.017Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "e01-follow-up",
+      "versionId": "vr-0095",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0566",
+    "at": "2026-10-29T17:22:23.023Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B1",
+      "versionId": "vr-0096",
+      "changed": [
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0567",
+    "at": "2026-10-29T17:22:23.029Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "L1",
+      "versionId": "vr-0097",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0568",
+    "at": "2026-10-29T17:22:23.035Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "e02-memory",
+      "versionId": "vr-0098",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0569",
+    "at": "2026-10-29T17:22:23.042Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "c5-follow-up",
+      "versionId": "vr-0099",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0570",
+    "at": "2026-10-29T17:22:23.047Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "rule-2026-11-05",
+      "versionId": "vr-0100",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0571",
+    "at": "2026-10-29T17:22:23.055Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "greeting-2026-11-06",
+      "versionId": "vr-0101",
+      "changed": []
+    }
+  },
+  {
+    "id": "lg-0572",
+    "at": "2026-10-29T17:22:23.061Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "greeting-2026-11-08",
+      "versionId": "vr-0102",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0573",
+    "at": "2026-10-29T17:22:23.067Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "e07-week-off",
+      "versionId": "vr-0103",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0574",
+    "at": "2026-10-29T17:22:23.072Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "L2",
+      "versionId": "vr-0104",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0575",
+    "at": "2026-10-29T17:22:23.078Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B4",
+      "versionId": "vr-0105",
+      "changed": [
+        "hook",
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0576",
+    "at": "2026-10-29T17:22:23.084Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "e05-handover",
+      "versionId": "vr-0106",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0577",
+    "at": "2026-10-29T17:22:23.089Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "e03-client-first",
+      "versionId": "vr-0107",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0578",
+    "at": "2026-10-29T17:22:23.095Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "L7",
+      "versionId": "vr-0108",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0579",
+    "at": "2026-10-29T17:22:23.101Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "c2-hour-worth",
+      "versionId": "vr-0109",
+      "changed": [
+        "renditions",
+        "slides"
+      ]
+    }
+  },
+  {
+    "id": "lg-0580",
+    "at": "2026-10-29T17:22:23.107Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "L3",
+      "versionId": "vr-0110",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0581",
+    "at": "2026-10-29T17:22:23.113Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "rule-2026-11-19",
+      "versionId": "vr-0111",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0582",
+    "at": "2026-10-29T17:22:23.119Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B8",
+      "versionId": "vr-0112",
+      "changed": [
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0583",
+    "at": "2026-10-29T17:22:23.124Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "greeting-2026-11-23",
+      "versionId": "vr-0113",
+      "changed": []
+    }
+  },
+  {
+    "id": "lg-0584",
+    "at": "2026-10-29T17:22:23.130Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "L8",
+      "versionId": "vr-0114",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0585",
+    "at": "2026-10-29T17:22:23.137Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "c3-one-screen",
+      "versionId": "vr-0115",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0586",
+    "at": "2026-10-29T17:22:23.142Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "c6-client-first",
+      "versionId": "vr-0116",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0587",
+    "at": "2026-10-29T17:22:23.148Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B9",
+      "versionId": "vr-0117",
+      "changed": [
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0588",
+    "at": "2026-10-29T17:22:23.154Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "e08-locked-in",
+      "versionId": "vr-0118",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0589",
+    "at": "2026-10-29T17:22:23.160Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "L6",
+      "versionId": "vr-0119",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0590",
+    "at": "2026-10-29T17:22:23.166Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "e04-open-door",
+      "versionId": "vr-0120",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0591",
+    "at": "2026-10-29T17:22:23.171Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "c4-whose-data",
+      "versionId": "vr-0121",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0592",
+    "at": "2026-10-29T17:22:23.177Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "L5",
+      "versionId": "vr-0122",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0593",
+    "at": "2026-10-29T17:22:23.183Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "rule-2026-12-03",
+      "versionId": "vr-0123",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0594",
+    "at": "2026-10-29T17:22:23.190Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "e06-training",
+      "versionId": "vr-0124",
+      "changed": [
+        "hook",
+        "pis",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0595",
+    "at": "2026-10-29T17:22:23.196Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "c7-work-home",
+      "versionId": "vr-0125",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0596",
+    "at": "2026-10-29T17:22:23.203Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "rule-2026-12-10",
+      "versionId": "vr-0126",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0597",
+    "at": "2026-10-29T17:22:23.209Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B11",
+      "versionId": "vr-0127",
+      "changed": [
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0598",
+    "at": "2026-10-29T17:22:23.216Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "e09-scorecard",
+      "versionId": "vr-0128",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0599",
+    "at": "2026-10-29T17:22:23.223Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "L4",
+      "versionId": "vr-0129",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0600",
+    "at": "2026-10-29T17:22:23.229Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "c8-score",
+      "versionId": "vr-0130",
+      "changed": [
+        "renditions",
+        "slides"
+      ]
+    }
+  },
+  {
+    "id": "lg-0601",
+    "at": "2026-10-29T17:22:23.236Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B12",
+      "versionId": "vr-0131",
+      "changed": [
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0602",
+    "at": "2026-10-29T17:22:23.243Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "01-hero",
+      "versionId": "vr-0132",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0603",
+    "at": "2026-10-29T17:22:23.250Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "02-chasing",
+      "versionId": "vr-0133",
+      "changed": []
+    }
+  },
+  {
+    "id": "lg-0604",
+    "at": "2026-10-29T17:22:23.258Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "03-forgetting",
+      "versionId": "vr-0134",
+      "changed": []
+    }
+  },
+  {
+    "id": "lg-0605",
+    "at": "2026-10-29T17:22:23.265Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "04-blind",
+      "versionId": "vr-0135",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0606",
+    "at": "2026-10-29T17:22:23.271Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "05-day-before",
+      "versionId": "vr-0136",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0607",
+    "at": "2026-10-29T17:22:23.278Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "06-interrupt",
+      "versionId": "vr-0137",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0608",
+    "at": "2026-10-29T17:22:23.284Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "07-training",
+      "versionId": "vr-0138",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0609",
+    "at": "2026-10-29T17:22:23.290Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "08-orphan",
+      "versionId": "vr-0139",
+      "changed": []
+    }
+  },
+  {
+    "id": "lg-0610",
+    "at": "2026-10-29T17:22:23.297Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "09-day-after",
+      "versionId": "vr-0140",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0611",
+    "at": "2026-10-29T17:22:23.304Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "10-autoflow",
+      "versionId": "vr-0141",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0612",
+    "at": "2026-10-29T17:22:23.310Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "11-reminders",
+      "versionId": "vr-0142",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0613",
+    "at": "2026-10-29T17:22:23.317Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "12-moves",
+      "versionId": "vr-0143",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0614",
+    "at": "2026-10-29T17:22:23.323Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "13-weekly",
+      "versionId": "vr-0144",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0615",
+    "at": "2026-10-29T17:22:23.329Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "14-dashboard",
+      "versionId": "vr-0145",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0616",
+    "at": "2026-10-29T17:22:23.335Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "15-scorecard",
+      "versionId": "vr-0146",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0617",
+    "at": "2026-10-29T17:22:23.341Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "16-yourday",
+      "versionId": "vr-0147",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0618",
+    "at": "2026-10-29T17:22:23.349Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "17-pencil",
+      "versionId": "vr-0148",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0619",
+    "at": "2026-10-29T17:22:23.355Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "18-freed",
+      "versionId": "vr-0149",
+      "changed": []
+    }
+  },
+  {
+    "id": "lg-0620",
+    "at": "2026-10-29T17:22:23.361Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "19-money",
+      "versionId": "vr-0150",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0621",
+    "at": "2026-10-29T17:22:23.368Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "20-grow",
+      "versionId": "vr-0151",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0622",
+    "at": "2026-10-29T17:22:23.375Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "21-remember",
+      "versionId": "vr-0152",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0623",
+    "at": "2026-10-29T17:22:23.382Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "22-lockedin",
+      "versionId": "vr-0153",
+      "changed": []
+    }
+  },
+  {
+    "id": "lg-0624",
+    "at": "2026-10-29T17:22:23.389Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "23-ownership",
+      "versionId": "vr-0154",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0625",
+    "at": "2026-10-29T17:22:23.396Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B2",
+      "versionId": "vr-0155",
+      "changed": [
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0626",
+    "at": "2026-10-29T17:22:23.404Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B3",
+      "versionId": "vr-0156",
+      "changed": [
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0627",
+    "at": "2026-10-29T17:22:23.410Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B5",
+      "versionId": "vr-0157",
+      "changed": [
+        "hook",
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0628",
+    "at": "2026-10-29T17:22:23.417Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B6",
+      "versionId": "vr-0158",
+      "changed": [
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0629",
+    "at": "2026-10-29T17:22:23.423Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "B7",
+      "versionId": "vr-0159",
+      "changed": [
+        "renditions",
+        "script"
+      ]
+    }
+  },
+  {
+    "id": "lg-0630",
+    "at": "2026-10-29T17:22:23.430Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "c9-google-sheet",
+      "versionId": "vr-0160",
+      "changed": []
+    }
+  },
+  {
+    "id": "lg-0631",
+    "at": "2026-10-29T17:22:23.437Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "e10-stock",
+      "versionId": "vr-0161",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0632",
+    "at": "2026-10-29T17:22:23.445Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "LP1",
+      "versionId": "vr-0162",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0633",
+    "at": "2026-10-29T17:22:23.452Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "LP10",
+      "versionId": "vr-0163",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0634",
+    "at": "2026-10-29T17:22:23.458Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "LP2",
+      "versionId": "vr-0164",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0635",
+    "at": "2026-10-29T17:22:23.467Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "LP3",
+      "versionId": "vr-0165",
+      "changed": [
+        "hook"
+      ]
+    }
+  },
+  {
+    "id": "lg-0636",
+    "at": "2026-10-29T17:22:23.475Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "LP4",
+      "versionId": "vr-0166",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0637",
+    "at": "2026-10-29T17:22:23.481Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "LP5",
+      "versionId": "vr-0167",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0638",
+    "at": "2026-10-29T17:22:23.488Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "LP6",
+      "versionId": "vr-0168",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0639",
+    "at": "2026-10-29T17:22:23.494Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "LP7",
+      "versionId": "vr-0169",
+      "changed": [
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0640",
+    "at": "2026-10-29T17:22:23.501Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "LP8",
+      "versionId": "vr-0170",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0641",
+    "at": "2026-10-29T17:22:23.509Z",
+    "by": "tools@vspindia.com",
+    "what": "content.review-pass",
+    "ref": {
+      "pieceId": "LP9",
+      "versionId": "vr-0171",
+      "changed": [
+        "hook",
+        "renditions"
+      ]
+    }
+  },
+  {
+    "id": "lg-0642",
+    "at": "2026-10-29T17:22:24.505Z",
+    "by": "tools@vspindia.com",
+    "what": "content.check-all",
+    "ref": {
+      "checked": 88,
+      "blocked": 0
+    }
+  },
+  {
+    "id": "lg-0643",
+    "at": "2026-10-29T17:24:22.735Z",
+    "by": "tools@vspindia.com",
+    "what": "events.replace",
+    "ref": "ev-0034"
+  },
+  {
+    "id": "lg-0644",
+    "at": "2026-10-29T17:26:23.039Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "e01-follow-up"
+  },
+  {
+    "id": "lg-0645",
+    "at": "2026-10-29T17:26:23.051Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "e02-memory"
+  },
+  {
+    "id": "lg-0646",
+    "at": "2026-10-29T17:26:23.063Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "e03-client-first"
+  },
+  {
+    "id": "lg-0647",
+    "at": "2026-10-29T17:26:23.072Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "e04-open-door"
+  },
+  {
+    "id": "lg-0648",
+    "at": "2026-10-29T17:26:23.082Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "e05-handover"
+  },
+  {
+    "id": "lg-0649",
+    "at": "2026-10-29T17:26:23.091Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "e06-training"
+  },
+  {
+    "id": "lg-0650",
+    "at": "2026-10-29T17:26:23.100Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "e07-week-off"
+  },
+  {
+    "id": "lg-0651",
+    "at": "2026-10-29T17:26:23.109Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "e08-locked-in"
+  },
+  {
+    "id": "lg-0652",
+    "at": "2026-10-29T17:26:23.118Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "e09-scorecard"
+  },
+  {
+    "id": "lg-0653",
+    "at": "2026-10-29T17:26:23.126Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "e10-stock"
+  },
+  {
+    "id": "lg-0654",
+    "at": "2026-10-29T17:26:23.135Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "c1-five-signs"
+  },
+  {
+    "id": "lg-0655",
+    "at": "2026-10-29T17:26:23.144Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "c2-hour-worth"
+  },
+  {
+    "id": "lg-0656",
+    "at": "2026-10-29T17:26:23.152Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "c3-one-screen"
+  },
+  {
+    "id": "lg-0657",
+    "at": "2026-10-29T17:26:23.161Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "c4-whose-data"
+  },
+  {
+    "id": "lg-0658",
+    "at": "2026-10-29T17:26:23.170Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "c5-follow-up"
+  },
+  {
+    "id": "lg-0659",
+    "at": "2026-10-29T17:26:23.181Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "c6-client-first"
+  },
+  {
+    "id": "lg-0660",
+    "at": "2026-10-29T17:26:23.189Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "c7-work-home"
+  },
+  {
+    "id": "lg-0661",
+    "at": "2026-10-29T17:26:23.198Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "c8-score"
+  },
+  {
+    "id": "lg-0662",
+    "at": "2026-10-29T17:27:58.028Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:greetingTemplates",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"name\":\"Madhya Pradesh Foundation Day (Sthapna Diwas)\",\"shortName\":\"Madhya Pradesh Foundation Day\",\"date\":\"2026-11-01\",\"kind\":\"greeting-only\",\"scope\":\"mp\",\"whoGets\":\"everyone\",\"postingRul...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0663",
+    "at": "2026-10-29T17:27:58.033Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.templates",
+    "ref": "ev-0001"
+  },
+  {
+    "id": "lg-0664",
+    "at": "2026-10-29T17:27:58.042Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:greetingTemplates",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"name\":\"Dhanteras\",\"shortName\":\"Dhanteras\",\"date\":\"2026-11-06\",\"kind\":\"greeting\",\"scope\":\"national\",\"whoGets\":\"hindu\",\"postingRule\":\"greeting-only\",\"greetingText\":\"Wishing you prosperity ...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0665",
+    "at": "2026-10-29T17:27:58.045Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.templates",
+    "ref": "ev-0002"
+  },
+  {
+    "id": "lg-0666",
+    "at": "2026-10-29T17:27:58.048Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:greetingTemplates",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"name\":\"Diwali, Lakshmi Puja, Naraka Chaturdashi (same day per Drik Panchang); Chopda Pujan\",\"shortName\":\"Diwali\",\"date\":\"2026-11-08\",\"kind\":\"greeting\",\"scope\":\"national\",\"whoGets\":\"every...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0667",
+    "at": "2026-10-29T17:27:58.051Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.templates",
+    "ref": "ev-0005"
+  },
+  {
+    "id": "lg-0668",
+    "at": "2026-10-29T17:27:58.056Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:greetingTemplates",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"name\":\"Chhath Puja (listed MP regional holiday)\",\"shortName\":\"Chhath Puja\",\"date\":\"2026-11-15\",\"kind\":\"greeting-only\",\"scope\":\"national\",\"whoGets\":\"hindu\",\"postingRule\":\"dark\",\"greetingT...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0669",
+    "at": "2026-10-29T17:27:58.060Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.templates",
+    "ref": "ev-0010"
+  },
+  {
+    "id": "lg-0670",
+    "at": "2026-10-29T17:27:58.064Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:greetingTemplates",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"name\":\"Guru Nanak Jayanti (Gurpurab); Kartik Purnima; MP holiday\",\"shortName\":\"Guru Nanak Jayanti\",\"date\":\"2026-11-24\",\"kind\":\"greeting\",\"scope\":\"national\",\"whoGets\":\"sikh\",\"postingRule\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0671",
+    "at": "2026-10-29T17:27:58.068Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.templates",
+    "ref": "ev-0015"
+  },
+  {
+    "id": "lg-0672",
+    "at": "2026-10-29T17:27:58.071Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:greetingTemplates",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"name\":\"Christmas Day\",\"shortName\":\"Christmas\",\"date\":\"2026-12-25\",\"kind\":\"greeting\",\"scope\":\"national\",\"whoGets\":\"christian\",\"postingRule\":\"greeting-only\",\"greetingText\":\"Merry Christmas...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0673",
+    "at": "2026-10-29T17:27:58.074Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.templates",
+    "ref": "ev-0034"
+  },
+  {
+    "id": "lg-0674",
+    "at": "2026-10-29T17:27:58.080Z",
+    "by": "tools@vspindia.com",
+    "what": "campaigns.create",
+    "ref": "cp-0001"
+  },
+  {
+    "id": "lg-0675",
+    "at": "2026-10-29T17:27:58.085Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:announcement",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"campaign\":{\"name\":\"The first case study: the reminder desk\",\"kind\":\"announcement\",\"from\":\"2026-12-21\",\"to\":\"2026-12-21\",\"facts\":[\"The first YouTube case study goes up on 21 December 2026: one VSP...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0676",
+    "at": "2026-10-29T17:27:58.111Z",
+    "by": "tools@vspindia.com",
+    "what": "recurring.announce",
+    "ref": {
+      "campaignId": "cp-0001",
+      "pieces": [
+        "pc-0004",
+        "pc-0005",
+        "pc-0006"
+      ]
+    }
+  },
+  {
+    "id": "lg-0677",
+    "at": "2026-10-29T17:28:15.058Z",
+    "by": "tools@vspindia.com",
+    "what": "content.check-all",
+    "ref": {
+      "checked": 91,
+      "blocked": 0
+    }
+  },
+  {
+    "id": "lg-0678",
+    "at": "2026-10-29T17:29:00.678Z",
+    "by": "tools@vspindia.com",
+    "what": "content.check-all",
+    "ref": {
+      "checked": 91,
+      "blocked": 0
+    }
+  },
+  {
+    "id": "lg-0679",
+    "at": "2026-10-29T17:30:52.793Z",
+    "by": "tools@vspindia.com",
+    "what": "rules.replace",
+    "ref": "rules"
+  },
+  {
+    "id": "lg-0680",
+    "at": "2026-10-29T17:30:52.805Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "22-lockedin"
+  },
+  {
+    "id": "lg-0681",
+    "at": "2026-10-29T17:30:53.025Z",
+    "by": "tools@vspindia.com",
+    "what": "content.check-all",
+    "ref": {
+      "checked": 91,
+      "blocked": 0
+    }
+  },
+  {
+    "id": "lg-0682",
+    "at": "2026-10-29T17:31:14.960Z",
+    "by": "tools@vspindia.com",
+    "what": "settings.replace",
+    "ref": "settings"
+  },
+  {
+    "id": "lg-0683",
+    "at": "2026-10-30T11:04:51.564Z",
+    "by": null,
+    "what": "slots.regenerate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2027-03-31",
+      "created": 8,
+      "updated": 3,
+      "removed": 0,
+      "kept": 54,
+      "total": 191,
+      "quietWindows": [
+        {
+          "from": "2026-12-16",
+          "to": "2026-12-23"
+        },
+        {
+          "from": "2027-01-04",
+          "to": "2027-01-14"
+        }
+      ]
+    }
+  },
+  {
+    "id": "lg-0684",
+    "at": "2026-10-30T11:06:02.820Z",
+    "by": null,
+    "what": "slots.regenerate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2027-03-31",
+      "created": 3,
+      "updated": 0,
+      "removed": 0,
+      "kept": 54,
+      "total": 194,
+      "quietWindows": [
+        {
+          "from": "2026-12-16",
+          "to": "2026-12-23"
+        },
+        {
+          "from": "2027-01-04",
+          "to": "2027-01-14"
+        }
+      ]
+    }
+  },
+  {
+    "id": "lg-0685",
+    "at": "2026-10-30T11:06:02.925Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "cs01-dabbawalas"
+  },
+  {
+    "id": "lg-0686",
+    "at": "2026-10-30T11:06:02.940Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0001",
+      "pieceId": "cs01-dabbawalas"
+    }
+  },
+  {
+    "id": "lg-0687",
+    "at": "2026-10-30T11:06:02.946Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.replace",
+    "ref": "vd-0001"
+  },
+  {
+    "id": "lg-0688",
+    "at": "2026-10-30T11:06:02.958Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "cs02-asian-paints"
+  },
+  {
+    "id": "lg-0689",
+    "at": "2026-10-30T11:06:02.970Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs02-asian-paints",
+      "slotId": "sl-0188",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0690",
+    "at": "2026-10-30T11:06:02.978Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0002",
+      "pieceId": "cs02-asian-paints"
+    }
+  },
+  {
+    "id": "lg-0691",
+    "at": "2026-10-30T11:06:02.982Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.replace",
+    "ref": "vd-0002"
+  },
+  {
+    "id": "lg-0692",
+    "at": "2026-10-30T11:06:02.994Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "cs03-maggi"
+  },
+  {
+    "id": "lg-0693",
+    "at": "2026-10-30T11:06:03.004Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs03-maggi",
+      "slotId": "sl-0189",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0694",
+    "at": "2026-10-30T11:06:03.011Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0003",
+      "pieceId": "cs03-maggi"
+    }
+  },
+  {
+    "id": "lg-0695",
+    "at": "2026-10-30T11:06:03.016Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.replace",
+    "ref": "vd-0003"
+  },
+  {
+    "id": "lg-0696",
+    "at": "2026-10-30T11:06:03.028Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "cs04-amul"
+  },
+  {
+    "id": "lg-0697",
+    "at": "2026-10-30T11:06:03.038Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs04-amul",
+      "slotId": "sl-0055",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0698",
+    "at": "2026-10-30T11:06:03.045Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0004",
+      "pieceId": "cs04-amul"
+    }
+  },
+  {
+    "id": "lg-0699",
+    "at": "2026-10-30T11:06:03.049Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.replace",
+    "ref": "vd-0004"
+  },
+  {
+    "id": "lg-0700",
+    "at": "2026-10-30T11:06:03.061Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "cs05-aravind"
+  },
+  {
+    "id": "lg-0701",
+    "at": "2026-10-30T11:06:03.071Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs05-aravind",
+      "slotId": "sl-0190",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0702",
+    "at": "2026-10-30T11:06:03.079Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0005",
+      "pieceId": "cs05-aravind"
+    }
+  },
+  {
+    "id": "lg-0703",
+    "at": "2026-10-30T11:06:03.083Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.replace",
+    "ref": "vd-0005"
+  },
+  {
+    "id": "lg-0704",
+    "at": "2026-10-30T11:06:03.095Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "cs06-dmart-subhiksha"
+  },
+  {
+    "id": "lg-0705",
+    "at": "2026-10-30T11:06:03.106Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs06-dmart-subhiksha",
+      "slotId": "sl-0080",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0706",
+    "at": "2026-10-30T11:06:03.116Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0006",
+      "pieceId": "cs06-dmart-subhiksha"
+    }
+  },
+  {
+    "id": "lg-0707",
+    "at": "2026-10-30T11:06:03.123Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.replace",
+    "ref": "vd-0006"
+  },
+  {
+    "id": "lg-0708",
+    "at": "2026-10-30T11:06:03.137Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "cs07-indigo"
+  },
+  {
+    "id": "lg-0709",
+    "at": "2026-10-30T11:06:03.148Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0007",
+      "pieceId": "cs07-indigo"
+    }
+  },
+  {
+    "id": "lg-0710",
+    "at": "2026-10-30T11:06:03.154Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.replace",
+    "ref": "vd-0007"
+  },
+  {
+    "id": "lg-0711",
+    "at": "2026-10-30T11:06:03.169Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "cs08-toyota"
+  },
+  {
+    "id": "lg-0712",
+    "at": "2026-10-30T11:06:03.180Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs08-toyota",
+      "slotId": "sl-0110",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0713",
+    "at": "2026-10-30T11:06:03.190Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0008",
+      "pieceId": "cs08-toyota"
+    }
+  },
+  {
+    "id": "lg-0714",
+    "at": "2026-10-30T11:06:03.195Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.replace",
+    "ref": "vd-0008"
+  },
+  {
+    "id": "lg-0715",
+    "at": "2026-10-30T11:06:03.210Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "cs09-mcdonalds"
+  },
+  {
+    "id": "lg-0716",
+    "at": "2026-10-30T11:06:03.221Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs09-mcdonalds",
+      "slotId": "sl-0191",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0717",
+    "at": "2026-10-30T11:06:03.230Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0009",
+      "pieceId": "cs09-mcdonalds"
+    }
+  },
+  {
+    "id": "lg-0718",
+    "at": "2026-10-30T11:06:03.234Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.replace",
+    "ref": "vd-0009"
+  },
+  {
+    "id": "lg-0719",
+    "at": "2026-10-30T11:06:03.249Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.create",
+    "ref": "cs10-zara"
+  },
+  {
+    "id": "lg-0720",
+    "at": "2026-10-30T11:06:03.261Z",
+    "by": "tools@vspindia.com",
+    "what": "video.create",
+    "ref": {
+      "id": "vd-0010",
+      "pieceId": "cs10-zara"
+    }
+  },
+  {
+    "id": "lg-0721",
+    "at": "2026-10-30T11:06:03.266Z",
+    "by": "tools@vspindia.com",
+    "what": "videos.replace",
+    "ref": "vd-0010"
+  },
+  {
+    "id": "lg-0722",
+    "at": "2026-10-30T11:07:00.369Z",
+    "by": null,
+    "what": "slots.regenerate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2027-03-31",
+      "created": 0,
+      "updated": 4,
+      "removed": 0,
+      "kept": 61,
+      "total": 194,
+      "quietWindows": [
+        {
+          "from": "2026-12-16",
+          "to": "2026-12-23"
+        },
+        {
+          "from": "2027-01-04",
+          "to": "2027-01-14"
+        }
+      ]
+    }
+  },
+  {
+    "id": "lg-0723",
+    "at": "2026-10-30T11:07:00.494Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs01-dabbawalas",
+      "slotId": "sl-0195",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0724",
+    "at": "2026-10-30T11:07:00.516Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs07-indigo",
+      "slotId": "sl-0196",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0725",
+    "at": "2026-10-30T11:07:00.531Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs10-zara",
+      "slotId": "sl-0197",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0726",
+    "at": "2026-10-30T11:07:49.764Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs01-dabbawalas"
+  },
+  {
+    "id": "lg-0727",
+    "at": "2026-10-30T11:07:49.783Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs02-asian-paints"
+  },
+  {
+    "id": "lg-0728",
+    "at": "2026-10-30T11:07:49.801Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs03-maggi"
+  },
+  {
+    "id": "lg-0729",
+    "at": "2026-10-30T11:07:49.818Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs04-amul"
+  },
+  {
+    "id": "lg-0730",
+    "at": "2026-10-30T11:07:49.839Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs05-aravind"
+  },
+  {
+    "id": "lg-0731",
+    "at": "2026-10-30T11:07:49.858Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs06-dmart-subhiksha"
+  },
+  {
+    "id": "lg-0732",
+    "at": "2026-10-30T11:07:49.879Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs07-indigo"
+  },
+  {
+    "id": "lg-0733",
+    "at": "2026-10-30T11:07:49.897Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs08-toyota"
+  },
+  {
+    "id": "lg-0734",
+    "at": "2026-10-30T11:07:49.915Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs09-mcdonalds"
+  },
+  {
+    "id": "lg-0735",
+    "at": "2026-10-30T11:07:49.933Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs10-zara"
+  },
+  {
+    "id": "lg-0736",
+    "at": "2026-10-30T11:07:50.903Z",
+    "by": "tools@vspindia.com",
+    "what": "content.check-all",
+    "ref": {
+      "checked": 101,
+      "blocked": 10
+    }
+  },
+  {
+    "id": "lg-0737",
+    "at": "2026-10-30T11:07:51.369Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0001"
+  },
+  {
+    "id": "lg-0738",
+    "at": "2026-10-30T11:07:51.373Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0002"
+  },
+  {
+    "id": "lg-0739",
+    "at": "2026-10-30T11:07:51.378Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0005"
+  },
+  {
+    "id": "lg-0740",
+    "at": "2026-10-30T11:07:51.388Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0010"
+  },
+  {
+    "id": "lg-0741",
+    "at": "2026-10-30T11:07:51.393Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0015"
+  },
+  {
+    "id": "lg-0742",
+    "at": "2026-10-30T11:07:51.397Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0033"
+  },
+  {
+    "id": "lg-0743",
+    "at": "2026-10-30T11:07:51.401Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0034"
+  },
+  {
+    "id": "lg-0744",
+    "at": "2026-10-30T11:07:51.405Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0036"
+  },
+  {
+    "id": "lg-0745",
+    "at": "2026-10-30T11:07:51.409Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0041"
+  },
+  {
+    "id": "lg-0746",
+    "at": "2026-10-30T11:07:51.412Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0043"
+  },
+  {
+    "id": "lg-0747",
+    "at": "2026-10-30T11:07:51.416Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0044"
+  },
+  {
+    "id": "lg-0748",
+    "at": "2026-10-30T11:07:51.420Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0053"
+  },
+  {
+    "id": "lg-0749",
+    "at": "2026-10-30T11:07:51.423Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0067"
+  },
+  {
+    "id": "lg-0750",
+    "at": "2026-10-30T11:07:51.428Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0070"
+  },
+  {
+    "id": "lg-0751",
+    "at": "2026-10-30T11:07:51.432Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0091"
+  },
+  {
+    "id": "lg-0752",
+    "at": "2026-10-30T11:07:51.435Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0093"
+  },
+  {
+    "id": "lg-0753",
+    "at": "2026-10-30T11:07:51.439Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0095"
+  },
+  {
+    "id": "lg-0754",
+    "at": "2026-10-30T11:07:51.442Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0104"
+  },
+  {
+    "id": "lg-0755",
+    "at": "2026-10-30T11:07:51.445Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0107"
+  },
+  {
+    "id": "lg-0756",
+    "at": "2026-10-30T11:07:51.448Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0108"
+  },
+  {
+    "id": "lg-0757",
+    "at": "2026-10-30T11:07:51.451Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0111"
+  },
+  {
+    "id": "lg-0758",
+    "at": "2026-10-30T11:07:51.453Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0115"
+  },
+  {
+    "id": "lg-0759",
+    "at": "2026-10-30T11:07:51.456Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0116"
+  },
+  {
+    "id": "lg-0760",
+    "at": "2026-10-30T11:07:51.459Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0119"
+  },
+  {
+    "id": "lg-0761",
+    "at": "2026-10-30T11:07:51.462Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0135"
+  },
+  {
+    "id": "lg-0762",
+    "at": "2026-10-30T11:07:51.466Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0141"
+  },
+  {
+    "id": "lg-0763",
+    "at": "2026-10-30T11:07:51.468Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0143"
+  },
+  {
+    "id": "lg-0764",
+    "at": "2026-10-30T11:07:51.471Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0147"
+  },
+  {
+    "id": "lg-0765",
+    "at": "2026-10-30T11:07:51.474Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0156"
+  },
+  {
+    "id": "lg-0766",
+    "at": "2026-10-30T11:07:51.478Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0199"
+  },
+  {
+    "id": "lg-0767",
+    "at": "2026-10-30T11:07:51.480Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0200"
+  },
+  {
+    "id": "lg-0768",
+    "at": "2026-10-30T11:07:51.483Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0201"
+  },
+  {
+    "id": "lg-0769",
+    "at": "2026-10-30T11:07:51.486Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0203"
+  },
+  {
+    "id": "lg-0770",
+    "at": "2026-10-30T11:07:51.490Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0205"
+  },
+  {
+    "id": "lg-0771",
+    "at": "2026-10-30T11:07:51.493Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0206"
+  },
+  {
+    "id": "lg-0772",
+    "at": "2026-10-30T11:07:51.496Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0209"
+  },
+  {
+    "id": "lg-0773",
+    "at": "2026-10-30T11:07:51.499Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0213"
+  },
+  {
+    "id": "lg-0774",
+    "at": "2026-10-30T11:07:51.502Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0216"
+  },
+  {
+    "id": "lg-0775",
+    "at": "2026-10-30T11:07:51.505Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0218"
+  },
+  {
+    "id": "lg-0776",
+    "at": "2026-10-30T11:07:51.508Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0222"
+  },
+  {
+    "id": "lg-0777",
+    "at": "2026-10-30T11:07:51.511Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0232"
+  },
+  {
+    "id": "lg-0778",
+    "at": "2026-10-30T11:07:51.514Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0234"
+  },
+  {
+    "id": "lg-0779",
+    "at": "2026-10-30T11:07:51.517Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0238"
+  },
+  {
+    "id": "lg-0780",
+    "at": "2026-10-30T11:07:51.520Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0239"
+  },
+  {
+    "id": "lg-0781",
+    "at": "2026-10-30T11:07:51.524Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0247"
+  },
+  {
+    "id": "lg-0782",
+    "at": "2026-10-30T11:07:51.528Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0271"
+  },
+  {
+    "id": "lg-0783",
+    "at": "2026-10-30T11:07:51.532Z",
+    "by": "tools@vspindia.com",
+    "what": "events.patch",
+    "ref": "ev-0272"
+  },
+  {
+    "id": "lg-0784",
+    "at": "2026-10-30T11:10:40.233Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs01-dabbawalas"
+  },
+  {
+    "id": "lg-0785",
+    "at": "2026-10-30T11:10:40.248Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs02-asian-paints"
+  },
+  {
+    "id": "lg-0786",
+    "at": "2026-10-30T11:10:40.262Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs03-maggi"
+  },
+  {
+    "id": "lg-0787",
+    "at": "2026-10-30T11:10:40.273Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs04-amul"
+  },
+  {
+    "id": "lg-0788",
+    "at": "2026-10-30T11:10:40.305Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs05-aravind"
+  },
+  {
+    "id": "lg-0789",
+    "at": "2026-10-30T11:10:40.316Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs06-dmart-subhiksha"
+  },
+  {
+    "id": "lg-0790",
+    "at": "2026-10-30T11:10:40.339Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs07-indigo"
+  },
+  {
+    "id": "lg-0791",
+    "at": "2026-10-30T11:10:40.350Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs08-toyota"
+  },
+  {
+    "id": "lg-0792",
+    "at": "2026-10-30T11:10:40.360Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs09-mcdonalds"
+  },
+  {
+    "id": "lg-0793",
+    "at": "2026-10-30T11:10:40.371Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs10-zara"
+  },
+  {
+    "id": "lg-0794",
+    "at": "2026-10-30T11:10:40.464Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs02-asian-paints"
+  },
+  {
+    "id": "lg-0795",
+    "at": "2026-10-30T11:10:40.488Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs04-amul"
+  },
+  {
+    "id": "lg-0796",
+    "at": "2026-10-30T11:10:40.510Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs07-indigo"
+  },
+  {
+    "id": "lg-0797",
+    "at": "2026-10-30T11:10:40.531Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs08-toyota"
+  },
+  {
+    "id": "lg-0798",
+    "at": "2026-10-30T11:10:40.554Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.replace",
+    "ref": "cs09-mcdonalds"
+  },
+  {
+    "id": "lg-0799",
+    "at": "2026-10-30T11:10:41.536Z",
+    "by": "tools@vspindia.com",
+    "what": "content.check-all",
+    "ref": {
+      "checked": 101,
+      "blocked": 10
+    }
+  },
+  {
+    "id": "lg-0800",
+    "at": "2026-10-30T11:19:37.343Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:festivalConcept",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"id\":\"ev-0002\",\"name\":\"Dhanteras\",\"shortName\":\"Dhanteras\",\"date\":\"2026-11-06\",\"series\":\"dhanteras\",\"whoGets\":\"hindu\",\"note\":\"Muhurat purchases; greet in the morning\"},\"angles\":[{\"id\":\"dha...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0801",
+    "at": "2026-10-30T11:19:37.349Z",
+    "by": "tools@vspindia.com",
+    "what": "occasions.concepts.propose",
+    "ref": {
+      "eventId": "ev-0002",
+      "year": 2026,
+      "mode": "hand",
+      "n": 3
+    }
+  },
+  {
+    "id": "lg-0802",
+    "at": "2026-10-30T11:19:37.359Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:festivalConcept",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"id\":\"ev-0005\",\"name\":\"Diwali, Lakshmi Puja, Naraka Chaturdashi (same day per Drik Panchang); Chopda Pujan\",\"shortName\":\"Diwali\",\"date\":\"2026-11-08\",\"series\":\"diwali\",\"whoGets\":\"everyone\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0803",
+    "at": "2026-10-30T11:19:37.364Z",
+    "by": "tools@vspindia.com",
+    "what": "occasions.concepts.propose",
+    "ref": {
+      "eventId": "ev-0005",
+      "year": 2026,
+      "mode": "hand",
+      "n": 3
+    }
+  },
+  {
+    "id": "lg-0804",
+    "at": "2026-10-30T11:19:37.370Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:festivalConcept",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"id\":\"ev-0034\",\"name\":\"Christmas Day\",\"shortName\":\"Christmas\",\"date\":\"2026-12-25\",\"series\":\"christmas\",\"whoGets\":\"christian\",\"note\":\"Friday; general greeting acceptable to everyone\"},\"ang...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0805",
+    "at": "2026-10-30T11:19:37.377Z",
+    "by": "tools@vspindia.com",
+    "what": "occasions.concepts.propose",
+    "ref": {
+      "eventId": "ev-0034",
+      "year": 2026,
+      "mode": "hand",
+      "n": 3
+    }
+  },
+  {
+    "id": "lg-0806",
+    "at": "2026-10-30T11:20:01.057Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:festivalConcept",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"id\":\"ev-0002\",\"name\":\"Dhanteras\",\"shortName\":\"Dhanteras\",\"date\":\"2026-11-06\",\"series\":\"dhanteras\",\"whoGets\":\"hindu\",\"note\":\"Muhurat purchases; greet in the morning\"},\"angles\":[{\"id\":\"dha...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0807",
+    "at": "2026-10-30T11:20:01.061Z",
+    "by": "tools@vspindia.com",
+    "what": "occasions.concepts.propose",
+    "ref": {
+      "eventId": "ev-0002",
+      "year": 2026,
+      "mode": "hand",
+      "n": 3
+    }
+  },
+  {
+    "id": "lg-0808",
+    "at": "2026-10-30T11:20:01.070Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:festivalConcept",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"id\":\"ev-0005\",\"name\":\"Diwali, Lakshmi Puja, Naraka Chaturdashi (same day per Drik Panchang); Chopda Pujan\",\"shortName\":\"Diwali\",\"date\":\"2026-11-08\",\"series\":\"diwali\",\"whoGets\":\"everyone\"...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0809",
+    "at": "2026-10-30T11:20:01.072Z",
+    "by": "tools@vspindia.com",
+    "what": "occasions.concepts.propose",
+    "ref": {
+      "eventId": "ev-0005",
+      "year": 2026,
+      "mode": "hand",
+      "n": 3
+    }
+  },
+  {
+    "id": "lg-0810",
+    "at": "2026-10-30T11:20:01.077Z",
+    "by": "tools@vspindia.com",
+    "what": "ai:festivalConcept",
+    "ref": {
+      "mode": "hand",
+      "ms": 0,
+      "model": "hand",
+      "input": "{\"event\":{\"id\":\"ev-0034\",\"name\":\"Christmas Day\",\"shortName\":\"Christmas\",\"date\":\"2026-12-25\",\"series\":\"christmas\",\"whoGets\":\"christian\",\"note\":\"Friday; general greeting acceptable to everyone\"},\"ang...",
+      "usage": null,
+      "byHand": true
+    }
+  },
+  {
+    "id": "lg-0811",
+    "at": "2026-10-30T11:20:01.080Z",
+    "by": "tools@vspindia.com",
+    "what": "occasions.concepts.propose",
+    "ref": {
+      "eventId": "ev-0034",
+      "year": 2026,
+      "mode": "hand",
+      "n": 3
+    }
+  },
+  {
+    "id": "lg-0812",
+    "at": "2026-10-30T11:25:37.165Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "cs01-dabbawalas",
+      "slots": [
+        "sl-0195"
+      ]
+    }
+  },
+  {
+    "id": "lg-0813",
+    "at": "2026-10-30T11:25:37.185Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "cs02-asian-paints",
+      "slots": [
+        "sl-0188"
+      ]
+    }
+  },
+  {
+    "id": "lg-0814",
+    "at": "2026-10-30T11:25:37.198Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "cs03-maggi",
+      "slots": [
+        "sl-0189"
+      ]
+    }
+  },
+  {
+    "id": "lg-0815",
+    "at": "2026-10-30T11:25:37.211Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "cs04-amul",
+      "slots": [
+        "sl-0055"
+      ]
+    }
+  },
+  {
+    "id": "lg-0816",
+    "at": "2026-10-30T11:25:37.223Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "cs05-aravind",
+      "slots": [
+        "sl-0190"
+      ]
+    }
+  },
+  {
+    "id": "lg-0817",
+    "at": "2026-10-30T11:25:37.234Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "cs06-dmart-subhiksha",
+      "slots": [
+        "sl-0080"
+      ]
+    }
+  },
+  {
+    "id": "lg-0818",
+    "at": "2026-10-30T11:25:37.245Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "cs07-indigo",
+      "slots": [
+        "sl-0196"
+      ]
+    }
+  },
+  {
+    "id": "lg-0819",
+    "at": "2026-10-30T11:25:37.256Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "cs08-toyota",
+      "slots": [
+        "sl-0110"
+      ]
+    }
+  },
+  {
+    "id": "lg-0820",
+    "at": "2026-10-30T11:25:37.268Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "cs09-mcdonalds",
+      "slots": [
+        "sl-0191"
+      ]
+    }
+  },
+  {
+    "id": "lg-0821",
+    "at": "2026-10-30T11:25:37.279Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "cs10-zara",
+      "slots": [
+        "sl-0197"
+      ]
+    }
+  },
+  {
+    "id": "lg-0822",
+    "at": "2026-10-30T11:25:37.288Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.unplace",
+    "ref": {
+      "pieceId": "film",
+      "slots": [
+        "sl-0183"
+      ]
+    }
+  },
+  {
+    "id": "lg-0823",
+    "at": "2026-10-30T11:25:48.262Z",
+    "by": null,
+    "what": "slots.regenerate",
+    "ref": {
+      "from": "2026-10-01",
+      "to": "2027-03-31",
+      "created": 48,
+      "updated": 0,
+      "removed": 11,
+      "kept": 53,
+      "total": 230,
+      "quietWindows": [
+        {
+          "from": "2026-12-16",
+          "to": "2026-12-23"
+        },
+        {
+          "from": "2027-01-04",
+          "to": "2027-01-14"
+        }
+      ]
+    }
+  },
+  {
+    "id": "lg-0824",
+    "at": "2026-10-30T11:26:14.298Z",
+    "by": null,
+    "what": "slots.regenerate",
+    "ref": {
+      "from": "2026-11-01",
+      "to": "2027-03-31",
+      "created": 0,
+      "updated": 0,
+      "removed": 0,
+      "kept": 53,
+      "total": 192,
+      "quietWindows": [
+        {
+          "from": "2026-12-16",
+          "to": "2026-12-23"
+        },
+        {
+          "from": "2027-01-04",
+          "to": "2027-01-14"
+        }
+      ]
+    }
+  },
+  {
+    "id": "lg-0825",
+    "at": "2026-10-30T11:26:22.315Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs01-dabbawalas",
+      "slotId": "sl-0236",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0826",
+    "at": "2026-10-30T11:26:22.335Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs02-asian-paints",
+      "slotId": "sl-0237",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0827",
+    "at": "2026-10-30T11:26:22.359Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs03-maggi",
+      "slotId": "sl-0238",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0828",
+    "at": "2026-10-30T11:26:22.376Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs04-amul",
+      "slotId": "sl-0239",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0829",
+    "at": "2026-10-30T11:26:22.393Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs05-aravind",
+      "slotId": "sl-0240",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0830",
+    "at": "2026-10-30T11:26:22.413Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs06-dmart-subhiksha",
+      "slotId": "sl-0241",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0831",
+    "at": "2026-10-30T11:26:22.426Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs07-indigo",
+      "slotId": "sl-0242",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0832",
+    "at": "2026-10-30T11:26:22.439Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs08-toyota",
+      "slotId": "sl-0243",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0833",
+    "at": "2026-10-30T11:26:22.452Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs09-mcdonalds",
+      "slotId": "sl-0244",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0834",
+    "at": "2026-10-30T11:26:22.464Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "cs10-zara",
+      "slotId": "sl-0245",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0835",
+    "at": "2026-10-30T11:26:22.476Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.place",
+    "ref": {
+      "pieceId": "film",
+      "slotId": "sl-0246",
+      "from": null
+    }
+  },
+  {
+    "id": "lg-0836",
+    "at": "2026-10-30T11:26:31.817Z",
+    "by": "tools@vspindia.com",
+    "what": "slots.patch",
+    "ref": "sl-0246"
+  },
+  {
+    "id": "lg-0837",
+    "at": "2026-10-30T11:26:40.912Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.patch",
+    "ref": "film"
+  },
+  {
+    "id": "lg-0838",
+    "at": "2026-10-30T11:50:50.502Z",
+    "by": "tools@vspindia.com",
+    "what": "calendar.export-csv",
+    "ref": {
+      "rows": 64,
+      "target": "/Users/palakgupta/Downloads/Venture Drafters/Marketing/POSTING/calendar.csv"
+    }
+  },
+  {
+    "id": "lg-0839",
+    "at": "2026-10-30T12:04:02.684Z",
+    "by": "employee@venturedrafters.test",
+    "what": "pieces.create",
+    "ref": "pc-0007"
+  },
+  {
+    "id": "lg-0840",
+    "at": "2026-10-30T12:04:23.442Z",
+    "by": "employee@venturedrafters.test",
+    "what": "pieces.replace",
+    "ref": "pc-0007"
+  },
+  {
+    "id": "lg-0841",
+    "at": "2026-10-30T12:04:54.148Z",
+    "by": "manager@venturedrafters.test",
+    "what": "piece.escalate",
+    "ref": {
+      "pieceId": "pc-0007",
+      "note": "Test: please confirm the announcement wording."
+    }
+  },
+  {
+    "id": "lg-0842",
+    "at": "2026-10-30T12:05:06.243Z",
+    "by": "tools@vspindia.com",
+    "what": "piece.approve",
+    "ref": {
+      "pieceId": "pc-0007",
+      "versionId": "vr-0223",
+      "role": "director"
+    }
+  },
+  {
+    "id": "lg-0843",
+    "at": "2026-10-30T12:05:13.805Z",
+    "by": "tools@vspindia.com",
+    "what": "pieces.delete",
+    "ref": "pc-0007"
+  }
+]

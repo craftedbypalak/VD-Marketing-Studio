@@ -1,0 +1,1024 @@
+[
+  {
+    "date": "2026-11-01",
+    "time": null,
+    "timeLabel": "evening",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel, pinned",
+    "id": "B10",
+    "pieceId": "B10",
+    "hook": "My name is Palak Gupta.",
+    "notes": "Pin first. The founder intro.",
+    "status": "To do",
+    "week": "W0 Launch",
+    "day": "Sun",
+    "ready": "Film by 31 Oct",
+    "yourFace": "Yes",
+    "text": ""
+  },
+  {
+    "date": "2026-11-01",
+    "time": null,
+    "timeLabel": "evening",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Carousel, pinned",
+    "id": "c1-five-signs",
+    "pieceId": "c1-five-signs",
+    "hook": "5 signs you are the middle of your business",
+    "notes": "Pin second.",
+    "status": "To do",
+    "week": "W0 Launch",
+    "day": "Sun",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-01",
+    "time": null,
+    "timeLabel": "evening",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel, pinned",
+    "id": "e01-follow-up",
+    "pieceId": "e01-follow-up",
+    "hook": "Seven in the evening. Still asking, 'ho gaya?'",
+    "notes": "Pin third.",
+    "status": "To do",
+    "week": "W0 Launch",
+    "day": "Sun",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-02",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel",
+    "id": "B1",
+    "pieceId": "B1",
+    "hook": "You are the follow-up department.",
+    "notes": "",
+    "status": "To do",
+    "week": "W1 The problem",
+    "day": "Mon",
+    "ready": "Film",
+    "yourFace": "Yes",
+    "text": ""
+  },
+  {
+    "date": "2026-11-03",
+    "time": "08:30",
+    "timeLabel": "8:30 am",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "Text with one photo",
+    "id": "L1",
+    "pieceId": "L1",
+    "hook": "I spent years designing products for large companies. Then I went home.",
+    "notes": "Fill the [bracket] with the true figure.",
+    "status": "To do",
+    "week": "W1 The problem",
+    "day": "Tue",
+    "ready": "Fill one bracket",
+    "yourFace": "Photo of you",
+    "text": ""
+  },
+  {
+    "date": "2026-11-03",
+    "time": "09:00",
+    "timeLabel": "9:00 am",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Video",
+    "id": "e01-follow-up",
+    "pieceId": "e01-follow-up",
+    "hook": "Seven in the evening. Still asking, 'ho gaya?'",
+    "notes": "",
+    "status": "To do",
+    "week": "W1 The problem",
+    "day": "Tue",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-04",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Trial Reel (not on the grid)",
+    "id": "e02-memory",
+    "pieceId": "e02-memory",
+    "hook": "Given on Monday. Friday, still not started.",
+    "notes": "Trial Reels test animation against your face without touching the grid.",
+    "status": "To do",
+    "week": "W1 The problem",
+    "day": "Wed",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-05",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Carousel",
+    "id": "c5-follow-up",
+    "pieceId": "c5-follow-up",
+    "hook": "Seven in the evening. Still asking ho gaya?",
+    "notes": "",
+    "status": "To do",
+    "week": "W1 The problem",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-05",
+    "time": "09:00",
+    "timeLabel": "9:00 am",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Text",
+    "id": "rule",
+    "pieceId": "rule-2026-11-05",
+    "hook": "Late work gets a nudge, then a coordinator. Never you.",
+    "notes": "Plain text status.",
+    "status": "To do",
+    "week": "W1 The problem",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": "Late work gets a nudge, then a coordinator. Never you."
+  },
+  {
+    "date": "2026-11-06",
+    "time": null,
+    "timeLabel": "evening",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Text",
+    "id": "greeting",
+    "pieceId": "greeting-2026-11-06",
+    "hook": "Dhanteras greeting",
+    "notes": "Plain text. No design, no offer.",
+    "status": "To do",
+    "week": "W1 The problem",
+    "day": "Fri",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": "Wishing you and your family a prosperous Dhanteras. — Palak Gupta, Venture Drafters"
+  },
+  {
+    "date": "2026-11-08",
+    "time": null,
+    "timeLabel": "evening, pre-scheduled",
+    "channel": "Instagram and WhatsApp Status",
+    "accounts": [
+      "vd-ig",
+      "wa-st"
+    ],
+    "format": "Plain greeting",
+    "id": "greeting",
+    "pieceId": "greeting-2026-11-08",
+    "hook": "Diwali greeting",
+    "notes": "Logo card or plain text only. Nothing that needs a live reply.",
+    "status": "To do",
+    "week": "W2 Diwali (dark 7 to 11 Nov)",
+    "day": "Sun",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": "Wishing you and your family a very happy Diwali. — Palak Gupta, Venture Drafters"
+  },
+  {
+    "date": "2026-11-12",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel",
+    "id": "e07-week-off",
+    "pieceId": "e07-week-off",
+    "hook": "A week off, spent on the phone.",
+    "notes": "The only Instagram post this week.",
+    "status": "To do",
+    "week": "W2 Diwali (dark 7 to 11 Nov)",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-12",
+    "time": "08:30",
+    "timeLabel": "8:30 am",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "Text only",
+    "id": "L2",
+    "pieceId": "L2",
+    "hook": "Service design taught me one thing that a family business proves every day.",
+    "notes": "First day after the dark block.",
+    "status": "To do",
+    "week": "W2 Diwali (dark 7 to 11 Nov)",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-16",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel",
+    "id": "B4",
+    "pieceId": "B4",
+    "hook": "Who did the chasing while you were away this Diwali?",
+    "notes": "",
+    "status": "To do",
+    "week": "W3 Who did the chasing",
+    "day": "Mon",
+    "ready": "Film",
+    "yourFace": "Yes",
+    "text": ""
+  },
+  {
+    "date": "2026-11-17",
+    "time": "09:00",
+    "timeLabel": "9:00 am",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Video",
+    "id": "e05-handover",
+    "pieceId": "e05-handover",
+    "hook": "Work stops between two people. Nobody notices.",
+    "notes": "BNI Fortune today: no LinkedIn post.",
+    "status": "To do",
+    "week": "W3 Who did the chasing",
+    "day": "Tue",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-18",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Trial Reel (not on the grid)",
+    "id": "e03-client-first",
+    "pieceId": "e03-client-first",
+    "hook": "The client tells you before your team does.",
+    "notes": "",
+    "status": "To do",
+    "week": "W3 Who did the chasing",
+    "day": "Wed",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-18",
+    "time": "08:30",
+    "timeLabel": "8:30 am",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "Text only",
+    "id": "L7",
+    "pieceId": "L7",
+    "hook": "Five signs you are the follow-up department.",
+    "notes": "Moved off 17 Nov (BNI Fortune).",
+    "status": "To do",
+    "week": "W3 Who did the chasing",
+    "day": "Wed",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-19",
+    "time": "11:00",
+    "timeLabel": "11:00 am",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "Text with one still from B5",
+    "id": "L3",
+    "pieceId": "L3",
+    "hook": "The day I stopped blaming the team.",
+    "notes": "Video link in the first comment. BNI Amadeus today: post before you leave.",
+    "status": "To do",
+    "week": "W3 Who did the chasing",
+    "day": "Thu",
+    "ready": "After B5 is filmed",
+    "yourFace": "Still from B5",
+    "text": ""
+  },
+  {
+    "date": "2026-11-19",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Carousel",
+    "id": "c2-hour-worth",
+    "pieceId": "c2-hour-worth",
+    "hook": "What is your hour worth? Do the sum.",
+    "notes": "",
+    "status": "To do",
+    "week": "W3 Who did the chasing",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-19",
+    "time": "09:00",
+    "timeLabel": "9:00 am",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Text",
+    "id": "rule",
+    "pieceId": "rule-2026-11-19",
+    "hook": "Work needs a home: a name, a date, a next step.",
+    "notes": "",
+    "status": "To do",
+    "week": "W3 Who did the chasing",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": "Work needs a home: a name, a date, a next step."
+  },
+  {
+    "date": "2026-11-23",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel",
+    "id": "B8",
+    "pieceId": "B8",
+    "hook": "I built this for my family's firm first.",
+    "notes": "Includes a masked VSP glimpse; check every frame at full size.",
+    "status": "To do",
+    "week": "W4 The glimpse",
+    "day": "Mon",
+    "ready": "Film",
+    "yourFace": "Yes",
+    "text": ""
+  },
+  {
+    "date": "2026-11-23",
+    "time": "08:30",
+    "timeLabel": "8:30 am",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "Text only",
+    "id": "L8",
+    "pieceId": "L8",
+    "hook": "This is not new software.",
+    "notes": "Moved to Monday: 24 Nov is Guru Nanak Jayanti.",
+    "status": "To do",
+    "week": "W4 The glimpse",
+    "day": "Mon",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-23",
+    "time": null,
+    "timeLabel": "evening",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Text",
+    "id": "greeting",
+    "pieceId": "greeting-2026-11-23",
+    "hook": "Guru Nanak Jayanti greeting",
+    "notes": "For 24 Nov. Nothing else on 24 Nov.",
+    "status": "To do",
+    "week": "W4 The glimpse",
+    "day": "Mon",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": "Warm wishes on Guru Nanak Jayanti. — Palak Gupta, Venture Drafters"
+  },
+  {
+    "date": "2026-11-25",
+    "time": "16:30",
+    "timeLabel": "4:30 pm",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "PDF carousel",
+    "id": "c3-one-screen",
+    "pieceId": "c3-one-screen",
+    "hook": "One screen. One sit-down a week.",
+    "notes": "Carousel week: no Thursday LinkedIn post. L4 moves to December.",
+    "status": "To do",
+    "week": "W4 The glimpse",
+    "day": "Wed",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-25",
+    "time": "09:00",
+    "timeLabel": "9:00 am",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Video",
+    "id": "e03-client-first",
+    "pieceId": "e03-client-first",
+    "hook": "The client tells you before your team does.",
+    "notes": "",
+    "status": "To do",
+    "week": "W4 The glimpse",
+    "day": "Wed",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-26",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Carousel",
+    "id": "c6-client-first",
+    "pieceId": "c6-client-first",
+    "hook": "Your client tells you before your team does.",
+    "notes": "",
+    "status": "To do",
+    "week": "W4 The glimpse",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-11-27",
+    "time": null,
+    "timeLabel": "during the day",
+    "channel": "Instagram Stories and WhatsApp Status",
+    "accounts": [
+      "vd-ig",
+      "wa-st"
+    ],
+    "format": "Stories from Plast Pack, 27 to 30 Nov",
+    "id": "field",
+    "pieceId": "field-2026-11-27",
+    "hook": "One owner conversation from the floor",
+    "notes": "Credit the host. No names without consent.",
+    "status": "To do",
+    "week": "W4 The glimpse",
+    "day": "Fri to Mon",
+    "ready": "On the day",
+    "yourFace": "Yes",
+    "text": ""
+  },
+  {
+    "date": "2026-11-30",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel",
+    "id": "B9",
+    "pieceId": "B9",
+    "hook": "Whose data is it?",
+    "notes": "Script line rewritten 24 Oct (no 'brains').",
+    "status": "To do",
+    "week": "W5 Own the data",
+    "day": "Mon",
+    "ready": "Film",
+    "yourFace": "Yes",
+    "text": ""
+  },
+  {
+    "date": "2026-12-01",
+    "time": "08:30",
+    "timeLabel": "8:30 am",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "Text only",
+    "id": "L6",
+    "pieceId": "L6",
+    "hook": "The owner's real job.",
+    "notes": "",
+    "status": "To do",
+    "week": "W5 Own the data",
+    "day": "Tue",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-01",
+    "time": "09:00",
+    "timeLabel": "9:00 am",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Video",
+    "id": "e08-locked-in",
+    "pieceId": "e08-locked-in",
+    "hook": "Last year's task app? Nobody opens it now.",
+    "notes": "",
+    "status": "To do",
+    "week": "W5 Own the data",
+    "day": "Tue",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-02",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Trial Reel (not on the grid)",
+    "id": "e04-open-door",
+    "pieceId": "e04-open-door",
+    "hook": "Your door never stays closed for ten minutes.",
+    "notes": "Wedding cluster 2 to 6 Dec: expect lower reach.",
+    "status": "To do",
+    "week": "W5 Own the data",
+    "day": "Wed",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-03",
+    "time": "11:00",
+    "timeLabel": "11:00 am",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "Text with one still from B8",
+    "id": "L5",
+    "pieceId": "L5",
+    "hook": "What I am building.",
+    "notes": "Video link in the first comment.",
+    "status": "To do",
+    "week": "W5 Own the data",
+    "day": "Thu",
+    "ready": "After B8 is filmed",
+    "yourFace": "Still from B8",
+    "text": ""
+  },
+  {
+    "date": "2026-12-03",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Carousel",
+    "id": "c4-whose-data",
+    "pieceId": "c4-whose-data",
+    "hook": "Who owns your data?",
+    "notes": "",
+    "status": "To do",
+    "week": "W5 Own the data",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-03",
+    "time": "09:00",
+    "timeLabel": "9:00 am",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Text",
+    "id": "rule",
+    "pieceId": "rule-2026-12-03",
+    "hook": "Your data stays in your own Google account.",
+    "notes": "",
+    "status": "To do",
+    "week": "W5 Own the data",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": "Your data stays in your own Google account."
+  },
+  {
+    "date": "2026-12-07",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel",
+    "id": "e03-client-first",
+    "pieceId": "e03-client-first",
+    "hook": "The client tells you before your team does.",
+    "notes": "From this week, upload every Monday Reel as a YouTube Short the same day.",
+    "status": "To do",
+    "week": "W6 The vetting set",
+    "day": "Mon",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-08",
+    "time": "08:30",
+    "timeLabel": "8:30 am",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "Text with one photo",
+    "id": "D1",
+    "pieceId": "D1",
+    "hook": "Field note from Plast Pack",
+    "notes": "Field note: one observation from the floor, with credit to the host.",
+    "status": "To do",
+    "week": "W6 The vetting set",
+    "day": "Tue",
+    "ready": "To write",
+    "yourFace": "Photo from the event",
+    "text": ""
+  },
+  {
+    "date": "2026-12-08",
+    "time": "09:00",
+    "timeLabel": "9:00 am",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Video",
+    "id": "e06-training",
+    "pieceId": "e06-training",
+    "hook": "New joiner. A month shadowing your best person.",
+    "notes": "",
+    "status": "To do",
+    "week": "W6 The vetting set",
+    "day": "Tue",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-09",
+    "time": "11:00",
+    "timeLabel": "11:00 am",
+    "channel": "WhatsApp",
+    "accounts": [
+      "wa-note"
+    ],
+    "format": "Monthly note (opted-in contacts only)",
+    "id": "note-dec",
+    "pieceId": "note-dec",
+    "hook": "The five-signs checklist",
+    "notes": "90 words and the c1 carousel PDF. Never to anyone not on the consent log.",
+    "status": "To do",
+    "week": "W6 The vetting set",
+    "day": "Wed",
+    "ready": "To write",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-09",
+    "time": "16:30",
+    "timeLabel": "4:30 pm",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "PDF carousel",
+    "id": "c5-follow-up",
+    "pieceId": "c5-follow-up",
+    "hook": "Seven in the evening. Still asking ho gaya?",
+    "notes": "Carousel week: no Thursday LinkedIn post.",
+    "status": "To do",
+    "week": "W6 The vetting set",
+    "day": "Wed",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-10",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Carousel",
+    "id": "c7-work-home",
+    "pieceId": "c7-work-home",
+    "hook": "Work stops between two people.",
+    "notes": "",
+    "status": "To do",
+    "week": "W6 The vetting set",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-10",
+    "time": "09:00",
+    "timeLabel": "9:00 am",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Text",
+    "id": "rule",
+    "pieceId": "rule-2026-12-10",
+    "hook": "Questions wait for you, not the other way round.",
+    "notes": "",
+    "status": "To do",
+    "week": "W6 The vetting set",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": "Questions wait for you, not the other way round."
+  },
+  {
+    "date": "2026-12-14",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel",
+    "id": "B11",
+    "pieceId": "B11",
+    "hook": "Start with one process. 30 minutes.",
+    "notes": "",
+    "status": "To do",
+    "week": "W7 Build log",
+    "day": "Mon",
+    "ready": "Film",
+    "yourFace": "Yes",
+    "text": ""
+  },
+  {
+    "date": "2026-12-14",
+    "time": null,
+    "timeLabel": "evening",
+    "channel": "YouTube",
+    "accounts": [
+      "yt"
+    ],
+    "format": "Long video, 2:30",
+    "id": "film",
+    "pieceId": "film",
+    "hook": "The VSP film: how the founder's family firm runs on one system",
+    "notes": "Pin to LinkedIn Featured and the website. It becomes the one link sent before every call.",
+    "status": "To do",
+    "week": "W7 Build log",
+    "day": "Mon",
+    "ready": "Shoot first",
+    "yourFace": "Yes",
+    "text": ""
+  },
+  {
+    "date": "2026-12-16",
+    "time": "16:30",
+    "timeLabel": "4:30 pm",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "PDF carousel, 8 slides",
+    "id": "L4",
+    "pieceId": "L4",
+    "hook": "Why I built it on a Google Sheet.",
+    "notes": "Moved from November. 15 Dec is an advance-tax day: no post.",
+    "status": "To do",
+    "week": "W7 Build log",
+    "day": "Wed",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-16",
+    "time": "09:00",
+    "timeLabel": "9:00 am",
+    "channel": "WhatsApp Status",
+    "accounts": [
+      "wa-st"
+    ],
+    "format": "Video",
+    "id": "e09-scorecard",
+    "pieceId": "e09-scorecard",
+    "hook": "Appraisal time. Who actually did what?",
+    "notes": "Quiet window 16 to 23 Dec: calls come first; nothing new is tried.",
+    "status": "To do",
+    "week": "W7 Build log",
+    "day": "Wed",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-17",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Carousel",
+    "id": "c8-score",
+    "pieceId": "c8-score",
+    "hook": "Appraisal time. Who actually did what?",
+    "notes": "",
+    "status": "To do",
+    "week": "W7 Build log",
+    "day": "Thu",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-21",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel",
+    "id": "e05-handover",
+    "pieceId": "e05-handover",
+    "hook": "Work stops between two people. Nobody notices.",
+    "notes": "",
+    "status": "To do",
+    "week": "W8 Before the year turns",
+    "day": "Mon",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-22",
+    "time": "08:30",
+    "timeLabel": "8:30 am",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "Text with one photo",
+    "id": "D2",
+    "pieceId": "D2",
+    "hook": "A due date is not enough. Give it a time.",
+    "notes": "One design principle, five short paragraphs.",
+    "status": "To do",
+    "week": "W8 Before the year turns",
+    "day": "Tue",
+    "ready": "To write",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-23",
+    "time": "16:30",
+    "timeLabel": "4:30 pm",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "PDF carousel",
+    "id": "c8-score",
+    "pieceId": "c8-score",
+    "hook": "Appraisal time. Who actually did what?",
+    "notes": "Last working post before the reflective week.",
+    "status": "To do",
+    "week": "W8 Before the year turns",
+    "day": "Wed",
+    "ready": "Ready",
+    "yourFace": "No",
+    "text": ""
+  },
+  {
+    "date": "2026-12-24",
+    "time": "19:30",
+    "timeLabel": "7:30 pm",
+    "channel": "Instagram",
+    "accounts": [
+      "vd-ig"
+    ],
+    "format": "Reel",
+    "id": "B12",
+    "pieceId": "B12",
+    "hook": "Seven pm. Everyone has gone home.",
+    "notes": "Reflective only from 24 Dec. No carousel this week.",
+    "status": "To do",
+    "week": "W8 Before the year turns",
+    "day": "Thu",
+    "ready": "Film (spare)",
+    "yourFace": "Yes",
+    "text": ""
+  },
+  {
+    "date": "2026-12-29",
+    "time": "08:30",
+    "timeLabel": "8:30 am",
+    "channel": "LinkedIn",
+    "accounts": [
+      "p-li"
+    ],
+    "format": "Text only",
+    "id": "D3",
+    "pieceId": "D3",
+    "hook": "Why tools die: we tried software, and it died.",
+    "notes": "Build log: why VSP gave follow-up a person, not only a reminder. A reflective close to the year. Nothing from 31 Dec to 3 Jan.",
+    "status": "To do",
+    "week": "W9 Reflective",
+    "day": "Tue",
+    "ready": "To write",
+    "yourFace": "No",
+    "text": ""
+  }
+]

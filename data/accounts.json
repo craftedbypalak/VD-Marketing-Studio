@@ -1,0 +1,414 @@
+[
+  {
+    "id": "vd-ig",
+    "label": "Venture Drafters Instagram",
+    "short": "IG",
+    "group": "Venture Drafters",
+    "role": "The main channel. Every piece starts here unless it is a LinkedIn text post.",
+    "platform": "instagram",
+    "limits": {
+      "textMax": 2200,
+      "hashtagsMax": 5,
+      "hashtagsWhere": "end",
+      "hookChars": 125,
+      "firstCommentLinks": true
+    },
+    "weekly": [
+      {
+        "day": "Mon",
+        "time": "19:30",
+        "kind": "reel",
+        "label": "Reel (Collab with Palak's Instagram)",
+        "why": "Monday Reel: a 35 to 60 second b-roll with Palak or an animated episode, captions burned in, published from Palak's account with the page as collaborator so it sits on both grids. Two feed posts a week, no more."
+      },
+      {
+        "day": "Wed",
+        "time": "19:30",
+        "kind": "trial",
+        "label": "Trial Reel (optional, off the grid)",
+        "optional": true,
+        "why": "An optional third Reel off the grid, to test a slot without raising the weekly count. Skip it when there is nothing ready."
+      },
+      {
+        "day": "Thu",
+        "time": "19:30",
+        "kind": "carousel",
+        "label": "Carousel",
+        "why": "Thursday carousel: 5 to 10 slides at 1080 x 1350, the saveable, forwardable piece of the week, shared to Palak's Stories."
+      }
+    ],
+    "monthly": [],
+    "repurposeTo": [
+      {
+        "accountId": "p-ig",
+        "how": "Collab post: invite Palak's account when posting, so one post shows on both grids",
+        "when": {
+          "kind": "reel"
+        }
+      },
+      {
+        "accountId": "vd-fb",
+        "how": "Automatic share to the Facebook page",
+        "when": {
+          "kind": "reel"
+        }
+      },
+      {
+        "accountId": "yt",
+        "how": "Upload the same file as a Short the same evening; title = the hook",
+        "when": {
+          "kind": "reel"
+        }
+      },
+      {
+        "accountId": "p-fb",
+        "how": "Share from the Venture Drafters page to Palak's Facebook",
+        "when": {
+          "kind": "reel"
+        }
+      },
+      {
+        "accountId": "vd-fb",
+        "how": "Automatic share to the Facebook page",
+        "when": {
+          "kind": "carousel"
+        }
+      },
+      {
+        "accountId": "p-ig",
+        "how": "Share to Palak's Instagram Stories",
+        "when": {
+          "kind": "carousel"
+        }
+      }
+    ],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  },
+  {
+    "id": "vd-fb",
+    "label": "Venture Drafters Facebook page",
+    "short": "FB",
+    "group": "Venture Drafters",
+    "role": "Automatic: turn on 'Share to Facebook' in Instagram once. No separate posting.",
+    "platform": "facebook",
+    "limits": {
+      "textMax": 2200,
+      "hashtagsMax": 0,
+      "hashtagsWhere": "none",
+      "hookChars": 125,
+      "firstCommentLinks": true
+    },
+    "weekly": [],
+    "monthly": [],
+    "repurposeTo": [],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  },
+  {
+    "id": "yt",
+    "label": "YouTube",
+    "short": "YT",
+    "group": "Venture Drafters",
+    "role": "Every Instagram Reel as a Short, the same evening. One long episode every other Monday at 11:00 from 16 November 2026 (Built to Run: Stories), with Shorts between, so there are never fewer than two uploads a month. The VSP-system case studies join the alternate Mondays once one is produced.",
+    "platform": "youtube",
+    "limits": {
+      "textMax": 5000,
+      "titleMax": 100,
+      "hashtagsMax": 3,
+      "hashtagsWhere": "bottom",
+      "hookChars": 100,
+      "firstCommentLinks": false
+    },
+    "weekly": [
+      {
+        "day": "Mon",
+        "time": "11:00",
+        "kind": "yt-long",
+        "every": 2,
+        "anchor": "2026-11-16",
+        "label": "YouTube long video (30 to 45 minutes)",
+        "why": "One long episode every other Monday at 11:00, from 16 November 2026: a 30 to 45 minute story of a business that runs on systems (Built to Run: Stories), live before that evening's Reel can point to it. Shorts fill the Mondays between, so the channel never has fewer than two uploads a month. The measure is \"watched before the call\", not subscribers. It is a scheduled upload with no live reply, so it goes up even inside a dark block such as Diwali; the go-dark switch for mourning still holds it.",
+        "scheduledUpload": true
+      }
+    ],
+    "monthly": [],
+    "repurposeTo": [
+      {
+        "accountId": "p-li",
+        "how": "Pin to Featured on Palak's LinkedIn",
+        "when": {
+          "kind": "yt-long"
+        }
+      }
+    ],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  },
+  {
+    "id": "vd-li",
+    "label": "Venture Drafters LinkedIn page",
+    "short": "in·VD",
+    "group": "Venture Drafters",
+    "role": "Friday only: reshare the week's strongest post from Palak's LinkedIn, with one line. No original posts.",
+    "platform": "linkedin",
+    "limits": {
+      "textMax": 3000,
+      "hashtagsMax": 3,
+      "hashtagsWhere": "bottom",
+      "hookChars": 210,
+      "firstCommentLinks": true
+    },
+    "weekly": [
+      {
+        "day": "Fri",
+        "time": "11:00",
+        "kind": "reshare",
+        "label": "Company page: reshare the week's strongest post",
+        "derived": true,
+        "why": "The company page is a trust signal, not a channel: organic page reach is about 1.6 per cent. It reshares Palak's strongest post of the week with one line, at least two hours after the original."
+      }
+    ],
+    "monthly": [],
+    "repurposeTo": [],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  },
+  {
+    "id": "p-li",
+    "label": "Palak's LinkedIn",
+    "short": "in",
+    "group": "Palak",
+    "role": "The main written channel. Two a week; the fortnightly PDF carousel is one of the two.",
+    "platform": "linkedin",
+    "limits": {
+      "textMax": 3000,
+      "hashtagsMax": 3,
+      "hashtagsWhere": "bottom",
+      "hookChars": 210,
+      "firstCommentLinks": true
+    },
+    "weekly": [
+      {
+        "day": "Tue",
+        "time": "08:30",
+        "kind": "li",
+        "label": "LinkedIn post",
+        "why": "Palak's LinkedIn is the main written channel: the designer who built the tools, in the first person, 900 to 1,900 characters plus one real photo. Two a week, never two in one day; Tuesday and Thursday 8:30 am in November."
+      },
+      {
+        "day": "Wed",
+        "time": "16:30",
+        "kind": "li-carousel",
+        "label": "PDF carousel (alternate weeks, replaces Thursday)",
+        "alternate": true,
+        "why": "A PDF carousel of 6 to 10 slides every two weeks is one of the two weekly posts; it replaces that week's Thursday post so the count stays at two."
+      },
+      {
+        "day": "Thu",
+        "time": "08:30",
+        "kind": "li",
+        "label": "LinkedIn post (weeks without a carousel)",
+        "alternate": true,
+        "why": "Palak's LinkedIn is the main written channel: the designer who built the tools, in the first person, 900 to 1,900 characters plus one real photo. Two a week, never two in one day; Tuesday and Thursday 8:30 am in November."
+      }
+    ],
+    "monthly": [],
+    "repurposeTo": [
+      {
+        "accountId": "vd-li",
+        "how": "If it is the week's strongest post, reshare it from the company page on Friday with one line",
+        "when": {}
+      }
+    ],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  },
+  {
+    "id": "p-ig",
+    "label": "Palak's Instagram",
+    "short": "IG·P",
+    "group": "Palak",
+    "role": "Monday Reel as a Collab post (one post, on both grids). Thursday carousel shared to Stories.",
+    "platform": "instagram",
+    "limits": {
+      "textMax": 2200,
+      "hashtagsMax": 5,
+      "hashtagsWhere": "end",
+      "hookChars": 125,
+      "firstCommentLinks": true
+    },
+    "weekly": [],
+    "monthly": [],
+    "repurposeTo": [],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  },
+  {
+    "id": "p-fb",
+    "label": "Palak's Facebook",
+    "short": "FB·P",
+    "group": "Palak",
+    "role": "Share the Monday Reel once a week from the Venture Drafters page. Nothing else.",
+    "platform": "facebook",
+    "limits": {
+      "textMax": 2200,
+      "hashtagsMax": 0,
+      "hashtagsWhere": "none",
+      "hookChars": 125,
+      "firstCommentLinks": true
+    },
+    "weekly": [],
+    "monthly": [],
+    "repurposeTo": [],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  },
+  {
+    "id": "wa-st",
+    "label": "WhatsApp Status (Palak)",
+    "short": "ST",
+    "group": "WhatsApp",
+    "role": "Tuesday and Thursday about 9 am, Saturday optional. Three a week at most.",
+    "platform": "whatsapp",
+    "limits": {
+      "textMax": 700,
+      "hashtagsMax": 0,
+      "hashtagsWhere": "none",
+      "hookChars": 80,
+      "firstCommentLinks": false
+    },
+    "weekly": [
+      {
+        "day": "Tue",
+        "time": "09:00",
+        "kind": "status",
+        "label": "Status: a glimpse",
+        "why": "The warm network sees Status; nobody is written to. Tuesday is a glimpse (an episode's problem half, about 10 seconds); Thursday is a rule card (one line, a brand card). Three a week at most, nothing on Sundays."
+      },
+      {
+        "day": "Thu",
+        "time": "09:00",
+        "kind": "status",
+        "label": "Status: a rule card",
+        "why": "The warm network sees Status; nobody is written to. Tuesday is a glimpse (an episode's problem half, about 10 seconds); Thursday is a rule card (one line, a brand card). Three a week at most, nothing on Sundays."
+      },
+      {
+        "day": "Sat",
+        "time": "",
+        "kind": "status-opt",
+        "label": "Status: field or working life (optional)",
+        "timeNote": "any",
+        "optional": true,
+        "why": "Saturday is optional: working life or the field, a real photo. Only if there is one; the count stays at three a week at most."
+      }
+    ],
+    "monthly": [],
+    "repurposeTo": [],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  },
+  {
+    "id": "wa-note",
+    "label": "Monthly note (opted-in only)",
+    "short": "Note",
+    "group": "WhatsApp",
+    "role": "Second Wednesday, 10:30 to 11:30 am, only to people who said yes. No note in March.",
+    "platform": "whatsapp",
+    "limits": {
+      "textMax": 1200,
+      "hashtagsMax": 0,
+      "hashtagsWhere": "none",
+      "hookChars": 80,
+      "firstCommentLinks": false
+    },
+    "weekly": [],
+    "monthly": [
+      {
+        "rule": "2nd Wed",
+        "time": "10:30",
+        "kind": "note",
+        "label": "Monthly note to opted-in contacts",
+        "skipMonths": [
+          "2027-03"
+        ],
+        "why": "The monthly note goes only to people who said yes in writing, with the date recorded: about 90 words and one carousel PDF, always with \"reply stop and I will remove you\". Second Wednesday; no note in March."
+      }
+    ],
+    "repurposeTo": [],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  },
+  {
+    "id": "fam",
+    "label": "Family WhatsApp Status",
+    "short": "Fam",
+    "group": "WhatsApp",
+    "role": "Once a month at most: the month's most-sent Reel on your father's and sister's Status. Never sent to groups, never as messages.",
+    "platform": "whatsapp",
+    "limits": {
+      "textMax": 700,
+      "hashtagsMax": 0,
+      "hashtagsWhere": "none",
+      "hookChars": 80,
+      "firstCommentLinks": false
+    },
+    "weekly": [],
+    "monthly": [
+      {
+        "rule": "2nd Sat",
+        "time": "19:00",
+        "kind": "family",
+        "label": "Family Status: the month's most-sent Reel",
+        "timeNote": "evening",
+        "derived": true,
+        "why": "Once a month at most, the month's most-sent Reel on family Status. Never to groups, never as a message."
+      }
+    ],
+    "repurposeTo": [],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  },
+  {
+    "id": "irl",
+    "label": "In person",
+    "short": "IRL",
+    "group": "Palak",
+    "role": "Events and visits. Stories from the floor, with the host's credit.",
+    "platform": "in-person",
+    "limits": {
+      "textMax": 0,
+      "hashtagsMax": 0,
+      "hashtagsWhere": "none",
+      "hookChars": 0,
+      "firstCommentLinks": false
+    },
+    "weekly": [],
+    "monthly": [],
+    "repurposeTo": [],
+    "openSlotsFrom": "2027-01-04",
+    "openSlotsTo": "2027-03-31",
+    "createdAt": "2026-10-29T09:19:26.676Z",
+    "updatedAt": "2026-10-29T09:19:26.676Z"
+  }
+]

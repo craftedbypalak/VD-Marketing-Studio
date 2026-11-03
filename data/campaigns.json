@@ -1,0 +1,30 @@
+[
+  {
+    "name": "The first case study: the reminder desk",
+    "kind": "announcement",
+    "from": "2026-12-21",
+    "to": "2026-12-21",
+    "facts": [
+      "The first YouTube case study goes up on 21 December 2026: one VSP system, the reminder desk, told as how it was designed and what it changed.",
+      "It is 30 to 45 minutes long, on the Venture Drafters YouTube channel.",
+      "The system was designed for my family's firm, VSP Consultants, which runs on it every day.",
+      "No client, lender or staff detail is shown; the screens are a demo copy with invented data."
+    ],
+    "targets": [
+      "vd-li",
+      "p-li",
+      "wa-st"
+    ],
+    "notes": "Example campaign written for the content audit of 30 October 2026; confirm the date and the link before any piece is placed.",
+    "thirdParty": "",
+    "id": "cp-0001",
+    "by": "tools@vspindia.com",
+    "createdAt": "2026-10-29T17:27:58.079Z",
+    "updatedAt": "2026-10-29T17:27:58.110Z",
+    "pieceIds": [
+      "pc-0004",
+      "pc-0005",
+      "pc-0006"
+    ]
+  }
+]

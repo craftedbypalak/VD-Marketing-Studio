@@ -1,0 +1,637 @@
+[
+  {
+    "id": "rules",
+    "voice": [
+      "Short sentences. One idea each.",
+      "Plain, calm, direct. Written for an owner reading on a phone between calls.",
+      "Formal and warm. Write as a professional firm addressing a managing director. Never casual, never coach-style hype.",
+      "Name the pain first, then the other way. Never open on our features.",
+      "Say the owner's own words: chase, follow-up, slipped. Not workflow orchestration, not digital transformation.",
+      "Respectful of how hard the owner already works. Never scold, never make them feel behind.",
+      "Numbers in digits. Rupee amounts written Rs 20,000, never the rupee glyph.",
+      "Sentence case. Eyebrows in small capitals. No ALL CAPS, no exclamation marks, no emoji.",
+      "follow-ups always, with the hyphen.",
+      "Every piece is written in the order Problem, Impact, Solution.",
+      "English operational nouns: follow-up, status, pending, dispatch, payment, reminder.",
+      "One Hindi tag only inside a quoted owner line (Task hua?, ho gaya?). Never whole Hindi sentences, never in our own voice.",
+      "Say my family's firm or my family's company openly. Name Voltas, Panasonic, GPC and Georgia Tech only as places the founder worked or studied.",
+      "The founder is a designer who builds systems, never a systems expert or an automation expert. The word that carries the story is designed.",
+      "The caption carries all three beats: the owner's moment, what it costs, and the tool we built and run. A caption that stops at the problem is half a piece.",
+      "Hashtags in lower case, five at most on Instagram, three at most on the last line of a LinkedIn post, never in the body."
+    ],
+    "say": [
+      "owner",
+      "system",
+      "follow-ups",
+      "update",
+      "chase",
+      "everything through me",
+      "one screen",
+      "your own sheet",
+      "your data",
+      "the Monday hand-out",
+      "the Friday score",
+      "start small",
+      "set up",
+      "train",
+      "manage",
+      "designed",
+      "work needs a home",
+      "you find out last",
+      "Run the business. Not the follow-ups.",
+      "See everything. Chase nothing.",
+      "We run the system. Your team still does the work.",
+      "We run it with you, every week.",
+      "This is not new software.",
+      "Every Monday the work goes out. Every Friday you get the score.",
+      "Every task has an owner and a date.",
+      "the owner's problem is a design problem",
+      "my family's firm",
+      "start with one process",
+      "You own the data. We run the system."
+    ],
+    "never": [
+      {
+        "phrase": "autopilot",
+        "scope": "any",
+        "note": "Course term and crowded coach claim"
+      },
+      {
+        "phrase": "runs without you",
+        "scope": "headline",
+        "note": "Crowded coach claim; may appear only as a close, never as a headline"
+      },
+      {
+        "phrase": "a business that runs without you",
+        "scope": "headline",
+        "note": "Crowded coach claim; close only"
+      },
+      {
+        "phrase": "run without you",
+        "scope": "headline",
+        "note": "Did the business run without you? Test against: Who did the chasing while you were away?"
+      },
+      {
+        "phrase": "revolutionary",
+        "scope": "any",
+        "note": "Hype"
+      },
+      {
+        "phrase": "game-changing",
+        "scope": "any",
+        "note": "Hype"
+      },
+      {
+        "phrase": "game changing",
+        "scope": "any",
+        "note": "Hype"
+      },
+      {
+        "phrase": "10x",
+        "scope": "any",
+        "note": "Hype; also an x-times figure"
+      },
+      {
+        "phrase": "guaranteed",
+        "scope": "any",
+        "note": "Regulator-flagged claim"
+      },
+      {
+        "phrase": "guarantee",
+        "scope": "any",
+        "note": "Regulator-flagged claim"
+      },
+      {
+        "phrase": "mentor",
+        "scope": "any",
+        "note": "Coaching-hype word"
+      },
+      {
+        "phrase": "mentorship",
+        "scope": "any",
+        "note": "Coaching-hype word"
+      },
+      {
+        "phrase": "masterclass",
+        "scope": "any",
+        "note": "Coaching-hype word"
+      },
+      {
+        "phrase": "webinar",
+        "scope": "any",
+        "note": "Coaching-hype word"
+      },
+      {
+        "phrase": "mastermind",
+        "scope": "any",
+        "note": "Coaching-hype word"
+      },
+      {
+        "phrase": "limited seats",
+        "scope": "any",
+        "note": "Manufactured urgency"
+      },
+      {
+        "phrase": "funnel",
+        "scope": "any",
+        "note": "Coaching-hype word"
+      },
+      {
+        "phrase": "blueprint",
+        "scope": "any",
+        "note": "Coaching-hype word"
+      },
+      {
+        "phrase": "transform your business",
+        "scope": "any",
+        "note": "Coaching-hype phrase"
+      },
+      {
+        "phrase": "secret",
+        "scope": "any",
+        "note": "Coaching-hype word"
+      },
+      {
+        "phrase": "hack",
+        "scope": "any",
+        "note": "Coaching-hype word"
+      },
+      {
+        "phrase": "passive income",
+        "scope": "any",
+        "note": "Coaching-hype phrase"
+      },
+      {
+        "phrase": "100%",
+        "scope": "any",
+        "note": "Regulator-flagged claim"
+      },
+      {
+        "phrase": "No.1",
+        "scope": "any",
+        "note": "Regulator-flagged claim"
+      },
+      {
+        "phrase": "No. 1",
+        "scope": "any",
+        "note": "Regulator-flagged claim"
+      },
+      {
+        "phrase": "India's most",
+        "scope": "any",
+        "note": "Regulator-flagged claim"
+      },
+      {
+        "phrase": "assured",
+        "scope": "any",
+        "note": "Regulator-flagged claim"
+      },
+      {
+        "phrase": "proven",
+        "scope": "any",
+        "note": "Cannot say until a client agrees in writing"
+      },
+      {
+        "phrase": "best",
+        "scope": "any",
+        "note": "Regulator-flagged claim word"
+      },
+      {
+        "phrase": "we don't sell promises",
+        "scope": "any",
+        "note": "Rival phrasing"
+      },
+      {
+        "phrase": "no one else does this",
+        "scope": "any",
+        "note": "Say what we do; let the owner see the difference"
+      },
+      {
+        "phrase": "trusted by",
+        "scope": "any",
+        "note": "Cannot say until a client agrees in writing"
+      },
+      {
+        "phrase": "used by hundreds",
+        "scope": "any",
+        "note": "Cannot say until a client agrees in writing"
+      },
+      {
+        "phrase": "double your money",
+        "scope": "any",
+        "note": "Money-circulation phrase"
+      },
+      {
+        "phrase": "earn by joining",
+        "scope": "any",
+        "note": "Money-circulation phrase"
+      },
+      {
+        "phrase": "starter pack",
+        "scope": "any",
+        "note": "Money-circulation phrase"
+      },
+      {
+        "phrase": "the earlier you join",
+        "scope": "any",
+        "note": "Money-circulation phrase"
+      },
+      {
+        "phrase": "free trial",
+        "scope": "any",
+        "note": "The demo is not a free trial; free is safe for the 30-minute call only"
+      },
+      {
+        "phrase": "Chief Follow-up Officer",
+        "scope": "any",
+        "note": "Belongs to a rival"
+      },
+      {
+        "phrase": "workflow orchestration",
+        "scope": "any",
+        "note": "Jargon"
+      },
+      {
+        "phrase": "digital transformation",
+        "scope": "any",
+        "note": "Jargon"
+      },
+      {
+        "phrase": "workflow",
+        "scope": "any",
+        "note": "Say follow-up, status, pending; not workflow"
+      },
+      {
+        "phrase": "orchestration",
+        "scope": "any",
+        "note": "Jargon"
+      },
+      {
+        "phrase": "followups",
+        "scope": "any",
+        "note": "Always follow-ups, with the hyphen"
+      },
+      {
+        "phrase": "follow ups",
+        "scope": "any",
+        "note": "Always follow-ups, with the hyphen"
+      },
+      {
+        "phrase": "systems expert",
+        "scope": "any",
+        "note": "She is a designer who builds systems"
+      },
+      {
+        "phrase": "automation expert",
+        "scope": "any",
+        "note": "She is a designer who builds systems"
+      },
+      {
+        "phrase": "the work assigns itself",
+        "scope": "any",
+        "note": "Retired 25 Oct 2026; replaced by Every task has an owner and a date"
+      },
+      {
+        "phrase": "assigns itself",
+        "scope": "any",
+        "note": "Says the system runs itself; we run the system, the team does the work"
+      },
+      {
+        "phrase": "runs by itself",
+        "scope": "any",
+        "note": "Says the business runs itself"
+      },
+      {
+        "phrase": "without people",
+        "scope": "any",
+        "note": "Says the business runs without people"
+      },
+      {
+        "phrase": "we bring the brains",
+        "scope": "any",
+        "note": "Not for public use until tested with five owners against You own the data. We run the system."
+      },
+      {
+        "phrase": "Lala",
+        "scope": "ourVoice",
+        "note": "Only inside a quoted line from the next generation; never said to or about a founder"
+      },
+      {
+        "phrase": "ho gaya",
+        "scope": "ourVoice",
+        "note": "A Hindi tag is allowed only inside a quoted owner line"
+      },
+      {
+        "phrase": "hua?",
+        "scope": "ourVoice",
+        "note": "A Hindi tag is allowed only inside a quoted owner line"
+      },
+      {
+        "phrase": "Task hua",
+        "scope": "ourVoice",
+        "note": "A Hindi tag is allowed only inside a quoted owner line"
+      },
+      {
+        "phrase": "kya",
+        "scope": "ourVoice",
+        "note": "Hinglish in our own voice"
+      },
+      {
+        "phrase": "hai",
+        "scope": "ourVoice",
+        "note": "Hinglish in our own voice"
+      },
+      {
+        "phrase": "fixes itself",
+        "scope": "any",
+        "note": "Nothing fixes itself; a person fixes it, prompted by the reminder desk"
+      },
+      {
+        "phrase": "sort themselves",
+        "scope": "any",
+        "note": "Stock and bills do not sort themselves; the stock colour sheet shows the colour and the team acts"
+      },
+      {
+        "phrase": "sorts itself",
+        "scope": "any",
+        "note": "Same as sort themselves"
+      },
+      {
+        "phrase": "moves by itself",
+        "scope": "any",
+        "note": "Work moves because a person moves it, with the reminder desk behind them"
+      },
+      {
+        "phrase": "best wishes",
+        "scope": "any",
+        "note": "Say warm wishes; best is a regulator-flagged claim word"
+      }
+    ],
+    "courseTerms": [
+      "BCI",
+      "Systems Master",
+      "FMS",
+      "PMS",
+      "MIS",
+      "PC",
+      "PISAT",
+      "autopilot",
+      "Lead-to-Mandate",
+      "Recruit module",
+      "Work OS"
+    ],
+    "claimsOk": [
+      "Built to run VSP Consultants and used every day.",
+      "Built for my family's firm in Indore first, and used there every day.",
+      "Designed by a service designer. I design the back of the business: who gets the work, how it is tracked, how you find out.",
+      "Starts with one process.",
+      "Runs on your own Google Sheet or database.",
+      "We set up, train and manage. We run the system; your team still does the work.",
+      "A live system shown on the first call, on a demo copy with invented data.",
+      "A price shown live, next to the cost of a hire.",
+      "The price and the exit terms are shown on the call: monthly, 30 days' notice, everything stays in your sheet (once the founder adopts the term).",
+      "The sheet is the easy part. What you pay for is the follow-up, the weekly score and someone accountable.",
+      "The founder worked with Voltas, Panasonic and GPC, as places she worked, never as clients.",
+      "A master's in design from Georgia Tech, as a one-line aside after the family firm and the city."
+    ],
+    "claimsBlocked": [
+      "Any named client.",
+      "Any result, saving, number of hours or rupees saved, or any figure that is not clearly marked as an example.",
+      "Trusted by, used by hundreds, proven, guaranteed.",
+      "Follower counts, crore figures or x-times figures, at any time.",
+      "Voltas, Panasonic, GPC or Georgia Tech as clients of Venture Drafters, or any detail of confidential work done there.",
+      "That the business runs by itself, on autopilot, or without people.",
+      "No one else does this."
+    ],
+    "allowNames": [
+      "Voltas",
+      "Panasonic",
+      "GPC",
+      "Genuine Parts Company",
+      "Georgia Tech",
+      "VSP Consultants",
+      "VSP",
+      "Google",
+      "Google Sheet",
+      "BNI",
+      "BNI Fortune",
+      "BNI Amadeus",
+      "Plast Pack",
+      "AIMP",
+      "YEF",
+      "Indore",
+      "Pithampur",
+      "Dewas",
+      "Ujjain",
+      "Venture Drafters",
+      "Palak Gupta"
+    ],
+    "limits": {
+      "hookWords": 8,
+      "igHashtags": 5,
+      "liHashtagsBottom": 3,
+      "liHookChars": 210,
+      "exclamation": 0,
+      "emoji": 0,
+      "statusLines": 1
+    },
+    "checklist": [
+      {
+        "id": "screens-masked",
+        "text": "Every frame of a VSP screen is checked at full size: no real client, lender, staff name, score or phone number.",
+        "auto": false
+      },
+      {
+        "id": "no-runs-itself",
+        "text": "No post says the business runs by itself, on autopilot, or without people. We run the system; the team still does the work.",
+        "auto": true
+      },
+      {
+        "id": "no-course-terms",
+        "text": "No course names or terms in any caption.",
+        "auto": true
+      },
+      {
+        "id": "calendar-rules",
+        "text": "Holiday, mourning and compliance-day rules override the calendar every time.",
+        "auto": true
+      },
+      {
+        "id": "pis-order",
+        "text": "The piece is in the order Problem, Impact, Solution, and the middle beat is an impact, not a second problem.",
+        "auto": false
+      },
+      {
+        "id": "hook-length",
+        "text": "The hook is eight words or fewer.",
+        "auto": true
+      },
+      {
+        "id": "no-emoji-exclamation",
+        "text": "No emoji, no exclamation marks, no ALL CAPS.",
+        "auto": true
+      },
+      {
+        "id": "hashtags",
+        "text": "Instagram: hashtags at the end only, within the limit. LinkedIn: none in the body, three at the bottom at most.",
+        "auto": true
+      },
+      {
+        "id": "no-figures",
+        "text": "No promised saving, hours or rupee figure that is not clearly marked as an example. No crore or x-times figure.",
+        "auto": true
+      },
+      {
+        "id": "no-client-names",
+        "text": "No client, lender or staff name, and no company name outside the allowed list.",
+        "auto": true
+      },
+      {
+        "id": "solution-named",
+        "text": "The solution line names a tool from the Solutions list or says plainly what it does; never system alone.",
+        "auto": false
+      },
+      {
+        "id": "retired-lines",
+        "text": "The piece does not say the work assigns itself or we bring the brains.",
+        "auto": true
+      },
+      {
+        "id": "one-hindi-tag",
+        "text": "At most one Hindi tag, and only inside a quoted owner line.",
+        "auto": true
+      },
+      {
+        "id": "formal-register",
+        "text": "The register is formal and warm; nothing casual, nothing coach-style.",
+        "auto": false
+      },
+      {
+        "id": "end-card",
+        "text": "Every video ends on the same end card: logo, tagline. Captions in white on a dark bar.",
+        "auto": false
+      },
+      {
+        "id": "schedule-window",
+        "text": "Scheduled posts are queued no more than 48 hours ahead and the scheduler is checked each morning.",
+        "auto": false
+      },
+      {
+        "id": "tool-named",
+        "text": "The piece names the tool we built (the reminder desk, the owner's screen, My Day, the weekly score, the question tray) where it speaks of a system, a screen or a list.",
+        "auto": true
+      },
+      {
+        "id": "li-one-question",
+        "text": "A LinkedIn post ends with one question; a Status rule marks its phrase in stars; Instagram hashtags are lower case and five at most.",
+        "auto": true
+      },
+      {
+        "id": "placeholder-gone",
+        "text": "No square-bracket placeholder remains in any field.",
+        "auto": true
+      }
+    ],
+    "examplesByType": {
+      "reel-animated": [
+        "You are the follow-up department.",
+        "You are the memory of your business.",
+        "You find out last.",
+        "Everything waits for you.",
+        "Each one is small. Together they are your whole job.",
+        "Did this get done? Did anyone follow up?",
+        "If you stop asking, work slows down. If you keep asking, everyone is exhausted."
+      ],
+      "episode": [
+        "You are the follow-up department.",
+        "You find out last.",
+        "Everything waits for you.",
+        "Work needs a home. A name, a date, a next step.",
+        "People follow what they can see.",
+        "Every task has an owner and a date."
+      ],
+      "broll": [
+        "Are you the owner, or the technician?",
+        "Did this get done? Did anyone follow up?",
+        "It is not a discipline problem. It is a design problem.",
+        "Where does a task live in your business? In a list, or in a head?",
+        "If you are the owner of a business with a few dozen people, you probably spend your day asking whether things are done. Work goes out when you remember it, and you find out what slipped when a client calls. This is not new software. We build the system that does that chasing for you, on your own Google Sheet, so your data stays yours. It hands the work to the right person, follows it up and records it. Every Monday the work goes out. Every Friday you get the score, and you hold one sit-down a week for what only you can decide. We set it up, train your team and keep it running. We run the system; your team still does the work. We start with one process, so you see it working before you add the next. It is the same system that runs my family's firm in Indore every day."
+      ],
+      "carousel": [
+        "Five signs you are the follow-up department.",
+        "What is your hour worth?",
+        "You spend your most expensive hour on the cheapest work.",
+        "Chasing costs more than you think.",
+        "From owner-run to system-run.",
+        "One screen. One sit-down a week.",
+        "Start with one process."
+      ],
+      "linkedin-text": [
+        "I built this for my family's firm in Indore first.",
+        "A designer's answer to the owner's day.",
+        "I design the back of the business: who gets the work, how it is tracked, how you find out.",
+        "It is not a discipline problem. It is a design problem.",
+        "Work needs a home. A name, a date, a next step.",
+        "People follow what they can see.",
+        "A working pilot carries more weight than arguments.",
+        "One process, 60 days, before-and-after numbers your father can read.",
+        "72% of Indian businesses regretted a software purchase within 18 months. This is not software. (Capterra 2025; cite it wherever it is used.)",
+        "Most owners are the middle of their business. We build the system on your own Google Sheet that hands out work, follows it up and shows you one screen. Every Monday the work goes out. Every Friday you get the score. We set it up, train your team and keep it running."
+      ],
+      "linkedin-carousel": [
+        "Five signs you are the follow-up department.",
+        "Where does a task live in your business? In a list, or in a head?",
+        "Most software keeps your data. Ours runs on yours.",
+        "Leave any time. Your data stays where it is.",
+        "We set it up. We train your team. We keep it running."
+      ],
+      "status-rule": [
+        "Every task has an owner and a date.",
+        "Work needs a home. A name, a date, a next step.",
+        "People follow what they can see.",
+        "The sheet is the easy part.",
+        "You stop being the middle.",
+        "See everything. Chase nothing."
+      ],
+      "wa-note": [
+        "Most owners are the middle of their business. We build the system on your own Google Sheet that hands out work, follows it up and shows you one screen. Every Monday the work goes out. Every Friday you get the score. We set it up, train your team and keep it running.",
+        "30 minutes. You see one live system.",
+        "You bring one process. We show it running. You get the plan and the price on the call."
+      ],
+      "youtube-long": [
+        "We build the system that does an owner's chasing.",
+        "The sheet is the easy part. What you pay for is the follow-up, the weekly score and someone accountable.",
+        "Every Monday the work goes out. Every Friday you get the score.",
+        "We run the system. Your team still does the work.",
+        "If you are the owner of a business with a few dozen people, you probably spend your day asking whether things are done. Work goes out when you remember it, and you find out what slipped when a client calls. This is not new software. We build the system that does that chasing for you, on your own Google Sheet, so your data stays yours. It hands the work to the right person, follows it up and records it. Every Monday the work goes out. Every Friday you get the score, and you hold one sit-down a week for what only you can decide. We set it up, train your team and keep it running. We run the system; your team still does the work. We start with one process, so you see it working before you add the next. It is the same system that runs my family's firm in Indore every day."
+      ],
+      "youtube-short": [
+        "You are the follow-up department.",
+        "You find out last.",
+        "Every task has an owner and a date.",
+        "This is not new software."
+      ],
+      "field-story": [
+        "I built this for my family's firm in Indore first.",
+        "A designer's answer to the owner's day."
+      ],
+      "greeting": [],
+      "announcement": [
+        "Start with one process.",
+        "30 minutes. You see one live system.",
+        "We set it up. We train your team. We keep it running."
+      ],
+      "image-post": [
+        "Run the business. Not the follow-ups.",
+        "See everything. Chase nothing.",
+        "This is not new software.",
+        "We run it with you, every week."
+      ]
+    },
+    "frame": "Venture Drafters builds the tools that run a business, on the owner's own Google account, and runs them with the owner every week. The owner's problem is a design problem: work has no home, no visible state and no feedback loop. We run the system; the team still does the work. Never say the business runs by itself.",
+    "createdAt": "2026-10-29T00:00:00.000Z",
+    "updatedAt": "2026-10-29T17:30:52.792Z",
+    "by": "tools@vspindia.com",
+    "lastBy": "tools@vspindia.com"
+  }
+]
