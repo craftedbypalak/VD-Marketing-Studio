@@ -351,3 +351,8 @@ hr.rule { border: 0; border-top: 1px solid var(--border); margin: 16px 0; }
 .bd-tools li:last-child { border-bottom: 0; }
 .bd-tools a { font-weight: 700; color: var(--navy); }
 @media (max-width: 720px) { .bd-brand { grid-template-columns: 1fr; } }
+
+/* Glanceable bullets (ui.bullets). Every explanation is a short list, never a paragraph. */
+.bullets { margin: 0 0 12px; padding-left: 18px; color: var(--text-secondary, inherit); }
+.bullets li { margin: 2px 0; line-height: 1.45; }
+.bullets-compact { font-size: .92em; margin-bottom: 8px; }

@@ -147,6 +147,18 @@ export function statusPill(status) {
   return el('span', { class: `pill pill-${STATUS_TONE[s] || 'neutral'}`, text: label });
 }
 
+// ------------------------------------------------------------- bullets
+
+/**
+ * Glanceable text: a short bulleted list instead of a paragraph. Use it for every
+ * explanation, hint or summary longer than one short line (docs/BUILDER.md, "Glanceable").
+ * items: strings or nodes; falsy items are skipped.
+ */
+export function bullets(items = [], { class: cls, compact = false } = {}) {
+  return el('ul', { class: ['bullets', compact && 'bullets-compact', cls].filter(Boolean).join(' ') },
+    items.filter(Boolean).map((it) => el('li', {}, it)));
+}
+
 // --------------------------------------------------------------- cards
 
 export function card({ title, eyebrow, body, footer, actions, flat = false, class: cls } = {}) {
@@ -433,5 +445,5 @@ export const preview = {
   },
 };
 
-export const ui = { el, append, icon, button, field, input, textarea, select, checkbox, switchInput, chip, statusPill, card, table, dialog, confirm, toast, tabs, empty, listRow, fmt, preview };
+export const ui = { el, append, icon, bullets, button, field, input, textarea, select, checkbox, switchInput, chip, statusPill, card, table, dialog, confirm, toast, tabs, empty, listRow, fmt, preview };
 export default ui;

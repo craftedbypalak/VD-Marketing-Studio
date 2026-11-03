@@ -1,0 +1,22 @@
+/* Builder: a grid of tool boxes, each opening its own editor. docs/BUILDER.md */
+.bx-intro { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 8px 16px; margin-bottom: 14px; }
+.bx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.bx-tile { display: flex; flex-direction: column; gap: 8px; padding: 16px; background: var(--white, #fff); border: 1px solid var(--border); border-radius: var(--r-md, 12px); color: inherit; text-decoration: none; min-height: 150px; transition: box-shadow .15s, border-color .15s; }
+.bx-tile:hover, .bx-tile:focus-visible { border-color: var(--accent, #8ace8a); box-shadow: var(--shadow-card); }
+.bx-tile-h { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--navy, #0a3050); }
+.bx-tile-h .icon { width: 20px; height: 20px; }
+.bx-tile .bullets { flex: 1; margin: 0; }
+.bx-tile-go { align-self: flex-start; font-weight: 700; font-size: .9em; color: var(--navy, #0a3050); }
+.bx-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 14px; }
+.bx-title { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 1.3rem; }
+.bx-title .icon { width: 22px; height: 22px; }
+.bx-body { display: grid; gap: 14px; }
+.bx-list, .bx-rows { display: grid; gap: 8px; }
+.bx-list-label { font-weight: 600; }
+.bx-row { display: flex; gap: 6px; align-items: center; }
+.bx-row input { flex: 1; min-width: 0; }
+.bx-rowcard { display: flex; gap: 6px; align-items: flex-start; padding: 10px; border: 1px solid var(--border); border-radius: var(--r-md, 12px); }
+.bx-rowgrid { flex: 1; display: flex; flex-wrap: wrap; gap: 8px 12px; min-width: 0; }
+.bx-cell { display: flex; flex-direction: column; gap: 3px; flex: 1 1 140px; min-width: 0; }
+.bx-cell-label { font-size: .82em; font-weight: 600; color: var(--text-muted, #667); }
+.bx-cell input, .bx-cell select { width: 100%; min-width: 0; }
