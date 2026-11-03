@@ -36,6 +36,8 @@ import { parseMultipart } from './multipart.mjs';
 
 // ------------------------------------------------------------------ constants
 
+export const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
 export const STEPS = ['outline', 'script', 'scenes', 'footage', 'voice', 'own-clips', 'edit', 'done'];
 export const STEP_LABEL = {
   outline: 'Outline', script: 'Script', scenes: 'Scenes', footage: 'Footage', voice: 'Voice',
@@ -46,14 +48,10 @@ const NEXT_ACTION = {
   voice: 'Record the voice', 'own-clips': 'Add your own clips', edit: 'Hand off to Claude Code', done: 'Finished',
 };
 
-export const WPM = 140;                 // spoken words a minute, the planning rate
-export const FACE_CHAPTERS = [1, 5, 6]; // the three face moments: problem, what changed, close
-export const MAX_FACE_PER_CHAPTER = 3;
 export const SCENE_KINDS = ['broll', 'screen', 'face', 'card'];
-export const PART_WORDS = 600;          // scene planning works on parts of about this many words
 
-/** The six chapters of the case study (phase 1 design 5.8). */
-export const CHAPTER_PLAN = [
+/** The six chapters of the case study (phase 1 design 5.8): the default plan. */
+export const DEFAULT_CHAPTER_PLAN = Object.freeze([
   { n: 1, key: 'problem', title: "The owner's problem", min: 3, max: 5, face: true,
     brief: "The owner's problem, told as one scene a managing director recognises, from the problem bank. It opens with the problem and its cost inside the first 30 seconds." },
   { n: 2, key: 'cost', title: 'What it cost us', min: 3, max: 5, face: false,
@@ -66,19 +64,101 @@ export const CHAPTER_PLAN = [
     brief: 'What changed once the system ran, and the honest limit: we run the system, the team still does the work.' },
   { n: 6, key: 'start', title: 'How to start with one process', min: 2, max: 4, face: true,
     brief: 'How an owner would start with one process. The call to action is the 30-minute call.' },
-];
+]);
+
+/**
+ * The video defaults. The director edits them in Builder, Video defaults (settings.video);
+ * anything missing or invalid falls back to these values.
+ */
+export const VIDEO_DEFAULTS = Object.freeze({
+  wpm: 140,                 // spoken words a minute, the planning rate
+  targetMinutes: 38,
+  minMinutes: 30,
+  maxMinutes: 45,
+  faceChapters: [1, 5, 6],  // the three face moments: problem, what changed, close
+  maxFacePerChapter: 3,
+  partWords: 600,           // scene planning works on parts of about this many words
+  chapterPlan: DEFAULT_CHAPTER_PLAN.map(({ title, min, max, brief }) => ({ title, min, max, brief })),
+  shortsMin: 2,
+  shortsMax: 4,
+  maxUploadMb: 60,
+});
+
+const posInt = (v, fallback, lo = 1, hi = 100000) => {
+  const n = Math.round(Number(v));
+  return v !== null && v !== '' && Number.isFinite(n) && n >= lo && n <= hi ? n : fallback;
+};
+
+/** settings.video with every missing or invalid value filled from VIDEO_DEFAULTS. */
+export function videoConfig(settings) {
+  const v = (settings && typeof settings.video === 'object' && settings.video) || {};
+  const d = VIDEO_DEFAULTS;
+  const rawPlan = Array.isArray(v.chapterPlan) ? v.chapterPlan.filter((c) => c && String(c.title || '').trim()) : [];
+  const planSource = rawPlan.length ? rawPlan : d.chapterPlan;
+  const chapterPlan = planSource.map((c, i) => {
+    const min = posInt(c.min, DEFAULT_CHAPTER_PLAN[i]?.min ?? 1, 1, 600);
+    const max = Math.max(min, posInt(c.max, DEFAULT_CHAPTER_PLAN[i]?.max ?? min, 1, 600));
+    return { title: String(c.title).trim(), min, max, brief: String(c.brief || '').trim() };
+  });
+  const minMinutes = posInt(v.minMinutes, d.minMinutes, 1, 600);
+  const maxMinutes = Math.max(minMinutes, posInt(v.maxMinutes, d.maxMinutes, 1, 600));
+  const targetMinutes = clamp(posInt(v.targetMinutes, d.targetMinutes, 1, 600), minMinutes, maxMinutes);
+  const faceRaw = Array.isArray(v.faceChapters) ? v.faceChapters.map(Number).filter((n) => Number.isInteger(n) && n >= 1) : null;
+  const faceChapters = faceRaw ? [...new Set(faceRaw)].sort((a, b) => a - b) : [...d.faceChapters];
+  const shortsMin = posInt(v.shortsMin, d.shortsMin, 0, 50);
+  const shortsMax = Math.max(shortsMin, posInt(v.shortsMax, d.shortsMax, 0, 50));
+  return {
+    wpm: posInt(v.wpm, d.wpm, 60, 300), targetMinutes, minMinutes, maxMinutes, faceChapters,
+    maxFacePerChapter: posInt(v.maxFacePerChapter, d.maxFacePerChapter, 0, 50),
+    partWords: posInt(v.partWords, d.partWords, 100, 5000), chapterPlan, shortsMin, shortsMax,
+    maxUploadMb: posInt(v.maxUploadMb, d.maxUploadMb, 1, 10000),
+  };
+}
+
+/** The chapter plan in the shape the AI steps read: n, key, title, min, max, face, brief. */
+function planOf(cfg) {
+  return cfg.chapterPlan.map((c, i) => ({
+    n: i + 1, key: DEFAULT_CHAPTER_PLAN[i]?.key || `chapter-${i + 1}`, title: c.title, min: c.min, max: c.max,
+    face: cfg.faceChapters.includes(i + 1), brief: c.brief,
+  }));
+}
+
+// The values in force. They are live bindings: the AI steps in server/ops import them, and every
+// video route sets them from the workspace settings (useVideoSettings) before it runs.
+let CFG = videoConfig(null);
+export let WPM = CFG.wpm;
+export let FACE_CHAPTERS = CFG.faceChapters;
+export let MAX_FACE_PER_CHAPTER = CFG.maxFacePerChapter;
+export let PART_WORDS = CFG.partWords;
+export let CHAPTER_PLAN = planOf(CFG);
+
+/** Apply settings.video (with fallbacks) to the values in force; returns the config. */
+export function useVideoSettings(settings) {
+  CFG = videoConfig(settings);
+  WPM = CFG.wpm;
+  FACE_CHAPTERS = CFG.faceChapters;
+  MAX_FACE_PER_CHAPTER = CFG.maxFacePerChapter;
+  PART_WORDS = CFG.partWords;
+  CHAPTER_PLAN = planOf(CFG);
+  return CFG;
+}
+export const currentVideoConfig = () => CFG;
 
 /** Whole minutes per chapter that sum to `target`, inside each chapter's range. */
-export function defaultMinutes(target = 38) {
-  const t = Math.max(30, Math.min(45, Math.round(target)));
+export function defaultMinutes(target = CFG.targetMinutes) {
+  const t = clamp(Math.round(Number(target) || CFG.targetMinutes), CFG.minMinutes, CFG.maxMinutes);
   const mins = CHAPTER_PLAN.map((c) => c.min);
   let left = t - mins.reduce((a, b) => a + b, 0);
-  const order = [3, 2, 4, 1, 0, 5]; // the build first, then the design question, what changed...
+  // the build first, then the design question, what changed... (for the default six); then the rest
+  const order = [3, 2, 4, 1, 0, 5].filter((i) => i < mins.length);
+  for (let i = 0; i < mins.length; i += 1) if (!order.includes(i)) order.push(i);
   let guard = 0;
-  while (left > 0 && guard++ < 200) {
+  while (left > 0 && guard++ < 1000) {
+    let moved = false;
     for (const i of order) {
-      if (left > 0 && mins[i] < CHAPTER_PLAN[i].max) { mins[i] += 1; left -= 1; }
+      if (left > 0 && mins[i] < CHAPTER_PLAN[i].max) { mins[i] += 1; left -= 1; moved = true; }
     }
+    if (!moved) break;
   }
   return mins;
 }
@@ -86,7 +166,6 @@ export function defaultMinutes(target = 38) {
 // ------------------------------------------------------------------ small helpers
 
 export const wordCount = (s) => (String(s || '').match(/\S+/g) || []).length;
-export const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 export const splitSentences = (line) => String(line || '').split(/(?<=[.?!])\s+/).map((s) => s.trim()).filter(Boolean);
 const normWords = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean);
 const roundUpHalf = (x) => Math.ceil(x * 2) / 2;
@@ -119,6 +198,7 @@ const slugify = (s, max = 40) => {
   return (cut.includes('-') && full[max] !== '-' ? cut.slice(0, cut.lastIndexOf('-')) : cut) || 'chapter';
 };
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+const listAnd = (xs) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
 const fmtLong = (sec) => {
   const m = Math.round(sec / 60);
   return m < 90 ? `${Math.max(1, m)} minutes` : `${Math.round((sec / 3600) * 10) / 10} hours`;
@@ -478,16 +558,17 @@ function youtubeInfo(video, piece, settings) {
   add('chapters', 'Chapters: six or more, first at 00:00, each at least 10 seconds', chapters.length >= 6 && starts[0] === 0 && ascending ? 'pass' : chapters.length >= 3 && starts[0] === 0 && ascending ? 'warn' : 'fail',
     `${chapters.length} chapters`);
   const mins = total / 60;
-  add('length', 'Length 30 to 45 minutes', total && mins >= 30 && mins <= 45 ? 'pass' : 'warn',
+  add('length', `Length ${CFG.minMinutes} to ${CFG.maxMinutes} minutes`, total && mins >= CFG.minMinutes && mins <= CFG.maxMinutes ? 'pass' : 'warn',
     total ? `${(Math.round(mins * 10) / 10)} minutes (${chapters.length ? tl[0].source : 'outline'} timing)` : 'No timing yet');
   add('website', 'Website link in the description', description.includes(WEBSITE_PLACEHOLDER) || !/https?:\/\/|www\./i.test(description) ? 'warn' : 'pass',
-    description.includes(WEBSITE_PLACEHOLDER) ? 'The link is a placeholder; set settings.website or edit the description' : null);
+    description.includes(WEBSITE_PLACEHOLDER) ? 'The link is a placeholder; set the website in Builder, Video defaults, or edit the description' : null);
   const shorts = (video.shortsPieceIds || []).length;
-  add('shorts', 'Two to four Shorts made', shorts >= 2 && shorts <= 4 ? 'pass' : 'warn', `${shorts} made`);
+  const shortsRange = CFG.shortsMin === CFG.shortsMax ? `${CFG.shortsMin}` : `${CFG.shortsMin} to ${CFG.shortsMax}`;
+  add('shorts', `${shortsRange} Shorts made`, shorts >= CFG.shortsMin && shorts <= CFG.shortsMax ? 'pass' : 'warn', `${shorts} made`);
   const faceCh = new Set((video.scenes || []).filter((s) => s.kind === 'face').map((s) => s.chapter));
   const missing = FACE_CHAPTERS.filter((n) => !faceCh.has(n));
-  add('face', 'Three face moments: problem, what changed, close', (video.scenes || []).length ? (missing.length ? 'warn' : 'pass') : 'warn',
-    (video.scenes || []).length ? (missing.length ? `No face scene in chapter ${missing.join(', ')}` : 'Face scenes in chapters 1, 5 and 6') : 'No scenes planned yet');
+  add('face', `Face moments in chapters ${listAnd(FACE_CHAPTERS)}`, (video.scenes || []).length ? (missing.length ? 'warn' : 'pass') : 'warn',
+    (video.scenes || []).length ? (missing.length ? `No face scene in chapter ${missing.join(', ')}` : `Face scenes in chapters ${listAnd(FACE_CHAPTERS)}`) : 'No scenes planned yet');
   return { title, description, chapters, totalSeconds: total, checks, pieceId: piece?.id || null };
 }
 
@@ -727,7 +808,7 @@ function shotPlanMd(video) {
   out.push('- Keep the cursor slow and the window at full screen; pause for a second on each result.');
   const face = (video.scenes || []).filter((s) => s.kind === 'face');
   out.push('');
-  out.push('## To camera (the three face moments)');
+  out.push('## To camera (the face moments)');
   out.push('');
   for (const n of FACE_CHAPTERS) {
     const ch = chapterOf(video, n);
@@ -790,7 +871,7 @@ function claudePrompt(video, abs, info) {
   return [
     `Use the brand-video skill on the folder ${abs}: the script is script.md, brand.json is written, scenes-plan.json lists the scenes (id, chapter, kind, say, speak, sees, stock search words, seconds, and the clip chosen so far), footage-list.md and shot-plan.md say what is filmed by hand, and my own clips are already in assets/broll/.`,
     '',
-    `This is a ${plural(mins, 'minute', 'minute')}-long case study in six chapters (chapters/ holds one script file per chapter). Run bv setup only if bv check says it is needed. Run bv new on the folder, then bv check, and design the scenes chapter by chapter, running bv check after each chapter and reading the stills in build/shots/.`,
+    `This is a ${plural(mins, 'minute', 'minute')}-long case study in ${plural((video.outline || []).length || CHAPTER_PLAN.length, 'chapter', 'chapters')} (chapters/ holds one script file per chapter). Run bv setup only if bv check says it is needed. Run bv new on the folder, then bv check, and design the scenes chapter by chapter, running bv check after each chapter and reading the stills in build/shots/.`,
     '',
     'Rules for this film: on-screen text is the script word for word, and the spoken forms are in scenes-plan.json as speak. Scene kinds mean: broll = footage behind the words; screen = my recording of the masked copy, or a designed system screen with demo data and the DEMO tag; face = my own clip to camera; card = a designed card with script words only. Use the official Venture Drafters logo files only, per the rules in brand.json. Never name a client, lender or staff member.',
     '',
@@ -819,7 +900,7 @@ function handoffMd(video, abs, info) {
   out.push('| brand.json | Venture Drafters tokens, fonts and the official logo files, in the shape the pipeline expects. |');
   out.push('| scenes-plan.json | Every planned scene: chapter, kind, say, speak (how it is read aloud), sees, stock search words, seconds, clip. |');
   out.push('| footage-list.md | What to collect, by chapter, with file names and minimum lengths. |');
-  out.push('| shot-plan.md | What to film and how, the three face moments and the screen recordings. |');
+  out.push('| shot-plan.md | What to film and how, the face moments and the screen recordings. |');
   out.push('| clips/ | Your own clips as uploaded. Copies are in assets/broll/ under the same names. |');
   out.push('| voice/ | The recorded voice, if uploaded in Studio. |');
   out.push('');
@@ -889,7 +970,7 @@ const aiOpRoutes = ['caseStudyOutline', 'videoScript', 'scenePlan', 'shortsCuts'
   },
 }));
 
-export const routes = [
+const rawRoutes = [
   ...aiOpRoutes,
   // ---- runner status and the spoken form (no project needed)
   { method: 'GET', path: '/api/video/bv', handler: async () => bvStatus() },
@@ -934,7 +1015,7 @@ export const routes = [
       const id = store.nextId('vd');
       const video = {
         id, pieceId: piece?.id || null, title, titleAuto: !b.title && !piece, solutionId: solution?.id || piece?.solutionId || null,
-        subject: subject || null, notes: String(b.notes || '').trim(), targetMinutes: clamp(parseInt(b.targetMinutes, 10) || 38, 30, 45),
+        subject: subject || null, notes: String(b.notes || '').trim(), targetMinutes: clamp(parseInt(b.targetMinutes, 10) || CFG.targetMinutes, CFG.minMinutes, CFG.maxMinutes),
         status: 'outline', outline: [], script: '', scriptMarks: {}, scenes: [], footage: [], ownClips: [],
         bvProject: null, shortsPieceIds: [], by: ctx.by || null,
       };
@@ -966,7 +1047,7 @@ export const routes = [
       if (b.solutionId !== undefined) brief.solutionId = b.solutionId || null;
       if (b.subject !== undefined) brief.subject = String(b.subject || '').trim() || null;
       if (b.notes !== undefined) brief.notes = String(b.notes || '');
-      if (b.targetMinutes !== undefined) brief.targetMinutes = clamp(parseInt(b.targetMinutes, 10) || 38, 30, 45);
+      if (b.targetMinutes !== undefined) brief.targetMinutes = clamp(parseInt(b.targetMinutes, 10) || CFG.targetMinutes, CFG.minMinutes, CFG.maxMinutes);
       const merged = { ...video, ...brief };
       if (brief.solutionId && !ctx.store.get('solutions', brief.solutionId)) throw new ctx.HttpError(404, 'Solution not found');
       const input = { solutionId: merged.solutionId, subject: merged.subject, notes: merged.notes, targetMinutes: merged.targetMinutes };
@@ -1379,7 +1460,7 @@ export const routes = [
       if (!String(video.script || '').trim()) throw new ctx.HttpError(409, 'Write the script first');
       const tl = chapterTimeline(video);
       const input = {
-        title: video.title, outline: video.outline, script: video.script, count: clamp(parseInt(b.count, 10) || 3, 2, 4),
+        title: video.title, outline: video.outline, script: video.script, count: clamp(parseInt(b.count, 10) || 3, Math.max(1, CFG.shortsMin), Math.max(1, CFG.shortsMax)),
         chapterStarts: Object.fromEntries(tl.map((c) => [c.n, c.start])), solutionId: video.solutionId,
       };
       if (b.dryRun) return dryRun(ctx, 'shortsCuts', input);
@@ -1437,6 +1518,12 @@ export const routes = [
     },
   },
 ];
+
+// Every route first applies the workspace's settings.video, so the AI steps and checks use them.
+export const routes = rawRoutes.map((r) => ({
+  ...r,
+  handler: (ctx) => { useVideoSettings(typeof ctx.settings === 'function' ? ctx.settings() : null); return r.handler(ctx); },
+}));
 
 // ------------------------------------------------------------------ Today
 

@@ -121,3 +121,9 @@
 .rc-greet-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
 .rc-greet-body h3 { margin: 0; font-size: 17px; }
 .rc-greet-actions { flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+
+/* Builder, Occasions: the festival angle bank (app/js/builder/boxes/occasions.js) */
+.obx-angle { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: flex-start; justify-content: space-between; padding: 8px 0; border-top: 1px solid var(--border); }
+.obx-angle:first-child { border-top: 0; }
+.obx-angle-main { flex: 1 1 220px; min-width: 0; display: grid; gap: 4px; }
+.obx-angle-meta { display: flex; flex-wrap: wrap; gap: 4px; }

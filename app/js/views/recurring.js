@@ -7,7 +7,7 @@
 
 import { api } from '../api.js';
 import { roleOf } from '../roles.js';
-import { el, card, field, input, textarea, select, button, chip, tabs, toast, dialog, confirm, empty, fmt } from '../ui.js';
+import { el, card, field, input, textarea, select, button, chip, checkbox, tabs, toast, dialog, confirm, empty, fmt, bullets } from '../ui.js';
 import { ready as cardsReady } from '../cards/index.js';
 import * as greetingCard from '../cards/festivalGreeting.js';
 import { svgToPng, downloadBlob } from '../cards/png.js';
@@ -16,11 +16,35 @@ import { setBrand } from '../cards/_kit.js';
 export const route = '#/occasions';
 export const title = 'Occasions';
 
+// The occasion settings: settings.occasions, edited in Builder, Occasions (app/js/builder/boxes/occasions.js).
+// The same fallbacks as server/recurring.mjs (occasionsConfig).
+export const OCCASION_DEFAULTS = Object.freeze({
+  greetingTime: '19:00', statusAccount: 'wa-st', conceptYears: 4,
+  conceptTypes: Object.freeze({ 'reel-animated': 'reel', broll: 'reel', carousel: 'carousel', 'status-rule': 'status' }),
+});
+const isTime = (t) => /^([01]\d|2[0-3]):[0-5]\d$/.test(String(t || ''));
+export function occasionsConfig(settings) {
+  const o = (settings && typeof settings.occasions === 'object' && settings.occasions) || {};
+  const d = OCCASION_DEFAULTS;
+  const years = Math.round(Number(o.conceptYears));
+  const types = {};
+  if (o.conceptTypes && typeof o.conceptTypes === 'object' && !Array.isArray(o.conceptTypes)) {
+    for (const [k, v] of Object.entries(o.conceptTypes)) if (String(k).trim() && String(v || '').trim()) types[String(k).trim()] = String(v).trim();
+  }
+  return {
+    greetingTime: [o.greetingTime, settings?.calendar?.greetingTime, d.greetingTime].find(isTime),
+    statusAccount: String(o.statusAccount || '').trim() || d.statusAccount,
+    conceptYears: o.conceptYears !== null && o.conceptYears !== undefined && o.conceptYears !== '' && Number.isFinite(years) && years >= 1 && years <= 50 ? years : d.conceptYears,
+    conceptTypes: Object.keys(types).length ? types : { ...d.conceptTypes },
+  };
+}
+let OCC = occasionsConfig(null);
+
 const TABS = [
-  { id: 'events', label: 'Calendar', about: 'Every festival and important date. Choose what we post for each.' },
-  { id: 'greetings', label: 'Greetings', about: 'A branded greeting image for each festival, posted the evening before. Goes to everyone.' },
-  { id: 'concepts', label: 'Festival ideas', about: 'Big festivals only: a post that links the festival to our work, a few days before. Pick one of three ideas.' },
-  { id: 'announcements', label: 'Announcements', about: 'News about us: a launch, an offer or an event. Write the facts once and get a post for each account.' },
+  { id: 'events', label: 'Calendar', about: () => ['Every festival and important date', 'Choose what we post for each'] },
+  { id: 'greetings', label: 'Greetings', about: () => ['A branded greeting image per festival', `Posted the evening before, at ${OCC.greetingTime}`, 'Goes to everyone'] },
+  { id: 'concepts', label: 'Festival ideas', about: () => ['Big festivals only', 'A post that links the festival to our work', 'Goes out a few days before; pick one of three ideas'] },
+  { id: 'announcements', label: 'Announcements', about: () => ['News about us: a launch, an offer, an event', 'Write the facts once, get a post per account'] },
 ];
 
 // What an occasion is. Set on each event as `category` (server/recurring.mjs, categoryOf).
@@ -37,7 +61,8 @@ const POST_TONE = { creative: 'accent', wish: 'navy', none: 'muted' };
 const GREETING_KINDS = ['greeting', 'greeting-only'];
 const postOf = (e) => (e.conceptAllowed ? 'creative' : GREETING_KINDS.includes(e.kind) && e.greetingText ? 'wish' : 'none');
 const defaultWish = (name) => `Wishing you and your family a happy ${name}. Palak Gupta, Venture Drafters`;
-const CONCEPT_TYPES = [['broll', 'B-roll video'], ['reel-animated', 'Animated reel'], ['carousel', 'Carousel'], ['status-rule', 'Status rule']];
+const CONCEPT_TYPE_LABEL = { broll: 'B-roll video', 'reel-animated': 'Animated reel', carousel: 'Carousel', 'status-rule': 'Status rule' };
+const conceptTypeOptions = () => Object.keys(OCC.conceptTypes).map((value) => ({ value, label: CONCEPT_TYPE_LABEL[value] || cap(value.replace(/-/g, ' ')) }));
 
 const RULES = ['normal', 'greeting-only', 'dark', 'quiet'];
 const RULE_LABEL = { normal: 'Post as usual', 'greeting-only': 'Greeting only', dark: 'No posting', quiet: 'Quiet' };
@@ -65,6 +90,12 @@ function aiFailure(err, what) {
   toast(`${what} did not complete. ${err.status === 504 ? 'Claude took too long to answer.' : 'Claude could not be reached.'}${hint}`, 'bad', { ms: 7000 });
 }
 
+/** A run of prose (an AI scene) as one bullet a sentence. */
+function sentenceBullets(text) {
+  const parts = String(text || '').split(/(?<=[.?!])\s+/).map((x) => x.trim()).filter(Boolean);
+  return parts.length ? bullets(parts, { compact: true }) : null;
+}
+
 function ruleChip(rule) { return chip({ label: RULE_LABEL[rule] || rule, tone: RULE_TONE[rule] || 'default' }); }
 
 export async function render(container, params) {
@@ -78,6 +109,7 @@ export async function render(container, params) {
     [events, accounts, settings] = await Promise.all([api.get('/events'), api.get('/accounts'), api.settings().catch(() => null)]);
     const me = (api.user.get() || '').toLowerCase();
     setBrand(settings?.brand);
+    OCC = occasionsConfig(settings);
     const role = roleOf((settings?.users || []).find((u) => String(u.email).toLowerCase() === me));
     approver = Boolean(me) && (role === 'manager' || role === 'director');
     director = Boolean(me) && role === 'director';
@@ -94,12 +126,13 @@ export async function render(container, params) {
     onChange: (id) => { history.replaceState(null, '', `#/occasions?tab=${id}`); show(id); },
   });
   bar.classList.add('rc-tabs');
-  const about = el('p', { class: 'note rc-about' });
+  const about = el('div', { class: 'rc-about' });
   container.append(bar, about, panel);
 
   const views = { events: eventsTab, greetings: greetingsTab, concepts: conceptsTab, announcements: announcementsTab };
   async function show(id) {
-    about.textContent = TABS.find((t) => t.id === id)?.about || '';
+    const tab = TABS.find((t) => t.id === id);
+    about.replaceChildren(tab ? bullets(tab.about(), { compact: true }) : '');
     panel.replaceChildren(el('div', { class: 'loading', text: 'Loading' }));
     try {
       const node = await views[id]();
@@ -329,7 +362,7 @@ export async function render(container, params) {
     function showSummary(r) {
       const lines = r.events.filter((e) => !e.skipped).map((e) => {
         const bits = [];
-        if (e.piece) bits.push(`${e.piece === 'created' ? 'made' : 'already there'}, ${fmt.date(e.eve)} at 19:00`);
+        if (e.piece) bits.push(`${e.piece === 'created' ? 'made' : 'already there'}, ${fmt.date(e.eve)} at ${OCC.greetingTime}`);
         return el('li', {}, [el('b', { text: `${e.name}: ` }), bits.join('; ')]);
       });
       summary.replaceChildren(card({
@@ -346,7 +379,7 @@ export async function render(container, params) {
       controls.replaceChildren(
         field({ label: 'Range', input: daysSel }),
         el('span', { class: 'rc-spacer' }),
-        button({ kind: 'primary', label: 'Add all to the calendar', icon: 'content', disabled: !generatable.length, title: 'A draft greeting on the eve, 19:00, for each festival in range', onClick: () => runGenerate({}, 'Greetings') }),
+        button({ kind: 'primary', label: 'Add all to the calendar', icon: 'content', disabled: !generatable.length, title: `A draft greeting on the eve, ${OCC.greetingTime}, for each festival in range`, onClick: () => runGenerate({}, 'Greetings') }),
       );
       if (data.goDark?.on) {
         summary.replaceChildren(el('div', { class: 'banner banner-warn' }, `Go dark is on${data.goDark.from ? ` from ${fmt.date(data.goDark.from)}` : ''}. Nothing posts until it is switched off in Settings.`));
@@ -409,7 +442,12 @@ export async function render(container, params) {
     const root = el('div');
     const listBox = el('div');
     root.append(
-      el('p', { class: 'note rc-intro', text: 'For the big festivals. Get three ideas, pick one, and it becomes a post three to seven days before. The basic wish still goes on the eve.' }),
+      el('div', { class: 'rc-intro' }, bullets([
+        'Get three ideas for a big festival',
+        'Pick one: it becomes a post three to seven days before',
+        `Ideas never repeat within ${OCC.conceptYears} years`,
+        'The greeting still goes on the eve',
+      ], { compact: true })),
       listBox,
     );
     let data = null;
@@ -432,12 +470,12 @@ export async function render(container, params) {
       const body = [el('div', { class: 'rc-meta' }, meta)];
       if (e.proposals.length) {
         body.push(el('div', { class: 'rc-concepts' }, e.proposals.map((c, i) => {
-          const typeSel = select({ options: CONCEPT_TYPES.map(([value, label]) => ({ value, label })), value: c.type });
+          const typeSel = select({ options: conceptTypeOptions(), value: c.type });
           const used = e.usedAngleId === c.angleId;
           return el('div', { class: `rc-concept${used ? ' is-used' : ''}` }, [
             el('div', { class: 'eyebrow', text: `Idea ${i + 1}. ${c.solutionName}` }),
             el('h3', { text: c.idea }),
-            el('p', { class: 'note', text: c.scene }),
+            sentenceBullets(c.scene),
             el('details', { class: 'rc-more' }, [el('summary', { text: 'Show lines' }), el('dl', { class: 'rc-lines' }, [
               el('dt', { text: 'Reel hook' }), el('dd', { text: c.reelHook }),
               el('dt', { text: 'Reel caption' }), el('dd', { text: c.reelCaption }),
@@ -460,7 +498,7 @@ export async function render(container, params) {
         })));
       } else body.push(el('p', { class: 'note', text: 'No ideas yet.' }));
       const actions = [
-        button({ kind: e.proposals.length ? 'secondary' : 'primary', small: true, icon: 'sparkle', label: e.proposals.length ? 'New ideas' : 'Get ideas', disabled: !e.anglesUnused || Boolean(e.pieceId), title: 'Three ideas from angles not used in the last four years', onClick: async (ev) => {
+        button({ kind: e.proposals.length ? 'secondary' : 'primary', small: true, icon: 'sparkle', label: e.proposals.length ? 'New ideas' : 'Get ideas', disabled: !e.anglesUnused || Boolean(e.pieceId), title: `Three ideas from angles not used in the last ${OCC.conceptYears} years`, onClick: async (ev) => {
           const btn = ev.currentTarget; btn.disabled = true; const old = btn.lastChild.textContent; btn.lastChild.textContent = 'Proposing';
           try { await api.post('/occasions/concepts/propose', { eventId: e.id }); toast(`Three ideas for ${e.shortName}`, 'ok'); await load(); }
           catch (err) { aiFailure(err, 'The ideas'); btn.disabled = false; btn.lastChild.textContent = old; }
@@ -485,11 +523,11 @@ export async function render(container, params) {
     const pieces = campaigns.length ? await api.get('/pieces') : [];
     const root = el('div');
     root.appendChild(el('div', { class: 'rc-toolbar' }, [
-      el('p', { class: 'note', style: { margin: 0, flex: '1 1 260px' }, text: 'Launches, offers, events and milestones. Add the facts; Claude drafts a post per account.' }),
+      el('div', { style: { flex: '1 1 260px' } }, bullets(['Launches, offers, events and milestones', 'Add the facts; Claude drafts a post per account'], { compact: true })),
       button({ kind: 'primary', label: 'New campaign', icon: 'plus', onClick: () => editCampaign(null) }),
     ]));
     if (!campaigns.length) {
-      root.appendChild(empty({ title: 'No campaigns yet', hint: 'Create one with its name, dates and the facts in plain lines.', action: button({ kind: 'primary', label: 'New campaign', icon: 'plus', onClick: () => editCampaign(null) }) }));
+      root.appendChild(empty({ title: 'No campaigns yet', hint: 'Add a name, dates and the facts.', action: button({ kind: 'primary', label: 'New campaign', icon: 'plus', onClick: () => editCampaign(null) }) }));
       return root;
     }
     for (const c of campaigns) {
@@ -532,8 +570,8 @@ export async function render(container, params) {
       wide: true,
       body: el('div', {}, [
         el('div', { class: 'form-grid' }, [field({ label: 'Name', input: name }), field({ label: 'Kind', input: kind }), field({ label: 'From', input: from }), field({ label: 'To', input: to })]),
-        field({ label: 'Facts', input: facts, hint: 'Claude uses only these. No result, saving or number that is not marked as an example.' }),
-        field({ label: 'Host or partner to thank (optional)', input: third, hint: 'The post then praises them and keeps Venture Drafters in the second line.' }),
+        field({ label: 'Facts', input: facts, hint: 'One a line. Claude uses only these; mark example numbers.' }),
+        field({ label: 'Host or partner to thank (optional)', input: third, hint: 'Thanked first; Venture Drafters comes second.' }),
         field({ label: 'Notes', input: notes }),
       ]),
       actions: [
@@ -557,7 +595,7 @@ export async function render(container, params) {
     const groups = [...new Set(accounts.map((a) => a.group))];
     const boxes = new Map();
     const body = el('div', { class: 'rc-accounts' }, [
-      el('p', { class: 'note', text: 'Choose the accounts to draft for. One piece is created for each, in the register, from the facts alone.' }),
+      bullets(['Choose the accounts to draft for', 'One piece each, from the facts alone'], { compact: true }),
       ...groups.flatMap((g) => [
         el('span', { class: 'eyebrow group', text: g }),
         ...accounts.filter((a) => a.group === g && a.platform !== 'in-person').map((a) => {

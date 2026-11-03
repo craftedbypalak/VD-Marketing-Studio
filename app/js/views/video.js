@@ -9,7 +9,7 @@
 
 import { api } from '../api.js';
 import {
-  el, button, input, textarea, select, field, card, chip, statusPill, table, dialog, toast, empty, icon, fmt, switchInput,
+  el, button, input, textarea, select, field, card, chip, statusPill, table, dialog, toast, empty, icon, fmt, switchInput, bullets,
 } from '../ui.js';
 
 export const route = ['#/video', '#/video/:id'];
@@ -17,7 +17,83 @@ export const title = (params) => (params && params.id ? 'Video project' : 'Video
 
 // ------------------------------------------------------------------ constants
 
-const WPM = 140;
+// The video defaults: settings.video, edited in Builder, Video defaults (app/js/builder/boxes/video.js).
+// The same fallbacks as server/video.mjs (VIDEO_DEFAULTS, videoConfig).
+export const VIDEO_DEFAULTS = Object.freeze({
+  wpm: 140, targetMinutes: 38, minMinutes: 30, maxMinutes: 45, faceChapters: [1, 5, 6], maxFacePerChapter: 3, partWords: 600,
+  chapterPlan: [
+    { title: "The owner's problem", min: 3, max: 5, brief: "The owner's problem, told as one scene a managing director recognises, from the problem bank. It opens with the problem and its cost inside the first 30 seconds." },
+    { title: 'What it cost us', min: 3, max: 5, brief: "What the same problem cost VSP, in VSP's own words. No client, lender or staff detail." },
+    { title: 'The design question', min: 4, max: 6, brief: 'Why this is a design problem, not a discipline problem: where the work had no home, no visible state and no feedback loop.' },
+    { title: 'The build', min: 15, max: 24, brief: 'The system on the masked copy, walked through step by step. Every frame is checked for real names before it is shown. The build stays on screen.' },
+    { title: 'What changed, and the honest limit', min: 4, max: 6, brief: 'What changed once the system ran, and the honest limit: we run the system, the team still does the work.' },
+    { title: 'How to start with one process', min: 2, max: 4, brief: 'How an owner would start with one process. The call to action is the 30-minute call.' },
+  ],
+  shortsMin: 2, shortsMax: 4, maxUploadMb: 60,
+});
+
+const posInt = (v, fallback, lo = 1, hi = 100000) => {
+  const n = Math.round(Number(v));
+  return v !== null && v !== undefined && v !== '' && Number.isFinite(n) && n >= lo && n <= hi ? n : fallback;
+};
+
+/** settings.video with every missing or invalid value filled from VIDEO_DEFAULTS. */
+export function videoConfig(settings) {
+  const v = (settings && typeof settings.video === 'object' && settings.video) || {};
+  const d = VIDEO_DEFAULTS;
+  const raw = Array.isArray(v.chapterPlan) ? v.chapterPlan.filter((c) => c && String(c.title || '').trim()) : [];
+  const chapterPlan = (raw.length ? raw : d.chapterPlan).map((c, i) => {
+    const min = posInt(c.min, d.chapterPlan[i]?.min ?? 1, 1, 600);
+    return { title: String(c.title).trim(), min, max: Math.max(min, posInt(c.max, d.chapterPlan[i]?.max ?? min, 1, 600)), brief: String(c.brief || '').trim() };
+  });
+  const minMinutes = posInt(v.minMinutes, d.minMinutes, 1, 600);
+  const maxMinutes = Math.max(minMinutes, posInt(v.maxMinutes, d.maxMinutes, 1, 600));
+  const face = Array.isArray(v.faceChapters) ? v.faceChapters.map(Number).filter((n) => Number.isInteger(n) && n >= 1) : null;
+  const shortsMin = posInt(v.shortsMin, d.shortsMin, 0, 50);
+  return {
+    wpm: posInt(v.wpm, d.wpm, 60, 300), minMinutes, maxMinutes,
+    targetMinutes: Math.min(maxMinutes, Math.max(minMinutes, posInt(v.targetMinutes, d.targetMinutes, 1, 600))),
+    faceChapters: face ? [...new Set(face)].sort((a, b) => a - b) : [...d.faceChapters],
+    maxFacePerChapter: posInt(v.maxFacePerChapter, d.maxFacePerChapter, 0, 50),
+    partWords: posInt(v.partWords, d.partWords, 100, 5000), chapterPlan,
+    shortsMin, shortsMax: Math.max(shortsMin, posInt(v.shortsMax, d.shortsMax, 0, 50)),
+    maxUploadMb: posInt(v.maxUploadMb, d.maxUploadMb, 1, 10000),
+  };
+}
+
+/** "1, 5 and 6" */
+export const listAnd = (xs) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
+/** "2 to 4", or "3" when both ends are the same. */
+export const range = (a, b) => (a === b ? String(a) : `${a} to ${b}`);
+
+// The values in force, set from the settings on every render.
+let CFG = videoConfig(null);
+let WPM = CFG.wpm;
+let FACE_CHAPTERS = CFG.faceChapters;
+let MAX_UPLOAD_MB = CFG.maxUploadMb;
+function useConfig(settings) {
+  CFG = videoConfig(settings);
+  WPM = CFG.wpm; FACE_CHAPTERS = CFG.faceChapters; MAX_UPLOAD_MB = CFG.maxUploadMb;
+}
+const faceWhere = () => (FACE_CHAPTERS.length ? `chapters ${listAnd(FACE_CHAPTERS)}` : 'no chapter');
+
+const DAY_NAME = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' };
+/** The posting rhythm for long videos, from the YouTube account's weekly slots, as short bullets. */
+export function cadenceBullets(accounts, cfg = CFG) {
+  const yt = (accounts || []).filter((a) => a.platform === 'youtube');
+  const slots = yt.flatMap((a) => (a.weekly || []).filter((w) => !w.kind || /long/.test(w.kind) || w.every));
+  const out = [];
+  for (const w of slots) {
+    const every = Number(w.every) > 1 ? (Number(w.every) === 2 ? 'Every other' : `Every ${w.every}th`) : 'Every';
+    const from = w.anchor ? `, from ${fmt.date(w.anchor)}` : '';
+    out.push(`${every} ${DAY_NAME[w.day] || w.day}${w.time ? ` at ${w.time}` : ''}: one long episode${from}`);
+  }
+  if (!out.length) out.push('No YouTube slot set yet: add one in Builder, Posting rhythm');
+  out.push(`Episodes ${range(cfg.minMinutes, cfg.maxMinutes)} minutes`);
+  out.push(`${range(cfg.shortsMin, cfg.shortsMax)} Shorts cut from each${slots.some((w) => Number(w.every) > 1) ? ', for the weeks between' : ''}`);
+  return out;
+}
+
 const STATUS_ORDER = ['outline', 'script', 'scenes', 'footage', 'voice', 'own-clips', 'edit', 'done'];
 const STEP_ITEMS = [
   { id: 'outline', label: 'Outline', status: 'outline' },
@@ -30,8 +106,6 @@ const STEP_ITEMS = [
   { id: 'shorts', label: 'Shorts', status: null },
   { id: 'done', label: 'Done', status: 'done' },
 ];
-const FACE_CHAPTERS = [1, 5, 6];
-const MAX_UPLOAD_MB = 60;
 const LOGIN_HINT = 'Run claude and /login in a terminal';
 const KIND_LABEL = { broll: 'B-roll', screen: 'Screen', face: 'Face', card: 'Card' };
 
@@ -121,6 +195,12 @@ function counter(inputEl, max, { words: byWords = false } = {}) {
   return c;
 }
 
+/** A run of prose (an AI brief, a scene) as one bullet a sentence. */
+function sentenceBullets(text) {
+  const parts = String(text || '').split(/(?<=[.?!])\s+/).map((x) => x.trim()).filter(Boolean);
+  return parts.length ? bullets(parts, { compact: true }) : null;
+}
+
 function warnList(items) {
   if (!items || !items.length) return null;
   return el('ul', { class: 'vid-warns' }, items.map((w) => el('li', { text: w })));
@@ -154,6 +234,7 @@ function injectCss() {
 
 export async function render(container, params) {
   injectCss();
+  useConfig(await api.settings().catch(() => null));
   if (params.id) return renderProject(container, params);
   return renderList(container);
 }
@@ -162,9 +243,9 @@ export async function render(container, params) {
 
 async function renderList(container) {
   container.appendChild(el('div', { class: 'loading', text: 'Loading video projects' }));
-  let videos; let pieces; let solutions;
+  let videos; let pieces; let solutions; let accounts;
   try {
-    [videos, pieces, solutions] = await Promise.all([api.get('/videos'), api.get('/pieces', { type: 'youtube-long' }), api.get('/solutions')]);
+    [videos, pieces, solutions, accounts] = await Promise.all([api.get('/videos'), api.get('/pieces', { type: 'youtube-long' }), api.get('/solutions'), api.get('/accounts').catch(() => [])]);
   } catch (err) {
     container.replaceChildren(el('div', { class: 'banner banner-bad', text: `Could not load video projects: ${err.message}` }));
     return;
@@ -176,12 +257,20 @@ async function renderList(container) {
   const newBtn = button({ kind: 'primary', label: 'New video project', icon: 'plus', onClick: () => openNewDialog({ solutions, pieces }) });
   setTopActions([newBtn]);
 
-  container.appendChild(el('p', { class: 'vid-lead', text: 'YouTube runs fortnightly: one 30 to 45 minute episode every other Monday at 11:00 from 16 November 2026, Shorts between. The ten episodes of Built to Run: Stories carry their scripts from the series files; a VSP-system case study takes one system from an idea to a recording plan: outline, script, scenes, footage, voice, your own clips, then the edit in the brand-video pipeline. Each episode is 30 to 45 minutes, with two to four Shorts cut from it for the Mondays between.' }));
+  container.appendChild(el('div', { class: 'vid-lead' }, [
+    el('div', {}, [el('h3', { text: 'When it goes out' }), bullets(cadenceBullets(Array.isArray(accounts) ? accounts : (accounts?.items || [])), { compact: true })]),
+    el('div', {}, [el('h3', { text: 'What a project is' }), bullets([
+      'Built to Run: Stories: scripts come from the series files',
+      'Case study: one system, from idea to recording plan',
+      'Steps: outline, script, scenes, footage, voice, own clips, edit',
+      'The edit runs in the brand-video pipeline',
+    ], { compact: true })]),
+  ]));
 
   if (!videos.length) {
     container.appendChild(empty({
       title: 'No video project yet',
-      hint: 'Start from one of the systems in the Solutions register, or give a subject of your own.',
+      hint: 'Start from a system in Solutions, or give a subject.',
       action: button({ kind: 'primary', label: 'New video project', icon: 'plus', onClick: () => openNewDialog({ solutions, pieces }) }),
     }));
     return;
@@ -222,14 +311,14 @@ function openNewDialog({ solutions, pieces }) {
   const subject = input({ placeholder: 'Or type a subject, for example how quotes get followed up' });
   const pieceSel = select({ options: free.map((p) => ({ value: p.id, label: p.hook || p.id })), placeholder: 'None, make a new piece' });
   const notes = textarea({ rows: 4, placeholder: 'What happened, in your words: the problem, what it cost, what changed. Real figures only.' });
-  const target = input({ type: 'number', min: 30, max: 45, value: 38 });
+  const target = input({ type: 'number', min: CFG.minMinutes, max: CFG.maxMinutes, value: CFG.targetMinutes });
   const err = el('div', { class: 'field-error' });
   const body = el('div', {}, [
-    field({ label: 'System', input: solutionSel, hint: 'The case study tells one system from the Solutions register.' }),
+    field({ label: 'System', input: solutionSel, hint: 'One system from Solutions.' }),
     field({ label: 'Subject', input: subject }),
     free.length ? field({ label: 'Start from an existing YouTube long piece', input: pieceSel }) : null,
-    field({ label: "Palak's notes", input: notes, hint: 'Figures come only from here. Anything the script needs that is not here is marked as a question.' }),
-    field({ label: 'Target length in minutes', input: target, hint: '30 to 45.' }),
+    field({ label: "Palak's notes", input: notes, hint: 'Figures come only from here; gaps become questions.' }),
+    field({ label: 'Target length in minutes', input: target, hint: `${range(CFG.minMinutes, CFG.maxMinutes)}.` }),
     err,
   ]);
   let d;
@@ -242,7 +331,7 @@ function openNewDialog({ solutions, pieces }) {
       try {
         const r = await api.post('/video', {
           solutionId: solutionSel.value || undefined, subject: subject.value.trim() || undefined, pieceId: pieceSel.value || undefined,
-          notes: notes.value, targetMinutes: parseInt(target.value, 10) || 38,
+          notes: notes.value, targetMinutes: parseInt(target.value, 10) || CFG.targetMinutes,
         });
         d.close();
         location.hash = `#/video/${encodeURIComponent(r.video.id)}`;
@@ -361,7 +450,7 @@ async function renderProject(container, params) {
       dialog({
         title: 'The prompt for this step', wide: true,
         body: el('div', {}, [
-          el('p', { class: 'vid-note', text: 'This is exactly what Claude receives. Use it to check the wording, or paste it into Claude yourself.' }),
+          bullets(['Exactly what Claude receives', 'Check the wording, or paste it into Claude yourself'], { compact: true }),
           codeBlock(r.system, { title: 'System', light: true }),
           codeBlock(r.user, { title: 'User', light: true }),
           codeBlock(JSON.stringify(r.schema, null, 2), { title: 'Output schema', light: true }),
@@ -440,14 +529,14 @@ async function renderProject(container, params) {
       value: v.solutionId || '', onChange: (e) => { save({ solutionId: e.target.value || null }); },
     });
     const subj = input({ value: v.subject || '', placeholder: 'For example, how quotes get followed up', onInput: (e) => save({ subject: e.target.value }) });
-    const mins = input({ type: 'number', min: 30, max: 45, value: v.targetMinutes || 38, onInput: (e) => save({ targetMinutes: clamp(parseInt(e.target.value, 10) || 38, 30, 45) }) });
+    const mins = input({ type: 'number', min: CFG.minMinutes, max: CFG.maxMinutes, value: v.targetMinutes || CFG.targetMinutes, onInput: (e) => save({ targetMinutes: clamp(parseInt(e.target.value, 10) || CFG.targetMinutes, CFG.minMinutes, CFG.maxMinutes) }) });
     const notes = textarea({ rows: 6, value: v.notes || '', placeholder: 'The problem, what it cost, what changed, in your words. Real figures only.', onInput: (e) => save({ notes: e.target.value }) });
 
     const draftBtn = button({
       kind: 'primary', icon: 'sparkle', label: v.outline?.length ? 'Redraft the outline' : 'Draft the outline',
       onClick: async () => {
         if (S.busy) return;
-        if (v.outline?.length && !(await confirm({ title: 'Redraft the outline', message: 'The six chapters below will be replaced. Your edits to them will be lost.', confirmLabel: 'Redraft' }))) return;
+        if (v.outline?.length && !(await confirm({ title: 'Redraft the outline', message: 'The chapters below and your edits to them are replaced.', confirmLabel: 'Redraft' }))) return;
         draftBtn.disabled = true;
         const r = await server('outline', {}, { busy: 'Drafting the outline. This takes up to a minute.' });
         draftBtn.disabled = false;
@@ -461,15 +550,15 @@ async function renderProject(container, params) {
           field({ label: 'System', input: solSel }),
           field({ label: 'Subject, if not listed', input: subj }),
         ]),
-        field({ label: "Palak's notes", input: notes, hint: 'Figures come only from here. Anything else the script needs is marked as a question for you.' }),
-        el('div', { class: 'vid-two' }, [field({ label: 'Target length in minutes', input: mins, hint: '30 to 45. The build chapter takes most of it.' }), el('div')]),
+        field({ label: "Palak's notes", input: notes, hint: 'Figures come only from here; gaps become questions.' }),
+        el('div', { class: 'vid-two' }, [field({ label: 'Target length in minutes', input: mins, hint: `${range(CFG.minMinutes, CFG.maxMinutes)}; the longest chapter takes most.` }), el('div')]),
         el('div', { class: 'vid-actions' }, [draftBtn, button({ kind: 'ghost', label: 'View the prompt', onClick: () => showPrompt('outline', {}) })]),
         warnList(S.warnings.outline),
       ]),
     }));
 
     if (!v.outline?.length) {
-      root.appendChild(empty({ title: 'No outline yet', hint: 'Draft it from the brief above. You can edit every chapter afterwards.' }));
+      root.appendChild(empty({ title: 'No outline yet', hint: 'Draft it from the brief; edit any chapter after.' }));
       return root;
     }
 
@@ -498,11 +587,11 @@ async function renderProject(container, params) {
     const totalChip = el('span');
     const drawTotal = () => {
       const sum = v.outline.reduce((a, c) => a + (Number(c.minutes) || 0), 0);
-      const ok = sum >= 30 && sum <= 45;
-      totalChip.replaceChildren(chip({ label: `${sum} minutes in total${ok ? '' : ', aim for 30 to 45'}`, tone: ok ? 'ok' : 'bad' }));
+      const ok = sum >= CFG.minMinutes && sum <= CFG.maxMinutes;
+      totalChip.replaceChildren(chip({ label: `${sum} minutes in total${ok ? '' : `, aim for ${range(CFG.minMinutes, CFG.maxMinutes)}`}`, tone: ok ? 'ok' : 'bad' }));
     };
     const touch = () => save({ outline: v.outline });
-    root.appendChild(el('div', { class: 'section-title' }, [el('h2', { text: 'The six chapters' }), totalChip]));
+    root.appendChild(el('div', { class: 'section-title' }, [el('h2', { text: `The ${v.outline.length} chapters` }), totalChip]));
     drawTotal();
     for (const c of v.outline) {
       const titleField = el('input', { class: 'vid-chapter-title', value: c.title || '', 'aria-label': `Chapter ${c.n} title`, onInput: (e) => { c.title = e.target.value; touch(); } });
@@ -523,15 +612,15 @@ async function renderProject(container, params) {
       root.appendChild(card({
         title: el('div', { class: 'vid-chapter-head' }, [el('span', { class: 'vid-chapter-n', text: String(c.n) }), titleField, minIn, el('span', { class: 'vid-note', text: 'min' })]),
         body: el('div', {}, [
-          c.purpose ? el('p', { class: 'vid-note', text: c.purpose }) : null,
+          c.purpose ? sentenceBullets(c.purpose) : null,
           el('div', { class: 'vid-two' }, [
             field({ label: 'On screen, one item a line', input: onScreen }),
             field({
               label: faceOk ? 'To camera: questions you answer' : 'To camera (none in this chapter)', input: toCam,
-              hint: faceOk ? 'This is one of the three face moments.' : 'The face moments are chapters 1, 5 and 6. The build stays on screen.',
+              hint: faceOk ? 'A face moment.' : `Face moments are in ${faceWhere()}.`,
             }),
           ]),
-          el('div', { class: 'eyebrow', text: 'Shorts candidates: re-hooked first line, from, to (minutes and seconds from the start of the chapter)', style: { margin: '4px 0 8px' } }),
+          el('div', { class: 'eyebrow', text: 'Shorts candidates: first line, from, to (m:ss in the chapter)', style: { margin: '4px 0 8px' } }),
           shortsHost,
           button({ kind: 'secondary', small: true, icon: 'plus', label: 'Add a Short', onClick: () => { c.shorts = c.shorts || []; c.shorts.push({ hook: '', from: '0:00', to: '0:30' }); touch(); drawShorts(); } }),
         ]),
@@ -600,7 +689,7 @@ async function renderProject(container, params) {
     const writeAll = button({
       kind: 'primary', icon: 'sparkle', label: anyText ? 'Rewrite every chapter' : 'Write the script',
       onClick: async () => {
-        if (anyText && !(await confirm({ title: 'Rewrite every chapter', message: 'All six chapters will be written again. Your edits will be lost.', confirmLabel: 'Rewrite' }))) return;
+        if (anyText && !(await confirm({ title: 'Rewrite every chapter', message: 'Every chapter is written again; your edits are lost.', confirmLabel: 'Rewrite' }))) return;
         writeChapters(v.outline);
       },
     });
@@ -610,7 +699,12 @@ async function renderProject(container, params) {
     root.appendChild(card({
       title: 'The script', eyebrow: 'Step 2',
       body: el('div', {}, [
-        el('p', { class: 'vid-note', text: `Written chapter by chapter in the spoken register, at about ${WPM} words a minute. The problem and its cost come inside the first 30 seconds, with no introduction. Edit any chapter by hand.` }),
+        bullets([
+          'Written chapter by chapter, as spoken',
+          `About ${WPM} words a minute`,
+          'Problem and its cost in the first 30 seconds, no introduction',
+          'Edit any chapter by hand',
+        ], { compact: true }),
         stats,
         el('div', { class: 'vid-actions' }, [writeAll, writeMissing, stopBtn, aloud, progress, button({ kind: 'ghost', label: 'View the prompt (chapter 1)', onClick: () => showPrompt('script', { chapter: 1 }) })]),
       ]),
@@ -666,7 +760,7 @@ async function renderProject(container, params) {
       const writeOne = button({
         kind: 'secondary', small: true, icon: 'sparkle', label: words(texts[c.n]) ? 'Rewrite this chapter' : 'Write this chapter',
         onClick: async () => {
-          if (words(ta.value) && !(await confirm({ title: 'Rewrite this chapter', message: `Chapter ${c.n} will be written again. Your edits to it will be lost.`, confirmLabel: 'Rewrite' }))) return;
+          if (words(ta.value) && !(await confirm({ title: 'Rewrite this chapter', message: `Chapter ${c.n} is written again; your edits are lost.`, confirmLabel: 'Rewrite' }))) return;
           writeChapters([c]);
         },
       });
@@ -741,15 +835,19 @@ async function renderProject(container, params) {
     const replanBtn = have ? button({
       kind: 'secondary', label: 'Plan everything again',
       onClick: async () => {
-        if (await confirm({ title: 'Plan everything again', message: 'Every scene is replaced. Footage choices and clip mappings for them are dropped. Your edits to the scenes are lost.', confirmLabel: 'Plan again', danger: true })) plan(info.parts);
+        if (await confirm({ title: 'Plan everything again', message: 'Every scene, footage choice and clip mapping is replaced.', confirmLabel: 'Plan again', danger: true })) plan(info.parts);
       },
     }) : null;
 
     root.appendChild(card({
       title: 'The scenes', eyebrow: 'Step 3',
       body: el('div', {}, [
-        el('p', { class: 'vid-note', text: `One row per scene: what is said, what the viewer sees, its kind and the stock search words. The words come from the script and cannot be edited here. Face scenes are the only ones you record yourself: they are kept to chapters 1, 5 and 6, at most ${3} in a chapter.` }),
-        isStale() ? el('div', { class: 'banner banner-warn' }, [icon('warn'), el('div', { text: 'The script has changed since these scenes were planned. Plan the affected parts again, or the hand-off will warn you.' })]) : null,
+        bullets([
+          'One row per scene: says, sees, kind, stock search words',
+          'The words come from the script; edit them there',
+          `Face scenes you record: ${faceWhere()}, at most ${CFG.maxFacePerChapter} each`,
+        ], { compact: true }),
+        isStale() ? el('div', { class: 'banner banner-warn' }, [icon('warn'), el('div', { text: 'The script changed since planning. Plan those parts again.' })]) : null,
         summary,
         el('div', { class: 'vid-actions' }, [planBtn, replanBtn, stopBtn, progress, button({ kind: 'ghost', label: 'View the prompt (part 1)', onClick: () => showPrompt('scenes', { part: 1 }) })]),
       ]),
@@ -773,7 +871,7 @@ async function renderProject(container, params) {
           el('span', { text: ch.title || `Chapter ${n}` }),
           chip({ label: plural(list.length, 'scene', 'scenes'), tone: list.length ? 'default' : 'muted' }),
           list.length ? chip({ label: clock(list.reduce((a, s) => a + (Number(s.seconds) || 0), 0)), tone: 'muted' }) : null,
-          faces ? chip({ label: plural(faces, 'face scene', 'face scenes'), tone: FACE_CHAPTERS.includes(n) && faces <= 3 ? 'navy' : 'bad' }) : null,
+          faces ? chip({ label: plural(faces, 'face scene', 'face scenes'), tone: FACE_CHAPTERS.includes(n) && faces <= CFG.maxFacePerChapter ? 'navy' : 'bad' }) : null,
         );
       };
       drawSumm();
@@ -800,7 +898,7 @@ async function renderProject(container, params) {
                   const flag = el('div', { class: 'vid-flag' });
                   const setFlag = () => {
                     const n2 = inCh().filter((x) => x.kind === 'face').length;
-                    flag.textContent = s.kind === 'face' && !FACE_CHAPTERS.includes(n) ? 'Face scenes belong to chapters 1, 5 and 6.' : (s.kind === 'face' && n2 > 3 ? 'More than three face scenes in this chapter.' : '');
+                    flag.textContent = s.kind === 'face' && !FACE_CHAPTERS.includes(n) ? `Face scenes belong to ${faceWhere()}.` : (s.kind === 'face' && n2 > CFG.maxFacePerChapter ? `More than ${CFG.maxFacePerChapter} face scenes in this chapter.` : '');
                   };
                   const sel = select({
                     options: Object.keys(KIND_LABEL).map((k) => ({ value: k, label: KIND_LABEL[k] })), value: s.kind,
@@ -819,7 +917,7 @@ async function renderProject(container, params) {
               },
             ],
           }),
-          faces > 3 ? el('div', { class: 'vid-flag', text: 'This chapter has more than three face scenes.' }) : null,
+          faces > CFG.maxFacePerChapter ? el('div', { class: 'vid-flag', text: `More than ${CFG.maxFacePerChapter} face scenes in this chapter.` }) : null,
         ].filter(Boolean));
       };
       let drawn = false;
@@ -829,7 +927,7 @@ async function renderProject(container, params) {
         kind: 'ghost', small: true, label: 'Plan this chapter again',
         onClick: async (e) => {
           e.preventDefault(); e.stopPropagation();
-          if (inCh().length && !(await confirm({ title: 'Plan this chapter again', message: `The scenes of chapter ${n} are replaced, with their footage choices.`, confirmLabel: 'Plan again' }))) return;
+          if (inCh().length && !(await confirm({ title: 'Plan this chapter again', message: `Chapter ${n} scenes and footage choices are replaced.`, confirmLabel: 'Plan again' }))) return;
           plan(info.parts.filter((p) => p.chapter === n));
         },
       });
@@ -870,7 +968,12 @@ async function renderProject(container, params) {
     root.appendChild(card({
       title: 'Stock footage', eyebrow: 'Step 4',
       body: el('div', {}, [
-        el('p', { class: 'vid-note', text: 'For each b-roll scene, search the free Mixkit library through the brand-video runner and press Use on a clip. The clip id goes into the scene; the hand-off downloads them. Stock is a placeholder for your own footage.' }),
+        bullets([
+          'Search the free Mixkit library for each b-roll scene',
+          'Press Use on a clip; its id goes into the scene',
+          'The hand-off downloads the clips',
+          'Stock holds the place of your own footage',
+        ], { compact: true }),
         el('div', { class: 'vid-stat' }, [
           el('div', {}, [el('b', { text: `${chosen} / ${brollScenes.length}` }), el('span', { text: 'b-roll scenes with a clip' })]),
           el('div', {}, [el('b', { text: String(v.scenes.filter((s) => s.kind === 'face').length) }), el('span', { text: 'face scenes you record' })]),
@@ -918,10 +1021,10 @@ async function renderProject(container, params) {
         onClick: async () => {
           if (!q.value.trim()) { toast('Give one or two plain words to search for', 'warn'); return; }
           searchBtn.disabled = true;
-          results.replaceChildren(el('p', { class: 'vid-note', text: 'Searching the Mixkit library. A new search can take up to 20 seconds.' }));
+          results.replaceChildren(el('p', { class: 'vid-note', text: 'Searching Mixkit. Up to 20 seconds.' }));
           try {
             const r = await api.post(`/video/${encodeURIComponent(id)}/footage`, { scene: s.n, query: q.value });
-            if (!r.results.length) { results.replaceChildren(el('p', { class: 'vid-note', text: `Nothing for "${r.query}". Try plainer words, for example office, factory, handshake.` })); }
+            if (!r.results.length) { results.replaceChildren(el('p', { class: 'vid-note', text: `Nothing for "${r.query}". Try plainer words: office, factory, handshake.` })); }
             else {
               results.replaceChildren(el('div', { class: 'vid-results' }, r.results.slice(0, 24).map((c) => {
                 const tile = el('div', { class: `vid-tile${f.ids.includes(c.id) ? ' picked' : ''}`, dataset: { id: c.id } }, [
@@ -948,7 +1051,7 @@ async function renderProject(container, params) {
       return el('div', { class: 'vid-scene-card' }, [
         el('h3', { text: `Scene ${s.n}, chapter ${s.chapter}` }),
         el('div', { class: 'vid-scene-say', text: s.say.length > 220 ? `${s.say.slice(0, 220)}...` : s.say }),
-        s.sees ? el('div', { class: 'vid-note', text: `Sees: ${s.sees}` }) : null,
+        s.sees ? el('div', { class: 'vid-data', text: `Sees: ${s.sees}` }) : null,
         el('div', { class: 'vid-search', style: { marginTop: '8px' } }, [q, searchBtn]),
         picked, results,
       ]);
@@ -959,7 +1062,7 @@ async function renderProject(container, params) {
       const list = brollScenes.filter((s) => (!chapterFilter || String(s.chapter) === chapterFilter)
         && (!onlyOpen || !((v.footage.find((f) => f.scene === s.n)?.ids || []).length || (s.clipPath && /^clips\//.test(s.clipPath)))));
       listHost.replaceChildren(...list.slice(0, shown).map(sceneCard));
-      if (!list.length) listHost.appendChild(empty({ title: 'Nothing to choose', hint: onlyOpen ? 'Every b-roll scene in this view has a clip.' : 'There are no b-roll scenes here.' }));
+      if (!list.length) listHost.appendChild(empty({ title: 'Nothing to choose', hint: onlyOpen ? 'Every b-roll scene here has a clip.' : 'No b-roll scenes here.' }));
       moreBtn.classList.toggle('hidden', list.length <= shown);
     }
     drawList();
@@ -969,7 +1072,7 @@ async function renderProject(container, params) {
     root.appendChild(card({
       title: 'Footage list and shot plan', flat: true,
       body: el('div', {}, [
-        el('p', { class: 'vid-note', text: 'These two files are written into the project folder at the hand-off. Here is how they read now.' }),
+        bullets(['Written into the project folder at the hand-off', 'Show them to see how they read now'], { compact: true }),
         button({
           kind: 'secondary', small: true, label: 'Show them',
           onClick: async (e) => {
@@ -1001,7 +1104,11 @@ async function renderProject(container, params) {
     root.appendChild(card({
       title: 'Record the voice', eyebrow: 'Step 5',
       body: el('div', {}, [
-        el('p', { class: 'vid-note', text: 'Record in your own voice, or generate it in ElevenLabs. Either way, read the text below, where every number, amount and acronym is written as it is said. Read at a steady pace; the picture is cut to the recording afterwards.' }),
+        bullets([
+          'Record in your own voice, or generate it in ElevenLabs',
+          'Read the text below: numbers and acronyms are written as said',
+          'Keep a steady pace; the picture is cut to the recording',
+        ], { compact: true }),
         el('div', { class: 'vid-stat' }, [
           el('div', {}, [el('b', { text: String(vs.words) }), el('span', { text: 'spoken words' })]),
           el('div', {}, [el('b', { text: `${vs.minutes}` }), el('span', { text: `minutes at ${WPM} words a minute` })]),
@@ -1046,12 +1153,15 @@ async function renderProject(container, params) {
       body: el('div', {}, [
         current
           ? el('p', {}, [chip({ label: current.name, tone: 'ok' }), ` ${mb(current.bytes)}, saved ${fmt.dateTime(current.at)}. Uploading again replaces it.`])
-          : el('p', { class: 'vid-note', text: 'No recording yet. The pipeline reads it as voice/vo-original.mp3 (or .wav or .m4a).' }),
+          : el('p', { class: 'vid-note', text: 'No recording yet. Saved as voice/vo-original.mp3, .wav or .m4a.' }),
         el('div', { class: 'vid-actions' }, [drop, uploadBtn]),
-        el('p', { class: 'vid-note', text: `Uploads are limited to ${MAX_UPLOAD_MB} MB. For a longer file, give its full path on this Mac and Studio links it into the project folder.` }),
+        bullets([
+          `Uploads up to ${MAX_UPLOAD_MB} MB`,
+          'Larger file: give its full path on this Mac, Studio links it in',
+          'ElevenLabs: generate chapter by chapter, join in order, save as one file',
+        ], { compact: true }),
         el('div', { class: 'vid-search' }, [pathIn, pathBtn]),
         status,
-        el('p', { class: 'vid-note', text: 'ElevenLabs limits the length of one generation. Generate chapter by chapter, join the files in order, and save the result as one recording.' }),
       ]),
     }));
     root.appendChild(nextBar('footage', 'own-clips', null, () => advanceTo('own-clips')));
@@ -1076,7 +1186,7 @@ async function renderProject(container, params) {
 
     async function uploadFor(sceneN, file, label) {
       if (file.size > MAX_UPLOAD_MB * 1048576) {
-        toast(`Clips over ${MAX_UPLOAD_MB} MB cannot be uploaded here. Copy the file into video/${id}/clips/ and register it below.`, 'warn', { ms: 9000 });
+        toast(`Over ${MAX_UPLOAD_MB} MB: copy it into video/${id}/clips/ and register it below.`, 'warn', { ms: 9000 });
         return;
       }
       const seconds = await videoDuration(file);
@@ -1093,7 +1203,7 @@ async function renderProject(container, params) {
       return el('div', { class: 'vid-scene-card' }, [
         el('h3', { text: `Scene ${s.n}, chapter ${s.chapter}` }),
         el('div', { class: 'vid-scene-say', text: s.say }),
-        s.sees ? el('div', { class: 'vid-note', text: s.kind === 'face' ? `Framing: ${s.sees}` : `Show: ${s.sees}` }) : null,
+        s.sees ? el('div', { class: 'vid-data', text: s.kind === 'face' ? `Framing: ${s.sees}` : `Show: ${s.sees}` }) : null,
         el('div', { class: 'row', style: { marginTop: '8px' } }, [
           c ? chip({ label: `${c.path.replace('clips/', '')}${c.seconds ? `, ${c.seconds} s` : ''}`, tone: 'ok' }) : chip({ label: 'Not recorded', tone: 'warn' }),
           fileIn,
@@ -1104,7 +1214,12 @@ async function renderProject(container, params) {
     root.appendChild(card({
       title: 'Your own clips', eyebrow: 'Step 6',
       body: el('div', {}, [
-        el('p', { class: 'vid-note', text: 'Record the face scenes to camera, and the screen scenes as recordings of the masked copy. Upload each against its scene. A clip mapped to a scene replaces the stock or designed picture for it.' }),
+        bullets([
+          'Face scenes: record to camera',
+          'Screen scenes: record the masked copy',
+          'Upload each clip against its scene',
+          'A mapped clip replaces the stock or designed picture',
+        ], { compact: true }),
         el('div', { class: 'vid-stat' }, [
           el('div', {}, [el('b', { text: `${faceScenes.filter((s) => clipOf(s.n)).length} / ${faceScenes.length}` }), el('span', { text: 'face scenes recorded' })]),
           el('div', {}, [el('b', { text: `${screenScenes.filter((s) => clipOf(s.n)).length} / ${screenScenes.length}` }), el('span', { text: 'screen scenes recorded' })]),
@@ -1118,7 +1233,7 @@ async function renderProject(container, params) {
         const ch = (v.outline || []).find((c) => c.n === n);
         const sc = faceScenes.filter((s) => s.chapter === n);
         if (!sc.length) continue;
-        if (ch?.toCamera?.length) root.appendChild(el('p', { class: 'vid-note' }, [el('b', { text: `Chapter ${n}: ` }), `Questions to answer: ${ch.toCamera.join(' ')}`]));
+        if (ch?.toCamera?.length) root.appendChild(el('div', { class: 'vid-data' }, [el('b', { text: `Chapter ${n}: questions to answer` }), bullets(ch.toCamera, { compact: true })]));
         sc.forEach((s) => root.appendChild(needRow(s)));
       }
       faceScenes.filter((s) => !FACE_CHAPTERS.includes(s.chapter)).forEach((s) => root.appendChild(needRow(s)));
@@ -1168,7 +1283,12 @@ async function renderProject(container, params) {
     root.appendChild(card({
       title: 'Large clips', flat: true,
       body: el('div', {}, [
-        el('p', { class: 'vid-note', text: `Uploads are limited to ${MAX_UPLOAD_MB} MB, and phone clips are often larger. Copy the file into video/${id}/clips/ in Finder, or give its full path on this Mac. Studio links it into the project; nothing is re-encoded.` }),
+        bullets([
+          `Uploads up to ${MAX_UPLOAD_MB} MB; phone clips are often larger`,
+          `Copy the file into video/${id}/clips/, then register it`,
+          'Or give its full path on this Mac',
+          'Studio links it in; nothing is re-encoded',
+        ], { compact: true }),
         el('div', { class: 'vid-search' }, [folderSel, folderScene, button({ kind: 'secondary', label: 'Register', onClick: () => { if (!folderSel.value) { toast('Choose a file first', 'warn'); return; } reg({ file: folderSel.value, scene: folderScene.value || null }); } })]),
         el('div', { class: 'vid-search', style: { marginTop: '10px' } }, [pathIn, pathScene, button({ kind: 'secondary', label: 'Link this file', onClick: () => { if (!pathIn.value.trim()) { toast('Give the full path of the file', 'warn'); return; } reg({ path: pathIn.value.trim(), scene: pathScene.value || null }); } })]),
       ]),
@@ -1226,14 +1346,18 @@ async function renderProject(container, params) {
     root.appendChild(card({
       title: 'Edit in the brand-video pipeline', eyebrow: 'Step 7',
       body: el('div', {}, [
-        el('p', { class: 'vid-note', text: 'The hand-off writes script.md, brand.json, scenes-plan.json, footage-list.md, shot-plan.md and HANDOFF.md into the project folder, with the exact bv commands and a prompt to paste into Claude Code. Nothing is built or rendered from here.' }),
+        bullets([
+          'Writes the script, brand, scene plan, footage list and shot plan',
+          'Adds HANDOFF.md with the bv commands and a Claude Code prompt',
+          'Nothing is built or rendered from here',
+          'Open items do not stop it; HANDOFF.md lists them',
+        ], { compact: true }),
         !bv.ok ? el('div', { class: 'banner banner-warn' }, [icon('warn'), el('div', {}, [el('div', { text: bv.message }), bv.command ? el('div', { class: 'vid-cmd', style: { marginTop: '8px' } }, [el('code', { text: bv.command }), button({ kind: 'secondary', small: true, label: 'Copy', onClick: () => copyText(bv.command) })]) : null])]) : null,
         el('ul', { class: 'vid-checks' }, ready.map((r) => el('li', {}, [
           el('span', { class: `pill pill-${r.ok ? 'ok' : 'warn'}`, text: r.ok ? 'Ready' : 'Open' }),
           el('div', {}, [r.label, el('small', { text: r.detail })]),
         ]))),
         el('div', { class: 'vid-actions', style: { marginTop: '14px' } }, [handBtn]),
-        el('p', { class: 'vid-note', text: 'Open items do not stop the hand-off; they are listed in HANDOFF.md.' }),
       ]),
     }));
     root.appendChild(resultHost);
@@ -1247,13 +1371,15 @@ async function renderProject(container, params) {
     const root = el('div');
     const ids = v.shortsPieceIds || [];
     const pieces = (await Promise.all(ids.map((pid) => api.get(`/pieces/${encodeURIComponent(pid)}`).catch(() => null)))).filter(Boolean);
-    const count = select({ options: ['2', '3', '4'].map((x) => ({ value: x, label: `${x} Shorts` })), value: '3' });
+    const lo = Math.max(1, CFG.shortsMin); const hi = Math.max(lo, CFG.shortsMax);
+    const countOpts = Array.from({ length: hi - lo + 1 }, (_, i) => String(lo + i));
+    const count = select({ options: countOpts.map((x) => ({ value: x, label: plural(Number(x), 'Short', 'Shorts') })), value: countOpts.includes('3') ? '3' : countOpts[0] });
     const makeBtn = button({
       kind: 'primary', icon: 'sparkle', label: pieces.some((p) => p.status !== 'retired') ? 'Make new Shorts' : 'Make Shorts',
       onClick: async () => {
         if (S.busy) return;
         const existing = pieces.filter((p) => p.status !== 'retired');
-        if (existing.length && !(await confirm({ title: 'Make new Shorts', message: 'The Shorts still in draft are retired and new ones are made. Shorts you have already moved on are left alone.', confirmLabel: 'Make new Shorts' }))) return;
+        if (existing.length && !(await confirm({ title: 'Make new Shorts', message: 'Draft Shorts are retired and remade; others stay.', confirmLabel: 'Make new Shorts' }))) return;
         makeBtn.disabled = true;
         const r = await server('shorts', { count: parseInt(count.value, 10), replace: existing.length > 0 }, { busy: 'Choosing the moments and writing the Shorts. This takes up to a minute.' });
         makeBtn.disabled = false;
@@ -1263,13 +1389,17 @@ async function renderProject(container, params) {
     root.appendChild(card({
       title: 'Shorts', eyebrow: 'Step 8',
       body: el('div', {}, [
-        el('p', { class: 'vid-note', text: 'Two to four Shorts of 20 to 45 seconds, each a complete problem, impact and solution with a new first line, cut from a chapter of the long video. They go into the library as drafts, linked to this project.' }),
+        bullets([
+          `${range(CFG.shortsMin, CFG.shortsMax)} Shorts of 20 to 45 seconds, cut from one chapter each`,
+          'Each one: problem, impact, solution, with a new first line',
+          'Saved to the library as drafts, linked to this project',
+        ], { compact: true }),
         el('div', { class: 'vid-actions' }, [count, makeBtn, button({ kind: 'ghost', label: 'View the prompt', onClick: () => showPrompt('shorts', { count: parseInt(count.value, 10) }) })]),
         warnList(S.warnings.shorts),
       ]),
     }));
     if (!pieces.length) {
-      root.appendChild(empty({ title: 'No Shorts yet', hint: 'They are made from the script, so write it first.' }));
+      root.appendChild(empty({ title: 'No Shorts yet', hint: 'Made from the script; write it first.' }));
     } else {
       root.appendChild(card({
         title: 'In the library',
@@ -1280,7 +1410,7 @@ async function renderProject(container, params) {
             { key: 'hook', label: 'Hook', render: (p) => el('a', { href: `#/content/${encodeURIComponent(p.id)}`, text: p.hook || p.id }) },
             { key: 'title', label: 'YouTube title', render: (p) => p.renditions?.yt?.title || '' },
             { key: 'secs', label: 'Seconds', num: true, render: (p) => String(Math.round((p.script || []).reduce((a, l) => a + (Number(l.seconds) || 0), 0))) },
-            { key: 'notes', label: 'From', render: (p) => el('span', { class: 'vid-note', text: (/chapter \d[^;]*; [^.]*/.exec(p.notes || '') || [''])[0] }) },
+            { key: 'notes', label: 'From', render: (p) => el('span', { class: 'vid-data', text: (/chapter \d[^;]*; [^.]*/.exec(p.notes || '') || [''])[0] }) },
             { key: 'status', label: 'Status', render: (p) => statusPill(p.status) },
           ],
         }),
@@ -1353,7 +1483,11 @@ async function renderProject(container, params) {
     root.appendChild(card({
       title: 'Done', eyebrow: 'Step 9',
       body: el('div', {}, [
-        el('p', { class: 'vid-note', text: 'Record the finished file, then take the title, the description and the chapter timestamps for YouTube. The chapter times follow the planned timing; check them against the final video before publishing.' }),
+        bullets([
+          'Record the path of the finished file',
+          'Take the title, description and chapter times for YouTube',
+          'Chapter times follow the plan; check them against the final cut',
+        ], { compact: true }),
         field({ label: 'Final MP4 (full path on this Mac)', input: mp4 }),
         field({ label: 'YouTube title', input: titleIn }), el('div', { style: { marginTop: '-8px', marginBottom: '12px' } }, counter(titleIn, 69)),
         el('div', { class: 'vid-copyrow' }, [el('span', { class: 'field-label', text: 'Description' }), button({ kind: 'secondary', small: true, label: 'Copy', onClick: () => copyText(descIn.value, 'Description copied') })]),
