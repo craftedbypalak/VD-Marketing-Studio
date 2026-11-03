@@ -111,7 +111,24 @@ function humanTime(hhmm, note) {
 // ------------------------------------------------------------ sources
 
 function settingsDoc() { return store.getSingleton('settings') || { id: 'settings' }; }
-function config(settings) { return { ...DEFAULTS, ...(settings?.calendar || {}) }; }
+/**
+ * The calendar constants in force: settings.calendar over DEFAULTS, key by key. A blank,
+ * null or malformed value falls back to the default, so a half-filled form changes nothing.
+ */
+export function config(settings) {
+  const set = settings?.calendar || {};
+  const out = { ...DEFAULTS, monthlyFrom: { ...DEFAULTS.monthlyFrom } };
+  for (const k of ['singleLinkedInBefore', 'carouselFrom']) if (isYmd(set[k])) out[k] = set[k];
+  const every = Number(set.carouselEveryDays);
+  if (set.carouselEveryDays !== null && set.carouselEveryDays !== '' && Number.isInteger(every) && every > 0) out.carouselEveryDays = every;
+  if (typeof set.greetingTime === 'string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(set.greetingTime)) out.greetingTime = set.greetingTime;
+  const max = Number(set.maxRangeDays);
+  if (Number.isInteger(max) && max > 0) out.maxRangeDays = max;
+  if (set.monthlyFrom && typeof set.monthlyFrom === 'object') {
+    for (const [kind, date] of Object.entries(set.monthlyFrom)) if (isYmd(date)) out.monthlyFrom[kind] = date;
+  }
+  return out;
+}
 
 function marketingRoot(settings) {
   return process.env.STUDIO_MARKETING_ROOT || settings?.marketingRoot || path.resolve(store.root, '..', 'Marketing');
@@ -867,6 +884,15 @@ function calendarRange(query) {
 }
 
 export const routes = [
+  {
+    // The rhythm the Builder edits: the built-in defaults, what is in force, and the slot kinds.
+    method: 'GET', path: '/api/calendar/config',
+    handler: async () => {
+      const { maxRangeDays, ...defaults } = DEFAULTS;
+      const { maxRangeDays: _m, ...effective } = config(settingsDoc());
+      return { defaults: { ...defaults, monthlyFrom: { ...defaults.monthlyFrom } }, effective, kinds: KIND_NAME, fit: FIT, derivedKinds: DERIVED_KINDS };
+    },
+  },
   {
     method: 'POST', path: '/api/slots/regenerate',
     handler: async (ctx) => {

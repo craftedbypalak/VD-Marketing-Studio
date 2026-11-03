@@ -168,6 +168,9 @@ function requireManager(ctx, what = 'do this') {
 }
 
 /** Throws unless the request is from the director who has given their PIN (when one is set). */
+/** Collections only the director creates or changes (set up in the Builder; docs/BUILDER.md). Deletes are director-only for every collection. */
+const DIRECTOR_WRITES = ['accounts', 'solutions'];
+
 function requireDirector(ctx, what = 'do this') {
   if (!ctx.by) throw new HttpError(401, `Choose a user in Settings to ${what}`);
   if (!isDirector(ctx.by)) throw new HttpError(403, `Only the director can ${what}`);
@@ -727,6 +730,7 @@ export function registerCoreRoutes(router, modules = {}) {
     const c = ctx.params.collection;
     assertCollection(c);
     if (SINGLETONS[c]) throw new HttpError(405, `${c} is a single document; use PUT /api/${c}/${SINGLETONS[c]}`);
+    if (DIRECTOR_WRITES.includes(c)) requireDirector(ctx, `change the ${c}`);
     const body = ctx.body;
     if (!body || typeof body !== 'object' || Array.isArray(body)) throw new HttpError(400, 'Send a JSON object');
     const { changeNote, ...obj } = body;
@@ -750,7 +754,7 @@ export function registerCoreRoutes(router, modules = {}) {
     const { changeNote, force, ...obj } = body;
     obj.id = ctx.params.id;
     if (SINGLETONS[c] && obj.id !== SINGLETONS[c]) throw new HttpError(400, `${c} has the single id ${SINGLETONS[c]}`);
-    if (SINGLETONS[c]) requireDirector(ctx, `change the ${c}`);
+    if (SINGLETONS[c] || DIRECTOR_WRITES.includes(c)) requireDirector(ctx, `change the ${c}`);
     const prev = store.get(c, obj.id);
     assertFresh(prev, body, c);
     if (prev) obj.createdAt = prev.createdAt;
@@ -796,7 +800,7 @@ export function registerCoreRoutes(router, modules = {}) {
     const body = ctx.body;
     if (!body || typeof body !== 'object' || Array.isArray(body)) throw new HttpError(400, 'Send a JSON object');
     const { changeNote, id: _ignored, createdAt: _c, force, ...partial } = body;
-    if (SINGLETONS[c]) requireDirector(ctx, `change the ${c}`);
+    if (SINGLETONS[c] || DIRECTOR_WRITES.includes(c)) requireDirector(ctx, `change the ${c}`);
     const prev = store.get(c, ctx.params.id);
     if (!prev) throw new HttpError(404, 'Not found');
     assertFresh(prev, body, c);
