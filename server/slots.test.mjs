@@ -126,6 +126,30 @@ if (!process.env.ROUNDTRIP) check('import-rows answers with a clear message (wit
 
 for (const id of made) await call('DELETE', `/api/pieces/${id}`);
 
+// ---- settings.calendar drives generation (the Builder's Posting rhythm box)
+{
+  const cfg0 = await call('GET', '/api/calendar/config');
+  check('calendar config lists the defaults, what is in force and the slot kinds', cfg0.status === 200 && cfg0.data.defaults.carouselEveryDays === 14 && cfg0.data.defaults.greetingTime === '19:00' && cfg0.data.kinds.reel === 'Reel', JSON.stringify(cfg0.data));
+  const s0 = (await call('GET', '/api/settings/settings')).data;
+  const before = s0.calendar;
+  const greetings0 = slots.filter((s) => s.kind === 'greeting' && s.timeNote === 'evening before');
+  const put = await call('PUT', '/api/settings/settings', { ...s0, calendar: { ...(before || {}), carouselEveryDays: 7, greetingTime: '18:15' } });
+  check('the director saves settings.calendar', put.status === 200, JSON.stringify(put.data).slice(0, 200));
+  await call('POST', '/api/slots/regenerate', { from, to });
+  const after = (await call('GET', `/api/calendar?from=${from}&to=${to}`)).data.slots;
+  const cfg1 = await call('GET', '/api/calendar/config');
+  check('a weekly carousel setting puts a li-carousel on 2026-12-02', after.some((s) => s.date === '2026-12-02' && s.kind === 'li-carousel'));
+  check('the greeting time setting moves the evening-before greetings', greetings0.length > 0 && after.filter((s) => s.kind === 'greeting' && s.timeNote === 'evening before' && s.generated && !s.pieceId && !s.csv).every((s) => s.time === '18:15'), JSON.stringify(after.filter((s) => s.kind === 'greeting').slice(0, 2)));
+  check('calendar config reports the setting in force', cfg1.data.effective.carouselEveryDays === 7 && cfg1.data.effective.greetingTime === '18:15' && cfg1.data.defaults.carouselEveryDays === 14);
+  const s1 = (await call('GET', '/api/settings/settings')).data;
+  const restore = { ...s1 };
+  if (before === undefined) delete restore.calendar; else restore.calendar = before;
+  await call('PUT', '/api/settings/settings', restore);
+  await call('POST', '/api/slots/regenerate', { from, to });
+  const back = (await call('GET', `/api/calendar?from=${from}&to=${to}`)).data.slots;
+  check('back to the default, 2026-12-02 has no li-carousel again', !back.some((s) => s.date === '2026-12-02' && s.kind === 'li-carousel'));
+}
+
 // ---- optional: CSV round trip against a scratch copy of Studio
 if (process.env.ROUNDTRIP) {
   const here = path.dirname(fileURLToPath(import.meta.url));

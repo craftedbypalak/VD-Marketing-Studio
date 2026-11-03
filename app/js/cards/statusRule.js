@@ -4,16 +4,20 @@
 // bottom (the Reel and Status buttons), so nothing sits under the app's own
 // controls.
 
-import { stackCard, pieceText, TAGLINE } from './_kit.js';
+import { stackCard, pieceText, TAGLINE, footerFor } from './_kit.js';
 
 const W = 1080;
 const H = 1920;
 const SAFE = { side: 65, top: 250, bottom: 340 };
+// The logo sits on the safe zone's bottom line, at a fixed size; the text zone ends above the rule.
+const LOGO_H = 56;
+const LOGO_TOP = H - SAFE.bottom - LOGO_H;   // 1524: bottom edge 1580
+const RULE_Y = LOGO_TOP - 32;
 
 export const meta = {
   id: 'statusRule',
   label: 'Status rule',
-  note: 'WhatsApp Status. Text kept clear of 250 px at the top and 340 px at the bottom.',
+  note: 'WhatsApp Status. Text clear of 250 px at the top and 340 px at the bottom. Logo on the safe zone line.',
   formats: [{ id: 'default', label: '1080 x 1920', w: W, h: H }],
   defaultTheme: 'navy',
   fields: [
@@ -42,16 +46,16 @@ export function size() { return { w: W, h: H }; }
 
 export function render(fields, theme = 'navy', opts = {}) {
   return stackCard({
-    w: W, h: H, theme, fields, opts,
+    w: W, h: H, theme, fields: { ...fields, footer: fields.footer ?? footerFor(meta) }, opts,
     padX: SAFE.side,
     eyebrow: { y: SAFE.top + 56, size: 28 },
-    zone: { top: SAFE.top + 160, bottom: H - SAFE.bottom - 150 },
+    zone: { top: SAFE.top + 160, bottom: RULE_Y - 38 },
     align: 'center',
     head: { max: 156, min: 76, line: 1.05, maxLines: 7 },
     body: { max: 50, min: 34, line: 1.4, maxLines: 5, maxH: 330 },
     gap: 56,
     image: null,
-    footer: { ruleY: H - SAFE.bottom - 112, logoTop: H - SAFE.bottom - 80, logoH: 56, size: 30 },
+    footer: { ruleY: RULE_Y, logoTop: LOGO_TOP, logoH: LOGO_H, size: 30, limit: H - SAFE.bottom },
   });
 }
 

@@ -3,7 +3,7 @@
 // optional illustration. Larger margins than the Instagram cards, because
 // LinkedIn crops the feed image a little on desktop.
 
-import { stackCard, pieceText, TAGLINE } from './_kit.js';
+import { stackCard, pieceText, TAGLINE, footerFor } from './_kit.js';
 
 const W = 1200;
 const H = 1500;
@@ -35,7 +35,8 @@ export const meta = {
 
 export function size() { return { w: W, h: H }; }
 
-export function render(fields, theme = 'light', opts = {}) {
+export function render(input, theme = 'light', opts = {}) {
+  const fields = { ...input, footer: input.footer ?? footerFor(meta) };
   return stackCard({
     w: W, h: H, theme, fields, opts,
     padX: 88,

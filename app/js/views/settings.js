@@ -1,8 +1,9 @@
-// Settings: users, AI, posting rules, accounts (read-only), the rules
-// document and the solutions register. [core]
+// Settings: users, review routing, AI, accounts (read-only), the solutions
+// register, the Network link and workspaces. The checker rules and the posting
+// rhythm are edited in Builder (#/builder/checker, #/builder/rhythm). [core]
 
 import { api } from '../api.js';
-import { el, card, field, input, textarea, select, switchInput, checkbox, button, table, tabs, toast, confirm, chip, statusPill } from '../ui.js';
+import { el, card, field, input, textarea, select, switchInput, checkbox, button, table, tabs, toast, confirm, chip, bullets } from '../ui.js';
 import { roleOf, userLabel, clearMe, ROLES, ROLE_LABEL, me as whoAmI } from '../roles.js';
 import { TYPES, PILLARS, routingOf } from './piece.js';
 
@@ -24,12 +25,11 @@ const TABS = [
 const OWNER_TABS = [{ id: 'workspaces', label: 'Workspaces' }];
 
 const linesToList = (text) => String(text || '').split('\n').map((s) => s.trim()).filter(Boolean);
-const listToLines = (arr) => (arr || []).join('\n');
 
 export async function render(container, params) {
-  let settings, rules, accounts, solutions, spaces;
+  let settings, accounts, solutions, spaces;
   try {
-    [settings, rules, accounts, solutions, spaces] = await Promise.all([api.settings(), api.rules(), api.get('/accounts'), api.get('/solutions'), api.workspaces().catch(() => null)]);
+    [settings, accounts, solutions, spaces] = await Promise.all([api.settings(), api.get('/accounts'), api.get('/solutions'), api.workspaces().catch(() => null)]);
   } catch (err) {
     container.appendChild(el('div', { class: 'banner banner-bad', text: `Could not load settings: ${err.message}` }));
     return;
@@ -39,7 +39,7 @@ export async function render(container, params) {
   // Only the director changes settings, users, rules and the review routing (docs/ROLES.md section 3).
   // An owner who is not a member works here as the director: the server's answer decides (docs/ROLES.md section 1).
   const isDirector = Boolean(me) && ((await whoAmI()).role === 'director');
-  if (!isDirector) container.appendChild(el('div', { class: 'banner banner-info' }, [el('div', { text: 'Settings are read-only for you. Users, the review routing, AI, posting, rules and solutions are changed by the director; the Link tab shows its token to the director only.' })]));
+  if (!isDirector) container.appendChild(el('div', { class: 'banner banner-info' }, [bullets(['Read-only for you', 'The director changes these settings', 'Your PIN is under Users'], { compact: true })]));
   const panel = el('div');
   const items = spaces?.owner ? [...TABS, ...OWNER_TABS] : TABS;
   const bar = tabs({
@@ -53,15 +53,21 @@ export async function render(container, params) {
     users: () => usersTab(settings),
     routing: () => routingTab(settings),
     ai: () => aiTab(settings),
-    posting: () => postingTab(settings),
+    posting: () => moved('Posting moved to Builder, Posting rhythm', '#/builder/rhythm'),
     accounts: () => accountsTab(accounts),
-    rules: () => rulesTab(rules),
+    rules: () => moved('Rules moved to Builder, Checker rules', '#/builder/checker'),
     solutions: () => solutionsTab(solutions, () => api.get('/solutions').then((s) => { solutions = s; show('solutions'); })),
     link: () => linkTab(settings),
     workspaces: () => workspacesTab(spaces),
-    builder: () => el('div', { class: 'card', style: { padding: '18px' } }, [el('p', { text: 'Brand on visuals and the tools are set up in Builder.' }), button({ kind: 'primary', label: 'Open Builder', href: '#/builder' })]),
+    builder: () => moved('Brand, visuals and tools are set up in Builder', '#/builder'),
   };
   function show(id) { panel.replaceChildren(views[id]()); }
+  // A one-line pointer for what moved to Builder.
+  function moved(text, href) {
+    return card({ body: el('div', { class: 'row', style: { justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' } }, [
+      el('span', { text }), button({ kind: 'primary', small: true, label: 'Open', href }),
+    ]) });
+  }
   show(bar.dataset.active);
 
   async function saveSettings(patch, label = 'Settings saved') {
@@ -85,7 +91,7 @@ export async function render(container, params) {
           u.role !== 'employee' && chip({ label: u.pinSet ? 'PIN set' : 'No PIN', tone: u.pinSet ? 'ok' : 'warn' }),
         ]) },
         { key: 'x', label: '', render: (u) => button({ kind: 'ghost', small: true, icon: 'trash', title: 'Remove', onClick: async () => {
-          if (!(await confirm({ title: 'Remove this user', message: `${u.name || u.email} will no longer be able to work in Studio.`, confirmLabel: 'Remove', danger: true }))) return;
+          if (!(await confirm({ title: 'Remove this user', message: `Remove ${u.name || u.email} from Studio?`, confirmLabel: 'Remove', danger: true }))) return;
           users.splice(users.indexOf(u), 1); redraw();
         } }) },
       ],
@@ -104,9 +110,9 @@ export async function render(container, params) {
     const pinIn = input({ type: 'password', inputmode: 'numeric', placeholder: '4 to 8 digits', class: 'mono', autocomplete: 'off', 'aria-label': 'New PIN' });
     const pinBox = me && roleOf(me) !== 'employee' ? el('div', {}, [
       el('h3', { text: 'Your PIN', style: { margin: '14px 0 6px' } }),
-      el('p', { class: 'note', text: me.pinSet
-        ? `A PIN is set for you. It is asked for once per browser session before the first action reserved for the ${roleOf(me) === 'director' ? 'director' : 'manager'}: an approval, a request for changes, sending a piece on${roleOf(me) === 'director' ? ', a change to settings or rules, a delete' : ''}, a slot regeneration or an import.`
-        : `No PIN is set. Anyone at this Mac can pick your name in the left panel and act as the ${roleOf(me) === 'director' ? 'director' : 'manager'}. Set a PIN of 4 to 8 digits to require it for the actions reserved for your role.` }),
+      bullets(me.pinSet
+        ? ['Asked once per browser session', `Guards what only a ${roleOf(me) === 'director' ? 'director' : 'manager'} may do`]
+        : ['Anyone at this Mac can act as you', 'Set 4 to 8 digits to stop that'], { compact: true }),
       el('div', { class: 'row' }, [
         pinIn,
         button({ kind: 'secondary', small: true, label: me.pinSet ? 'Change the PIN' : 'Set the PIN', onClick: async () => {
@@ -115,7 +121,7 @@ export async function render(container, params) {
           try { await api.post('/settings/pin', { pin: v }); api.pin.set(v); clearMe(); toast('PIN saved', 'ok'); settings = await api.settings(); show('users'); } catch (err) { toast(err.message, 'bad'); }
         } }),
         me.pinSet && button({ kind: 'ghost', small: true, label: 'Clear the PIN', onClick: async () => {
-          if (!(await confirm({ title: 'Clear your PIN', message: 'The actions reserved for your role will no longer ask for a PIN on this Mac.', confirmLabel: 'Clear', danger: true }))) return;
+          if (!(await confirm({ title: 'Clear your PIN', message: 'Your actions will no longer ask for a PIN.', confirmLabel: 'Clear', danger: true }))) return;
           try { await api.post('/settings/pin', { pin: '' }); api.pin.set(''); clearMe(); toast('PIN cleared', 'ok'); settings = await api.settings(); show('users'); } catch (err) { toast(err.message, 'bad'); }
         } }),
       ].filter(Boolean)),
@@ -124,8 +130,13 @@ export async function render(container, params) {
     return card({
       title: 'Users and roles',
       body: [
-        el('p', { class: 'note', text: 'An employee writes, prepares and places pieces and submits them for review. A manager also approves, requests changes, sends a piece to the director, records posts, regenerates slots and imports. The director also approves the pieces that must reach the director and changes settings, users, rules and the review routing, and deletes. Until hosting brings sign-in, the user is chosen here (or in the left panel) and sent with every request; the PIN of a manager or the director is what stops anyone else acting in their name.' }),
-        noPin.length ? el('div', { class: 'banner banner-warn' }, [el('div', {}, [el('b', { text: 'No PIN: ' }), `${noPin.join(', ')} can be chosen by anyone at this Mac. Set a PIN below.`])]) : null,
+        bullets([
+          'Employee: writes, prepares and submits pieces',
+          'Manager: also approves, sends to the director, records posts',
+          'Director: also changes settings, users and rules, and deletes',
+          'Until sign-in arrives, a PIN stops others acting as you',
+        ], { compact: true }),
+        noPin.length ? el('div', { class: 'banner banner-warn' }, [el('div', {}, [el('b', { text: 'No PIN: ' }), `${noPin.join(', ')}. Anyone at this Mac can act as them.`])]) : null,
         field({ label: 'Working as', input: workingAs }),
         holder,
         pinBox,
@@ -153,14 +164,13 @@ export async function render(container, params) {
     return card({
       title: 'Review routing',
       body: [
-        el('p', { class: 'note', text: 'A manager approves most pieces. A piece of a type or on a pillar ticked here must reach the director: the manager sees why and sends it on with a note. A manager may send any other piece to the director too, by choice.' }),
+        bullets(['A manager approves most pieces', 'Ticked types and pillars must reach the director', 'A manager may send any piece on by choice'], { compact: true }),
         el('div', { class: 'field' }, [el('span', { class: 'field-label', text: 'Piece types that go to the director' }), boxes(TYPES, types)]),
         el('div', { class: 'field' }, [el('span', { class: 'field-label', text: 'Pillars that go to the director' }), boxes(PILLARS, pillars)]),
         el('div', { class: 'field' }, [
           switchInput({ label: 'Any checker warning sends the piece to the director', checked: onWarnings, disabled: !isDirector, onChange: (e) => { onWarnings = e.target.checked; } }),
-          el('span', { class: 'field-hint', text: 'Off: warnings are for the manager to weigh. Blocks always stop approval, whoever approves.' }),
+          el('span', { class: 'field-hint', text: 'Off: the manager weighs warnings. Blocks always stop approval.' }),
         ]),
-        !isDirector ? el('p', { class: 'note', text: 'Read-only for you. The director changes the routing.' }) : null,
       ],
       footer: isDirector ? [button({ kind: 'primary', label: 'Save the routing', onClick: () => saveSettings({
         reviewRouting: { directorTypes: TYPES.map((t) => t.value).filter((v) => types.has(v)), directorPillars: PILLARS.map((p) => p.value).filter((v) => pillars.has(v)), directorOnWarnings: Boolean(onWarnings) },
@@ -174,27 +184,34 @@ export async function render(container, params) {
     const customModel = input({ value: ['sonnet', 'opus', 'haiku'].includes(s.model) ? '' : (s.model || ''), placeholder: 'Or a full model id', class: 'mono' });
     const mode = select({ options: [{ value: 'cli', label: 'Claude Code command line (subscription)' }, { value: 'api', label: 'Claude API (ANTHROPIC_API_KEY on the server)' }], value: s.aiMode || 'cli' });
     const image = select({ options: [{ value: 'none', label: 'None (brand cards only)' }, { value: 'gemini', label: 'Gemini' }, { value: 'openai', label: 'OpenAI' }], value: s.imageProvider || 'none' });
+    const imageModel = input({ value: s.imageModel || '', class: 'mono', placeholder: 'Provider default' });
+    const prefix = textarea({ value: s.illustrationPrefix || '', rows: 3, placeholder: 'House default' });
+    // Empty uses the house default; a dry run returns the prefix in force, which is the default when none is set.
+    if (!s.illustrationPrefix) api.post('/images/illustration', { prompt: 'a desk', dryRun: true }).then((r) => { if (r?.prefix) prefix.placeholder = r.prefix; }).catch(() => {});
     const runnerWait = input({ type: 'number', min: 0, step: 30, value: Math.round((Number(s.runnerWaitMs) || 0) / 1000), class: 'mono' });
-    const pingOut = el('pre', { class: 'mono small', style: { whiteSpace: 'pre-wrap', margin: '10px 0 0', color: 'var(--text-secondary)' } });
+    const pingOut = el('pre', { class: 'mono small', style: { whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', margin: '10px 0 0', color: 'var(--text-secondary)' } });
     return card({
       title: 'AI',
       body: [
         el('div', { class: 'form-grid' }, [
-          field({ label: 'Model', input: model, hint: 'Sonnet for drafting. Opus for the review pass when quality matters more than time.' }),
-          field({ label: 'Model id (optional)', input: customModel, hint: 'Overrides the choice above when filled.' }),
-          field({ label: 'How Claude is called', input: mode, hint: 'The command line runs on the founder\'s subscription. The API needs a key on the server.' }),
-          field({ label: 'Image provider', input: image, hint: 'For house-style illustrations. Brand cards need no provider.' }),
-          field({ label: 'Wait for a runner (seconds)', input: runnerWait, hint: '0 means off. Above 0, when the command line is signed out, an AI request waits this long for a person or a process to answer it under /api/ai/pending, and the answer is marked as written by hand.' }),
+          field({ label: 'Model', input: model, hint: 'Sonnet drafts. Opus for the review pass.' }),
+          field({ label: 'Model id (optional)', input: customModel, hint: 'Overrides the model when filled.' }),
+          field({ label: 'How Claude is called', input: mode, hint: 'The API needs a key on the server.' }),
+          field({ label: 'Wait for a runner (seconds)', input: runnerWait, hint: '0 is off. A person may answer meanwhile.' }),
+          field({ label: 'Image provider', input: image, hint: 'Brand cards need no provider.' }),
+          field({ label: 'Image model', input: imageModel, hint: 'Empty uses the provider default.' }),
         ]),
+        field({ label: 'House style for illustrations', input: prefix, hint: 'Put before every illustration prompt. Empty uses the default.' }),
         el('hr', { class: 'rule' }),
         el('h3', { text: 'How the tool runs', style: { marginBottom: '6px' } }),
-        el('ul', { class: 'rc-rules', style: { margin: '0 0 12px', paddingLeft: '18px', fontSize: '13px', color: 'var(--text-secondary)' } }, [
-          'Studio runs in two places: on the website (Vercel) and on a Mac at localhost:4747. On the website, changes are kept only until the server restarts until Google Sheets is connected; on a Mac they are saved to the files in data/.',
-          'On the website the AI steps use the Claude API key set in the Vercel project. On a Mac they run through the Claude Code sign-in; when it expires, run claude and /login in a terminal. Either way, if AI fails everything else keeps working.',
-          'Two people may work at once. A save made from a copy that someone else has changed meanwhile is refused with their name and time; the editor then offers Reload or Save anyway, and every save stays in the versions list.',
-          'Every change and every AI call is written to data/log.json with who and when. The Today strip on the calendar shows the month\'s counts from it.',
-        ].map((t) => el('li', { text: t }))),
-        el('div', { class: 'row' }, [
+        bullets([
+          'Website: AI uses the API key in Vercel',
+          'Mac: AI uses the Claude Code sign-in; run claude, then /login',
+          'If AI fails, everything else keeps working',
+          'A stale save is refused; every save stays in versions',
+          'Every change and AI call is logged with who and when',
+        ], { compact: true }),
+        el('div', { class: 'row', style: { flexWrap: 'wrap', gap: '8px' } }, [
           button({ kind: 'secondary', label: 'Test the bridge', icon: 'sparkle', onClick: async (e) => {
             e.target.closest('button').disabled = true;
             pingOut.textContent = 'Calling Claude';
@@ -207,43 +224,14 @@ export async function render(container, params) {
               toast('The AI bridge did not answer', 'bad');
             } finally { e.target.closest('button').disabled = false; }
           } }),
-          el('span', { class: 'note', text: 'Runs the ping operation with the current settings.' }),
+          el('span', { class: 'note', text: 'Runs ping with the saved settings.' }),
         ]),
         pingOut,
       ],
       footer: isDirector ? [button({ kind: 'primary', label: 'Save AI settings', onClick: () => saveSettings({
         model: customModel.value.trim() || model.value, aiMode: mode.value, imageProvider: image.value, runnerWaitMs: Math.max(0, parseInt(runnerWait.value, 10) || 0) * 1000,
+        imageModel: imageModel.value.trim() || undefined, illustrationPrefix: prefix.value.trim() || undefined,
       }, 'AI settings saved') })] : undefined,
-    });
-  }
-
-  // ------------------------------------------------------------ posting
-  function postingTab(s) {
-    const goDark = { on: false, from: '', to: '', reason: '', ...(s.goDark || {}) };
-    const onSwitch = switchInput({ label: 'Go dark: pause every scheduled post', checked: goDark.on, onChange: (e) => { goDark.on = e.target.checked; } });
-    const from = input({ type: 'date', value: goDark.from || '', onInput: (e) => { goDark.from = e.target.value; } });
-    const to = input({ type: 'date', value: goDark.to || '', onInput: (e) => { goDark.to = e.target.value; } });
-    const reason = input({ value: goDark.reason || '', placeholder: 'Mourning, budget day, a news day', onInput: (e) => { goDark.reason = e.target.value; } });
-    const tz = input({ value: s.timezone || 'Asia/Kolkata' });
-    return card({
-      title: 'Posting',
-      body: [
-        el('div', { class: 'banner banner-info' }, [el('div', {}, [el('b', { text: 'The mourning rule. ' }), 'On the day a national figure dies or a mass-casualty event occurs, pause every scheduled post within the hour and stay dark through the funeral day. Switch go dark on here; the calendar shows it.'])]),
-        el('div', { class: 'field' }, onSwitch),
-        el('div', { class: 'form-grid' }, [
-          field({ label: 'Dark from', input: from }),
-          field({ label: 'Dark to', input: to }),
-          field({ label: 'Reason', input: reason }),
-        ]),
-        el('hr', { class: 'rule' }),
-        el('div', { class: 'form-grid' }, [
-          field({ label: 'Timezone', input: tz }),
-        ]),
-      ],
-      footer: isDirector ? [button({ kind: 'primary', label: 'Save posting settings', onClick: () => saveSettings({
-        goDark: { on: goDark.on, from: from.value, to: to.value, reason: reason.value },
-        timezone: tz.value.trim() || 'Asia/Kolkata',
-      }, 'Posting settings saved') })] : undefined,
     });
   }
 
@@ -259,12 +247,11 @@ export async function render(container, params) {
     return card({
       title: 'Link to the Network tool',
       body: [
-        el('p', { class: 'note', text: 'The separate Network tool reads the calendar and the published pieces from Studio over two read-only routes. Enter this token in Network\'s settings as the Studio token. Nothing about a person ever enters Studio, and Studio never calls Network.' }),
-        field({ label: 'Link token', input: tokenField, hint: token ? 'Read-only. Sent by Network as the X-Link-Token header on every request.' : 'Shown to the director only. Work as the director to see it; if none is set, add linkToken to data/settings.json and restart the server.' }),
+        bullets(['Network reads the calendar and published pieces', 'Two read-only routes; Studio never calls Network', 'Enter this token in Network as the Studio token'], { compact: true }),
+        field({ label: 'Link token', input: tokenField, hint: token ? 'Sent by Network as X-Link-Token.' : 'Shown to the director only. None set: add linkToken to data/settings.json.' }),
         token ? el('div', { class: 'row' }, [copyBtn]) : null,
         el('hr', { class: 'rule' }),
-        el('p', { class: 'note', text: 'The two routes:' }),
-        el('pre', { class: 'mono small', style: { whiteSpace: 'pre-wrap', margin: 0, color: 'var(--text-secondary)' }, text: `GET ${origin}/api/link/events?from=YYYY-MM-DD&to=YYYY-MM-DD\nGET ${origin}/api/link/pieces?status=published` }),
+        el('pre', { class: 'mono small', style: { whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', margin: 0, color: 'var(--text-secondary)' }, text: `GET ${origin}/api/link/events?from=YYYY-MM-DD&to=YYYY-MM-DD\nGET ${origin}/api/link/pieces?status=published` }),
       ],
     });
   }
@@ -309,14 +296,14 @@ export async function render(container, params) {
       card({
         title: 'Workspaces',
         body: [
-          el('p', { class: 'note', text: 'Each workspace is one company, with its own content, calendar, rules, users and roles. Its director manages its users. As an owner you may enter any workspace from the switcher in the left panel, and you work there as its director. A paused or archived workspace is closed to its members.' }),
+          bullets(['One workspace per company, with its own content and users', 'Enter any from the left panel; you work as its director', 'Paused or archived: closed to its members'], { compact: true }),
           rows,
         ],
       }),
       card({
         title: 'New workspace',
         body: [
-          el('p', { class: 'note', text: 'The new workspace starts empty, with its director as the only user. Its company profile, channels and calendar are added next.' }),
+          bullets(['Starts empty, with its director as the only user', 'Profile, channels and calendar come next'], { compact: true }),
           field({ label: 'Company name', input: name }),
           field({ label: 'Director\'s name', input: dirName }),
           field({ label: 'Director\'s email', input: dirEmail }),
@@ -335,7 +322,7 @@ export async function render(container, params) {
     return card({
       title: 'Accounts',
       body: [
-        el('p', { class: 'note', text: 'Read-only. Accounts, their allotted days and the repurposing rules are seeded from channels.json and edited there, then re-imported.' }),
+        bullets(['Read-only here', 'Days and posting slots: Builder, Posting rhythm'], { compact: true }),
         table({
           columns: [
             { key: 'short', label: 'Short', mono: true },
@@ -350,84 +337,6 @@ export async function render(container, params) {
         }),
       ],
     });
-  }
-
-  // -------------------------------------------------------------- rules
-  function rulesTab(r) {
-    const draft = JSON.parse(JSON.stringify(r));
-    const voice = textarea({ value: listToLines(draft.voice), rows: 8 });
-    const say = textarea({ value: listToLines(draft.say), rows: 8 });
-    const courseTerms = textarea({ value: listToLines(draft.courseTerms), rows: 5 });
-    const allowNames = textarea({ value: listToLines(draft.allowNames), rows: 6 });
-    const claimsOk = textarea({ value: listToLines(draft.claimsOk), rows: 8 });
-    const claimsBlocked = textarea({ value: listToLines(draft.claimsBlocked), rows: 6 });
-    const frame = textarea({ value: draft.frame || '', rows: 5 });
-    const limits = { hookWords: 8, igHashtags: 5, liHashtagsBottom: 3, liHookChars: 210, exclamation: 0, emoji: 0, ...(draft.limits || {}) };
-    const limitInputs = Object.fromEntries(Object.entries(limits).map(([k, v]) => [k, input({ type: 'number', min: 0, value: v, class: 'mono' })]));
-
-    // The never list: phrase, scope, note.
-    const never = (draft.never || []).map((n) => ({ ...n }));
-    const neverHolder = el('div');
-    const drawNever = () => neverHolder.replaceChildren(table({
-      columns: [
-        { key: 'phrase', label: 'Phrase', render: (n) => input({ value: n.phrase || '', onInput: (e) => { n.phrase = e.target.value; } }) },
-        { key: 'scope', label: 'Scope', width: '140px', render: (n) => select({ options: [{ value: 'any', label: 'Anywhere' }, { value: 'headline', label: 'Headline only' }, { value: 'ourVoice', label: 'Our voice' }], value: n.scope || 'any', onChange: (e) => { n.scope = e.target.value; } }) },
-        { key: 'note', label: 'Note', render: (n) => input({ value: n.note || '', onInput: (e) => { n.note = e.target.value; } }) },
-        { key: 'x', label: '', width: '44px', render: (n) => button({ kind: 'ghost', small: true, icon: 'trash', title: 'Remove', onClick: () => { never.splice(never.indexOf(n), 1); drawNever(); } }) },
-      ],
-      rows: never, empty: 'No phrases',
-    }));
-    drawNever();
-
-    const checklist = (draft.checklist || []).map((c) => ({ ...c }));
-    const checkHolder = el('div');
-    const drawCheck = () => checkHolder.replaceChildren(table({
-      columns: [
-        { key: 'id', label: 'Id', width: '160px', render: (c) => input({ value: c.id || '', class: 'mono', onInput: (e) => { c.id = e.target.value; } }) },
-        { key: 'text', label: 'Check', render: (c) => input({ value: c.text || '', onInput: (e) => { c.text = e.target.value; } }) },
-        { key: 'auto', label: 'Automatic', width: '90px', render: (c) => switchInput({ checked: Boolean(c.auto), onChange: (e) => { c.auto = e.target.checked; } }) },
-        { key: 'x', label: '', width: '44px', render: (c) => button({ kind: 'ghost', small: true, icon: 'trash', title: 'Remove', onClick: () => { checklist.splice(checklist.indexOf(c), 1); drawCheck(); } }) },
-      ],
-      rows: checklist, empty: 'No checks',
-    }));
-    drawCheck();
-
-    const save = async () => {
-      const next = {
-        ...draft,
-        voice: linesToList(voice.value), say: linesToList(say.value), courseTerms: linesToList(courseTerms.value),
-        allowNames: linesToList(allowNames.value), claimsOk: linesToList(claimsOk.value), claimsBlocked: linesToList(claimsBlocked.value),
-        never: never.filter((n) => n.phrase?.trim()).map((n) => ({ phrase: n.phrase.trim(), scope: n.scope || 'any', note: n.note || '' })),
-        checklist: checklist.filter((c) => c.text?.trim()).map((c) => ({ id: (c.id || c.text).trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''), text: c.text.trim(), auto: Boolean(c.auto) })),
-        limits: Object.fromEntries(Object.entries(limitInputs).map(([k, i]) => [k, parseInt(i.value, 10) || 0])),
-        frame: frame.value.trim(),
-      };
-      try { rules = await api.put('/rules/rules', next); toast('Rules saved', 'ok'); }
-      catch (err) { toast(err.message, 'bad'); }
-    };
-
-    const lines = (label, ta, hint) => el('div', { class: 'lines-editor' }, field({ label, input: ta, hint: hint || 'One per line.' }));
-    return el('div', {}, [
-      el('div', { class: 'banner banner-info' }, [el('div', {}, [el('b', { text: 'The brief is data. ' }), 'The checker and every AI prompt read these lists. A change here is a change everywhere; the brief itself (00-brief.md) still wins if they disagree.'])]),
-      card({ title: 'The frame', body: field({ label: 'Storyline paragraph given to the AI', input: frame }) }),
-      card({ title: 'Voice and words', body: el('div', { class: 'grid-2' }, [lines('Voice', voice), lines('Say', say)]) }),
-      card({ title: 'Never say', body: [el('p', { class: 'note', text: 'Anywhere: blocked in every public field. Headline only: blocked in the hook, the first line of a LinkedIn post, slide 1 and the YouTube title. Our voice: a warning when found outside a quoted owner line.' }), neverHolder, el('div', { style: { marginTop: '10px' } }, button({ kind: 'secondary', small: true, icon: 'plus', label: 'Add phrase', onClick: () => { never.push({ phrase: '', scope: 'any', note: '' }); drawNever(); } }))] }),
-      card({ title: 'Course terms and names', body: el('div', { class: 'grid-2' }, [lines('Course terms (always blocked)', courseTerms), lines('Names the brief permits', allowNames)]) }),
-      card({ title: 'Claims', body: el('div', { class: 'grid-2' }, [lines('Claims we can make', claimsOk), lines('Claims we cannot make', claimsBlocked)]) }),
-      card({ title: 'Limits', body: el('div', { class: 'form-grid' }, [
-        field({ label: 'Hook, words at most', input: limitInputs.hookWords }),
-        field({ label: 'Instagram hashtags at most', input: limitInputs.igHashtags }),
-        field({ label: 'LinkedIn hashtags at the bottom at most', input: limitInputs.liHashtagsBottom }),
-        field({ label: 'LinkedIn characters before the cut', input: limitInputs.liHookChars }),
-        field({ label: 'Exclamation marks allowed', input: limitInputs.exclamation }),
-        field({ label: 'Emoji allowed', input: limitInputs.emoji }),
-        ...Object.keys(limitInputs).filter((k) => !['hookWords', 'igHashtags', 'liHashtagsBottom', 'liHookChars', 'exclamation', 'emoji'].includes(k)).map((k) => field({ label: k, input: limitInputs[k] })),
-      ]) }),
-      card({ title: 'Before a post goes up', body: [checkHolder, el('div', { style: { marginTop: '10px' } }, button({ kind: 'secondary', small: true, icon: 'plus', label: 'Add check', onClick: () => { checklist.push({ id: '', text: '', auto: false }); drawCheck(); } }))] }),
-      card({ title: 'Examples by type', body: [el('p', { class: 'note', text: 'Signed-off copy the AI is shown for each piece type. Edited from the piece editor when a piece is approved; listed here for reference.' }),
-        table({ columns: [{ key: 'type', label: 'Type', mono: true }, { key: 'n', label: 'Examples', num: true }], rows: Object.entries(draft.examplesByType || {}).map(([type, arr]) => ({ id: type, type, n: (arr || []).length })) })] }),
-      isDirector && el('div', { class: 'card-foot', style: { borderRadius: 'var(--r-lg)', border: '1px solid var(--border)' } }, button({ kind: 'primary', label: 'Save rules', onClick: save })),
-    ]);
   }
 
   // ---------------------------------------------------------- solutions
@@ -455,7 +364,7 @@ export async function render(container, params) {
           button({ kind: 'ghost', small: true, icon: 'check', title: 'Save', onClick: () => saveRow(s) }),
           (s._new || isDirector) && button({ kind: 'ghost', small: true, icon: 'trash', title: 'Remove', onClick: async () => {
             if (s._new) { rows.splice(rows.indexOf(s), 1); draw(); return; }
-            if (!(await confirm({ title: 'Remove this solution', message: `${s.publicName} will no longer be offered to the AI as an allowed solution name.`, confirmLabel: 'Remove', danger: true }))) return;
+            if (!(await confirm({ title: 'Remove this solution', message: `Remove ${s.publicName} from the register?`, confirmLabel: 'Remove', danger: true }))) return;
             try { await api.del(`/solutions/${encodeURIComponent(s.id)}`); toast('Solution removed', 'ok'); reload(); } catch (err) { toast(err.message, 'bad'); }
           } }),
         ]) },
@@ -466,7 +375,7 @@ export async function render(container, params) {
     return card({
       title: 'Solutions',
       body: [
-        el('p', { class: 'note', text: 'The public-safe register: the only solution names the AI may use. Never an internal or course name, never a client, lender or staff name. Rows marked confirm are not yet confirmed as built.' }),
+        bullets(['The only solution names the AI may use', 'Never an internal, course, client or staff name', 'Confirm: not yet confirmed as built'], { compact: true }),
         holder,
         el('div', { style: { marginTop: '10px' } }, button({ kind: 'secondary', small: true, icon: 'plus', label: 'Add solution', onClick: () => { rows.push({ _new: true, id: '', publicName: '', oneLine: '', _removes: '' }); draw(); } })),
       ],

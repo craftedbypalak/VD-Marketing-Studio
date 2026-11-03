@@ -223,3 +223,7 @@ button.chip.pe-target:disabled { cursor: not-allowed; }
 .ct-rules summary { cursor: pointer; color: var(--navy); font-weight: 600; }
 .ct-rules ul { margin: 6px 0 4px; padding-left: 18px; }
 .ct-rules li { margin: 2px 0; line-height: 1.4; }
+
+/* Glanceable hints as bullets (ui.bullets with class ct-hint). */
+ul.ct-hint.bullets { margin: 4px 0 8px; }
+div.ct-hint + ul.ct-hint.bullets { margin-top: 2px; }

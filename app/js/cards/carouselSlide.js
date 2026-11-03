@@ -4,7 +4,7 @@
 // chosen. The wordmark and tagline sit in the footer; the count is top right.
 
 import {
-  palette, fit, textLines, textAt, eyebrow, footer, frame, warn, F, COLOR, TAGLINE, pieceText, round, textWidth, parseRich,
+  palette, fit, textLines, textAt, eyebrow, footer, frame, warn, F, COLOR, TAGLINE, pieceText, round, textWidth, parseRich, footerFor, cardText,
 } from './_kit.js';
 
 const W = 1080;
@@ -22,7 +22,7 @@ export const TYPES = [
 export const meta = {
   id: 'carouselSlide',
   label: 'Carousel slide',
-  note: 'The four slide types of the carousel kit. "Kit pattern" puts the cover and call to action on navy and the rest on light.',
+  note: 'Four slide types from the carousel kit. Kit pattern: cover and call to action on navy, the rest light.',
   formats: [{ id: 'default', label: '1080 x 1350', w: W, h: H }],
   defaultTheme: 'auto',
   themes: ['auto', 'navy', 'light'],
@@ -128,15 +128,19 @@ export function render(fields, theme = 'auto', opts = {}) {
     return { h: f.height, draw: (y) => textLines({ lines: f.lines, x: PAD, y, size: f.size, lineH: f.lineH, f: F.body, fill: pal.body, starFill: pal.star }) };
   };
 
-  let footerOpts = { w: W, padX: PAD, ruleY: 1210, logoTop: 1246, logoH: 52, tagline: fields.footer ?? TAGLINE };
+  let footerOpts = { w: W, h: H, padX: PAD, ruleY: 1210, logoTop: 1246, logoH: 52, tagline: fields.footer ?? footerFor(meta) };
 
   if (type === 'cover') {
     const ey = fields.eyebrow ? { h: 26, draw: (y) => eyebrow(pal, { x: PAD, y, text: fields.eyebrow, size: 26, maxW: INNER }).svg } : null;
     stack([ey, headBlock(132, 1.02, 700, 64)].filter(Boolean), 44, bodyTop, 1090);
     // Swipe cue.
     const cue = pal.eyebrow;
-    svg += textAt({ str: 'SWIPE', x: PAD, y: 1148, f: F.label, size: 26, fill: cue, ls: 26 * 0.1 });
-    svg += `<path d="M${PAD + 118} 1138h40M${PAD + 148} 1129l10 9-10 9" fill="none" stroke="${cue}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
+    const word = cardText('swipe').toUpperCase();
+    let ws = 26;
+    while (ws > 16 && textWidth(word, { ...F.label, ls: 0.1 }, ws) > INNER - 80) ws -= 1;
+    svg += textAt({ str: word, x: PAD, y: 1148, f: F.label, size: ws, fill: cue, ls: ws * 0.1 });
+    const ax = round(PAD + textWidth(word, { ...F.label, ls: 0.1 }, ws) + 14);
+    svg += `<path d="M${ax} 1138h40M${round(ax + 30)} 1129l10 9-10 9" fill="none" stroke="${cue}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
   } else if (type === 'point') {
     const chip = fields.n ? numberChip(pal, fields.n, 0) : null;
     stack([
@@ -177,7 +181,7 @@ export function render(fields, theme = 'auto', opts = {}) {
       while (s > 18 && textWidth(fields.note, F.tag, s) > INNER) s -= 1;
       svg += textAt({ str: fields.note, x: PAD, y: 1126, f: F.tag, size: s, fill: pal.muted });
     }
-    footerOpts = { ...footerOpts, sub: 'A venture by VSP' };
+    footerOpts = { ...footerOpts, sub: cardText('ventureLine') };
   }
 
   svg += footer(pal, footerOpts);

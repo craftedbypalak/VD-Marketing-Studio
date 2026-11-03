@@ -2,7 +2,7 @@
 
 import { api } from './api.js';
 import { router, NAV } from './router.js';
-import { el, icon, select, toast } from './ui.js';
+import { el, icon, select, toast, bullets } from './ui.js';
 import { roleOf, userLabel } from './roles.js';
 
 const navList = document.getElementById('nav-list');
@@ -92,7 +92,7 @@ async function buildUserPicker() {
       api.user.set(e.target.value);   // roles.js forgets the cached role on this event
       api.pin.set('');   // a new user, a fresh PIN prompt
       const u = users.find((x) => x.email === e.target.value);
-      toast(u && roleOf(u) !== 'employee' && u.pinSet ? `Working as ${userLabel(u)}. The PIN is asked for on the first action reserved for your role.` : `Working as ${e.target.selectedOptions[0]?.text || e.target.value}`, 'ok');
+      toast(u && roleOf(u) !== 'employee' && u.pinSet ? `Working as ${userLabel(u)}. Your PIN is asked at the first role action.` : `Working as ${e.target.selectedOptions[0]?.text || e.target.value}`, 'ok');
       // Redraw the view for the new role; the piece editor keeps its unsaved text and is left as it is.
       if (!/^\/content\/[^/]+/.test(router.parseHash().path)) router.render();
     },
@@ -121,8 +121,11 @@ async function hostingBanner() {
   const main = document.getElementById('main');
   const outlet = document.getElementById('outlet');
   if (!main || !outlet) return;
-  const ai = h.hosting.aiMode === 'api' ? '' : ' AI steps need ANTHROPIC_API_KEY in the Vercel project settings.';
-  main.insertBefore(el('div', { class: 'banner banner-warn hosting-banner', role: 'status', text: `Hosted preview: changes are kept only for a short while and reset when the server restarts, until Google Sheets is connected.${ai}` }), outlet);
+  const ai = h.hosting.aiMode === 'api' ? null : 'AI steps need ANTHROPIC_API_KEY in the Vercel settings.';
+  main.insertBefore(el('div', { class: 'banner banner-warn hosting-banner', role: 'status' }, [icon('warn'), el('div', {}, [
+    el('b', { text: 'Hosted preview' }),
+    bullets(['Changes reset when the server restarts.', 'They will last once Google Sheets is connected.', ai], { compact: true }),
+  ])]), outlet);
 }
 
 buildNav();

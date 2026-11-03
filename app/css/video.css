@@ -1,6 +1,9 @@
 /* Video module styles. [video] Injected by app/js/views/video.js. Tokens only. */
 
-.vid-lead { max-width: 70ch; color: var(--text-secondary); margin-bottom: 18px; }
+.vid-lead { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 4px 24px; max-width: 900px; color: var(--text-secondary); margin-bottom: 18px; }
+.vid-lead h3 { margin: 0 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); }
+.vid-data { font-size: 13px; color: var(--text-muted); }
+.vid-data .bullets { margin: 2px 0 8px; }
 
 /* ---------------------------------------------------------------- header */
 .vid-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
@@ -88,6 +91,7 @@
 .vid-scene-card h3 { font-size: 14.5px; margin-bottom: 4px; }
 .vid-scene-say { font-size: 13.5px; color: var(--text-secondary); margin-bottom: 8px; }
 .vid-search { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.vid-panel input[type=file] { max-width: 100%; min-width: 0; }
 .vid-search .input { max-width: 260px; }
 .vid-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 10px; margin-top: 12px; }
 .vid-tile { border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; background: var(--white); display: flex; flex-direction: column; }
@@ -118,4 +122,14 @@
   .vid-step { min-width: 84px; }
   .vid-short-row { grid-template-columns: 1fr 1fr; }
   .vid-short-row .input:first-child { grid-column: 1 / -1; }
+}
+
+/* Builder, Video defaults (app/js/builder/boxes/video.js) */
+.vbx-chapter { align-items: flex-start; }
+.vbx-n { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--navy); color: var(--white); display: grid; place-items: center; font-size: 12px; font-weight: 700; margin-top: 20px; }
+.vbx-move { display: flex; flex-direction: column; gap: 4px; flex: none; }
+.vbx-chapter .check { min-height: 38px; align-items: center; }
+@media (max-width: 520px) {
+  .vbx-chapter { flex-wrap: wrap; }
+  .vbx-move { flex-direction: row; width: 100%; justify-content: flex-end; }
 }

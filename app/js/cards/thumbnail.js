@@ -5,7 +5,7 @@
 // when there is one, takes the right-hand panel.
 
 import {
-  palette, fit, textLines, eyebrow, footer, frame, imagePanel, warn, F, pieceText, plain,
+  palette, fit, textLines, eyebrow, footer, frame, imagePanel, warn, F, pieceText, plain, footerFor,
 } from './_kit.js';
 
 const W = 1280;
@@ -58,7 +58,7 @@ export function render(fields, theme = 'navy', opts = {}) {
 
   if (hasImage) svg += imagePanel({ id: 'thumb', x: panelX, y: 72, w: W - PAD - panelX, h: 528, href: fields.imageData, pal });
 
-  svg += footer(pal, { w: W, padX: PAD, ruleY: null, logoTop: 622, logoH: 44, tagline: fields.footer || '', size: 26, rule: false });
+  svg += footer(pal, { w: W, h: H, padX: PAD, ruleY: null, logoTop: 622, logoH: 44, tagline: fields.footer ?? footerFor(meta), size: 26, rule: false });
   return frame({ w: W, h: H, pal, body: svg, opts });
 }
 

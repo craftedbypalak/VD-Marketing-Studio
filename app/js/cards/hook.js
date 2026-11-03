@@ -3,7 +3,7 @@
 // the video kit does); the portrait adds a short body line and can carry an
 // illustration.
 
-import { stackCard, pieceText, TAGLINE } from './_kit.js';
+import { stackCard, pieceText, TAGLINE, footerFor } from './_kit.js';
 
 const SIZES = { square: { w: 1080, h: 1080 }, portrait: { w: 1080, h: 1350 } };
 
@@ -37,7 +37,8 @@ export const meta = {
 
 export function size(fields) { return SIZES[fields?.format] || SIZES.square; }
 
-export function render(fields, theme = 'navy', opts = {}) {
+export function render(input, theme = 'navy', opts = {}) {
+  const fields = { ...input, footer: input.footer ?? footerFor(meta) };
   const { w, h } = size(fields);
   if (h === 1080) {
     return stackCard({

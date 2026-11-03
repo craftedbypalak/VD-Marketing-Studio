@@ -10,7 +10,7 @@
 // asks and shows the reason when it is refused.
 
 import { api } from '../api.js';
-import { el, button, chip, statusPill, dialog, toast, select, input, field, empty, icon, preview, confirm } from '../ui.js';
+import { el, button, chip, statusPill, dialog, toast, select, input, field, empty, icon, preview, confirm, bullets } from '../ui.js';
 import { checkChip } from './library.js';
 import { isApprover, loadRefs } from './piece.js';
 import { render as renderToday, summary as todaySummary } from './today.js';
@@ -44,6 +44,15 @@ const daysIn = (ym) => new Date(Date.UTC(+ym.slice(0, 4), +ym.slice(5, 7), 0)).g
 const addMonths = (ym, n) => { const d = new Date(Date.UTC(+ym.slice(0, 4), +ym.slice(5, 7) - 1 + n, 1)); return toYmd(d).slice(0, 7); };
 const isMonth = (s) => /^\d{4}-(0[1-9]|1[0-2])$/.test(s || '');
 const isYmd = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s || '') && !Number.isNaN(toDate(s).getTime());
+/** Text from the data, kept glanceable: one short line as a paragraph, a longer one as a bullet per sentence. */
+function glance(text, cls, style) {
+  const t = String(text || '').trim();
+  const parts = t.split(/(?<=;)\s+|(?<=\.)\s+(?=[A-Z0-9"'(])/).map((x) => x.replace(/;$/, '')).filter(Boolean);
+  if (t.split(/\s+/).length <= 20 || parts.length < 2) return el('p', { class: cls, style, text: t });
+  const ul = bullets(parts, { compact: true, class: cls });
+  if (style) Object.assign(ul.style, style);
+  return ul;
+}
 function* eachDay(from, to) { for (let d = from; d <= to; d = addDays(d, 1)) yield d; }
 const monthName = (ym) => toDate(`${ym}-01`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 const longDate = (ymd) => toDate(ymd).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
@@ -225,7 +234,7 @@ export async function render(container, params) {
     }
   }
   async function unplace(slot) {
-    if (!(await confirm({ title: 'Take the piece out of this slot', message: `"${pieceLabel(slot)}" leaves ${shortDate(slot.date)}; the slot becomes open again. The piece stays in the library.`, confirmLabel: 'Take it out' }))) return;
+    if (!(await confirm({ title: 'Take the piece out of this slot', message: `"${pieceLabel(slot)}" leaves ${shortDate(slot.date)}; the slot reopens, the piece stays in the library.`, confirmLabel: 'Take it out' }))) return;
     try {
       await api.post(`/pieces/${encodeURIComponent(slot.pieceId)}/unplace`, { slotId: slot.id });
       toast('The piece is out of the calendar', 'ok');
@@ -292,7 +301,7 @@ export async function render(container, params) {
     const { from, to } = range();
     try {
       const r = await api.post('/slots/regenerate', { from, to });
-      toast(`Slots regenerated for ${shortDate(from)} to ${shortDate(to)}: ${r.created} added, ${r.updated} updated, ${r.removed} removed. Filled slots are untouched.`, 'ok', { ms: 5200 });
+      toast(`Slots regenerated, ${shortDate(from)} to ${shortDate(to)}: ${r.created} added, ${r.updated} updated, ${r.removed} removed; filled slots kept.`, 'ok', { ms: 5200 });
       await refresh();
     } catch (err) { toast(err.message, 'bad', { ms: 7000 }); }
   }
@@ -306,7 +315,7 @@ export async function render(container, params) {
   async function exportCsv() {
     const ok = await confirm({
       title: 'Write calendar.csv',
-      message: 'This replaces Marketing/POSTING/calendar.csv with the rows now in the calendar. The present file is kept next to it as calendar.csv.bak. Run build-kit.mjs afterwards to rebuild calendar.html.',
+      message: 'Replaces POSTING/calendar.csv (old copy kept as .bak); then run build-kit.mjs.',
       confirmLabel: 'Write the file',
     });
     if (!ok) return;
@@ -332,7 +341,10 @@ export async function render(container, params) {
         `Every slot from ${S.data.goDark.from || 'today'}${S.data.goDark.to ? ` to ${S.data.goDark.to}` : ''} is held and cannot take a piece. ${S.data.goDark.reason || ''}`])]));
     }
     if (S.data.eventsEmpty) {
-      out.push(el('div', { class: 'banner banner-info' }, [icon('warn'), el('div', { text: 'The events list is empty, so dark days, quiet windows and events come from the posting rules in channels.json. Import the India calendar under Recurring to add festivals and compliance dates.' })]));
+      out.push(el('div', { class: 'banner banner-info' }, [icon('warn'), el('div', {}, [el('b', { text: 'The events list is empty' }), bullets([
+        'Dark days and quiet windows come from channels.json for now.',
+        'Import the India calendar under Recurring for festivals and compliance dates.',
+      ], { compact: true })])]));
     }
     return out;
   }
@@ -481,7 +493,7 @@ export async function render(container, params) {
     const tbl = el('table', { class: 'table' }, [
       el('thead', {}, el('tr', {}, ['Account', 'Weekly', 'Monthly', 'Also goes to'].map((h) => el('th', { text: h })))),
       el('tbody', {}, rows.map((a) => el('tr', {}, [
-        el('td', {}, [el('b', { text: a.short }), el('div', { class: 'muted small', text: a.label }), a.role && el('div', { class: 'muted small', style: { marginTop: '4px' }, text: a.role })]),
+        el('td', {}, [el('b', { text: a.short }), el('div', { class: 'muted small', text: a.label }), a.role && glance(a.role, 'muted small', { marginTop: '4px' })]),
         el('td', {}, ruleList((a.weekly || []).map((w) => `${w.day} ${w.time || w.timeNote || 'any time'}: ${KIND_LABEL[w.kind] || w.kind}${w.optional ? ' (optional)' : ''}${w.derived ? ' (derived)' : ''}${w.alternate ? ' (alternate weeks)' : ''}`))),
         el('td', {}, ruleList((a.monthly || []).map((m) => `${m.rule} ${m.time || m.timeNote || ''}: ${KIND_LABEL[m.kind] || m.kind}${m.skipMonths?.length ? ` (not in ${m.skipMonths.join(', ')})` : ''}`))),
         el('td', {}, ruleList([...new Set((a.repurposeTo || []).map((r) => accShort(r.accountId)))])),
@@ -490,7 +502,11 @@ export async function render(container, params) {
     const det = el('details', { class: 'cal-allot card' }, [
       el('summary', { text: 'Allotted days' }),
       el('div', { class: 'card-body' }, [
-        el('p', { class: 'muted small', text: 'The fixed weekly and monthly slots for every account, read from the account settings. LinkedIn has one slot a week until 16 November 2026, then two, with a PDF carousel in alternate weeks from 25 November 2026 in place of Thursday\'s post.' }),
+        bullets([
+          'Fixed weekly and monthly slots per account, from the account settings.',
+          'LinkedIn: one slot a week until 16 November 2026, then two.',
+          'From 25 November 2026, a PDF carousel replaces Thursday\'s post in alternate weeks.',
+        ], { compact: true }),
         el('div', { class: 'table-wrap' }, tbl),
         el('div', { style: { marginTop: '10px' } }, button({ kind: 'ghost', small: true, label: 'Change the rules in Settings', href: '#/settings?tab=accounts' })),
       ]),
@@ -537,16 +553,16 @@ export async function render(container, params) {
       drawer.replaceChildren(head, pb);
       return;
     }
-    if (info.goDark) pb.appendChild(el('div', { class: 'banner banner-bad' }, [icon('warn'), el('div', {}, [el('b', { text: 'Go dark. ' }), `${info.goDarkReason || 'Nothing is posted.'} Slots are held; none can take a piece.`])]));
-    if (info.rule === 'dark') pb.appendChild(el('div', { class: 'banner banner-bad' }, [icon('warn'), el('div', {}, [el('b', { text: 'Dark day. ' }), `${info.reasons.join('; ') || 'Do not post.'} No post is planned; a piece cannot be placed here.`])]));
-    if (info.rule === 'greeting-only') pb.appendChild(el('div', { class: 'banner banner-warn' }, [icon('warn'), el('div', {}, [el('b', { text: 'Greeting only. ' }), `${info.reasons.join('; ') || 'Greeting only.'} Only a plain greeting goes out today.`])]));
-    if (info.quiet) pb.appendChild(el('div', { class: 'banner banner-info' }, [icon('warn'), el('div', { text: info.quietLabel || 'Quiet window: calls come first; nothing new is tried.' })]));
+    if (info.goDark) pb.appendChild(el('div', { class: 'banner banner-bad' }, [icon('warn'), el('div', {}, [el('b', { text: 'Go dark' }), bullets([info.goDarkReason || 'Nothing is posted.', 'Slots are held; none can take a piece.'], { compact: true })])]));
+    if (info.rule === 'dark') pb.appendChild(el('div', { class: 'banner banner-bad' }, [icon('warn'), el('div', {}, [el('b', { text: 'Dark day' }), bullets([...(info.reasons.length ? info.reasons : ['Do not post.']), 'No post; a piece cannot be placed here.'], { compact: true })])]));
+    if (info.rule === 'greeting-only') pb.appendChild(el('div', { class: 'banner banner-warn' }, [icon('warn'), el('div', {}, [el('b', { text: 'Greeting only' }), bullets([...info.reasons, 'Only a plain greeting goes out today.'], { compact: true })])]));
+    if (info.quiet) pb.appendChild(el('div', { class: 'banner banner-info' }, [icon('warn'), el('div', {}, glance(info.quietLabel || 'Quiet window: calls come first; nothing new is tried.', null, { margin: 0 }))]));
 
     const evs = eventsOn(date);
     if (evs.length) {
       pb.appendChild(el('div', { class: 'cal-evs' }, evs.map((e) => el('div', { class: 'cal-ev' }, [
         chip({ label: MARKER_LABEL[e.marker] || e.marker, tone: MARKER_TONE[e.marker] || 'muted' }),
-        el('div', {}, [el('div', { text: e.name }), e.hint && el('p', { class: 'note', text: e.hint }), e.note && el('p', { class: 'note', text: e.note })]),
+        el('div', {}, [el('div', { text: e.name }), e.hint && glance(e.hint, 'note'), e.note && glance(e.note, 'note')]),
       ]))));
     }
 
@@ -601,10 +617,10 @@ export async function render(container, params) {
       statusPill(s.state),
     ]));
     card.appendChild(el('h3', { text: s.label || KIND_LABEL[s.kind] || s.kind }));
-    if (s.reason && s.state !== 'filled') card.appendChild(el('p', { class: 'cal-reason', text: s.reason }));
+    if (s.reason && s.state !== 'filled') card.appendChild(glance(s.reason, 'cal-reason'));
     card.appendChild(el('p', { class: 'muted small', style: { margin: '0 0 4px' }, text: accLabel(s.accountId) }));
     const why = whyFor(s);
-    if (why) card.appendChild(el('details', { class: 'cal-why' }, [el('summary', { text: 'Why this slot' }), el('p', { text: why })]));
+    if (why) card.appendChild(el('details', { class: 'cal-why' }, [el('summary', { text: 'Why this slot' }), glance(why)]));
 
     if (s.pieceId) {
       const pbox = el('div', { class: 'cal-piece' });
@@ -614,9 +630,9 @@ export async function render(container, params) {
         if (!APPROVED.includes(piece.status)) pbox.appendChild(el('p', { class: 'note', style: { margin: '6px 0 0' }, text: 'Not approved yet. Approval happens in the review queue.' }));
       } else {
         pbox.appendChild(el('div', { class: 'cal-piece-hook', text: s.csv?.hook || s.pieceId }));
-        pbox.appendChild(el('p', { class: 'note', style: { margin: 0 }, text: `From calendar.csv${s.csv?.id ? ` (${s.csv.id})` : ''}. The piece is not in the library yet; run the content import.` }));
+        pbox.appendChild(el('p', { class: 'note', style: { margin: 0 }, text: `From calendar.csv${s.csv?.id ? ` (${s.csv.id})` : ''}; not in the library yet. Run the content import.` }));
       }
-      if (s.csv?.notes) pbox.appendChild(el('p', { class: 'note', style: { margin: '6px 0 0' }, text: s.csv.notes }));
+      if (s.csv?.notes) pbox.appendChild(glance(s.csv.notes, 'note', { margin: '6px 0 0' }));
       card.appendChild(pbox);
       const btns = el('div', { class: 'cal-btns' });
       if (piece) btns.appendChild(button({ kind: 'secondary', small: true, icon: 'edit', label: 'Open piece', href: `#/content/${encodeURIComponent(piece.id)}` }));
@@ -635,7 +651,7 @@ export async function render(container, params) {
       if (s.source === 'manual') btns.appendChild(button({ kind: 'ghost', small: true, icon: 'trash', label: 'Remove slot', onClick: () => removeSlot(s) }));
       card.appendChild(btns);
     } else if (s.state === 'derived') {
-      card.appendChild(el('p', { class: 'cal-reason', text: s.kind === 'reshare' ? 'Derived: reshare the week\'s strongest post from Palak\'s LinkedIn, with one line. Nothing is placed here.' : s.kind === 'family' ? 'Derived: the month\'s most-sent Reel, chosen at the time.' : 'Derived from another post.' }));
+      card.appendChild(el('p', { class: 'cal-reason', text: s.kind === 'reshare' ? 'Derived: reshare the week\'s best post from Palak\'s LinkedIn, with one line.' : s.kind === 'family' ? 'Derived: the month\'s most-sent Reel, chosen at the time.' : 'Derived from another post.' }));
     }
 
     const rp = repurposeFor(s);
@@ -708,7 +724,7 @@ export async function render(container, params) {
       title: `Pick a piece for ${accShort(slot.accountId)} ${KIND_LABEL[slot.kind] || slot.kind}, ${shortDate(slot.date)}`,
       wide: true,
       body: el('div', {}, [
-        el('p', { class: 'muted small', text: `This slot takes: ${fits.map((t) => S.data.typeNames?.[t] || t).join(', ')}. Approved pieces come first; the chip shows how each stands with the checker.` }),
+        bullets([`Takes: ${fits.map((t) => S.data.typeNames?.[t] || t).join(', ')}.`, 'Approved pieces first; the chip shows the checker result.'], { compact: true }),
         search, results,
       ]),
       actions: [
@@ -769,7 +785,7 @@ export async function render(container, params) {
       title: 'Move this piece',
       body: el('div', {}, [
         el('p', { text: piece.hook || piece.id, style: { fontWeight: '700', color: 'var(--navy)' } }),
-        el('p', { class: 'muted small', text: `Now on ${shortDate(slot.date)}, ${accShort(slot.accountId)} ${KIND_LABEL[slot.kind] || slot.kind}. The server checks the kind of slot and refuses dark days.` }),
+        bullets([`Now on ${shortDate(slot.date)}, ${accShort(slot.accountId)} ${KIND_LABEL[slot.kind] || slot.kind}.`, 'Dark days and the wrong kind of slot are refused.'], { compact: true }),
         field({ label: 'Move to', input: dateIn }), holder,
       ]),
       actions: [button({ kind: 'secondary', label: 'Cancel', onClick: () => d.close() }), confirmBtn],

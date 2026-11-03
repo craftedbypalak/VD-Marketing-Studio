@@ -1,102 +1,73 @@
-// Builder (#/builder): where the builder sets the tool up for a company before
-// the team uses it. Today: the brand on every visual (settings.brand) and the
-// list of tools. The tools moving over from Google Sheets (testimonial,
-// memento, sticker builders) land here as they are built. [core]
+// Builder (#/builder, #/builder/:box): set the tool up for a company before the team
+// uses it. Only editable things live here, as a grid of tool boxes; each box opens its
+// own editor at #/builder/<id>. Boxes: app/js/builder/boxes/*.js. Contract: docs/BUILDER.md.
 //
 // Only the director (or an owner, who works as the director) saves; others read.
+// The director may hide boxes they do not use (settings.builder.hidden).
 
-import { api } from '../api.js';
-import { roleOf } from '../roles.js';
-import { el, card, field, input, button, toast } from '../ui.js';
-import { ready, setBrand, useBrand, BRAND_DEFAULTS, TAGLINE } from '../cards/_kit.js';
-import * as greeting from '../cards/festivalGreeting.js';
-import * as statusRule from '../cards/statusRule.js';
+import { el, card, button, icon, bullets, toast, checkbox, dialog } from '../ui.js';
+import { BOXES } from '../builder/index.js';
+import { makeCtx } from '../builder/kit.js';
 
-export const route = '#/builder';
-export const title = 'Builder';
-
-const TOOLS = [
-  { name: 'Visual cards', about: 'Status rules, quotes, hooks, thumbnails, carousel slides, LinkedIn images, festival greetings.', href: '#/visuals' },
-  { name: 'Occasions', about: 'Festivals and dates, greetings, festival ideas, announcements.', href: '#/occasions' },
-  { name: 'Video', about: 'Episodes and Shorts, from outline to the edit hand-off.', href: '#/video' },
-];
-const COMING = ['Testimonial builder', 'Memento builder', 'Sticker builder'];
+export const route = ['#/builder', '#/builder/:box'];
+export const title = (params) => (params && params.box ? (BOXES.find((b) => b.id === params.box)?.title || 'Builder') : 'Builder');
 
 function ensureCss() {
-  if (document.getElementById('cards-css')) return;
-  document.head.appendChild(el('link', { id: 'cards-css', rel: 'stylesheet', href: 'css/cards.css' }));
+  if (!document.getElementById('cards-css')) document.head.appendChild(el('link', { id: 'cards-css', rel: 'stylesheet', href: 'css/cards.css' }));
+  if (!document.getElementById('builder-css')) document.head.appendChild(el('link', { id: 'builder-css', rel: 'stylesheet', href: 'css/builder.css' }));
 }
 
-export async function render(container) {
+export async function render(container, params = {}) {
   ensureCss();
-  let settings = {};
-  try { settings = await api.settings(); } catch (err) { container.appendChild(el('div', { class: 'banner banner-bad', text: err.message })); return; }
-  const me = (api.user.get() || '').toLowerCase();
-  let canEdit = false;
-  try {
-    const who = await api.get('/me');
-    canEdit = who?.role === 'director' || Boolean(who?.owner);
-  } catch {
-    canEdit = roleOf((settings.users || []).find((u) => String(u.email).toLowerCase() === me)) === 'director';
-  }
+  let ctx;
+  try { ctx = await makeCtx(); } catch (err) { container.appendChild(el('div', { class: 'banner banner-bad', text: err.message })); return; }
 
-  const brand = { ...BRAND_DEFAULTS, tagline: TAGLINE, ...(settings.brand || {}) };
-  await ready().catch(() => {});
-
-  const preview = el('div', { class: 'bd-preview' });
-  function drawPreview() {
-    setBrand(brand);
-    useBrand();
-    const cards = [
-      greeting.render(greeting.greetingFields({ shortName: 'Diwali', greetingText: 'Wishing you a joyous and prosperous Diwali.' }, 'square'), 'navy', { embedFonts: false, warnings: [] }),
-      statusRule.render({ ...statusRule.meta.defaults }, 'light', { embedFonts: false, warnings: [] }),
-    ];
-    preview.replaceChildren(...cards.map((svg) => { const d = el('div', { class: 'bd-card' }); d.innerHTML = svg; return d; }));
-  }
-
-  const seg = (key, label, opts) => field({
-    label,
-    input: el('div', { class: 'cards-seg', role: 'group', 'aria-label': label }, opts.map(([v, t]) => el('button', {
-      type: 'button', class: brand[key] === v ? 'active' : '', text: t, disabled: !canEdit,
-      onClick: (e) => { brand[key] = v; [...e.currentTarget.parentNode.children].forEach((b) => b.classList.toggle('active', b === e.currentTarget)); drawPreview(); },
-    }))),
-  });
-  const tagline = input({ value: brand.tagline || '', disabled: !canEdit, onInput: (e) => { brand.tagline = e.target.value; drawPreview(); } });
-
-  const brandCard = card({
-    title: 'Brand on visuals',
-    eyebrow: 'Default for every card',
-    body: el('div', { class: 'bd-brand' }, [
-      el('div', { class: 'bd-controls' }, [
-        seg('position', 'Position', [['bottom', 'Bottom'], ['top', 'Top']]),
-        seg('logo', 'Logo', [['full', 'Full logo'], ['mark', 'VD mark']]),
-        seg('taglineLayout', 'Tagline', [['line', 'One line'], ['stacked', 'Below logo']]),
-        field({ label: 'Tagline text', input: tagline }),
-        el('p', { class: 'note', text: 'Anyone can still change these for one card in Visuals.' }),
+  if (params.box) {
+    const box = BOXES.find((b) => b.id === params.box);
+    if (!box) { location.hash = '#/builder'; return; }
+    const body = el('div', { class: 'bx-body' });
+    container.append(
+      el('div', { class: 'bx-head' }, [
+        button({ kind: 'ghost', small: true, icon: 'back', label: 'All tools', href: '#/builder' }),
+        !ctx.canEdit && el('span', { class: 'chip chip-muted', text: 'Read-only' }),
       ]),
-      preview,
-    ]),
-    footer: canEdit ? [button({ kind: 'primary', label: 'Save', onClick: async () => {
-      try {
-        const fresh = await api.settings();
-        settings = await api.put('/settings/settings', { ...fresh, brand: { position: brand.position, logo: brand.logo, taglineLayout: brand.taglineLayout, tagline: brand.tagline || '' } });
-        toast('Brand saved', 'ok');
-      } catch (err) { toast(err.message, 'bad'); }
-    } })] : undefined,
-  });
+      body,
+    );
+    try { await box.render(body, ctx); } catch (err) { body.appendChild(el('div', { class: 'banner banner-bad', text: err.message })); }
+    return;
+  }
 
-  const toolsCard = card({
-    title: 'Tools',
-    body: el('div', {}, [
-      el('ul', { class: 'bd-tools' }, TOOLS.map((t) => el('li', {}, [el('a', { href: t.href, text: t.name }), el('span', { class: 'note', text: t.about })]))),
-      el('p', { class: 'eyebrow', style: { marginTop: '14px' }, text: 'Moving over from Google Sheets' }),
-      el('ul', { class: 'bd-tools' }, COMING.map((n) => el('li', {}, [el('span', { text: n }), el('span', { class: 'chip chip-muted', text: 'Coming' })]))),
-    ]),
-  });
+  const hidden = new Set(ctx.settings?.builder?.hidden || []);
+  const grid = el('div', { class: 'bx-grid' });
+  for (const box of BOXES.filter((b) => !hidden.has(b.id))) {
+    let lines = [];
+    try { lines = (box.summary(ctx) || []).slice(0, 4); } catch { lines = []; }
+    grid.appendChild(el('a', { class: 'bx-tile', href: `#/builder/${box.id}` }, [
+      el('div', { class: 'bx-tile-h' }, [icon(box.icon), el('span', { text: box.title })]),
+      bullets(lines, { compact: true }),
+      el('span', { class: 'bx-tile-go', text: ctx.canEdit ? 'Edit' : 'View' }),
+    ]));
+  }
+
+  const manage = ctx.canEdit && button({ kind: 'secondary', small: true, label: 'Show or hide tools', onClick: () => {
+    const next = new Set(hidden);
+    let d;
+    d = dialog({
+      title: 'Tools on this page',
+      body: el('div', {}, BOXES.map((b) => checkbox({ label: b.title, checked: !hidden.has(b.id), onChange: (e) => { if (e.target.checked) next.delete(b.id); else next.add(b.id); } }))),
+      actions: [button({ kind: 'primary', label: 'Save', onClick: async () => {
+        try { await ctx.saveSettings((doc) => { doc.builder = { ...(doc.builder || {}), hidden: [...next] }; }); d.close(); render(container.replaceChildren() || container, params); } catch (err) { toast(err.message, 'bad'); }
+      } })],
+    });
+  } });
 
   container.append(
-    el('p', { class: 'note', style: { margin: '0 0 14px' }, text: canEdit ? 'Set the tool up for this company. The team uses what you set here.' : 'Set up by the director. Read-only for you.' }),
-    brandCard, toolsCard,
+    el('div', { class: 'bx-intro' }, [
+      bullets(ctx.canEdit
+        ? ['Set Studio up for this company', 'Open a tool to change it', 'The team works with what you save']
+        : ['Set up by the director', 'Read-only for you'], { compact: true }),
+      manage,
+    ]),
+    grid,
   );
-  drawPreview();
 }

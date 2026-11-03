@@ -51,6 +51,30 @@ try {
     assert.equal((await call('PUT', '/rules/rules', rules, H(MANAGER))).status, 403);
     assert.equal((await call('PUT', '/rules/rules', rules, H(DIRECTOR))).status, 200);
   });
+  await test('only the director creates, changes or deletes accounts and solutions', async () => {
+    for (const c of ['accounts', 'solutions']) {
+      const list = (await call('GET', `/${c}`, undefined, H(STAFF))).body;
+      const first = list[0];
+      assert.ok(first, `${c} has a row to test with`);
+      const fresh = { id: `roles-test-${c}`, label: 'Roles test', publicName: 'Roles test' };
+      for (const who of [STAFF, MANAGER]) {
+        const put = await call('PUT', `/${c}/${first.id}`, { ...first, label: 'changed' }, H(who));
+        assert.equal(put.status, 403, `${who} PUT ${c}`);
+        assert.match(put.body.error, new RegExp(`Only the director can change the ${c}`));
+        assert.equal((await call('PATCH', `/${c}/${first.id}`, { label: 'changed' }, H(who))).status, 403, `${who} PATCH ${c}`);
+        assert.equal((await call('POST', `/${c}`, fresh, H(who))).status, 403, `${who} POST ${c}`);
+        assert.equal((await call('DELETE', `/${c}/${first.id}`, undefined, H(who))).status, 403, `${who} DELETE ${c}`);
+      }
+      assert.equal((await call('POST', `/${c}`, fresh, undefined)).status, 401);
+      const made = await call('POST', `/${c}`, fresh, H(DIRECTOR));
+      assert.equal(made.status, 201, JSON.stringify(made.body));
+      assert.equal((await call('PATCH', `/${c}/${fresh.id}`, { label: 'Roles test 2' }, H(DIRECTOR))).status, 200);
+      assert.equal((await call('PUT', `/${c}/${fresh.id}`, { ...made.body, label: 'Roles test 3' }, H(DIRECTOR))).status, 200);
+      assert.equal((await call('DELETE', `/${c}/${fresh.id}`, undefined, H(DIRECTOR))).status, 200);
+      const after = (await call('GET', `/${c}/${first.id}`, undefined, H(STAFF))).body;
+      assert.deepEqual(after, first);
+    }
+  });
   await test('a settings save without a director, or with an unknown role, is refused', async () => {
     const mine = (await call('GET', '/settings/settings', undefined, H(DIRECTOR))).body;
     const none = await call('PUT', '/settings/settings', { ...mine, users: mine.users.map((u) => ({ ...u, role: 'manager' })) }, H(DIRECTOR));

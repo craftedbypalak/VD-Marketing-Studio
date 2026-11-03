@@ -4,7 +4,7 @@
 // render(container, params, preloaded) draws the full lists; summary(data) draws the line.
 
 import { api } from '../api.js';
-import { el, card, listRow, statusPill, chip, icon, fmt, button, toast } from '../ui.js';
+import { el, card, listRow, statusPill, chip, icon, fmt, button, toast, bullets } from '../ui.js';
 
 export const route = '#/today';
 export const title = 'Today';
@@ -93,11 +93,12 @@ export async function render(container, params, preloaded) {
   if (m) {
     const s = m.slots;
     const pct = s.allotted ? Math.round((s.approved / s.allotted) * 100) : 0;
-    const who = { cli: 'Claude on the subscription', api: 'the Claude API', hand: 'a person, as a hand-written answer', runner: 'a person answering as the runner' };
+    const who = { cli: 'Claude on the subscription', api: 'the Claude API', hand: 'a person, by hand', runner: 'a person, as the runner' };
+    const billing = m.ai.mode === 'cli' ? 'subscription, no bill' : 'API key, billed per token';
     const aiLine = m.ai.calls
-      ? `${m.ai.calls} AI ${m.ai.calls === 1 ? 'call' : 'calls'} in the last thirty days${m.ai.byHand ? `, ${m.ai.byHand} answered by hand` : ''}${m.ai.failed ? `, ${m.ai.failed} failed` : ''}${m.ai.costUsd !== null ? `, ${m.ai.costUsd} USD reported for ${m.ai.costKnownFor}` : ''}; ${m.ai.mode === 'cli' ? 'on the subscription, no bill' : 'on the API key, billed per token'}.`
-      : `No AI call in the last thirty days; ${m.ai.mode === 'cli' ? 'the subscription carries them, no bill' : 'the API key is billed per token'}.`;
-    const aiState = m.ai.last?.at ? (m.ai.last.ok ? `The last answer came from ${who[m.ai.last.mode] || m.ai.last.mode} at ${fmt.dateTime(m.ai.last.at)}.` : `The last AI call failed at ${fmt.dateTime(m.ai.last.at)}: ${/authenticate|oauth|login/i.test(m.ai.last.error || '') ? 'Claude is not signed in on this Mac.' : m.ai.last.error}`) : 'No AI call since the server started.';
+      ? `${m.ai.calls} ${m.ai.calls === 1 ? 'call' : 'calls'}${m.ai.byHand ? `, ${m.ai.byHand} by hand` : ''}${m.ai.failed ? `, ${m.ai.failed} failed` : ''}${m.ai.costUsd !== null ? `, ${m.ai.costUsd} USD for ${m.ai.costKnownFor}` : ''}; ${billing}.`
+      : `none; ${billing}.`;
+    const aiState = m.ai.last?.at ? (m.ai.last.ok ? `${who[m.ai.last.mode] || m.ai.last.mode}, ${fmt.dateTime(m.ai.last.at)}.` : `failed ${fmt.dateTime(m.ai.last.at)}: ${/authenticate|oauth|login/i.test(m.ai.last.error || '') ? 'Claude is not signed in on this Mac.' : m.ai.last.error}`) : 'none since the server started.';
     const people = m.actionsThisWeek.length ? m.actionsThisWeek.map((a) => `${a.by} ${a.actions}`).join(', ') : 'none recorded';
     const story = data.checker?.storyline;
     container.appendChild(card({
@@ -107,12 +108,13 @@ export async function render(container, params, preloaded) {
           stat(s.allotted, 'allotted slots'), stat(s.filled, 'filled'), stat(s.approved, 'approved'), stat(s.posted, 'posted'), stat(s.open, 'still open'),
         ]),
         el('ul', { class: 'td-lines' }, [
-          el('li', {}, [el('b', { text: 'Went out: ' }), m.posted.length ? m.posted.map((p) => p.hook).join('; ') : 'nothing posted yet this month. Posting is by hand in phase 1; a posted piece is marked on its measure block.']),
-          el('li', {}, [el('b', { text: 'AI: ' }), `${aiLine} ${aiState}`]),
-          el('li', {}, [el('b', { text: 'People, last seven days: ' }), `${people} (actions in the log; hours are not recorded).`]),
+          el('li', {}, [el('b', { text: 'Went out: ' }), m.posted.length ? m.posted.map((p) => p.hook).join('; ') : 'nothing yet this month. Posting is by hand; mark it on the measure block.']),
+          el('li', {}, [el('b', { text: 'AI, last thirty days: ' }), aiLine]),
+          el('li', {}, [el('b', { text: 'Last AI answer: ' }), aiState]),
+          el('li', {}, [el('b', { text: 'People, last seven days: ' }), `${people} (actions logged, not hours).`]),
           m.lastChange ? el('li', {}, [el('b', { text: 'Last change: ' }), `${m.lastChange.by || 'unknown'}, ${fmt.dateTime(m.lastChange.at)}, ${m.lastChange.what}.`]) : null,
-          story ? el('li', {}, [el('b', { text: 'The storyline in the content: ' }), `${story.namesTool} of ${story.pieces} pieces name a tool we built; ${story.systemAlone} say "system" without naming one. The review pass carries the frame into each piece. `, el('a', { href: '#/content?q=system', text: 'See them' })]) : null,
-          m.approversWithoutPin?.length ? el('li', { class: 'td-warn' }, [el('b', { text: 'Trust: ' }), `${m.approversWithoutPin.join(', ')} ${m.approversWithoutPin.length === 1 ? 'has' : 'have'} no PIN, so anyone at this Mac can act in their name as a manager or the director. `, el('a', { href: '#/settings?tab=users', text: 'Set one in Settings' })]) : el('li', {}, [el('b', { text: 'Trust: ' }), 'approval needs a manager or the director, deletes and settings need the director, each with their PIN; the checker blocks any piece that breaks the brief.']),
+          story ? el('li', {}, [el('b', { text: 'The storyline in the content: ' }), `${story.namesTool} of ${story.pieces} pieces name a tool we built; ${story.systemAlone} say "system" alone. `, el('a', { href: '#/content?q=system', text: 'See them' })]) : null,
+          m.approversWithoutPin?.length ? el('li', { class: 'td-warn' }, [el('b', { text: 'Trust: ' }), `no PIN for ${m.approversWithoutPin.join(', ')}; anyone here can approve as them. `, el('a', { href: '#/settings?tab=users', text: 'Set one in Settings' })]) : el('li', {}, [el('b', { text: 'Trust: ' }), bullets(['Approval: a manager or the director, with PIN.', 'Deletes and settings: the director, with PIN.', 'The checker blocks pieces that break the brief.'], { compact: true })]),
         ].filter(Boolean)),
       ]),
     }));
@@ -179,7 +181,7 @@ export async function render(container, params, preloaded) {
   grid.appendChild(section({
     title: 'Blocked by the checker',
     count: checker.blocked.length,
-    note: checker.unchecked ? `${checker.unchecked} ${checker.unchecked === 1 ? 'piece has' : 'pieces have'} not been checked yet. Use "Check all" in Content to check every piece.` : null,
+    note: checker.unchecked ? `${checker.unchecked} not checked yet; run "Check all" in Content.` : null,
     rows: checker.blocked.slice(0, SHOW_AT_MOST).map((p) => listRow({
       title: p.hook || p.id,
       sub: [p.type, p.plannedDate ? `planned ${fmt.date(p.plannedDate)}` : 'not planned'].filter(Boolean).join(' · '),

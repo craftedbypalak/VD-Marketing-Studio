@@ -26,8 +26,38 @@ import { store } from './store.mjs';
 export const TIER_ORDER = ['platinum', 'gold', 'silver', 'bronze'];
 export const GREETING_KINDS = new Set(['greeting', 'greeting-only']);
 const SEED_FILE = 'events.source.json';
-const WA_STATUS_ACCOUNT = 'wa-st';
-const GREETING_TIME = '19:00';
+
+/**
+ * The occasion defaults. The director edits them in Builder, Occasions (settings.occasions).
+ * The greeting time falls back to settings.calendar.greetingTime (Posting rhythm), then 19:00.
+ */
+export const OCCASION_DEFAULTS = Object.freeze({
+  greetingTime: '19:00',
+  statusAccount: 'wa-st',
+  conceptYears: 4,
+  conceptTypes: Object.freeze({ 'reel-animated': 'reel', broll: 'reel', carousel: 'carousel', 'status-rule': 'status' }),
+});
+
+const isTime = (t) => /^([01]\d|2[0-3]):[0-5]\d$/.test(String(t || ''));
+
+/** settings.occasions with every missing or invalid value filled from the defaults. */
+export function occasionsConfig(settings) {
+  const o = (settings && typeof settings.occasions === 'object' && settings.occasions) || {};
+  const d = OCCASION_DEFAULTS;
+  const greetingTime = [o.greetingTime, settings?.calendar?.greetingTime, d.greetingTime].find(isTime);
+  const years = Math.round(Number(o.conceptYears));
+  const types = {};
+  if (o.conceptTypes && typeof o.conceptTypes === 'object' && !Array.isArray(o.conceptTypes)) {
+    for (const [k, v] of Object.entries(o.conceptTypes)) if (String(k).trim() && String(v || '').trim()) types[String(k).trim()] = String(v).trim();
+  }
+  return {
+    greetingTime,
+    statusAccount: String(o.statusAccount || '').trim() || d.statusAccount,
+    conceptYears: o.conceptYears !== null && o.conceptYears !== '' && Number.isFinite(years) && years >= 1 && years <= 50 ? years : d.conceptYears,
+    conceptTypes: Object.keys(types).length ? types : { ...d.conceptTypes },
+  };
+}
+const occ = () => occasionsConfig(store.getSingleton('settings'));
 
 // ------------------------------------------------------------------ dates
 
@@ -292,7 +322,7 @@ function annotate(ev) {
 
 // ----------------------------------------------------------------- generate
 
-function makePiece(ev, by) {
+function makePiece(ev, by, cfg = occ()) {
   const w = wording(ev);
   const renditions = { waStatus: { text: w.status } };
   if (/^(Diwali|New Year)/i.test(ev.name)) renditions.li = { text: w.linkedin };
@@ -303,9 +333,9 @@ function makePiece(ev, by) {
     status: 'draft',
     hook: ev.shortName || shortName(ev.name),
     renditions,
-    targets: [WA_STATUS_ACCOUNT],
+    targets: [cfg.statusAccount],
     plannedDate: eveOf(ev.date),
-    plannedTime: GREETING_TIME,
+    plannedTime: cfg.greetingTime,
     eventId: ev.id,
     tags: ['greeting'],
     notes: `Greeting for ${ev.shortName || shortName(ev.name)} on ${ev.date}: the branded greeting image (Visuals, Festival greeting) on Status the evening before. No offer.`,
@@ -402,13 +432,11 @@ function opInputError(ctx, message) {
 //
 // A festival concept is the piece beside the greeting: a festival image, an owner's scene and
 // one tool we sell, different every year. Angles live in data/festival-angles.json with the
-// years they were used; a festival never repeats an angle within four years.
+// years they were used; a festival never repeats an angle within settings.occasions.conceptYears
+// (four by default).
 
-const CONCEPT_YEARS = 4;
-const CONCEPT_TYPES = { 'reel-animated': 'reel', broll: 'reel', carousel: 'carousel', 'status-rule': 'status' };
-
-function unusedAngles(series, year) {
-  return store.list('festival-angles', (a) => a.series === series && !(a.usedIn || []).some((y) => Number(y) > year - CONCEPT_YEARS && Number(y) <= year));
+function unusedAngles(series, year, years = occ().conceptYears) {
+  return store.list('festival-angles', (a) => a.series === series && !(a.usedIn || []).some((y) => Number(y) > year - years && Number(y) <= year));
 }
 
 function conceptView(ev, today) {
@@ -430,7 +458,7 @@ function conceptView(ev, today) {
 
 /** The nearest allotted slot in the three to seven days before the festival that takes the piece, never on a dark or greeting-only day. */
 function slotBefore(ev, type) {
-  const kind = CONCEPT_TYPES[type] || 'reel';
+  const kind = occ().conceptTypes[type] || 'reel';
   const from = addDays(ev.date, -7);
   const to = addDays(ev.date, -3);
   const dark = new Set(store.list('events', (e) => e.date >= from && e.date <= to && (e.kind === 'dark' || e.postingRule === 'dark' || e.kind === 'greeting-only' || e.postingRule === 'greeting-only')).map((e) => e.date));
@@ -468,7 +496,8 @@ function pieceFromConcept(ev, c, type, by) {
     renditions.waStatus = { text: c.statusLine };
     renditions.li = { text: `${c.linkedinOpening}\n\n[the rest of the post: the scene, what it costs, and ${sol}]`, firstComment: '' };
   }
-  const targets = type === 'status-rule' ? ['wa-st'] : type === 'carousel' ? ['vd-ig', 'p-li', 'wa-st'] : ['vd-ig', 'p-li', 'wa-st'];
+  const st = occ().statusAccount;
+  const targets = type === 'status-rule' ? [st] : ['vd-ig', 'p-li', st];
   const piece = {
     id: store.nextId('pc'), type, pillar: 'problem', status: 'in-review',
     hook: type === 'carousel' ? c.carouselCover.replace(/\*/g, '') : c.reelHook,
@@ -505,7 +534,7 @@ const conceptRoutes = [
       if (!ev.series) throw new ctx.HttpError(409, 'This event has no series key, so it has no angle bank.');
       const year = Number(ev.date.slice(0, 4));
       const angles = unusedAngles(ev.series, year);
-      if (!angles.length) throw new ctx.HttpError(409, `Every angle for ${ev.shortName || ev.name} was used in the last ${CONCEPT_YEARS} years; add angles to the bank in data/festival-angles.json.`);
+      if (!angles.length) throw new ctx.HttpError(409, `Every angle for ${ev.shortName || ev.name} was used in the last ${occ().conceptYears} years; add angles in Builder, Occasions.`);
       const input = {
         event: { id: ev.id, name: ev.name, shortName: ev.shortName || shortName(ev.name), date: ev.date, series: ev.series, whoGets: ev.whoGets, note: ev.note || '' },
         angles: angles.map(({ id, title, image, scene, solutionId, solutionName, line }) => ({ id, title, image, scene, solutionId, solutionName, line })),
@@ -532,7 +561,8 @@ const conceptRoutes = [
       const c = saved?.proposals?.[Number(b.index)];
       if (!c) throw new ctx.HttpError(400, 'Choose one of the proposed concepts first');
       if (ev.generated?.conceptPieceId && store.get('pieces', ev.generated.conceptPieceId)) throw new ctx.HttpError(409, `A concept piece already exists for this year (${ev.generated.conceptPieceId})`);
-      const type = ['reel-animated', 'broll', 'carousel', 'status-rule'].includes(b.type) ? b.type : (c.type || 'broll');
+      const types = occ().conceptTypes;
+      const type = Object.hasOwn(types, b.type) ? b.type : (c.type || 'broll');
       const piece = await store.put('pieces', pieceFromConcept(ev, c, type, ctx.by));
       await store.put('versions', { id: store.nextId('vr'), pieceId: piece.id, n: 1, snapshot: piece, by: ctx.by || null, at: new Date().toISOString(), changeNote: `Made from the ${ev.shortName || shortName(ev.name)} concept "${c.idea.slice(0, 60)}"` });
       // Place it on the nearest allotted slot in the three to seven days before the festival; when the
@@ -543,7 +573,7 @@ const conceptRoutes = [
       if (!slot) {
         const day = freeDayBefore(ev);
         if (day) {
-          const kind = CONCEPT_TYPES[type] || 'reel';
+          const kind = types[type] || 'reel';
           const accountId = piece.targets[0];
           const time = kind === 'status' ? '09:00' : kind === 'carousel' || kind === 'reel' ? '19:30' : '';
           slot = await store.put('slots', { id: store.nextId('sl'), date: day, time, accountId, kind, label: `${ev.shortName || shortName(ev.name)} concept`, baseState: 'open', state: 'open', source: 'manual', generated: false, reason: `Added for the ${ev.shortName || shortName(ev.name)} concept: every allotted slot in the window was filled.` });
@@ -596,8 +626,10 @@ export const routes = [
       return {
         mourningRule: mourningRule(),
         goDark: settings.goDark || { on: false },
-        greetingTime: GREETING_TIME,
-        greetingAccount: WA_STATUS_ACCOUNT,
+        greetingTime: occasionsConfig(settings).greetingTime,
+        greetingAccount: occasionsConfig(settings).statusAccount,
+        conceptYears: occasionsConfig(settings).conceptYears,
+        conceptTypes: occasionsConfig(settings).conceptTypes,
       };
     },
   },
